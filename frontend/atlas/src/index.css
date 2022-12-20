@@ -1,13 +1,41 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    font-family: 'Times New Roman', Times, serif;
+    -drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    /* outline: 1px solid red; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background: #040C18;
+}
+
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+img {
+  object-fit: cover;
+}
+
+.gradient-bg {
+  /* background: rgb(0,40,83);
+  background: -moz-linear-gradient(90deg, rgba(0,40,83,1) 0%, rgba(4,12,24,1) 100%);
+  background: -webkit-linear-gradient(90deg, rgba(0,40,83,1) 0%, rgba(4,12,24,1) 100%);
+  background: linear-gradient(90deg, rgba(0,40,83,1) 0%, rgba(4,12,24,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#002853",endColorstr="#040c18",GradientType=1);  */
+
+  background: rgb(3,32,61);
+  background: -moz-linear-gradient(90deg, rgba(3,32,61,1) 0%, rgba(2,9,20,1) 100%);
+  background: -webkit-linear-gradient(90deg, rgba(3,32,61,1) 0%, rgba(2,9,20,1) 100%);
+  background: linear-gradient(90deg, rgba(3,32,61,1) 0%, rgba(2,9,20,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#03203d",endColorstr="#020914",GradientType=1); 
 }

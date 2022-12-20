@@ -1,0 +1,250 @@
+.info-container {
+    height: 350px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info-wrapper {
+    width: 80%;
+    height: 300px;
+    border-radius: 4px;
+
+    background: rgb(10,50,96);
+    background: -moz-linear-gradient(90deg, rgba(10,50,96,1) 0%, rgba(17,41,85,1) 41%, rgba(4,11,25,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(10,50,96,1) 0%, rgba(17,41,85,1) 41%, rgba(4,11,25,1) 100%);
+    background: linear-gradient(90deg, rgba(10,50,96,1) 0%, rgba(17,41,85,1) 41%, rgba(4,11,25,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0a3260",endColorstr="#040b19",GradientType=1);
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    box-shadow: 0 0 7px 7px rgba(84, 43, 180, 0.699);
+
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.info-title {
+    margin-top: 5px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 25px;
+}
+
+.info-title h1 {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 300;
+    color: #81AFDD;
+}
+
+.info-items-container {
+    height: 92%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-item {
+    height: 100%;
+    width: 33%;
+    margin: 1%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.info-item-title {
+    display: flex;
+    height: fit-content;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.info-item-title h1 {
+    color: orange;
+    font-size: 32px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.info-item-subtitle {
+    width: 85%;
+    height: 20%;
+    position: absolute;
+    top: 50px;
+    display: flex;
+    text-align: center;
+}
+
+.info-item-subtitle h2 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #81AFDD;
+    cursor: pointer;
+}
+
+.info-image-container {
+    height: 60%;
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.info-image-container img {
+    width: 30%;
+    cursor: pointer;
+}
+
+.info-image-container img:hover {
+    animation-name: spin;
+    animation-duration: 600ms;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+@media screen and (max-width: 1700px) {
+    .info-container {
+        height: 400px;
+    }
+    
+    .info-wrapper {
+        height: 350px;
+    }
+
+    .info-item-title h1 {
+        font-size: 28px;
+    }
+
+    .info-item-subtitle {
+        top: 60px;
+        height: 25%;
+    }
+
+    .info-item-subtitle h2 {
+        font-size: 20px;
+    }
+
+
+    .info-image-container {
+        height: 50%;
+    }
+
+    .info-image-container img {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    
+    .info-wrapper {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .info-wrapper {
+        height: 370px;
+    }
+
+    .info-image-container img {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    .info-container {
+        height: 450px;
+    }
+    
+    .info-wrapper {
+        height: 420px;
+    }
+
+    .info-item-subtitle {
+        top: 70px;
+        height: 30%;
+        width: 100%;
+    }
+
+    .info-image-container img {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .info-item-title h1 {
+        font-size: 24px;
+    }
+
+    .info-item-subtitle {
+        top: 75px;
+        height: 25%;
+    }
+
+    .info-image-container img:hover {
+        animation-name: none;
+    }
+
+    .info-image-container img {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .info-container {
+        margin-top: 20px;
+    }
+
+    .info-wrapper {
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .info-container {
+        height: 110px;
+    }
+
+    .info-wrapper {
+        height: 110px;
+    }
+
+    .info-item {
+        height: 110px;
+        justify-content: center;
+    }
+
+    .info-item-title {
+        margin-top: 30px;
+    }
+
+    .info-item-title h1 {
+        font-size: 18px;
+    }
+
+    .info-item-subtitle {
+        display: none;
+    }
+
+    .info-image-container {
+        display: none;
+    }
+}
+
