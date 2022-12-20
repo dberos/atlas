@@ -114,7 +114,9 @@
     /* border-image-source: linear-gradient(60deg, orange, #042c54); */
     /* border-image-source: linear-gradient(90deg, rgba(190,117,15,1) 0%, rgba(33,57,103,1) 50%, rgba(58,13,139,1) 100%); */
     /* border-image-source: linear-gradient(90deg, rgba(190,117,15,1) 0%, rgba(33,57,103,1) 80%, rgba(19,37,83,1) 100%); */
-    border-image-source: linear-gradient(90deg, rgba(19,37,83,1) 0%, rgba(22,41,87,1) 11%, rgba(190,117,15,1) 50%, rgba(22,41,87,1) 90%, rgba(19,37,83,1) 100%);    
+    /* dark #132553 blue #162957 orange #be750f */
+    border-image-source: linear-gradient(90deg, rgba(19,37,83,1) 0%, rgba(22,41,87,1) 10%, rgba(190,117,15,1) 50%, rgba(22,41,87,1) 90%, rgba(19,37,83,1) 100%);
+
     border-image-slice: 1;
     
 }

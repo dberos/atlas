@@ -7,24 +7,20 @@
 }
 
 .info-wrapper {
+    background: var(--bg);
+    background: var(--bg-moz);
+    background: var(--bg-webkit);
+    background: var(--bg-linear);
+    filter: var(--filter);
+    filter: var(--filter-drop);
+
     width: 80%;
     height: 300px;
     border-radius: 4px;
-
-    background: rgb(10,50,96);
-    background: -moz-linear-gradient(90deg, rgba(10,50,96,1) 0%, rgba(17,41,85,1) 41%, rgba(4,11,25,1) 100%);
-    background: -webkit-linear-gradient(90deg, rgba(10,50,96,1) 0%, rgba(17,41,85,1) 41%, rgba(4,11,25,1) 100%);
-    background: linear-gradient(90deg, rgba(10,50,96,1) 0%, rgba(17,41,85,1) 41%, rgba(4,11,25,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0a3260",endColorstr="#040b19",GradientType=1);
-
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-
-    box-shadow: 0 0 7px 7px rgba(84, 43, 180, 0.699);
-
-
     display: flex;
     flex-direction: column;
     position: relative;
+    box-shadow: 0 0 7px 7px rgba(84, 43, 180, 0.699);
 }
 
 .info-title {

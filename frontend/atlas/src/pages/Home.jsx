@@ -7,7 +7,7 @@ import Footer from '../components/Global/Footer/Footer'
 
 const Home = () => {
   return (
-      <div className="gradient-bg">
+      <div>
         <NavBar/>
         <Main/>
         <Info/>
