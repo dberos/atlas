@@ -18,7 +18,11 @@ const PersonaUndergraduate = () => {
             </div>
         </div>
         <div className="personas-image-container">
-            <img src={require('../../../assets/person-space.png')} alt="" draggable='false'/>
+            <img 
+            src={require('../../../assets/person-space.png')} 
+            alt="sketch of a happy person viewing statistics" 
+            draggable='false'
+            />
         </div>
     </div>
   )

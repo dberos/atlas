@@ -4,7 +4,7 @@ import useCloseModal from '../../../hooks/useCloseModal';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-const Undergraduates = () => {
+const NavBarUndergraduates = () => {
     const [undergrad, setUndergrad] = useState(false);
 
     let undergradRef = useCloseModal(() => {
@@ -52,4 +52,4 @@ const Undergraduates = () => {
   )
 }
 
-export default Undergraduates
+export default NavBarUndergraduates

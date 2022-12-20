@@ -2,7 +2,7 @@ import React from 'react'
 import './navbar.css'
 import useCloseModal from '../../../hooks/useCloseModal';
 
-const Menu = (props) => {
+const NavBarMenu = (props) => {
     let ref = useCloseModal(() => {
         props.setMenu(false);
     });
@@ -32,4 +32,4 @@ const Menu = (props) => {
   )
 }
 
-export default Menu
+export default NavBarMenu

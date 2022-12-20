@@ -4,7 +4,7 @@ import './personas.css'
 const PersonaCompany = () => {
   return (
     <div className="personas-persona-container"
-        style={{borderImageSource: 'linear-gradient(270deg, rgba(190,117,15,1) 0%, rgba(33,57,103,1) 80%, rgba(19,37,83,1) 100%)'}}>
+    style={{borderImageSource: 'linear-gradient(270deg, rgba(190,117,15,1) 0%, rgba(33,57,103,1) 80%, rgba(19,37,83,1) 100%)'}}>
         <div className="personas-header-container">
             <div className="personas-title">
                 <h1>
@@ -19,7 +19,11 @@ const PersonaCompany = () => {
             </div>
         </div>
         <div className="personas-image-container">
-            <img src={require('../../../assets/person-jump.png')} alt="" draggable='false'/>
+            <img 
+            src={require('../../../assets/person-jump.png')} 
+            alt="sketch of a person jumping happily" 
+            draggable='false'
+            />
         </div>
     </div>
   )

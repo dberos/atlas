@@ -2,10 +2,12 @@ import React, {useState} from 'react'
 import './navbar.css'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import Undergraduates from './Undergraduates';
-import Companies from './Companies';
-import Universities from './Universities';
-import Menu from './Menu'
+import NavBarUndergraduates from './NavBarUndergraduates';
+import NavBarCompanies from './NavBarCompanies';
+import NavBarUniversities from './NavBarUniversities';
+import NavBarMenu from './NavBarMenu'
+import NavBarAccount from './NavBarAccount';
+import NavBarContact from './NavBarContact';
 
 const NavBar = () => {
     const [menu, setMenu] = useState(false);
@@ -13,29 +15,18 @@ const NavBar = () => {
   return (
     <div className='navbar-container'>
         <div className='navbar-logo-container'>
-          <img src={require('../../../assets/logo.png')} alt='atlas logo' draggable='false'/>
+          <img 
+          src={require('../../../assets/logo.png')} 
+          alt='atlas logo' 
+          draggable='false'
+          />
         </div>
         <div className='navbar-wrapper'>
-          <Undergraduates/>
-          <Companies/>
-          <Universities/>
-          <div className='navbar-contact'>
-            <p>
-              Επικοινωνία
-            </p>
-          </div>
-          <div className='navbar-login-register-container'>
-            <div className='navbar-login'>
-              <button>
-                Σύνδεση
-              </button>
-            </div>
-            <div className='navbar-register'>
-              <button>
-                Εγγραφή
-              </button>
-            </div>
-          </div>
+          <NavBarUndergraduates/>
+          <NavBarCompanies/>
+          <NavBarUniversities/>
+          <NavBarContact/>
+          <NavBarAccount/>
         </div>
         <div className='navbar-menu-icon'>
           <button onClick={() => setMenu(!menu)}>
@@ -46,7 +37,7 @@ const NavBar = () => {
             }
           </button>
         </div>
-        {menu && <Menu setMenu={setMenu}/>}
+        {menu && <NavBarMenu setMenu={setMenu}/>}
     </div>
   )
 }

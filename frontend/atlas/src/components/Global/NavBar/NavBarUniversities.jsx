@@ -4,7 +4,7 @@ import useCloseModal from '../../../hooks/useCloseModal';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 
-const Universities = () => {
+const NavBarUniversities = () => {
     const [university, setUniversity] = useState(false);
 
     let universityRef = useCloseModal(() => {
@@ -43,4 +43,4 @@ const Universities = () => {
   )
 }
 
-export default Universities
+export default NavBarUniversities

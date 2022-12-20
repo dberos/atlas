@@ -8,10 +8,10 @@ import FooterMusts from './FooterMusts'
 const Footer = () => {
   return (
     <div className="footer-container">
-        <FooterAtlas/>
-        <FooterMusts/>
-        <FooterLegal/>
-        <FooterAbout/>
+      <FooterAtlas/>
+      <FooterMusts/>
+      <FooterLegal/>
+      <FooterAbout/>
     </div>
   )
 }
