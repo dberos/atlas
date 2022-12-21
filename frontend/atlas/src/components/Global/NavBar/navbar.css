@@ -10,6 +10,11 @@
     width: 5%;
 }
 
+.navbar-logo-container a {
+    display: flex;
+    justify-content: center;
+}
+
 .navbar-logo-container img {
     object-fit: cover;
     width: 95%;

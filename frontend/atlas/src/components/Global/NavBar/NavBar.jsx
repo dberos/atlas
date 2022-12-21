@@ -8,6 +8,7 @@ import NavBarUniversities from './NavBarUniversities';
 import NavBarMenu from './NavBarMenu'
 import NavBarAccount from './NavBarAccount';
 import NavBarContact from './NavBarContact';
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
     const [menu, setMenu] = useState(false);
@@ -15,11 +16,13 @@ const NavBar = () => {
   return (
     <div className='navbar-container'>
         <div className='navbar-logo-container'>
-          <img 
-          src={require('../../../assets/logo.png')} 
-          alt='atlas logo' 
-          draggable='false'
-          />
+          <Link to={'/'}>
+            <img 
+            src={require('../../../assets/logo.png')} 
+            alt='atlas logo' 
+            draggable='false'
+            />
+          </Link>
         </div>
         <div className='navbar-wrapper'>
           <NavBarUndergraduates/>

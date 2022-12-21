@@ -18,7 +18,7 @@ const InfoNoEspa = () => {
             </h2>
         </div>
         <div className="info-image-container">
-          <Link to={'/undegraduates'}>
+          <Link to={'/undergraduates'}>
             <img 
             src={require('../../../assets/people-graph.png')} 
             style={{height: '93%'}} 
