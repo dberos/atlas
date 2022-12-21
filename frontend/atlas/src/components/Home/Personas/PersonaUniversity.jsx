@@ -1,5 +1,6 @@
 import React from 'react'
 import './personas.css'
+import { Link } from "react-router-dom";
 
 const PersonaUniversity = () => {
   return (
@@ -19,9 +20,9 @@ const PersonaUniversity = () => {
             </div>
         </div>
         <div className="personas-university-button-container">
-            <button>
+            <Link to={'/undergraduates'}>
                 Μάθετε περισσότερα
-            </button>
+            </Link>
         </div>
     </div>
   )

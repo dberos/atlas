@@ -65,7 +65,7 @@
     justify-content: center;
 }
 
-.info-item-title h1 {
+.info-item-title a {
     color: orange;
     font-size: 32px;
     font-weight: 400;
@@ -85,7 +85,6 @@
     font-size: 18px;
     font-weight: 300;
     color: #81AFDD;
-    cursor: pointer;
 }
 
 .info-image-container {
@@ -97,12 +96,18 @@
     justify-content: center;
 }
 
+.info-image-container a {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+
 .info-image-container img {
-    width: 30%;
+    width: 80%;
     cursor: pointer;
 }
 
-.info-image-container img:hover {
+.info-image-container a:hover {
     animation-name: spin;
     animation-duration: 600ms;
     animation-iteration-count: 1;
@@ -123,7 +128,7 @@
         height: 350px;
     }
 
-    .info-item-title h1 {
+    .info-item-title a {
         font-size: 28px;
     }
 
@@ -136,13 +141,16 @@
         font-size: 20px;
     }
 
-
     .info-image-container {
         height: 50%;
     }
 
+    .info-image-container a {
+        width: 45%;
+    }
+    
     .info-image-container img {
-        width: 35%;
+        width: 85%;
     }
 }
 
@@ -158,8 +166,12 @@
         height: 370px;
     }
 
+    .info-image-container a {
+        width: 60%;
+    }
+    
     .info-image-container img {
-        width: 40%;
+        width: 70%;
     }
 }
 
@@ -179,13 +191,17 @@
         width: 100%;
     }
 
+    .info-image-container a {
+        width: 70%;
+    }
+    
     .info-image-container img {
-        width: 55%;
+        width: 75%;
     }
 }
 
 @media screen and (max-width: 900px) {
-    .info-item-title h1 {
+    .info-item-title a {
         font-size: 24px;
     }
 
@@ -194,12 +210,16 @@
         height: 25%;
     }
 
-    .info-image-container img:hover {
+    .info-image-container a:hover {
         animation-name: none;
     }
 
+    .info-image-container a {
+        width: 80%;
+    }
+    
     .info-image-container img {
-        width: 75%;
+        width: 80%;
     }
 }
 
@@ -210,6 +230,10 @@
 
     .info-wrapper {
         align-items: center;
+    }
+    
+    .info-image-container img {
+        width: 90%;
     }
 }
 
@@ -231,7 +255,7 @@
         margin-top: 30px;
     }
 
-    .info-item-title h1 {
+    .info-item-title a {
         font-size: 18px;
     }
 

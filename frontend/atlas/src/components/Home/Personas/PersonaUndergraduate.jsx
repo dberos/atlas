@@ -1,14 +1,17 @@
 import React from 'react'
 import './personas.css'
+import { Link } from "react-router-dom";
 
 const PersonaUndergraduate = () => {
   return (
     <div className="personas-persona-container">
         <div className="personas-header-container">
             <div className="personas-title">
-                <h1>
-                    Θες περισσότερες επιλογές αναζήτησης;
-                </h1>
+                <span>
+                    <Link to={'/undergraduates'}>
+                        Θες περισσότερες επιλογές αναζήτησης;
+                    </Link>
+                </span>
             </div>
             <div className="personas-subtitle">
                 <h2>
@@ -18,11 +21,13 @@ const PersonaUndergraduate = () => {
             </div>
         </div>
         <div className="personas-image-container">
-            <img 
-            src={require('../../../assets/person-space.png')} 
-            alt="sketch of a happy person viewing statistics" 
-            draggable='false'
-            />
+            <Link to={'/undergraduates'}>
+                <img 
+                src={require('../../../assets/person-space.png')} 
+                alt="sketch of a happy person viewing statistics" 
+                draggable='false'
+                />
+            </Link>
         </div>
     </div>
   )

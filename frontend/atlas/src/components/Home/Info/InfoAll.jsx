@@ -1,13 +1,16 @@
 import React from 'react'
 import './info.css'
+import { Link } from "react-router-dom";
 
 const InfoAll = () => {
   return (
     <div className="info-item">
         <div className="info-item-title">
-            <h1>
-              Όλες οι Πρακτικές Ασκήσεις
-            </h1>
+          <span>
+            <Link to={'/undergraduates'}>
+                Όλες οι Πρακτικές Ασκήσεις
+            </Link>
+          </span>
         </div>
         <div className="info-item-subtitle">
             <h2>
@@ -15,11 +18,13 @@ const InfoAll = () => {
             </h2>
         </div>
         <div className="info-image-container">
+          <Link to={'/undergraduates'}>
             <img 
               src={require('../../../assets/people-desk.png')} 
               alt="sketch with people sitting in a sofa and chatting" 
               draggable='false'
             />
+          </Link>
         </div>
     </div>
   )
