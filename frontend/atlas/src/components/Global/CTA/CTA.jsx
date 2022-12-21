@@ -23,7 +23,7 @@ const CTA = (props) => {
           </div>
         </div>
         <div className='cta-logo-container'>
-          <img src={require('../../../assets/chemistry-lab.png')} 
+          <img src={require('../../../assets/chemistry.png')} 
           alt='sketch with two test tubes and a microscope' 
           draggable='false'
           />
