@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import './undergraduatesForm.css'
-import UndergraduatesSeachBar from './UndergraduatesSeachBar'
+import UndergraduatesSearchBar from './UndergraduatesSearchBar'
 import { search_results } from '../../Home/Main/data'
 
 const UndergraduatesForm = () => {
 
   const [searchBarWord, setSearchBarWord] = useState([]);
-  const [searchBarError, setSearchBarError] = useState(false);
-
-  const checkWord = (obj) => {
-    return obj.title === searchBarWord;
-  }
+  // const [searchBarError, setSearchBarError] = useState(false);
 
   useEffect(() => {
     console.log('searchBarWord ', searchBarWord);
+    
+    const checkWord = (obj) => {
+      return obj.title === searchBarWord;
+    }
     
     // Check if exists for errors
     console.log(search_results.some(checkWord));
@@ -35,7 +35,7 @@ const UndergraduatesForm = () => {
                 </h1>
             </div>
             <form onSubmit={handleSubmit}>
-              <UndergraduatesSeachBar
+              <UndergraduatesSearchBar
               setSearchBarWord={setSearchBarWord}
               />
             </form>

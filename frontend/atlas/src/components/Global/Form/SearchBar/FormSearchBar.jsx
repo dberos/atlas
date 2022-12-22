@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import './formSearchBar.css'
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
-import { search_results } from '../../Home/Main/data'
+import { search_results } from '../../../Home/Main/data';
 
 const FormSearchBar = (props) => {
 
@@ -47,11 +47,17 @@ const FormSearchBar = (props) => {
   // type='button' prevents form submit by clicking
 
   return (
-    <div className="form-search-bar">
-      <input type="text" placeholder='Τι τομέα ψάχνεις;' onChange={handleFilter} value={wordEntered}/>
-      <label>
-         π.χ Πληροφορική
-      </label>
+    <div className="form-search-bar-container">
+      <div className="form-search-bar-title">
+        <h1>
+            {props.title}
+        </h1>
+      </div>
+      <div className="form-search-bar">
+        <input type="text" placeholder='Τι τομέα ψάχνεις;' onChange={handleFilter} value={wordEntered}/>
+        <label>
+          π.χ Πληροφορική
+        </label>
         <div className="form-search-bar-icon-container">
           <div className="form-search-bar-icon">
             <button type='button' onClick={() => setSearch(!search)}>
@@ -77,8 +83,9 @@ const FormSearchBar = (props) => {
               }
             </div>
         }
-        
+      </div>
     </div>
+    
   )
 }
 

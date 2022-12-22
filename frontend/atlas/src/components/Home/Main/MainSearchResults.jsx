@@ -2,7 +2,7 @@ import React, {useEffect, useReducer, useRef} from 'react'
 import useKeyPress from '../../../hooks/useKeyPress';
 import useCloseModal from '../../../hooks/useCloseModal';
 
-const SearchResults = (props) => {
+const MainSearchResults = (props) => {
 
     const arrowUpPressed = useKeyPress('ArrowUp');
     const arrowDownPressed = useKeyPress('ArrowDown');
@@ -112,4 +112,4 @@ const SearchResults = (props) => {
   )
 }
 
-export default SearchResults
+export default MainSearchResults

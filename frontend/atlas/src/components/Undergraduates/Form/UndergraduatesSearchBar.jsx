@@ -1,14 +1,14 @@
 import React from 'react'
 import './undergraduatesForm.css'
-import FormSearch from '../../Global/FormSearch/FormSearch'
+import FormSearchBar from '../../Global/Form/SearchBar/FormSearchBar'
 
-const UndergraduatesSeachBar = (props) => {
+const UndergraduatesSearchBar = (props) => {
 
     var title = 'Τομέας'
 
   return (
     <div className="undergraduates-search-bar-container">
-        <FormSearch
+        <FormSearchBar
         title={title}
         setSearchBarWord={props.setSearchBarWord}
         />
@@ -16,4 +16,4 @@ const UndergraduatesSeachBar = (props) => {
   )
 }
 
-export default UndergraduatesSeachBar
+export default UndergraduatesSearchBar

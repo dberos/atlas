@@ -1,6 +1,6 @@
 import React from 'react'
 import './main.css'
-import SearchBar from './SearchBar';
+import MainSearchBar from './MainSearchBar';
 
 const Main = () => {
 
@@ -17,7 +17,7 @@ const Main = () => {
               Ξεκίνα την επαγγελματική σου σταδιοδρομία με ένα απλό βήμα!
             </h2>
           </div>
-          <SearchBar/>
+          <MainSearchBar/>
         </div>
         <div className='main-logo-container'>
           <img src={require('../../../assets/illustrations.png')} alt='sketch with a person thinking' draggable='false'/>

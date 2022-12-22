@@ -4,9 +4,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import useCloseModal from '../../../hooks/useCloseModal';
 import { search_results } from './data'
 import CloseIcon from '@mui/icons-material/Close';
-import SearchResults from './SearchResults';
+import MainSearchResults from './MainSearchResults';
 
-const SearchBar = () => {
+const MainSearchBar = () => {
 
     const [filteredData, setFilteredData] = useState([]);
     const [wordEntered,setWordEntered] = useState([]);
@@ -79,7 +79,7 @@ const SearchBar = () => {
                 </div>
                 </div>
             </form>
-            <SearchResults
+            <MainSearchResults
                 setWordEntered={setWordEntered}
                 setFilteredData={setFilteredData}
                 setHandleRef={setHandleRef}
@@ -93,4 +93,4 @@ const SearchBar = () => {
     )
 }
 
-export default SearchBar
+export default MainSearchBar

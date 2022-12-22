@@ -1,7 +1,7 @@
 import React from 'react'
 import CTA from '../components/Global/CTA/CTA'
 import NavBar from '../components/Global/NavBar/NavBar'
-import UndergraduatesForm from '../components/Undergraduates/UndergraduatesForm/UndergraduatesForm'
+import UndergraduatesForm from '../components/Undergraduates/Form/UndergraduatesForm'
 
 
 const Undergraduates = () => {
