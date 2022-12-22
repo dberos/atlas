@@ -7,7 +7,7 @@ const UndergraduatesSearchBar = (props) => {
     var title = 'Τομέας'
 
   return (
-    <div className="undergraduates-search-bar-container">
+    <div className="undergrad-search-bar-container">
         <FormSearchBar
         title={title}
         setSearchBarWord={props.setSearchBarWord}
