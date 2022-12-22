@@ -1,6 +1,7 @@
 import React from 'react'
 import CTA from '../components/Global/CTA/CTA'
 import NavBar from '../components/Global/NavBar/NavBar'
+import UndergraduatesForm from '../components/Undergraduates/UndergraduatesForm/UndergraduatesForm'
 
 
 const Undergraduates = () => {
@@ -30,6 +31,7 @@ const Undergraduates = () => {
         subtitle={subtitle} 
         links={links}
         />
+        <UndergraduatesForm/>
     </div>
   )
 }
