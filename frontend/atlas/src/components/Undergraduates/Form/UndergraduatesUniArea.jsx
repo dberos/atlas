@@ -38,7 +38,7 @@ const UndergraduatesUniArea = (props) => {
     ]
 
   return (
-    <div className="undergrad-uni-area-container">
+    <div className="undergrad-half-container">
         <HalfDropdown
         title={title1}
         options={universities}

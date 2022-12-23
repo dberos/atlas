@@ -3,6 +3,7 @@ import './undergraduatesForm.css'
 import UndergraduatesSearchBar from './UndergraduatesSearchBar'
 import { search_results } from '../../Home/Main/data'
 import UndergraduatesUniArea from './UndergraduatesUniArea'
+import UndergraduatesMoneyStart from './UndergraduatesMoneyStart'
 
 const UndergraduatesForm = () => {
 
@@ -11,6 +12,9 @@ const UndergraduatesForm = () => {
 
   const [selectedUniversity, setSelectedUniversity] = useState([]);
   const [selectedArea, setSelectedArea] = useState([]);
+
+  const [selectedEspa, setSelectedEspa] = useState([]);
+  const [selectedDate, setSelectedDate] = useState([]);
 
   useEffect(() => {
     console.log('searchBarWord ', searchBarWord);
@@ -32,6 +36,14 @@ const UndergraduatesForm = () => {
   useEffect(() => {
     console.log(selectedArea);
   }, [selectedArea])
+
+  useEffect(() => {
+    console.log(selectedEspa);
+  }, [selectedEspa])
+
+  useEffect(() => {
+    console.log(selectedDate);
+  }, [selectedDate])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,6 +67,12 @@ const UndergraduatesForm = () => {
               setSelectedUniversity={setSelectedUniversity}
               selectedArea={selectedArea}
               setSelectedArea={setSelectedArea}
+              />
+              <UndergraduatesMoneyStart
+              selectedEspa={selectedEspa}
+              setSelectedEspa={setSelectedEspa}
+              selectedDate={selectedDate}
+              setSelectedDate={setSelectedDate}
               />
             </form>
 
