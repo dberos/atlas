@@ -1,5 +1,5 @@
 .half-dropdown-container {
-    width: 45%;
+    width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -9,8 +9,8 @@
 .half-dropdown-title {
     display: flex;
     height: auto;
-    width: 89%;
-    margin-left: 11%;
+    width: 80%;
+    margin-left: 20%;
     margin-bottom: 10px;
 }
 
@@ -22,32 +22,37 @@
 
 .half-dropdown-dropdown-container {
     height: 45px;
-    width: 77%;
-    margin-left: 11%;
+    width: 60%;
+    margin-left: 20%;
     border-radius: 4px;
     background-color: white;
     display: flex;
 }
 
 .half-dropdown-name {
-    width: 80%;
+    width: 75%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     height: 100%;
 }
 
 .half-dropdown-name p {
     font-size: 18px;
     font-weight: 500;
-    margin-left: 5%;
+    margin-left: 3%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    padding-top: 1%;
 }
 
 .half-dropdown-icon-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 20%;
+    width: 25%;
 }
 
 .half-dropdown-icon-container button {
@@ -61,8 +66,8 @@
 
 .half-dropdown-dropdown {
     background-color: white;
-    width: 77%;
-    margin-left: 11%;
+    width: 60%;
+    margin-left: 20%;
     display: flex;
     border-radius: 0 0 4px 4px; /* LEAVES WHITE PIXEL ON CHROME */
     z-index: 3;
@@ -74,14 +79,18 @@
 .half-dropdown-dropdown p {
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    padding-left: 3%;
+    padding-right: 3%;
     height: 50px;
     font-size: 16px;
-    text-align: center;
     cursor: pointer;
     border-radius: 0 0 4px 4px; /* LEAVES WHITE PIXEL ON CHROME */
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* flex doesn't work with ellipsis and %width */
+    display: block;
+    padding-top: 17px;
 }
 
 .half-dropdown-dropdown p:hover {

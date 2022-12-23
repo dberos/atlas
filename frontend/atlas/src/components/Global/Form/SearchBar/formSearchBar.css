@@ -8,8 +8,8 @@
 .form-search-bar-title {
     display: flex;
     height: auto;
-    width: 95%;
-    margin-left: 5%;
+    width: 90%;
+    margin-left: 10%;
     margin-bottom: 10px;
 }
 
@@ -21,10 +21,10 @@
 
 .form-search-bar {
     height: 45px;
-    width: 90%;
+    width: 80%;
     display: flex;
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
     justify-content: flex-start;
     border-radius: 4px;
     position: relative;
@@ -36,7 +36,7 @@
     border-radius: 4px;
     padding-left: 10px;
     /* padding-right: 25%; */
-    padding-right: 30%;
+    padding-right: 25%;
     outline: none;
     border: none;
     font-size: 18px;
@@ -115,7 +115,28 @@
     background-color: rgb(217, 226, 236);
 }
 
+@media screen and (max-width: 1400px) {
+    .form-search-bar input {
+        padding-right: 32%;
+    }
+}
+
 @media screen and (max-width: 850px) {
+
+    .form-search-bar-title {
+        width: 95%;
+        margin-left: 5%;
+    }
+
+    .form-search-bar {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .form-search-bar input {
+        padding-right: 30%;
+    }
 
     .form-search-bar input {
         font-size: 16px;
