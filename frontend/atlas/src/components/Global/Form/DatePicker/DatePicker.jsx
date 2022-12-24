@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import './datePicker.css'
 import moment from 'moment'
+import dateValidator from './dateValidator'
 
 const DatePicker = (props) => {
 
@@ -10,6 +11,9 @@ const DatePicker = (props) => {
         const date = e.target.value;
         // Allow only numbers and /
         setDateEntered(date.replace(/[^0-9/]/g, ''));
+
+        setDateEntered(dateValidator(date));
+
         const check = moment(date, 'DD/MM/YYYY', true).isValid();
         if(check) {
           props.setSelectedDate(date);
