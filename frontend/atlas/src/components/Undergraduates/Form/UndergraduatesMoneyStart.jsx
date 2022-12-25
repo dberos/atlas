@@ -1,7 +1,7 @@
 import React from 'react'
 import './undergraduatesForm.css'
 import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown'
-import DatePicker from '../../Global/Form/DatePicker/DatePicker'
+import DateSelector from '../../Global/Form/DatePicker/DateSelector'
 
 const UndergraduatesMoneyStart = (props) => {
 
@@ -30,7 +30,7 @@ const UndergraduatesMoneyStart = (props) => {
         selectedTitle={props.selectedEspa}
         setSelectedTitle={props.setSelectedEspa}
         />
-        <DatePicker
+        <DateSelector
         selectedDate={props.selectedDate}
         setSelectedDate={props.setSelectedDate}
         />
