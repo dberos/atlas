@@ -25,14 +25,10 @@ const CompaniesUniArea = (props) => {
     const areas = [
         {
             id: 1,
-            title: 'Όλες οι περιοχές'
+            title: 'Αθήνα'
         },
         {
             id: 2,
-            title: 'Αθήναααααααααααααααααααααααααααααααααααααα'
-        },
-        {
-            id: 3,
             title: 'Θεσσαλονίκη'
         }
     ];

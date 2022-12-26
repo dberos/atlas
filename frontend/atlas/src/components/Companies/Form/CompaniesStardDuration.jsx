@@ -12,14 +12,10 @@ const CompaniesStardDuration = (props) => {
     const durations = [
         {
             id: 1,
-            title: 'Όλες οι διάρκειες'
-        },
-        {
-            id: 2,
             title: '3 Μήνες'
         },
         {
-            id: 3,
+            id: 2,
             title: '6 Μήνες'
         }
     ];

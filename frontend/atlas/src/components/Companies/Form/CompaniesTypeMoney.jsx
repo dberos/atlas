@@ -4,20 +4,16 @@ import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown'
 
 const CompaniesTypeMoney = (props) => {
 
-    var title1 = 'Τύπος Απασχόλησης';
-    var title2 = 'Μισθοδοσία';
+    var title1 = 'Τύπος Απασχόλησης *';
+    var title2 = 'Μισθοδοσία *';
 
     const internshipTypes = [
         {
             id: 1,
-            title: 'Όλοι οι τύποι'
-        },
-        {
-            id: 2,
             title: 'Μερική Απασχόληση'
         },
         {
-            id: 3,
+            id: 2,
             title: 'Πλήρης Απασχόληση'
         }
     ];
@@ -25,14 +21,10 @@ const CompaniesTypeMoney = (props) => {
     const moneyType = [
         {
             id: 1,
-            title: 'Όλες οι Χρηματοδοτήσεις'
-        },
-        {
-            id: 2,
             title: 'Χρηματοδότηση ΕΣΠΑ'
         },
         {
-            id: 3,
+            id: 2,
             title: 'Χωρίς Χρηματοδότηση ΕΣΠΑ'
         }
     ];

@@ -29,7 +29,7 @@ const UndergraduatesUniArea = (props) => {
         },
         {
             id: 2,
-            title: 'Αθήναααααααααααααααααααααααααααααααααααααα'
+            title: 'Αθήνα'
         },
         {
             id: 3,
