@@ -3,23 +3,23 @@ import '../../Global/Form/form.css'
 import UndergraduatesSearchBar from './UndergraduatesSearchBar'
 import { search_results } from '../../Home/Main/data'
 import UndergraduatesUniArea from './UndergraduatesUniArea'
-import UndergraduatesMoneyStart from './UndergraduatesMoneyStart'
 import UndergraduatesButton from './UndergraduatesButton'
-import UndergraduatesDurationType from './UndergraduatesDurationType'
+import UndergraduatesStartDuration from './UndergraduatesStartDuration'
+import UndergraduatesTypeMoney from './UndergraduatesTypeMoney'
 
 const UndergraduatesForm = () => {
 
   const [searchBarWord, setSearchBarWord] = useState([]);
-  // const [searchBarError, setSearchBarError] = useState(false);
 
   const [selectedUniversity, setSelectedUniversity] = useState([]);
   const [selectedArea, setSelectedArea] = useState([]);
-
-  const [selectedEspa, setSelectedEspa] = useState([]);
+  
   const [selectedDate, setSelectedDate] = useState([]);
-
   const [selectedDuration, setSelectedDuration] = useState([]);
+
   const [selectedType, setSelectedType] = useState([]);
+  const [selectedEspa, setSelectedEspa] = useState([]);
+
 
   useEffect(() => {
     console.log('searchBarWord ', searchBarWord);
@@ -30,7 +30,6 @@ const UndergraduatesForm = () => {
     
     // Check if exists for errors
     console.log(search_results.some(checkWord));
-    // setSearchBarError(search_results.some(checkWord));
     console.log(searchBarWord.length);
   }, [searchBarWord])
 
@@ -43,10 +42,6 @@ const UndergraduatesForm = () => {
   }, [selectedArea])
 
   useEffect(() => {
-    console.log(selectedEspa);
-  }, [selectedEspa])
-
-  useEffect(() => {
     console.log(selectedDate);
   }, [selectedDate])
 
@@ -57,6 +52,11 @@ const UndergraduatesForm = () => {
   useEffect(() => {
     console.log(selectedType);
   }, [selectedType])
+
+  useEffect(() => {
+    console.log(selectedEspa);
+  }, [selectedEspa])
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -81,17 +81,17 @@ const UndergraduatesForm = () => {
               selectedArea={selectedArea}
               setSelectedArea={setSelectedArea}
               />
-              <UndergraduatesMoneyStart
-              selectedEspa={selectedEspa}
-              setSelectedEspa={setSelectedEspa}
+              <UndergraduatesStartDuration
               selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
-              />
-              <UndergraduatesDurationType
               selectedDuration={selectedDuration}
               setSelectedDuration={setSelectedDuration}
+              />
+              <UndergraduatesTypeMoney
               selectedType={selectedType}
               setSelectedType={setSelectedType}
+              selectedEspa={selectedEspa}
+              setSelectedEspa={setSelectedEspa}
               />
               <UndergraduatesButton/>
             </form>

@@ -3,39 +3,39 @@ import '../../Global/Form/form.css'
 import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown'
 import DateSelector from '../../Global/Form/DatePicker/DateSelector'
 
-const UndergraduatesMoneyStart = (props) => {
+const UndergraduatesStartDuration = (props) => {
 
-    var title = 'Μισθοδοσία';
+    var title = 'Διάρκεια Πρακτικής';
 
-    const options = [
+    const durations = [
         {
             id: 1,
-            title: 'Όλες οι Χρηματοδοτήσεις'
+            title: 'Όλες οι διάρκειες'
         },
         {
             id: 2,
-            title: 'Χρηματοδότηση ΕΣΠΑ'
+            title: '3 Μήνες'
         },
         {
             id: 3,
-            title: 'Χωρίς Χρηματοδότηση ΕΣΠΑ'
+            title: '6 Μήνες'
         }
     ];
 
   return (
     <div className="undergrad-comp-half-container">
-        <HalfDropdown
-        title={title}
-        options={options}
-        selectedTitle={props.selectedEspa}
-        setSelectedTitle={props.setSelectedEspa}
-        />
         <DateSelector
         selectedDate={props.selectedDate}
         setSelectedDate={props.setSelectedDate}
+        />
+        <HalfDropdown
+        title={title}
+        options={durations}
+        selectedTitle={props.selectedDuration}
+        setSelectedTitle={props.setSelectedDuration}
         />
     </div>
   )
 }
 
-export default UndergraduatesMoneyStart
+export default UndergraduatesStartDuration
