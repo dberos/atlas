@@ -15,7 +15,7 @@ const CompaniesInternshipTitle = (props) => {
     <div className="companies-form-internship-title-container">
         <div className="companies-form-internship-title-title">
             <h1>
-                Τίτλος Θέσης
+                Τίτλος Θέσης *
             </h1>
         </div>
         <div className="companies-form-internship-input-container">

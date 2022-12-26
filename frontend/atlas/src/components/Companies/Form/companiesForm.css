@@ -31,6 +31,7 @@
     justify-content: flex-start;
     border-radius: 4px;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .companies-form-internship-input-container input {
@@ -77,6 +78,10 @@
 }
 
 @media screen and (max-width: 850px) {
+
+    .companies-form-internship-title-container {
+        margin-bottom: 0;
+    }
 
     .companies-form-internship-title-title {
         width: 95%;

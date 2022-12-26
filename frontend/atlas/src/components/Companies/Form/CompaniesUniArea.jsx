@@ -1,8 +1,8 @@
 import React from 'react'
 import '../../Global/Form/form.css'
-import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown'
+import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown';
 
-const UndergraduatesUniArea = (props) => {
+const CompaniesUniArea = (props) => {
 
     var title1 = 'Τμήμα';
     var title2 = 'Περιοχή';
@@ -55,4 +55,4 @@ const UndergraduatesUniArea = (props) => {
   )
 }
 
-export default UndergraduatesUniArea
+export default CompaniesUniArea

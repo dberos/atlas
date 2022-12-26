@@ -5,6 +5,7 @@ import { search_results } from '../../Home/Main/data'
 import UndergraduatesUniArea from './UndergraduatesUniArea'
 import UndergraduatesMoneyStart from './UndergraduatesMoneyStart'
 import UndergraduatesButton from './UndergraduatesButton'
+import UndergraduatesDurationType from './UndergraduatesDurationType'
 
 const UndergraduatesForm = () => {
 
@@ -17,6 +18,9 @@ const UndergraduatesForm = () => {
   const [selectedEspa, setSelectedEspa] = useState([]);
   const [selectedDate, setSelectedDate] = useState([]);
 
+  const [selectedDuration, setSelectedDuration] = useState([]);
+  const [selectedType, setSelectedType] = useState([]);
+
   useEffect(() => {
     console.log('searchBarWord ', searchBarWord);
     
@@ -27,7 +31,7 @@ const UndergraduatesForm = () => {
     // Check if exists for errors
     console.log(search_results.some(checkWord));
     // setSearchBarError(search_results.some(checkWord));
-    console.log(searchBarWord.length)
+    console.log(searchBarWord.length);
   }, [searchBarWord])
 
   useEffect(() => {
@@ -45,6 +49,14 @@ const UndergraduatesForm = () => {
   useEffect(() => {
     console.log(selectedDate);
   }, [selectedDate])
+
+  useEffect(() => {
+    console.log(selectedDuration);
+  }, [selectedDuration])
+
+  useEffect(() => {
+    console.log(selectedType);
+  }, [selectedType])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,6 +86,12 @@ const UndergraduatesForm = () => {
               setSelectedEspa={setSelectedEspa}
               selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
+              />
+              <UndergraduatesDurationType
+              selectedDuration={selectedDuration}
+              setSelectedDuration={setSelectedDuration}
+              selectedType={selectedType}
+              setSelectedType={setSelectedType}
               />
               <UndergraduatesButton/>
             </form>

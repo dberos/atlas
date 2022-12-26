@@ -17,12 +17,15 @@ const FormSearchBar = (props) => {
     }
 
   let ref = useCloseModal(() => {
-    if(!search_results.some(checkWord)) {
-      clearInput();
+    if(wordEntered.length !== 0) {
+      if(!search_results.some(checkWord)) {
+        clearInput();
+      }
+      else {
+        readySearch(wordEntered);
+      }
     }
-    else {
-      readySearch(wordEntered);
-    }
+    
   })
 
   const handleFilter = (event) => {
