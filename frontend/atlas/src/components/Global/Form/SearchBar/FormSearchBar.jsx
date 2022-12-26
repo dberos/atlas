@@ -3,6 +3,7 @@ import './formSearchBar.css'
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { search_results } from '../../../Home/Main/data';
+import useCloseModal from '../../../../hooks/useCloseModal';
 
 const FormSearchBar = (props) => {
 
@@ -10,6 +11,19 @@ const FormSearchBar = (props) => {
 
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered,setWordEntered] = useState([]);
+
+  const checkWord = (obj) => {
+      return obj.title === wordEntered;
+    }
+
+  let ref = useCloseModal(() => {
+    if(!search_results.some(checkWord)) {
+      clearInput();
+    }
+    else {
+      readySearch(wordEntered);
+    }
+  })
 
   const handleFilter = (event) => {
       const searchWord = event.target.value;
@@ -34,7 +48,8 @@ const FormSearchBar = (props) => {
   const clearInput = () => {
     setFilteredData([]);
     setWordEntered("");
-    props.setSearchBarWord([]);
+    props.setSearchBarWord("");
+    setSearch(false);
   }
 
   const readySearch = (str) => {
@@ -53,7 +68,7 @@ const FormSearchBar = (props) => {
             {props.title}
         </h1>
       </div>
-      <div className="form-search-bar">
+      <div className="form-search-bar" ref={ref}>
         <input type="text" placeholder='Τι τομέα ψάχνεις;' onChange={handleFilter} value={wordEntered}/>
         <label>
           π.χ Πληροφορική

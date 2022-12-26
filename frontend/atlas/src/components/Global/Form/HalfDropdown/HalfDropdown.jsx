@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './halfDropdown.css'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import useCloseModal from '../../../../hooks/useCloseModal'
 
 const HalfDropdown = (props) => {
 
@@ -11,6 +12,10 @@ const HalfDropdown = (props) => {
         props.setSelectedTitle(str);
         setOpen(false);
     }
+
+    let ref = useCloseModal(() => {
+        setOpen(false);
+    })
 
   return (
     <div className="half-dropdown-container">
@@ -37,7 +42,7 @@ const HalfDropdown = (props) => {
         </div>
         {
             open && 
-                <div className="half-dropdown-dropdown">
+                <div className="half-dropdown-dropdown" ref={ref}>
                     {
                         props.options.map((value) => {
                             return(

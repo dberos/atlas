@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import './undergraduatesForm.css'
+import '../../Global/Form/form.css'
 import UndergraduatesSearchBar from './UndergraduatesSearchBar'
 import { search_results } from '../../Home/Main/data'
 import UndergraduatesUniArea from './UndergraduatesUniArea'
 import UndergraduatesMoneyStart from './UndergraduatesMoneyStart'
+import UndergraduatesButton from './UndergraduatesButton'
 
 const UndergraduatesForm = () => {
 
@@ -51,9 +52,9 @@ const UndergraduatesForm = () => {
   }
 
   return (
-    <div className="undergrad-form-container">
-        <div className="undergrad-form-wrapper">
-            <div className="undergrad-form-title">
+    <div className="undergrad-comp-form-container">
+        <div className="undergrad-comp-form-wrapper">
+            <div className="undergrad-comp-form-title">
                 <h1>
                     Αναζήτησε την θέση Πρακτικής που σου ταιριάζει!
                 </h1>
@@ -74,6 +75,7 @@ const UndergraduatesForm = () => {
               selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
               />
+              <UndergraduatesButton/>
             </form>
 
         </div>

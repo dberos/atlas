@@ -177,7 +177,6 @@
     width: 40%;
     height: 50%;
     border-radius: 4px;
-    background-color: #174f8b;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -186,10 +185,11 @@
     border: none;
     font-size: 20px;
     cursor: pointer;
+    background-color: #112c5d;
 }
 
 .personas-university-button-container a:hover {
-    background-color: #082c6e;
+    background-color: #234685
 }
 
 /* Media close at bottom before footer */

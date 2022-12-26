@@ -1,5 +1,5 @@
 import React from 'react'
-import './undergraduatesForm.css'
+import '../../Global/Form/form.css'
 import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown'
 
 const UndergraduatesUniArea = (props) => {
@@ -38,7 +38,7 @@ const UndergraduatesUniArea = (props) => {
     ]
 
   return (
-    <div className="undergrad-half-container">
+    <div className="undergrad-comp-half-container">
         <HalfDropdown
         title={title1}
         options={universities}

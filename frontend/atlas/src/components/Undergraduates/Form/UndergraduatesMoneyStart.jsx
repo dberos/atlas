@@ -1,5 +1,5 @@
 import React from 'react'
-import './undergraduatesForm.css'
+import '../../Global/Form/form.css'
 import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown'
 import DateSelector from '../../Global/Form/DatePicker/DateSelector'
 
@@ -23,7 +23,7 @@ const UndergraduatesMoneyStart = (props) => {
     ];
 
   return (
-    <div className="undergrad-half-container">
+    <div className="undergrad-comp-half-container">
         <HalfDropdown
         title={title}
         options={options}

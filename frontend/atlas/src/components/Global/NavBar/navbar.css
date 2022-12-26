@@ -124,7 +124,7 @@
 .navbar-login {
     width: 40%;
     height: 50%;
-    background-color: orange;
+    background-color: #be750f;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -134,7 +134,7 @@
 }
 
 .navbar-login:hover {
-    background-color: rgba(255, 123, 0, 0.884);
+    background-color: orange;
 }
 
 .navbar-login button {
@@ -149,17 +149,16 @@
 .navbar-register {
     width: 40%;
     height: 50%;
-    background-color: #174f8b;
     text-align: center;
     display: flex;
     justify-content: center;
     cursor: pointer;
     border-radius: 4px;
+    background-color: #112c5d;
 }
 
 .navbar-register:hover {
-    background-color: #082c6e;
-
+    background-color: #234685;
 }
 
 .navbar-register button {
