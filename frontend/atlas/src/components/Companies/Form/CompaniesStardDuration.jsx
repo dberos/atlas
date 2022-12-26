@@ -3,10 +3,11 @@ import '../../Global/Form/form.css'
 import DateSelector from '../../Global/Form/DatePicker/DateSelector'
 import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown'
 
-const UndergraduatesStartDuration = (props) => {
 
-    var title1 = 'Έναρξη έως';
-    var title2 = 'Διάρκεια Πρακτικής';
+const CompaniesStardDuration = (props) => {
+
+    var title1 = 'Έναρξη έως *';
+    var title2 = 'Διάρκεια Πρακτικής *';
 
     const durations = [
         {
@@ -40,4 +41,4 @@ const UndergraduatesStartDuration = (props) => {
   )
 }
 
-export default UndergraduatesStartDuration
+export default CompaniesStardDuration

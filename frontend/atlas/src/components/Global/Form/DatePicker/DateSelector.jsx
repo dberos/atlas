@@ -30,7 +30,7 @@ const DateSelector = (props) => {
     <div className="date-picker-container">
         <div className="date-picker-title">
             <h1>
-                Έναρξη έως
+                {props.title}
             </h1>
         </div>
         <div className="date-picker-input-container">

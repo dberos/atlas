@@ -4,6 +4,8 @@ import CompaniesInternshipTitle from './CompaniesInternshipTitle'
 import { search_results } from '../../Home/Main/data'
 import CompaniesSearchBar from './CompaniesSearchBar'
 import CompaniesUniArea from './CompaniesUniArea'
+import CompaniesStardDuration from './CompaniesStardDuration'
+import CompaniesTypeMoney from './CompaniesTypeMoney'
 
 const CompaniesForm = () => {
 
@@ -13,6 +15,12 @@ const CompaniesForm = () => {
 
     const [selectedUniversity, setSelectedUniversity] = useState([]);
     const [selectedArea, setSelectedArea] = useState([]);
+
+    const [selectedDate, setSelectedDate] = useState([]);
+    const [selectedDuration, setSelectedDuration] = useState([]);
+
+    const [selectedType, setSelectedType] = useState([]);
+    const [selectedEspa, setSelectedEspa] = useState([]);
 
     useEffect(() => {
         console.log(internshipTitle);
@@ -37,6 +45,23 @@ const CompaniesForm = () => {
     useEffect(() => {
     console.log(selectedArea);
     }, [selectedArea])
+
+    useEffect(() => {
+        console.log(selectedDate);
+    }, [selectedDate])
+    
+      useEffect(() => {
+        console.log(selectedDuration);
+    }, [selectedDuration])
+
+    useEffect(() => {
+        console.log(selectedType);
+    }, [selectedType])
+    
+      useEffect(() => {
+        console.log(selectedEspa);
+    }, [selectedEspa])
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -63,6 +88,18 @@ const CompaniesForm = () => {
                 setSelectedUniversity={setSelectedUniversity}
                 selectedArea={selectedArea}
                 setSelectedArea={setSelectedArea}
+                />
+                <CompaniesStardDuration
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
+                selectedDuration={selectedDuration}
+                setSelectedDuration={setSelectedDuration}
+                />
+                <CompaniesTypeMoney
+                selectedType={selectedType}
+                setSelectedType={setSelectedType}
+                selectedEspa={selectedEspa}
+                setSelectedEspa={setSelectedEspa}
                 />
             </form>
         </div>

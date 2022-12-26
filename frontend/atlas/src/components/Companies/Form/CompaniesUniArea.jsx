@@ -4,8 +4,8 @@ import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown';
 
 const CompaniesUniArea = (props) => {
 
-    var title1 = 'Τμήμα';
-    var title2 = 'Περιοχή';
+    var title1 = 'Τμήμα *';
+    var title2 = 'Περιοχή *';
 
     const universities = [
         {
