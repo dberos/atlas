@@ -1,9 +1,9 @@
 import React from 'react'
-import '../../Global/Form/form.css'
+import './undergraduatesForm.css'
 
 const UndergraduatesButton = () => {
   return (
-    <div className="undergrad-button-container">
+    <div className="undergrad-form-button-container">
         <button>
             Αναζήτηση
         </button>

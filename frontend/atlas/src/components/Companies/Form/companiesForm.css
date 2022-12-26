@@ -1,0 +1,134 @@
+.companies-form-internship-title-container {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.companies-form-internship-title-title {
+    display: flex;
+    height: auto;
+    width: 90%;
+    margin-left: 10%;
+    margin-bottom: 10px;
+}
+
+.companies-form-internship-title-title h1 {
+    font-size: 20px;
+    font-weight: 300;
+    color: #81AFDD;
+}
+
+.companies-form-internship-input-container {
+    height: 45px;
+    width: 80%;
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
+    justify-content: flex-start;
+    border-radius: 4px;
+    position: relative;
+}
+
+.companies-form-internship-input-container input {
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 25%;
+    outline: none;
+    border: none;
+    font-size: 18px;
+}
+
+.companies-form-internship-input-container input:focus {
+    outline: 2px solid orange;
+}
+
+.companies-form-internship-input-container input::placeholder {
+    padding-left: 5px;
+    opacity: 0.6;
+    font-size: 16px;
+}
+
+.companies-form-internship-input-container label {
+    position: absolute; 
+    top: 2px;
+    display: none;
+    border: none;
+    right: 10px;
+    pointer-events: none;
+    font-size: 16px;
+    
+}
+
+.companies-form-internship-input-container input:focus + label {
+    display: block;
+    opacity: 0.4;
+}
+
+@media screen and (max-width: 1400px) {
+    .companies-form-internship-input-container input {
+        padding-right: 32%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+
+    .companies-form-internship-title-title {
+        width: 95%;
+        margin-left: 5%;
+    }
+
+    .companies-form-internship-input-container {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .companies-form-internship-input-container input {
+        padding-right: 30%;
+    }
+
+    .companies-form-internship-input-container input {
+        font-size: 16px;
+    }
+
+    .companies-form-internship-input-container input::placeholder {
+        font-size: 14px;
+    }
+    
+    .companies-form-internship-input-container label {
+        font-size: 14px;
+    }
+
+    .form-search-results {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    .companies-form-internship-input-container input {
+        font-size: 14px;
+    }
+
+    .companies-form-internship-input-container input::placeholder {
+        font-size: 12px;
+    }
+    
+    .companies-form-internship-input-container label {
+        font-size: 12px;
+    }
+
+    .companies-form-internship-input-container input {
+        padding-right: 35%;
+    }
+
+    .form-search-results {
+        font-size: 14px;
+    }
+}

@@ -7,7 +7,7 @@ const InfoAll = () => {
     <div className="info-item">
         <div className="info-item-title">
           <span>
-            <Link to={'/undergraduates'}>
+            <Link>
                 Όλες οι Πρακτικές Ασκήσεις
             </Link>
           </span>
@@ -18,7 +18,7 @@ const InfoAll = () => {
             </h2>
         </div>
         <div className="info-image-container">
-          <Link to={'/undergraduates'}>
+          <Link>
             <img 
               src={require('../../../assets/people-desk.png')} 
               alt="sketch with people sitting in a sofa and chatting" 

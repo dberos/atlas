@@ -7,7 +7,7 @@ const InfoNoEspa = () => {
     <div className="info-item">
         <div className="info-item-title">
           <span>
-            <Link to={'/undergraduates'}>
+            <Link>
                 Πρακτική Άσκηση χωρίς ΕΣΠΑ
             </Link>
           </span>
@@ -18,7 +18,7 @@ const InfoNoEspa = () => {
             </h2>
         </div>
         <div className="info-image-container">
-          <Link to={'/undergraduates'}>
+          <Link>
             <img 
             src={require('../../../assets/people-graph.png')} 
             style={{height: '93%'}} 

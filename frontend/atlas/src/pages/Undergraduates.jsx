@@ -1,6 +1,6 @@
 import React from 'react'
-import CTA from '../components/Global/CTA/CTA'
 import NavBar from '../components/Global/NavBar/NavBar'
+import CTA from '../components/Global/CTA/CTA'
 import UndergraduatesForm from '../components/Undergraduates/Form/UndergraduatesForm'
 import Footer from '../components/Global/Footer/Footer'
 

@@ -9,7 +9,7 @@ const PersonaCompany = () => {
         <div className="personas-header-container">
             <div className="personas-title">
                 <span>
-                    <Link to={'/undergraduates'}>
+                    <Link to={'/companies'}>
                         Θες να αναπτύξεις την επιχείρησή σου;
                     </Link>
                 </span>
@@ -22,7 +22,7 @@ const PersonaCompany = () => {
             </div>
         </div>
         <div className="personas-image-container">
-            <Link to={'/undergraduates'}>
+            <Link to={'/companies'}>
                 <img 
                 src={require('../../../assets/person-jump.png')} 
                 alt="sketch of a person jumping happily" 

@@ -7,7 +7,7 @@ const InfoEspa = () => {
     <div className="info-item">
         <div className="info-item-title">
           <span>
-            <Link to={'/undergraduates'}>
+            <Link>
                 Πρακτική Άσκηση μέσω ΕΣΠΑ
             </Link>
           </span>
@@ -18,7 +18,7 @@ const InfoEspa = () => {
             </h2>
         </div>
         <div className="info-image-container">
-          <Link to={'/undergraduates'}>
+          <Link>
             <img 
             src={require('../../../assets/people-chart.png')} 
             alt="sketch of people viewing results in a board" 
