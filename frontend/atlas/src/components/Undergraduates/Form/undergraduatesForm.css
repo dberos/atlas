@@ -14,7 +14,7 @@
     width: 35%;
     height: 55px;
     border-radius: 4px;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 300;
     color: white;
     background-color: #be750f;
@@ -33,5 +33,12 @@
 @media screen and (max-width: 850px) {
     .undergrad-form-button-container button {
         width: 90%;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .undergrad-form-button-container button {
+        font-size: 18px;
     }
 }

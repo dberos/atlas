@@ -7,6 +7,7 @@ import CompaniesUniArea from './CompaniesUniArea'
 import CompaniesStardDuration from './CompaniesStardDuration'
 import CompaniesTypeMoney from './CompaniesTypeMoney'
 import CompaniesSalaryDesc from './CompaniesSalaryDesc'
+import CompaniesButton from './CompaniesButton'
 
 const CompaniesForm = () => {
 
@@ -25,6 +26,8 @@ const CompaniesForm = () => {
 
     const [selectedSalary, setSelectedSalary] = useState([]);
     const [selectedDescription, setSelectedDescription] = useState([]);
+
+    const [isPublished, setIsPublished] = useState(false);
 
     useEffect(() => {
         console.log(internshipTitle);
@@ -74,6 +77,11 @@ const CompaniesForm = () => {
         console.log(selectedDescription);
     }, [selectedDescription])
 
+    useEffect(() => {
+        isPublished ? console.log('Δημοσίευση') :
+            console.log('Προσωρινή Αποθήκευση');
+    })
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -117,6 +125,9 @@ const CompaniesForm = () => {
                 selectedEspa={selectedEspa}
                 setSelectedSalary={setSelectedSalary}
                 setSelectedDescription={setSelectedDescription}
+                />
+                <CompaniesButton
+                setIsPublished={setIsPublished}
                 />
             </form>
         </div>
