@@ -6,6 +6,7 @@ import CompaniesSearchBar from './CompaniesSearchBar'
 import CompaniesUniArea from './CompaniesUniArea'
 import CompaniesStardDuration from './CompaniesStardDuration'
 import CompaniesTypeMoney from './CompaniesTypeMoney'
+import CompaniesSalaryDesc from './CompaniesSalaryDesc'
 
 const CompaniesForm = () => {
 
@@ -21,6 +22,9 @@ const CompaniesForm = () => {
 
     const [selectedType, setSelectedType] = useState([]);
     const [selectedEspa, setSelectedEspa] = useState([]);
+
+    const [selectedSalary, setSelectedSalary] = useState([]);
+    const [selectedDescription, setSelectedDescription] = useState([]);
 
     useEffect(() => {
         console.log(internshipTitle);
@@ -62,6 +66,14 @@ const CompaniesForm = () => {
         console.log(selectedEspa);
     }, [selectedEspa])
 
+    useEffect(() => {
+        console.log(selectedSalary);
+    }, [selectedSalary])
+
+    useEffect(() => {
+        console.log(selectedDescription);
+    }, [selectedDescription])
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -100,6 +112,11 @@ const CompaniesForm = () => {
                 setSelectedType={setSelectedType}
                 selectedEspa={selectedEspa}
                 setSelectedEspa={setSelectedEspa}
+                />
+                <CompaniesSalaryDesc
+                selectedEspa={selectedEspa}
+                setSelectedSalary={setSelectedSalary}
+                setSelectedDescription={setSelectedDescription}
                 />
             </form>
         </div>
