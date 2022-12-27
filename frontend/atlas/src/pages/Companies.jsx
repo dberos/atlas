@@ -1,5 +1,4 @@
 import React from 'react'
-import NavBar from '../components/Global/NavBar/NavBar'
 import CTA from '../components/Global/CTA/CTA'
 import CompaniesForm from '../components/Companies/Form/CompaniesForm'
 
@@ -22,7 +21,6 @@ const Companies = () => {
     ]
   return (
     <div>
-        <NavBar/>
         <CTA
         title={title} 
         subtitle={subtitle} 
