@@ -29,6 +29,8 @@ const CompaniesForm = () => {
 
     const [isPublished, setIsPublished] = useState(false);
 
+    const [isDisabled, setIsDisabled] = useState(true);
+
     useEffect(() => {
         console.log(internshipTitle);
     }, [internshipTitle])
@@ -80,7 +82,30 @@ const CompaniesForm = () => {
     useEffect(() => {
         isPublished ? console.log('Δημοσίευση') :
             console.log('Προσωρινή Αποθήκευση');
-    })
+    }, [isPublished])
+
+    useEffect(() => {
+        if(
+            internshipTitle.length !== 0 &&
+            searchBarWord.length !== 0 &&
+            selectedUniversity.length !== 0 &&
+            selectedArea.length !== 0 &&
+            selectedDate.length !== 0 &&
+            selectedDuration.length !== 0 &&
+            selectedType.length !== 0 &&
+            selectedEspa.length !== 0 &&
+            selectedSalary.length !== 0 &&
+            selectedDescription.length !== 0 
+        ) {
+            setIsDisabled(false);
+        }
+        else {
+            setIsDisabled(true);
+        }
+    }, [internshipTitle, searchBarWord, selectedUniversity, 
+        selectedArea, selectedDate, selectedDuration, 
+        selectedType, selectedEspa, selectedSalary, 
+        selectedDescription])
 
 
     const handleSubmit = (e) => {
@@ -128,6 +153,7 @@ const CompaniesForm = () => {
                 />
                 <CompaniesButton
                 setIsPublished={setIsPublished}
+                isDisabled={isDisabled}
                 />
             </form>
         </div>

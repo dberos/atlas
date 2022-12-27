@@ -1,16 +1,30 @@
 import React from 'react'
 import './companiesForm.css'
 
-const CompaniesButton = ({ setIsPublished }) => {
+const CompaniesButton = ({ setIsPublished, isDisabled }) => {
   return (
     <div className="companies-form-button-container">
         <div className="companies-form-button-primary">
-            <button onClick={() => setIsPublished(true)}>
+            <button
+            disabled={isDisabled ? true : false}
+            onClick={() => setIsPublished(true)}
+            style={{
+              backgroundColor: isDisabled ? '#ADABA8' : '#be750f',
+              cursor: isDisabled ? 'not-allowed' : 'pointer'
+            }}
+            >
                 Δημοσίευση
             </button>
         </div>
         <div className="companies-form-button-secondary">
-          <button onClick={() => setIsPublished(false)}>
+          <button 
+          disabled={isDisabled ? true : false}
+          onClick={() => setIsPublished(false)}
+          style={{
+            backgroundColor: isDisabled ? '#ADABA8' : '#112c5d',
+            cursor: isDisabled ? 'not-allowed' : 'pointer'
+          }}
+          >
             Προσωρινή <br/> Αποθήκευση
           </button>
         </div>
