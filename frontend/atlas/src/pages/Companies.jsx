@@ -21,12 +21,12 @@ const Companies = () => {
     ]
   return (
     <div>
-        <CTA
-        title={title} 
-        subtitle={subtitle} 
-        links={links}
-        />
-        <CompaniesForm/>
+      <CTA
+      title={title} 
+      subtitle={subtitle} 
+      links={links}
+      />
+      <CompaniesForm/>
     </div>
   )
 }

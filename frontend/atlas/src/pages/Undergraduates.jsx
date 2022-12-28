@@ -23,12 +23,12 @@ const Undergraduates = () => {
 
   return (
     <div>
-        <CTA 
-        title={title} 
-        subtitle={subtitle} 
-        links={links}
-        />
-        <UndergraduatesForm/>
+      <CTA 
+      title={title} 
+      subtitle={subtitle} 
+      links={links}
+      />
+      <UndergraduatesForm/>
     </div>
   )
 }

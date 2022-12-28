@@ -122,6 +122,12 @@
     }
 }
 
+@media screen and (max-width: 900px) {
+    .cta-title h1 {
+        font-size: 60px;
+    }
+}
+
 @media screen and (max-width: 850px) {
 
     .cta-container {

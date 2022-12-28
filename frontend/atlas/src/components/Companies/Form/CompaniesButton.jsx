@@ -12,7 +12,7 @@ const CompaniesButton = (props) => {
     <div className="companies-form-button-container">
         <div className="companies-form-button-primary">
             <button
-            disabled={isDisabled ? true : false}
+            disabled={isDisabled}
             onClick={() => setIsPublished(true)}
             style={{
               backgroundColor: isDisabled ? '#ADABA8' : '#be750f',
@@ -24,7 +24,7 @@ const CompaniesButton = (props) => {
         </div>
         <div className="companies-form-button-secondary">
           <button 
-          disabled={isDisabled ? true : false}
+          disabled={isDisabled}
           onClick={() => setIsPublished(false)}
           style={{
             backgroundColor: isDisabled ? '#ADABA8' : '#112c5d',
