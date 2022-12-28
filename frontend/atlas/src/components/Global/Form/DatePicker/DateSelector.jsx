@@ -13,6 +13,8 @@ registerLocale('el', el)
 
 const DateSelector = (props) => {
 
+    const { title, setSelectedDate } = props;
+
     const [startDate, setStartDate] = useState('');
 
     const checkDate = (date) => {
@@ -22,7 +24,7 @@ const DateSelector = (props) => {
         setStartDate(date);
         const check = moment(strDate, 'DD/MM/YYYY', true).isValid();
         if(check) {
-          props.setSelectedDate(strDate);
+          setSelectedDate(strDate);
         }
     }
 
@@ -30,7 +32,7 @@ const DateSelector = (props) => {
     <div className="date-picker-container">
         <div className="date-picker-title">
             <h1>
-                {props.title}
+                {title}
             </h1>
         </div>
         <div className="date-picker-input-container">

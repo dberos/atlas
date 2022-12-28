@@ -4,6 +4,13 @@ import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown'
 
 const CompaniesTypeMoney = (props) => {
 
+    const {
+            selectedType, 
+            setSelectedType,
+            selectedEspa,
+            setSelectedEspa
+        } = props;
+
     var title1 = 'Τύπος Απασχόλησης *';
     var title2 = 'Μισθοδοσία *';
 
@@ -34,14 +41,14 @@ const CompaniesTypeMoney = (props) => {
         <HalfDropdown
         title={title1}
         options={internshipTypes}
-        selectedTitle={props.selectedType}
-        setSelectedTitle={props.setSelectedType}
+        selectedTitle={selectedType}
+        setSelectedTitle={setSelectedType}
         />
         <HalfDropdown
         title={title2}
         options={moneyType}
-        selectedTitle={props.selectedEspa}
-        setSelectedTitle={props.setSelectedEspa}
+        selectedTitle={selectedEspa}
+        setSelectedTitle={setSelectedEspa}
         />
     </div>
   )

@@ -17,8 +17,8 @@ function App() {
         left: 0,
         behavior: 'instant',
       });
-    }, [location.pathname]);
-    return children
+    }, [location.pathname])
+    return children;
   } 
 
   return (

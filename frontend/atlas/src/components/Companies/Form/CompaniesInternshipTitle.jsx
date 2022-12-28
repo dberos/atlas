@@ -3,12 +3,14 @@ import './companiesForm.css'
 
 const CompaniesInternshipTitle = (props) => {
 
+    const { setInternshipTitle } = props;
+
     const [wordEntered, setWordEntered] = useState([]);
 
     const handleChange = (e) => {
         const word = e.target.value;
         setWordEntered(word);
-        props.setInternshipTitle(word);
+        setInternshipTitle(word);
     }
 
   return (

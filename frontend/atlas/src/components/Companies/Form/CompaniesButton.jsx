@@ -1,7 +1,13 @@
 import React from 'react'
 import './companiesForm.css'
 
-const CompaniesButton = ({ setIsPublished, isDisabled }) => {
+const CompaniesButton = (props) => {
+
+  const {
+          setIsPublished, 
+          isDisabled
+        } = props;
+
   return (
     <div className="companies-form-button-container">
         <div className="companies-form-button-primary">

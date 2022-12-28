@@ -6,10 +6,17 @@ import useCloseModal from '../../../../hooks/useCloseModal'
 
 const HalfDropdown = (props) => {
 
+    const { 
+            title,
+            options,
+            selectedTitle,
+            setSelectedTitle 
+        } = props;
+
     const [open, setOpen] = useState(false);
 
     const handleSelect = (str) => {
-        props.setSelectedTitle(str);
+        setSelectedTitle(str);
         setOpen(false);
     }
 
@@ -21,13 +28,13 @@ const HalfDropdown = (props) => {
     <div className="half-dropdown-container">
         <div className="half-dropdown-title">
             <h1>
-                {props.title}
+                {title}
             </h1>
         </div>
         <div className="half-dropdown-dropdown-container">
             <div className="half-dropdown-name">
                 <p>
-                    {props.selectedTitle}
+                    {selectedTitle}
                 </p>
             </div>
             <div className="half-dropdown-icon-container">
@@ -44,7 +51,7 @@ const HalfDropdown = (props) => {
             open && 
                 <div className="half-dropdown-dropdown" ref={ref}>
                     {
-                        props.options.map((value) => {
+                        options.map((value) => {
                             return(
                                 <p key={value.id} onClick={() => handleSelect(value.title)}>
                                     {value.title}

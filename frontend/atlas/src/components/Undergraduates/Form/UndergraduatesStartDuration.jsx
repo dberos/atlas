@@ -5,6 +5,12 @@ import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown'
 
 const UndergraduatesStartDuration = (props) => {
 
+    const {
+            setSelectedDate,
+            selectedDuration,
+            setSelectedDuration
+        } = props;
+
     var title1 = 'Έναρξη έως';
     var title2 = 'Διάρκεια Πρακτικής';
 
@@ -27,14 +33,13 @@ const UndergraduatesStartDuration = (props) => {
     <div className="undergrad-comp-half-container">
         <DateSelector
         title={title1}
-        selectedDate={props.selectedDate}
-        setSelectedDate={props.setSelectedDate}
+        setSelectedDate={setSelectedDate}
         />
         <HalfDropdown
         title={title2}
         options={durations}
-        selectedTitle={props.selectedDuration}
-        setSelectedTitle={props.setSelectedDuration}
+        selectedTitle={selectedDuration}
+        setSelectedTitle={setSelectedDuration}
         />
     </div>
   )

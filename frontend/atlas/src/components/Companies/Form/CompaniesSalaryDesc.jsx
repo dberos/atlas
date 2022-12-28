@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './companiesForm.css'
 
-const CompaniesSalaryDesc = ({selectedEspa, setSelectedSalary, setSelectedDescription}) => {
+const CompaniesSalaryDesc = (props) => {
 
-    // Destructuring props for useEffect issues
+    const {
+            selectedEspa, 
+            setSelectedSalary, 
+            setSelectedDescription
+        } = props;
 
     const [salary, setSalary] = useState([]);
     const [description, setDescription] = useState([]);

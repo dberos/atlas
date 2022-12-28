@@ -10,7 +10,6 @@ const MainSearchBar = () => {
 
     const [filteredData, setFilteredData] = useState([]);
     const [wordEntered,setWordEntered] = useState([]);
-    const [handleRef, setHandleRef] = useState(false);
     const [word, setWord] = useState([]);
 
     const handleFilter = (event) => {
@@ -34,16 +33,10 @@ const MainSearchBar = () => {
     const clearInput = () => {
         setFilteredData([]);
         setWordEntered("");
-        setHandleRef(false);
     }
 
     let ref = useCloseModal(() => {
-        // If option is selected
-        // Don't allow closeModal by clicking outside
-        // But only clear input by button
-        if(!handleRef) {
-            clearInput();
-        }
+        clearInput();
     });
 
     let inputRef = useRef();
@@ -56,6 +49,7 @@ const MainSearchBar = () => {
         // IF NOT WORD SEARCH
         console.log(word);
         console.log('selected word: ', wordEntered);
+        console.log('submitted');
     }
 
     return (
@@ -64,7 +58,7 @@ const MainSearchBar = () => {
                 <div className='main-search-bar'>
                 <input  type = 'text' placeholder='Τι τομέα ψάχνεις;' onChange={handleFilter} value={wordEntered} ref={inputRef}/>
                 <div className='main-search-bar-icon'>
-                    <button>
+                    <button type='button'>
                     {
                         wordEntered.length === 0 ?
                             <SearchIcon fontSize='large' style={{cursor: 'default'}}/> :
@@ -81,13 +75,10 @@ const MainSearchBar = () => {
             </form>
             <MainSearchResults
                 setWordEntered={setWordEntered}
-                setFilteredData={setFilteredData}
-                setHandleRef={setHandleRef}
                 inputRef={inputRef}
-                clearInput={clearInput}
                 filteredData={filteredData}
                 word={word}
-                wordEntered={wordEntered}
+                handleSubmit={handleSubmit}
             />
         </div>
     )

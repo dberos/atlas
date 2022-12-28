@@ -135,7 +135,6 @@ const CompaniesForm = () => {
                 setSelectedArea={setSelectedArea}
                 />
                 <CompaniesStardDuration
-                selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
                 selectedDuration={selectedDuration}
                 setSelectedDuration={setSelectedDuration}

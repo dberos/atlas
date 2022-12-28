@@ -4,6 +4,14 @@ import useCloseModal from '../../../hooks/useCloseModal';
 
 const MainSearchResults = (props) => {
 
+    const {
+            setWordEntered,
+            inputRef,
+            filteredData,
+            word,
+            handleSubmit
+        } = props;
+
     const arrowUpPressed = useKeyPress('ArrowUp');
     const arrowDownPressed = useKeyPress('ArrowDown');
 
@@ -13,16 +21,6 @@ const MainSearchResults = (props) => {
     });
 
     let resultsRef = useRef();
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        props.clearInput();
-        // Disable focus after submit
-        props.inputRef.current.blur();
-        // IF NOT props.word SEARCH
-        console.log(props.word);
-        console.log('selected word: ', props.wordEntered);
-    }
 
     const initialState = { selectedIndex: -1 };
 
@@ -36,7 +34,7 @@ const MainSearchResults = (props) => {
             case 'arrowDown':
                 return {
                     selectedIndex:
-                    state.selectedIndex !== props.filteredData.length - 1 ? state.selectedIndex + 1 : props.filteredData.length - 1,
+                    state.selectedIndex !== filteredData.length - 1 ? state.selectedIndex + 1 : filteredData.length - 1,
                 };
             case 'select':
                 return { selectedIndex: action.payload };
@@ -51,10 +49,10 @@ const MainSearchResults = (props) => {
         if(arrowUpPressed) {
             dispatch({ type: 'arrowUp' });
             if(state.selectedIndex >= 1) {
-                props.setWordEntered(props.filteredData[state.selectedIndex - 1].title);
+                setWordEntered(filteredData[state.selectedIndex - 1].title);
             }
             else {
-                props.setWordEntered(props.word);
+                setWordEntered(word);
             }
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,13 +62,13 @@ const MainSearchResults = (props) => {
         if(arrowDownPressed) {
             dispatch({ type: 'arrowDown' });
             try {
-                props.setWordEntered(props.filteredData[state.selectedIndex + 1].title);
+                setWordEntered(filteredData[state.selectedIndex + 1].title);
             }
             catch {
                 state.selectedIndex = -1;
                 // If user didn't clean input
-                if(props.filteredData.length) {
-                    props.setWordEntered(props.filteredData[0].title);
+                if(filteredData.length) {
+                    setWordEntered(filteredData[0].title);
                 }
             }
         }
@@ -79,17 +77,17 @@ const MainSearchResults = (props) => {
 
     const handleMouseEnter = (i, str) => {
         dispatch({ type: 'select', payload: i })
-        props.setWordEntered(str);
-        props.inputRef.current.focus();
+        setWordEntered(str);
+        inputRef.current.focus();
     }
 
   return (
     <div className='main-dummy-div' ref={ref}>
         {
-            props.filteredData.length !== 0 && 
+            filteredData.length !== 0 && 
                 <div className='main-search-results-container' ref={resultsRef}>
                     {
-                    props.filteredData.map((value, i) => {
+                    filteredData.map((value, i) => {
                         return(
                             <div className='main-search-results' 
                                 id='results-id'

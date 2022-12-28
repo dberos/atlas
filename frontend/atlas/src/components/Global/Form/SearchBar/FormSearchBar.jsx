@@ -7,6 +7,8 @@ import useCloseModal from '../../../../hooks/useCloseModal';
 
 const FormSearchBar = (props) => {
 
+  const { title, setSearchBarWord } = props;
+
   const [search, setSearch] = useState(false);
 
   const [filteredData, setFilteredData] = useState([]);
@@ -32,7 +34,7 @@ const FormSearchBar = (props) => {
       const searchWord = event.target.value;
       setWordEntered(searchWord);
       setSearch(true);
-      props.setSearchBarWord(searchWord);
+      setSearchBarWord(searchWord);
       const new_filter = search_results.filter((value) => {
           return value.title.toLowerCase().includes(searchWord.toLowerCase());
       })
@@ -51,7 +53,7 @@ const FormSearchBar = (props) => {
   const clearInput = () => {
     setFilteredData([]);
     setWordEntered("");
-    props.setSearchBarWord("");
+    setSearchBarWord("");
     setSearch(false);
   }
 
@@ -59,7 +61,7 @@ const FormSearchBar = (props) => {
     setWordEntered(str);
     setFilteredData([]);
     setSearch(false);
-    props.setSearchBarWord(str);
+    setSearchBarWord(str);
   }
     
   // type='button' prevents form submit by clicking
@@ -68,7 +70,7 @@ const FormSearchBar = (props) => {
     <div className="form-search-bar-container">
       <div className="form-search-bar-title">
         <h1>
-            {props.title}
+            {title}
         </h1>
       </div>
       <div className="form-search-bar" ref={ref}>
