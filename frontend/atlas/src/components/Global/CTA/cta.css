@@ -20,6 +20,8 @@
     height: auto;
     width: auto;
     margin-top: 30px;
+    width: 80%;
+    text-align: center;
 }
 
 .cta-title h1 {
@@ -27,6 +29,7 @@
     font-size: 72px;
     font-weight: 600;
     color: orange;
+    text-align: center;
 }
 
 .cta-subtitle {

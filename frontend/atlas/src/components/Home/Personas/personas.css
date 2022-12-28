@@ -284,6 +284,11 @@
 
     .personas-persona-container {
         width: 95%;
+        margin-bottom: 20px;
+    }
+
+    .personas-persona-container:nth-child(1) {
+        margin-bottom: 30px;
     }
 
     .personas-university-container {
