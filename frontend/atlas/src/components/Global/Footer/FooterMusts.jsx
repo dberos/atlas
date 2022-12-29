@@ -1,5 +1,6 @@
 import React from 'react'
 import './footer.css'
+import { Link } from "react-router-dom";
 
 const FooterMusts = () => {
   return (
@@ -13,9 +14,9 @@ const FooterMusts = () => {
             <h2>
                 Επικοινωνία
             </h2>
-            <h2>
+            <Link to={'/faqs'}>
                 Συχνές Ερωτήσεις
-            </h2>
+            </Link>
         </div>
     </div>
   )

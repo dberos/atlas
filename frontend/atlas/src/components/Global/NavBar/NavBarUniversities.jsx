@@ -3,6 +3,7 @@ import './navbar.css'
 import useCloseModal from '../../../hooks/useCloseModal';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { Link } from "react-router-dom";
 
 const NavBarUniversities = () => {
     const [university, setUniversity] = useState(false);
@@ -34,9 +35,9 @@ const NavBarUniversities = () => {
                 <p>
                   Συνεργαζόμενα Πανεπιστήμια
                 </p>
-                <p>
+                <Link to={'/faqs'} onClick={() => setUniversity(false)}>
                   Συχνές Ερωτήσεις
-                </p>
+                </Link>
                 </div>
             }
           </div>

@@ -81,12 +81,12 @@
     margin-left: 15%;
 }
 
+.footer-others-subtitle a,
 .footer-others-subtitle h2 {
     font-size: 18px;
     font-weight: 100;
     color: #81AFDD;
     margin-bottom: 3%;
-    cursor: pointer;
 }
 
 @media screen and (max-width: 1300px) {
@@ -177,6 +177,7 @@
         text-align: center;
     }
 
+    .footer-others-subtitle a,
     .footer-others-subtitle h2 {
         font-size: 18px;
         margin-bottom: 5%;
@@ -221,6 +222,7 @@
         
     }
     
+    .footer-others-subtitle a,
     .footer-others-subtitle h2 {
         font-size: 14px;
         margin-bottom: 7%;

@@ -94,6 +94,12 @@
     }
 }
 
+@media screen and (max-width: 1250px) {
+    .cta-container {
+        height: 400px;
+    }
+}
+
 @media screen and (max-width: 1100px) {
     .cta-container {
         height: 420px;

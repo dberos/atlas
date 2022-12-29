@@ -1,24 +1,23 @@
 import React from 'react'
 import './faqsPersonas.css'
-import { Link } from "react-router-dom";
 
 const FaqsPersonaUniversity = () => {
   return (
     <div className="faqs-personas-persona-container">
         <div className="faqs-personas-persona-header-container">
             <div className="faqs-personas-persona-title">
-                <Link>
+                <p>
                     Πανεπιστήμια
-                </Link>
+                </p>
             </div>
         </div>
         <div className="faqs-personas-persona-image-container">
-            <Link>
+            <p>
                 <img 
                 src={require('../../../assets/person-desk.png')} 
                 alt="sketch of a person multitasking" 
                 />
-            </Link>
+            </p>
         </div>
     </div>
   )

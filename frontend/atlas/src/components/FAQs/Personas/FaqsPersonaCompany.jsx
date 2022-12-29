@@ -7,13 +7,13 @@ const FaqsPersonaCompany = () => {
     <div className="faqs-personas-persona-container">
         <div className="faqs-personas-persona-header-container">
             <div className="faqs-personas-persona-title">
-                <Link>
+                <Link to={'/faqs/companies'}>
                     Εταιρείες
                 </Link>
             </div>
         </div>
         <div className="faqs-personas-persona-image-container">
-            <Link>
+            <Link to={'/faqs/companies'}>
                 <img 
                 src={require('../../../assets/people-clock.png')} 
                 alt="sketch of people talking" 

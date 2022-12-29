@@ -3,6 +3,7 @@ import './navbar.css'
 import useCloseModal from '../../../hooks/useCloseModal';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { Link } from "react-router-dom";
 
 const NavBarUndergraduates = () => {
     const [undergrad, setUndergrad] = useState(false);
@@ -31,9 +32,9 @@ const NavBarUndergraduates = () => {
             {
               undergrad &&
                 <div className='navbar-dropdown'>
-                  <p>
+                  <Link to={'/undergraduates'} onClick={() => setUndergrad(false)}>
                     Προσαρμοσμένη Αναζήτηση
-                  </p>
+                  </Link>
                   <p>
                     Θέσεις μέσω ΕΣΠΑ
                   </p>
@@ -43,9 +44,9 @@ const NavBarUndergraduates = () => {
                   <p>
                     Όλες οι Θέσεις
                   </p>
-                  <p>
+                  <Link to={'/faqs/undergraduates'} onClick={() => setUndergrad(false)}>
                     Συχνές Ερωτήσεις
-                  </p>
+                  </Link>
                 </div>
             }
           </div>

@@ -20,7 +20,7 @@ const PersonaUniversity = () => {
             </div>
         </div>
         <div className="personas-university-button-container">
-            <Link to={'/undergraduates'}>
+            <Link to={'/faqs'}>
                 Μάθετε περισσότερα
             </Link>
         </div>

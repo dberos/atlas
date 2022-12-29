@@ -7,13 +7,13 @@ const FaqsPersonaUndergraduate = () => {
     <div className="faqs-personas-persona-container">
         <div className="faqs-personas-persona-header-container">
             <div className="faqs-personas-persona-title">
-                <Link>
+                <Link to={'/faqs/undergraduates'}>
                     Φοιτητές
                 </Link>
             </div>
         </div>
         <div className="faqs-personas-persona-image-container">
-            <Link>
+            <Link to={'/faqs/undergraduates'}>
                 <img 
                 src={require('../../../assets/people-coffee.png')} 
                 alt="sketch with a student packing bag" 
