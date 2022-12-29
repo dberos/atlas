@@ -1,15 +1,14 @@
 import React from 'react'
 import '../faqs.css'
 import Faq from '../FAQ/Faq'
-import { faqsUndergrads } from './faqsUndergraduates'
+import { faqsCompanies } from './faqsCompanies'
 
-const FaqsUndergraduates = () => {
-
+const FaqsCompanies = () => {
   return (
     <div className="faqs-container">
         <div className="faqs-wrapper">
             {
-              faqsUndergrads.map((value) => {
+              faqsCompanies.map((value) => {
                 return(
                   <Faq
                   key={value.id}
@@ -24,4 +23,4 @@ const FaqsUndergraduates = () => {
   )
 }
 
-export default FaqsUndergraduates
+export default FaqsCompanies

@@ -7,6 +7,7 @@ import Undergraduates from './pages/Undergraduates';
 import Companies from './pages/Companies';
 import FAQs from './pages/FAQs';
 import FAQsUndergraduates from './pages/FAQsUndergraduates';
+import FAQsCompanies from './pages/FAQsCompanies';
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path='/companies' element={<Companies/>}/>
           <Route path='/faqs' element={<FAQs/>}/>
           <Route path='/faqs/undergraduates' element={<FAQsUndergraduates/>}/>
+          <Route path='/faqs/companies' element={<FAQsCompanies/>}/>
           <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>
         <Footer/>
