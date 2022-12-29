@@ -1,10 +1,10 @@
 import React from 'react'
 import CTA from '../components/Global/CTA/CTA'
-import FaqsPersonas from '../components/FAQs/Personas/FaqsPersonas';
+import FaqsUndergraduates from '../components/FAQs/Undergraduates/FaqsUndergraduates';
 
-const FAQs = () => {
+const FAQsUndergraduates = () => {
 
-    var title = 'Συχνές Ερωτήσεις';
+    var title = 'Φοιτητές';
     var subtitle = 'Μάθε ότι χρειάζεσαι για την '+
                     'Πρακτική Άσκηση!'
     const links = [
@@ -16,20 +16,25 @@ const FAQs = () => {
       {
         id: 2,
         pageName: 'Συχνές Ερωτήσεις',
+        pageLink: '/faqs'
+      },
+      {
+        id: 3,
+        pageName: 'Φοιτητές',
         pageLink: null
       }
     ]
 
   return (
     <div>
-      <CTA 
-      title={title} 
-      subtitle={subtitle} 
-      links={links}
-      />
-      <FaqsPersonas/>
+        <CTA 
+        title={title} 
+        subtitle={subtitle} 
+        links={links}
+        />
+        <FaqsUndergraduates/>
     </div>
   )
 }
 
-export default FAQs
+export default FAQsUndergraduates

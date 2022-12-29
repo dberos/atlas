@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Undergraduates from './pages/Undergraduates';
 import Companies from './pages/Companies';
 import FAQs from './pages/FAQs';
+import FAQsUndergraduates from './pages/FAQsUndergraduates';
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
           <Route path='/undergraduates' element={<Undergraduates/>}/>
           <Route path='/companies' element={<Companies/>}/>
           <Route path='/faqs' element={<FAQs/>}/>
+          <Route path='/faqs/undergraduates' element={<FAQsUndergraduates/>}/>
           <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>
         <Footer/>
