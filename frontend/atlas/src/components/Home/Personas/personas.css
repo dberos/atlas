@@ -87,8 +87,8 @@
 .personas-image-container a {
     display: flex;
     justify-content: center;
-    -webkit-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
+    -webkit-transition: all 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
 }
 
 .personas-image-container img {
