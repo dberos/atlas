@@ -29,6 +29,17 @@ public class Users {
     public Users() {
     }
 
+    // Company User
+
+    @Transient
+    private String name;
+    @Transient
+    private  String town;
+    @Transient
+    private String street;
+    @Transient
+    private int street_number;
+
     public Users(int id, String email, String password, String telephone, String type) {
         this.id = id;
         this.email = email;
@@ -64,6 +75,27 @@ public class Users {
         this.last_name = last_name;
         this.university = university;
         this.marks = marks;
+    }
+
+    // Company User
+    public Users(int id,
+                 String email,
+                 String password,
+                 String telephone,
+                 String type,
+                 String name,
+                 String town,
+                 String street,
+                 int street_number) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.telephone = telephone;
+        this.type = type;
+        this.name = name;
+        this.town = town;
+        this.street = street;
+        this.street_number = street_number;
     }
 
     public int getId() {
@@ -106,9 +138,6 @@ public class Users {
         this.type = type;
     }
 
-    // Undergraduate User
-
-
     public String getFirst_name() {
         return first_name;
     }
@@ -141,19 +170,49 @@ public class Users {
         this.marks = marks;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getTown() {
+        return town;
+    }
+
+    public void setTown(String town) {
+        this.town = town;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public int getStreet_number() {
+        return street_number;
+    }
+
+    public void setStreet_number(int street_number) {
+        this.street_number = street_number;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Users users = (Users) o;
-        return id == users.id && Objects.equals(email, users.email) &&
-                Objects.equals(password, users.password) &&
-                Objects.equals(telephone, users.telephone) &&
-                Objects.equals(type, users.type) &&
-                Objects.equals(first_name, users.first_name) &&
-                Objects.equals(last_name, users.last_name) &&
-                Objects.equals(university, users.university) &&
-                Objects.equals(marks, users.marks);
+        return id == users.id && street_number == users.street_number && Objects.equals(email, users.email) && Objects.equals(password, users.password) && Objects.equals(telephone, users.telephone) && Objects.equals(type, users.type) && Objects.equals(first_name, users.first_name) && Objects.equals(last_name, users.last_name) && Objects.equals(university, users.university) && Objects.equals(marks, users.marks) && Objects.equals(name, users.name) && Objects.equals(town, users.town) && Objects.equals(street, users.street);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email, password, telephone, type, first_name, last_name, university, marks, name, town, street, street_number);
     }
 
     @Override
@@ -168,12 +227,10 @@ public class Users {
                 ", last_name='" + last_name + '\'' +
                 ", university='" + university + '\'' +
                 ", marks=" + marks +
+                ", name='" + name + '\'' +
+                ", town='" + town + '\'' +
+                ", street='" + street + '\'' +
+                ", street_number=" + street_number +
                 '}';
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, email, password, telephone, type, first_name, last_name, university, marks);
-    }
-
 }

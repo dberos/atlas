@@ -32,4 +32,9 @@ public class UsersController {
         return usersService.addUndergraduateUser(user);
     }
 
+    @PostMapping("/company")
+    public Optional<Users> addCompanyUser(@RequestBody Users user) {
+        return usersService.addCompanyUser(user);
+    }
+
 }
