@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping(path = "/users")
 @RestController
@@ -24,6 +25,11 @@ public class UsersController {
     @PostMapping
     public Users addUser(@RequestBody Users user) {
         return usersService.addUser(user);
+    }
+
+    @PostMapping("/undergraduate")
+    public Optional<Users> addUndergraduateUser(@RequestBody Users user) {
+        return usersService.addUndergraduateUser(user);
     }
 
 }
