@@ -20,9 +20,9 @@ public class UsersService {
         return usersRepository.findAll();
     }
 
-    public Users addUsers(Users user) {
-        Optional<Users> usersOptional = usersRepository.findUsersByEmail(user.getEmail());
-        if (usersOptional.isPresent()) {
+    public Users addUser(Users user) {
+        Optional<Users> userOptional = usersRepository.findByEmail(user.getEmail());
+        if (userOptional.isPresent()) {
             throw new IllegalStateException("email taken");
         }
         return usersRepository.save(user);

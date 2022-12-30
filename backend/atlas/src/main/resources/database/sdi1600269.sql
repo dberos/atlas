@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `sdi1600269`.`undergraduates` (
   `marks` BLOB NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  CONSTRAINT `user_id`
+  CONSTRAINT `users_undergraduates_id`
     FOREIGN KEY (`id`)
     REFERENCES `sdi1600269`.`users` (`id`)
     ON DELETE NO ACTION
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `sdi1600269`.`companies` (
   `street_number` INT NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
-  CONSTRAINT `user_id`
+  CONSTRAINT `users_companies_id`
     FOREIGN KEY (`id`)
     REFERENCES `sdi1600269`.`users` (`id`)
     ON DELETE NO ACTION
