@@ -20,9 +20,4 @@ public class UndergraduatesController {
     public List<Undergraduates> getUndergraduates() {
         return undergraduatesService.getUndergraduates();
     }
-
-    @PostMapping
-    public Undergraduates addUndergraduate(@RequestBody Undergraduates undergraduate) {
-        return undergraduatesService.addUndergraduate(undergraduate);
-    }
 }

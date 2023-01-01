@@ -21,7 +21,4 @@ public class UndergraduatesService {
         return undergraduatesRepository.findAll();
     }
 
-    public Undergraduates addUndergraduate(Undergraduates undergraduate) {
-        return undergraduatesRepository.save(undergraduate);
-    }
 }

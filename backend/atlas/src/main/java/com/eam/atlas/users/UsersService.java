@@ -30,35 +30,7 @@ public class UsersService {
         return usersRepository.findAll();
     }
 
-    public Users addUser(Users user) {
-        Optional<Users> userOptional = usersRepository.findByEmail(user.getEmail());
-        if (userOptional.isPresent()) {
-            throw new IllegalStateException("email taken");
-        }
-        return usersRepository.save(user);
-    }
-
-    public Optional<Users> addUndergraduateUser(Users user) {
-        Optional<Users> userOptional = usersRepository.findByEmail(user.getEmail());
-        if (userOptional.isPresent()) {
-            throw new IllegalStateException("email taken");
-        }
-        // Create normal user with Transient undergraduate fields
-        Users normalUser = new Users(user.getEmail(), user.getPassword(),
-                                        user.getTelephone(), user.getType());
-        usersRepository.save(normalUser);
-
-        // Create Undergraduate
-        Undergraduates undergradUser = new Undergraduates(normalUser.getId(), user.getFirst_name(),
-                                                            user.getLast_name(), user.getUniversity(),
-                                                                user.getMarks());
-        undergraduatesRepository.save(undergradUser);
-
-        // Return updated user with its ID
-        return usersRepository.findByEmail(user.getEmail());
-    }
-
-    public Optional<Users> addCompanyUser(Users user) {
+    public Users registerUser(Users user) {
         Optional<Users> userOptional = usersRepository.findByEmail(user.getEmail());
         if (userOptional.isPresent()) {
             throw new IllegalStateException("email taken");
@@ -68,12 +40,47 @@ public class UsersService {
                 user.getTelephone(), user.getType());
         usersRepository.save(normalUser);
 
-        // Create Company
-        Companies companyUser = new Companies(normalUser.getId(), user.getName(),
-                                                user.getTown(), user.getStreet(),
-                                                user.getStreet_number());
-        companiesRepository.save(companyUser);
-        // Return updated user with its ID
-        return usersRepository.findByEmail(user.getEmail());
+        // Check whether user is Undergraduate or Company
+        String type = user.getType();
+        if (type.equals("undergraduate")) {
+            // Create Undergraduate
+            Undergraduates undergradUser = new Undergraduates(normalUser.getId(),
+                                                                user.getFirst_name(),
+                                                                user.getLast_name(),
+                                                                user.getUniversity(),
+                                                                user.getMarks());
+            undergraduatesRepository.save(undergradUser);
+        }
+        else if (type.equals("company")) {
+            // Create Company
+            Companies companyUser = new Companies(normalUser.getId(),
+                                                    user.getName(),
+                                                    user.getTown(),
+                                                    user.getStreet(),
+                                                    user.getStreet_number());
+            companiesRepository.save(companyUser);
+        }
+        else {
+            throw new IllegalStateException("something went wrong");
+        }
+        Optional<Users> finalOptionalUser = usersRepository.findByEmail(user.getEmail());
+        Users finalUser = new Users(finalOptionalUser.get().getId(),
+                                    finalOptionalUser.get().getEmail(),
+                                    finalOptionalUser.get().getType());
+        return finalUser;
+    }
+
+    public Users loginUser(Users user) {
+        Optional<Users> userOptional = usersRepository.findByEmail(user.getEmail());
+        if (!userOptional.isPresent()) {
+            throw new IllegalStateException("wrong credentials");
+        }
+        if (!userOptional.get().getPassword().equals(user.getPassword())) {
+            throw new IllegalStateException("wrong credentials");
+        }
+        Users finalUser = new Users(userOptional.get().getId(),
+                                    userOptional.get().getEmail(),
+                                    userOptional.get().getType());
+        return finalUser;
     }
 }

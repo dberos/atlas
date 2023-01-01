@@ -20,7 +20,4 @@ public class CompaniesService {
         return companiesRepository.findAll();
     }
 
-    public Companies addCompany(Companies company) {
-        return companiesRepository.save(company);
-    }
 }

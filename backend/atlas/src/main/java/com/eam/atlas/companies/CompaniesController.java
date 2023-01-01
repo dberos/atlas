@@ -21,8 +21,4 @@ public class CompaniesController {
         return companiesService.getCompanies();
     }
 
-    @PostMapping
-    public Companies addCompany(@RequestBody Companies company) {
-        return companiesService.addCompany(company);
-    }
 }

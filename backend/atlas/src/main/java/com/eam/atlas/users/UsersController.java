@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RequestMapping(path = "/users")
 @RestController
@@ -22,19 +21,14 @@ public class UsersController {
         return usersService.getUsers();
     }
 
-    @PostMapping
-    public Users addUser(@RequestBody Users user) {
-        return usersService.addUser(user);
+    @PostMapping("/register")
+    public Users registerUser(@RequestBody Users user) {
+        return usersService.registerUser(user);
     }
 
-    @PostMapping("/undergraduate")
-    public Optional<Users> addUndergraduateUser(@RequestBody Users user) {
-        return usersService.addUndergraduateUser(user);
-    }
-
-    @PostMapping("/company")
-    public Optional<Users> addCompanyUser(@RequestBody Users user) {
-        return usersService.addCompanyUser(user);
+    @PostMapping("/login")
+    public Users loginUser(@RequestBody Users user) {
+        return usersService.loginUser(user);
     }
 
 }
