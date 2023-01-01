@@ -4,7 +4,12 @@ import NavBarPopupLogin from './NavBarPopupLogin';
 
 const NavBarLogin = (props) => {
 
-  const { openLogin, setOpenLogin } = props;
+  const { 
+    openLogin, 
+    setOpenLogin,
+    menuOpenLogin,
+    setMenuOpenLogin
+   } = props;
 
   return (
     <div className='navbar-login'
@@ -21,6 +26,8 @@ const NavBarLogin = (props) => {
           <NavBarPopupLogin
           openLogin={openLogin}
           setOpenLogin={setOpenLogin}
+          menuOpenLogin={menuOpenLogin}
+          setMenuOpenLogin={setMenuOpenLogin}
           />
       }
     </div>

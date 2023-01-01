@@ -9,10 +9,13 @@ import NavBarMenu from './NavBarMenu'
 import NavBarAccount from './NavBarAccount';
 import NavBarContact from './NavBarContact';
 import { Link } from "react-router-dom";
+import NavBarPopupLogin from './NavBarPopupLogin';
 
 const NavBar = () => {
     const [menu, setMenu] = useState(false);
     const [openLogin, setOpenLogin] = useState(false);
+
+    const [menuOpenLogin, setMenuOpenLogin] = useState(false);
 
   return (
     <div className='navbar-container'>
@@ -33,6 +36,8 @@ const NavBar = () => {
           <NavBarAccount
           openLogin={openLogin}
           setOpenLogin={setOpenLogin}
+          menuOpenLogin={menuOpenLogin}
+          setMenuOpenLogin={setMenuOpenLogin}
           />
         </div>
         <div className='navbar-menu-icon'>
@@ -48,7 +53,17 @@ const NavBar = () => {
           menu && 
             <NavBarMenu 
             setMenu={setMenu}
+            setMenuOpenLogin={setMenuOpenLogin}
             />
+        }
+        {
+          menuOpenLogin &&
+            <NavBarPopupLogin
+            openLogin={openLogin}
+            setOpenLogin={setOpenLogin}
+            menuOpenLogin={menuOpenLogin}
+            setMenuOpenLogin={setMenuOpenLogin}
+          />
         }
     </div>
   )

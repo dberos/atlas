@@ -5,11 +5,19 @@ import { Link } from "react-router-dom";
 
 const NavBarMenu = (props) => {
 
-    const { setMenu } = props;
+    const {
+        setMenu,
+        setMenuOpenLogin
+    } = props;
 
     let ref = useCloseModal(() => {
         setMenu(false);
     });
+
+    const handleLoginClick = () => {
+        setMenu(false);
+        setMenuOpenLogin(true);
+    }
 
   return (
     <div className='navbar-menu-container' ref={ref}>
@@ -26,7 +34,10 @@ const NavBarMenu = (props) => {
         <p>
             Επικοινωνία
         </p>
-        <p style={{cursor: 'pointer'}}>
+        <p 
+        style={{cursor: 'pointer'}} 
+        onClick={handleLoginClick}
+        >
             Σύνδεση / Προφίλ
         </p>
         <p style={{cursor: 'pointer'}}>

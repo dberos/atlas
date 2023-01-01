@@ -4,19 +4,30 @@ import useCloseModal from '../../../hooks/useCloseModal';
 
 const NavBarPopupLogin = (props) => {
 
-    const { openLogin, setOpenLogin } = props;
+    const { 
+        openLogin, 
+        setOpenLogin,
+        menuOpenLogin,
+        setMenuOpenLogin
+     } = props;
 
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([]);
 
     let ref = useCloseModal(() => {
         setOpenLogin(false);
+        setMenuOpenLogin(false);
     })
 
     useEffect(() => {
         setEmail([]);
         setPassword([]);
     }, [openLogin])
+
+    useEffect(() => {
+        setEmail([]);
+        setPassword([]);
+    }, [menuOpenLogin])
 
     const handleSubmit = (e) => {
         e.preventDefault();

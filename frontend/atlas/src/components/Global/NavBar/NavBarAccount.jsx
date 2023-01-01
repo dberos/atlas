@@ -7,7 +7,12 @@ import NavBarRegister from './NavBarRegister'
 
 const NavBarAccount = (props) => {
 
-  const { openLogin, setOpenLogin } = props;
+  const { 
+    openLogin, 
+    setOpenLogin,
+    menuOpenLogin,
+    setMenuOpenLogin
+   } = props;
 
   const [logged, setLogged] = useState(false);
 
@@ -20,6 +25,8 @@ const NavBarAccount = (props) => {
                         <NavBarLogin
                         openLogin={openLogin}
                         setOpenLogin={setOpenLogin}
+                        menuOpenLogin={menuOpenLogin}
+                        setMenuOpenLogin={setMenuOpenLogin}
                         />
                         <NavBarRegister/>
                     </>
