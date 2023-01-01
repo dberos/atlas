@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
     const [menu, setMenu] = useState(false);
+    const [openLogin, setOpenLogin] = useState(false);
 
   return (
     <div className='navbar-container'>
@@ -29,7 +30,10 @@ const NavBar = () => {
           <NavBarCompanies/>
           <NavBarUniversities/>
           <NavBarContact/>
-          <NavBarAccount/>
+          <NavBarAccount
+          openLogin={openLogin}
+          setOpenLogin={setOpenLogin}
+          />
         </div>
         <div className='navbar-menu-icon'>
           <button onClick={() => setMenu(!menu)}>
@@ -40,7 +44,12 @@ const NavBar = () => {
             }
           </button>
         </div>
-        {menu && <NavBarMenu setMenu={setMenu}/>}
+        {
+          menu && 
+            <NavBarMenu 
+            setMenu={setMenu}
+            />
+        }
     </div>
   )
 }

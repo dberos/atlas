@@ -61,6 +61,7 @@
 
     border-image-slice: 1;
     margin-top: 250px;
+    z-index: 1;
 }
 
 .main-search-bar {
@@ -354,7 +355,7 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 620px) {
 
     .main-search-container {
         margin-top: 250px;
@@ -377,7 +378,7 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 520px) {
 
     .main-subtitle h2 {
         font-size: 26px;

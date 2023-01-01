@@ -187,6 +187,10 @@
     width: 100%;
     height: 100vh;
     z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
 }
 
 .navbar-account-modal-container {
@@ -197,20 +201,135 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
-    /* background-color: pink; */
 }
 
-.navbar-account-modal-button {
+.navbar-login-popup {
+    width: 450px;
+    height: 510px;
+    cursor: default;
+    border-radius: 4px;
+    box-shadow: 0 0 7px 7px rgba(84, 43, 180, 0.699);
+    /* background: var(--bg);
+    background: var(--bg-moz);
+    background: var(--bg-webkit);
+    background: var(--bg-linear);
+    filter: var(--filter);
+    filter: var(--filter-drop); */
+
+    background: rgb(10,50,96);
+    background: -moz-linear-gradient(30deg, rgba(10,50,96,1) 0%, rgba(17,41,85,1) 41%, rgba(4,11,25,1) 100%);
+    background: -webkit-linear-gradient(30deg, rgba(10,50,96,1) 0%, rgba(17,41,85,1) 41%, rgba(4,11,25,1) 100%);
+    background: linear-gradient(30deg, rgba(10,50,96,1) 0%, rgba(17,41,85,1) 41%, rgba(4,11,25,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0a3260",endColorstr="#040b19",GradientType=1);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    z-index: 5;
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: fixed;
 }
 
-.navbar-account-modal-button button {
-    background-color: transparent;
+.navbar-login-popup-wrapper {
+    width: 90%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar-login-popup-header {
+    height: 100px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-login-popup-header h1 {
+    font-size: 30px;
+    font-weight: 300;
+    color: orange;
+}
+
+.navbar-login-popup-inputs {
+    margin-top: 20px;
+    height: 300px;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-login-popup-inputs-input-container {
+    height: 110px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-login-popup-inputs-input-container h1 {
+    font-size: 20px;
+    font-weight: 300;
+    color: #81AFDD;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.navbar-login-popup-inputs-input-container input {
+    width: 100%;
+    height: 50px;
+    border-radius: 4px;
+    outline: none;
     border: none;
-    cursor: pointer;
-    transform: scale(1.1);
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10%;
+}
+
+.navbar-login-popup-inputs-input-container input:focus {
+    outline: 2px solid orange;
+}
+
+.navbar-login-popup-inputs-input-container p {
+    margin-top: 10px;
+    font-size: 14px;
+    margin-left: 0;
+    font-weight: 300;
+    color: red;
+    text-align: start;
+}
+
+.navbar-login-popup-button {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.navbar-login-popup-button button {
+    background-color: #be750f;
     color: white;
+    height: 100%;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.navbar-login-popup-button button:hover {
+    background-color: orange;
+}
+
+.navbar-login-popup-register {
+    margin-top: 20px;
+}
+
+.navbar-login-popup-register p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #81AFDD;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1500px) {
@@ -294,6 +413,42 @@
     
     .navbar-register button {
         font-size: 16px;
+    }
+
+    .navbar-login-popup {
+        width: 380px;
+        height: 450px;
+    }
+    
+    .navbar-login-popup-header h1 {
+        font-size: 26px;
+    }
+    
+    .navbar-login-popup-inputs {
+        margin-top: 10px;
+        height: 270px;
+    }
+
+    .navbar-login-popup-inputs-input-container {
+        height: 100px;
+    }
+    
+    .navbar-login-popup-inputs-input-container h1 {
+        font-size: 18px;
+    }
+    
+    .navbar-login-popup-inputs-input-container input {
+        height: 45px;
+        font-size: 16px;
+    }
+    
+    .navbar-login-popup-button {
+        height: 45px;
+    }
+    
+    .navbar-login-popup-register {
+        margin-top: 20px;
+        height: 40px;
     }
 }
 
@@ -430,5 +585,58 @@
     .navbar-menu-container a:hover,
     .navbar-menu-container p:hover {
         background-color: #052547;
+    }
+
+    .navbar-login {
+        width: 45%;
+        margin-right: 5%;
+    }
+    
+    .navbar-login button {
+        font-size: 16px;
+    }
+    
+    .navbar-register {
+        width: 45%;
+    }
+    
+    .navbar-register button {
+        font-size: 16px;
+    }
+
+    .navbar-login-popup {
+        width: 380px;
+        height: 450px;
+    }
+    
+    .navbar-login-popup-header h1 {
+        font-size: 26px;
+    }
+    
+    .navbar-login-popup-inputs {
+        margin-top: 10px;
+        height: 270px;
+    }
+
+    .navbar-login-popup-inputs-input-container {
+        height: 100px;
+    }
+    
+    .navbar-login-popup-inputs-input-container h1 {
+        font-size: 18px;
+    }
+    
+    .navbar-login-popup-inputs-input-container input {
+        height: 45px;
+        font-size: 16px;
+    }
+    
+    .navbar-login-popup-button {
+        height: 45px;
+    }
+    
+    .navbar-login-popup-register {
+        margin-top: 20px;
+        height: 40px;
     }
 }

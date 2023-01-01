@@ -5,9 +5,11 @@ import NavBarMyAtlas from './NavBarMyAtlas'
 import NavBarLogin from './NavBarLogin'
 import NavBarRegister from './NavBarRegister'
 
-const NavBarAccount = () => {
+const NavBarAccount = (props) => {
 
-    const [logged, setLogged] = useState(false);
+  const { openLogin, setOpenLogin } = props;
+
+  const [logged, setLogged] = useState(false);
 
   return (
     <div className='navbar-login-register-container'>
@@ -15,7 +17,10 @@ const NavBarAccount = () => {
             logged ?
                 <NavBarMyAtlas/> :
                     <>
-                        <NavBarLogin/>
+                        <NavBarLogin
+                        openLogin={openLogin}
+                        setOpenLogin={setOpenLogin}
+                        />
                         <NavBarRegister/>
                     </>
         }
