@@ -179,6 +179,40 @@
     display: none;
 }
 
+.navbar-back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    width: 100%;
+    height: 100vh;
+    z-index: 3;
+}
+
+.navbar-account-modal-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    /* background-color: pink; */
+}
+
+.navbar-account-modal-button {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-account-modal-button button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transform: scale(1.1);
+    color: white;
+}
+
 @media screen and (max-width: 1500px) {
     .navbar-logo-container {
         width: 7%;
