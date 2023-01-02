@@ -8,6 +8,7 @@ import CompaniesStardDuration from './CompaniesStardDuration'
 import CompaniesTypeMoney from './CompaniesTypeMoney'
 import CompaniesSalaryDesc from './CompaniesSalaryDesc'
 import CompaniesButton from './CompaniesButton'
+import NavBarPopupLogin from '../../Global/NavBar/NavBarPopupLogin'
 
 const CompaniesForm = () => {
 
@@ -107,9 +108,17 @@ const CompaniesForm = () => {
         selectedType, selectedEspa, selectedSalary, 
         selectedDescription])
 
+    const [menuOpenLogin, setMenuOpenLogin] = useState(false);
+    const [openLogin, setOpenLogin] = useState(false);
+    
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        // Check for localstorage user
+        // If not exists open login
+        // If exists clear form and navigate to results
+        setOpenLogin(true);
         console.log('submitted');
     }
 
@@ -156,6 +165,15 @@ const CompaniesForm = () => {
                 />
             </form>
         </div>
+        {
+            openLogin &&
+                <NavBarPopupLogin
+                openLogin={openLogin}
+                setOpenLogin={setOpenLogin}
+                menuOpenLogin={menuOpenLogin}
+                setMenuOpenLogin={setMenuOpenLogin}
+          />
+        }
     </div>
   )
 }
