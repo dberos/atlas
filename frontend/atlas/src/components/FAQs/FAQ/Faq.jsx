@@ -14,7 +14,12 @@ const Faq = (props) => {
         <div className="faq-wrapper">
             <div className="faq-header">
               <h1>
-                {title}
+                <span
+                style={{cursor: 'pointer'}}
+                onClick={() => setOpen(!open)}
+                >
+                  {title}
+                </span>
               </h1>
             </div>
             <div className="faq-description-container" style={{opacity: open && '1'}}>
