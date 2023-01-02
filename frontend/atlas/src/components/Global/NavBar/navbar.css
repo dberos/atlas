@@ -204,8 +204,8 @@
 }
 
 .navbar-login-popup {
-    width: 450px;
-    height: 510px;
+    width: 400px;
+    height: 420px;
     cursor: default;
     border-radius: 4px;
     box-shadow: 0 0 7px 7px rgba(84, 43, 180, 0.699);
@@ -235,11 +235,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 .navbar-login-popup-header {
-    height: 100px;
-    width: 90%;
+    height: 80px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -247,7 +248,7 @@
 }
 
 .navbar-login-popup-header h1 {
-    font-size: 30px;
+    font-size: 28px;
     font-weight: 300;
     color: orange;
 }
@@ -255,20 +256,20 @@
 .navbar-login-popup-inputs {
     margin-top: 20px;
     height: 300px;
-    width: 85%;
+    width: 90%;
     display: flex;
     flex-direction: column;
 }
 
 .navbar-login-popup-inputs-input-container {
-    height: 110px;
+    height: 100px;
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
 .navbar-login-popup-inputs-input-container h1 {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 300;
     color: #81AFDD;
     display: flex;
@@ -278,7 +279,7 @@
 
 .navbar-login-popup-inputs-input-container input {
     width: 100%;
-    height: 50px;
+    height: 45px;
     border-radius: 4px;
     outline: none;
     border: none;
@@ -292,12 +293,13 @@
 }
 
 .navbar-login-popup-inputs-input-container p {
-    margin-top: 10px;
     font-size: 14px;
     margin-left: 0;
     font-weight: 300;
     color: red;
     text-align: start;
+    position: absolute;
+    bottom: 100px;
 }
 
 .navbar-login-popup-button {
@@ -322,18 +324,6 @@
 
 .navbar-login-popup-button button:hover {
     background-color: orange;
-}
-
-.navbar-login-popup-register {
-    margin-top: 20px;
-}
-
-.navbar-login-popup-register p {
-    font-size: 18px;
-    font-weight: 300;
-    color: #81AFDD;
-    text-decoration: underline;
-    cursor: pointer;
 }
 
 @media screen and (max-width: 1500px) {
@@ -417,42 +407,6 @@
     
     .navbar-register button {
         font-size: 16px;
-    }
-
-    .navbar-login-popup {
-        width: 380px;
-        height: 450px;
-    }
-    
-    .navbar-login-popup-header h1 {
-        font-size: 26px;
-    }
-    
-    .navbar-login-popup-inputs {
-        margin-top: 10px;
-        height: 270px;
-    }
-
-    .navbar-login-popup-inputs-input-container {
-        height: 100px;
-    }
-    
-    .navbar-login-popup-inputs-input-container h1 {
-        font-size: 18px;
-    }
-    
-    .navbar-login-popup-inputs-input-container input {
-        height: 45px;
-        font-size: 16px;
-    }
-    
-    .navbar-login-popup-button {
-        height: 45px;
-    }
-    
-    .navbar-login-popup-register {
-        margin-top: 20px;
-        height: 40px;
     }
 }
 
@@ -610,12 +564,11 @@
 
     .navbar-login-popup {
         width: 300px;
-        height: 410px;
+        height: 360px;
     }
-
+    
     .navbar-login-popup-header {
-        width: 100%;
-        height: 80px;
+        height: 70px;
     }
     
     .navbar-login-popup-header h1 {
@@ -623,13 +576,14 @@
     }
     
     .navbar-login-popup-inputs {
-        margin-top: 10px;
-        height: 270px;
+        margin-top: 20px;
+        height: 300px;
         width: 95%;
     }
-
+    
     .navbar-login-popup-inputs-input-container {
-        height: 95px;
+        height: 90px;
+        width: 100%;
     }
     
     .navbar-login-popup-inputs-input-container h1 {
@@ -637,25 +591,22 @@
     }
     
     .navbar-login-popup-inputs-input-container input {
+        width: 100%;
         height: 40px;
-        font-size: 14px;
+        font-size: 16px;
+    }
+
+    .navbar-login-popup-inputs-input-container p {
+        font-size: 12px;
+        bottom: 82px;
     }
     
     .navbar-login-popup-button {
         height: 45px;
+        margin-top: 15px;
     }
-
+    
     .navbar-login-popup-button button {
         font-size: 16px;
     }
-    
-    .navbar-login-popup-register {
-        margin-top: 20px;
-        height: 40px;
-    }
-
-    .navbar-login-popup-register p {
-        font-size: 16px;
-    }
-
 }

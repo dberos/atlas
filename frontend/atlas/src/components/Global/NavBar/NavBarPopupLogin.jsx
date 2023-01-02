@@ -77,11 +77,6 @@ const NavBarPopupLogin = (props) => {
                         </div>
                     </form>
                 </div>
-                <div className="navbar-login-popup-register">
-                    <p>
-                        Δημιουργία νέου λογαριασμού
-                    </p>
-                </div>
             </div>
         </div>
     </div>
