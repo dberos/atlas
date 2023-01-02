@@ -1,6 +1,6 @@
 import React from 'react'
 import CTA from '../components/Global/CTA/CTA'
-import FaqsCompanies from '../components/FAQs/Companies/FaqsCompanies'
+import CompaniesFaqs from '../components/FAQs/Companies/CompaniesFaqs';
 
 const FAQsCompanies = () => {
 
@@ -32,7 +32,7 @@ const FAQsCompanies = () => {
         subtitle={subtitle} 
         links={links}
         />
-        <FaqsCompanies/>
+        <CompaniesFaqs/>
     </div>
   )
 }

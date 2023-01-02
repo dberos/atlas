@@ -1,4 +1,4 @@
-export const faqsCompanies = [
+export const data = [
     {
         id: 1,
         title: 'Πως μπορώ να δημοσιεύσω νέα Θέση Πρακτικής Άσκησης;',

@@ -1,4 +1,4 @@
-export const faqsUndergrads = [
+export const data = [
     {
         id: 1,
         title: 'Πως μπορώ να αναζητήσω θέση Πρακτικής Άσκησης;',

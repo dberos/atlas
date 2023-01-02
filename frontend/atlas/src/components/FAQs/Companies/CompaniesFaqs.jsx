@@ -1,14 +1,14 @@
 import React from 'react'
 import '../faqs.css'
 import Faq from '../FAQ/Faq'
-import { faqsCompanies } from './faqsCompanies'
+import { data } from './data'
 
-const FaqsCompanies = () => {
+const CompaniesFaqs = () => {
   return (
     <div className="faqs-container">
         <div className="faqs-wrapper">
             {
-              faqsCompanies.map((value) => {
+              data.map((value) => {
                 return(
                   <Faq
                   key={value.id}
@@ -23,4 +23,4 @@ const FaqsCompanies = () => {
   )
 }
 
-export default FaqsCompanies
+export default CompaniesFaqs
