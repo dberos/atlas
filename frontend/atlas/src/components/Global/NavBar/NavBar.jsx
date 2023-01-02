@@ -21,6 +21,9 @@ const NavBar = () => {
     // If popup was open then it would be open again when large again
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
+    const [openRegister, setOpenRegister] = useState(false);
+    const [menuOpenRegister, setMenuOpenRegister] = useState(false);
+
     useEffect(() => {
       const handleResize = () => {
         setScreenWidth(window.innerWidth);
@@ -61,6 +64,10 @@ const NavBar = () => {
           setOpenLogin={setOpenLogin}
           menuOpenLogin={menuOpenLogin}
           setMenuOpenLogin={setMenuOpenLogin}
+          openRegister={openRegister}
+          setOpenRegister={setOpenRegister}
+          menuOpenRegister={menuOpenRegister}
+          setMenuOpenRegister={setMenuOpenRegister}
           />
         </div>
         <div className='navbar-menu-icon'>

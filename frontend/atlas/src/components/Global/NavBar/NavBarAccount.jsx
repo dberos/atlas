@@ -11,7 +11,11 @@ const NavBarAccount = (props) => {
     openLogin, 
     setOpenLogin,
     menuOpenLogin,
-    setMenuOpenLogin
+    setMenuOpenLogin,
+    openRegister,
+    setOpenRegister,
+    menuOpenRegister,
+    setMenuOpenRegister
    } = props;
 
   const [logged, setLogged] = useState(false);
@@ -28,7 +32,12 @@ const NavBarAccount = (props) => {
                         menuOpenLogin={menuOpenLogin}
                         setMenuOpenLogin={setMenuOpenLogin}
                         />
-                        <NavBarRegister/>
+                        <NavBarRegister
+                        openRegister={openRegister}
+                        setOpenRegister={setOpenRegister}
+                        menuOpenRegister={menuOpenRegister}
+                        setMenuOpenRegister={setMenuOpenRegister}
+                        />
                     </>
         }
     </div>
