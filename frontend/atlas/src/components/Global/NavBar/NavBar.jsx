@@ -10,6 +10,7 @@ import NavBarAccount from './NavBarAccount';
 import NavBarContact from './NavBarContact';
 import { Link } from "react-router-dom";
 import NavBarPopupLogin from './NavBarPopupLogin';
+import NavBarPopupRegister from './NavBarPopupRegister';
 
 const NavBar = () => {
     const [menu, setMenu] = useState(false);
@@ -37,9 +38,11 @@ const NavBar = () => {
     useEffect(() => {
       if(screenWidth <= 850) {
         setOpenLogin(false);
+        setOpenRegister(false);
       }
       if(screenWidth > 850) {
         setMenuOpenLogin(false);
+        setMenuOpenRegister(false);
       }
     }, [screenWidth])
 
@@ -84,6 +87,7 @@ const NavBar = () => {
             <NavBarMenu 
             setMenu={setMenu}
             setMenuOpenLogin={setMenuOpenLogin}
+            setMenuOpenRegister={setMenuOpenRegister}
             />
         }
         {
@@ -93,6 +97,15 @@ const NavBar = () => {
             setOpenLogin={setOpenLogin}
             menuOpenLogin={menuOpenLogin}
             setMenuOpenLogin={setMenuOpenLogin}
+          />
+        }
+        {
+          menuOpenRegister &&
+          <NavBarPopupRegister
+          openRegister={openRegister}
+          setOpenRegister={setOpenRegister}
+          menuOpenRegister={menuOpenRegister}
+          setMenuOpenRegister={setMenuOpenRegister}
           />
         }
     </div>

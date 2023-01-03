@@ -7,7 +7,8 @@ const NavBarMenu = (props) => {
 
     const {
         setMenu,
-        setMenuOpenLogin
+        setMenuOpenLogin,
+        setMenuOpenRegister
     } = props;
 
     let ref = useCloseModal(() => {
@@ -17,6 +18,11 @@ const NavBarMenu = (props) => {
     const handleLoginClick = () => {
         setMenu(false);
         setMenuOpenLogin(true);
+    }
+
+    const handleRegisterClick = () => {
+        setMenu(false);
+        setMenuOpenRegister(true);
     }
 
   return (
@@ -40,7 +46,8 @@ const NavBarMenu = (props) => {
         >
             Σύνδεση / Προφίλ
         </p>
-        <p style={{cursor: 'pointer'}}>
+        <p style={{cursor: 'pointer'}}
+        onClick={handleRegisterClick}>
             Εγγραφή / Αποσύνδεση
         </p>
         </div>

@@ -354,6 +354,11 @@
     position: relative;
 }
 
+.navbar-register-popup-wrapper form {
+    width: 100%;
+    height: 100%;
+}
+
 .navbar-register-popup-header {
     height: 60px;
     width: 100%;
@@ -420,9 +425,7 @@
 
 .navbar-register-popup-company-input {
     width: 100%;
-    /* background-color: pink; */
     height: 100%;
-    /* position: relative; */
     display: flex;
     flex-direction: row;
 }
@@ -431,8 +434,6 @@
     margin-left: 5%;
     width: 33%;
     height: 100%;
-    /* background-color: blue; */
-    /* position: absolute; */
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -443,9 +444,6 @@
 .navbar-register-popup-company-input-city input {
     height: 45px;
     width: 100%;
-    /* width: 90%;
-    margin-left: 5%;
-    margin-right: 5%; */
     border-radius: 4px;
     font-size: 18px;
     border: none;
@@ -636,6 +634,41 @@
 
 .navbar-register-popup-dropdown-dropdown p:hover {
     background-color: rgb(217, 226, 236);
+}
+
+.navbar-register-popup-button {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    position: relative;
+    flex-direction: column;
+}
+
+.navbar-register-popup-button button {
+    border: none;
+    background-color: #be750f;
+    height: 50px;
+    width: 90%;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+}
+
+.navbar-register-popup-button button:hover {
+    background-color: orange;
+}
+
+.navbar-register-popup-button::before {
+    content: 'Τα πεδία με * είναι υποχρεωτικά';
+    position: absolute;
+    top: -20px;
+    right: 25px;
+    font-size: 14px;
+    color: #81AFDD;
 }
 
 @media screen and (max-width: 1500px) {
@@ -920,5 +953,94 @@
     
     .navbar-login-popup-button button {
         font-size: 16px;
+    }
+
+    .navbar-register-popup {
+        width: 300px;
+        height: 600px;
+    }
+    
+    .navbar-register-popup-header {
+        height: 50px;
+    }
+    
+    .navbar-register-popup-header h1 {
+        font-size: 22px;
+    }
+    
+    .navbar-register-popup-input-container {
+        height: 50px;
+    }
+    
+    .navbar-register-popup-input-container input {
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .navbar-register-popup-input-container input::placeholder {
+        font-size: 14px;
+    }
+    
+    .navbar-register-popup-input-container label {
+        right: 20px;
+        font-size: 14px;
+    }
+    
+    .navbar-register-popup-company-input-city input {
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .navbar-register-popup-company-input-city label {
+        font-size: 14px;
+        right: 0;
+    }
+    
+    .navbar-register-popup-company-input-street input {
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .navbar-register-popup-company-input-street label {
+        font-size: 14px;
+        right: 0;
+    }
+    
+    .navbar-register-popup-company-input-number input {
+        height: 40px;
+    }
+    
+    .navbar-register-popup-company-input-number label {
+        right: 0;
+        font-size: 14px;
+    }
+    
+    .navbar-register-popup-dropdown-dropdown-container {
+        height: 40px;
+    }
+    
+    .navbar-register-popup-dropdown-dropdown-name p {
+        font-size: 16px;
+    }
+    
+    .navbar-register-popup-dropdown-dropdown {
+        top: 45px;
+    }
+    
+    .navbar-register-popup-dropdown-dropdown p {
+        font-size: 14px;
+    }
+    
+    .navbar-register-popup-button {
+        height: 60px;
+    }
+    
+    .navbar-register-popup-button button {
+        height: 45px;
+    }
+    
+    .navbar-register-popup-button::before {
+        right: 15px;
+        font-size: 12px;
     }
 }
