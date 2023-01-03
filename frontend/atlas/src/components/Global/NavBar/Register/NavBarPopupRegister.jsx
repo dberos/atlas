@@ -9,6 +9,7 @@ import NavBarRegisterUniversity from './NavBarRegisterUniversity';
 import NavBarRegisterStreet from './NavBarRegisterStreet';
 import NavBarRegisterTelephone from './NavBarRegisterTelephone';
 import NavBarRegisterPassword from './NavBarRegisterPassword';
+import { registerUndergraduate, registerCompany } from '../users';
 
 const NavBarPopupRegister = (props) => {
 
@@ -127,7 +128,7 @@ const NavBarPopupRegister = (props) => {
     setMenuOpenRegister(false);
   })
 
-  const validateUndergraduate = () => {
+  const validateUndergraduate = async () => {
     if(
       emailEntered.length !== 0 &&
       nameEntered.length !== 0 &&
@@ -135,7 +136,7 @@ const NavBarPopupRegister = (props) => {
       passwordEntered.length !== 0 &&
       confirmPasswordEntered.length !== 0
     ) {
-      const data = {
+      const user = {
         email: emailEntered,
         password: passwordEntered,
         telephone: telephoneEntered.length !== 0 ?parseInt(telephoneEntered) : null,
@@ -146,22 +147,11 @@ const NavBarPopupRegister = (props) => {
         marks: null
 
       }
-      fetch('http://localhost:8080/users/register', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-      })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => console.log(error));
+      await registerUndergraduate(user);
     }
   }
 
-  const validateCompany = () => {
+  const validateCompany = async () => {
     if (emailEntered.length !== 0 &&
       companyNameEntered.length !==0 &&
       companyCityEntered.length !==0 &&
@@ -170,7 +160,7 @@ const NavBarPopupRegister = (props) => {
       passwordEntered.length !== 0 &&
       confirmPasswordEntered.length !== 0
       ) {
-        const data = {
+        const user = {
           email: emailEntered,
           password: passwordEntered,
           telephone: telephoneEntered.length !== 0 ?parseInt(telephoneEntered) : null,
@@ -180,18 +170,7 @@ const NavBarPopupRegister = (props) => {
           street: companyStreetEntered,
           street_number: parseInt(companyStreetNumberEntered)
         }
-        fetch('http://localhost:8080/users/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-        })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((error) => console.log(error));
+        await registerCompany(user);
       }
   }
 
