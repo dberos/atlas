@@ -3,7 +3,7 @@ import { useState } from 'react'
 import './navbar.css'
 import NavBarMyAtlas from './NavBarMyAtlas'
 import NavBarLogin from './NavBarLogin'
-import NavBarRegister from './NavBarRegister'
+import NavBarRegister from './Register/NavBarRegister'
 
 const NavBarAccount = (props) => {
 

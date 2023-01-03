@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import './navbar.css'
-import useCloseModal from '../../../hooks/useCloseModal';
+import '../navbar.css'
+import useCloseModal from '../../../../hooks/useCloseModal';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 

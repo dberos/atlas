@@ -10,7 +10,7 @@ import NavBarAccount from './NavBarAccount';
 import NavBarContact from './NavBarContact';
 import { Link } from "react-router-dom";
 import NavBarPopupLogin from './NavBarPopupLogin';
-import NavBarPopupRegister from './NavBarPopupRegister';
+import NavBarPopupRegister from './Register/NavBarPopupRegister';
 
 const NavBar = () => {
     const [menu, setMenu] = useState(false);

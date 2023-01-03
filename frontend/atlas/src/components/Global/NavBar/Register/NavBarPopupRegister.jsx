@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import './navbar.css'
-import useCloseModal from '../../../hooks/useCloseModal';
+import '../navbar.css'
+import useCloseModal from '../../../../hooks/useCloseModal';
 import NavBarRegisterType from './NavBarRegisterType';
 import NavBarRegisterEmail from './NavBarRegisterEmail';
 import NavBarRegisterName from './NavBarRegisterName';
