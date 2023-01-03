@@ -328,7 +328,7 @@
 
 .navbar-register-popup {
     width: 600px;
-    height: 700px;
+    height: 750px;
     cursor: default;
     border-radius: 4px;
     box-shadow: 0 0 7px 7px rgba(84, 43, 180, 0.699);
@@ -424,68 +424,28 @@
 }
 
 .navbar-register-popup-company-input {
+    margin-top: 10px;
+    height: 60px;
     width: 100%;
-    height: 100%;
     display: flex;
+    justify-content: flex-start;
     flex-direction: row;
-}
-
-.navbar-register-popup-company-input-city {
-    margin-left: 5%;
-    width: 33%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
     position: relative;
 }
 
-.navbar-register-popup-company-input-city input {
-    height: 45px;
-    width: 100%;
-    border-radius: 4px;
-    font-size: 18px;
-    border: none;
-    padding-left: 10px;
-    padding-right: 25%;
-    outline: none;
-}
-
-.navbar-register-popup-company-input-city input:focus {
-    outline: 2px solid orange;
-}
-
-.navbar-register-popup-company-input-city label {
-    position: absolute; 
-    top: 10px;
-    display: none;
-    border: none;
-    right: 5px;
-    pointer-events: none;
-    font-size: 16px;
-    color: black;
-}
-
-.navbar-register-popup-company-input-city input:focus + label {
-    display: block;
-    opacity: 0.4;
-}
-
 .navbar-register-popup-company-input-street {
-    margin-left: 2%;
-    width: 33%;
-    height: 100%;
+    width: 70%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
     position: relative;
 }
 
 .navbar-register-popup-company-input-street input {
     height: 45px;
-    width: 100%;
+    width: 90%;
+    margin-left: 8%;
+    margin-right: 5%;
     border-radius: 4px;
     font-size: 18px;
     border: none;
@@ -498,12 +458,18 @@
     outline: 2px solid orange;
 }
 
+.navbar-register-popup-company-input-street input::placeholder {
+    padding-left: 5px;
+    opacity: 0.6;
+    font-size: 16px;
+}
+
 .navbar-register-popup-company-input-street label {
     position: absolute; 
     top: 10px;
     display: none;
     border: none;
-    right: 5px;
+    right: 35px;
     pointer-events: none;
     font-size: 16px;
     color: black;
@@ -515,29 +481,31 @@
 }
 
 .navbar-register-popup-company-input-number {
-    margin-left: 2%;
-    width: 20%;
-    height: 100%;
+    width: 30%;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
     align-items: center;
     position: relative;
 }
 
 .navbar-register-popup-company-input-number input {
     height: 45px;
-    width: 100%;
+    width: 82%;
     border-radius: 4px;
     font-size: 18px;
     border: none;
     padding-left: 10px;
     padding-right: 25%;
-    outline: none
+    outline: none;
 }
 
 .navbar-register-popup-company-input-number input:focus {
     outline: 2px solid orange;
+}
+
+.navbar-register-popup-company-input-number input::placeholder {
+    padding-left: 5px;
+    opacity: 0.6;
+    font-size: 16px;
 }
 
 .navbar-register-popup-company-input-number label {
@@ -545,7 +513,7 @@
     top: 10px;
     display: none;
     border: none;
-    right: 5px;
+    right: 35px;
     pointer-events: none;
     font-size: 16px;
     color: black;
@@ -957,7 +925,7 @@
 
     .navbar-register-popup {
         width: 300px;
-        height: 600px;
+        height: 680px;
     }
     
     .navbar-register-popup-header {
@@ -986,32 +954,45 @@
         font-size: 14px;
     }
     
-    .navbar-register-popup-company-input-city input {
-        height: 40px;
-        font-size: 16px;
+    .navbar-register-popup-company-input {
+        height: 50px;
     }
     
-    .navbar-register-popup-company-input-city label {
-        font-size: 14px;
-        right: 0;
+    .navbar-register-popup-company-input-street {
+        width: 60%;
     }
     
     .navbar-register-popup-company-input-street input {
         height: 40px;
         font-size: 16px;
+        margin-left: 9%;
+    }
+    
+    .navbar-register-popup-company-input-street input::placeholder {
+        font-size: 14px;
     }
     
     .navbar-register-popup-company-input-street label {
+        right: 12px;
         font-size: 14px;
-        right: 0;
+    }
+    
+    .navbar-register-popup-company-input-number {
+        width: 40%;
     }
     
     .navbar-register-popup-company-input-number input {
         height: 40px;
+        width: 88%;
+        font-size: 16px;
+    }
+    
+    .navbar-register-popup-company-input-number input::placeholder {
+        font-size: 14px;
     }
     
     .navbar-register-popup-company-input-number label {
-        right: 0;
+        right: 12px;
         font-size: 14px;
     }
     
@@ -1028,7 +1009,7 @@
     }
     
     .navbar-register-popup-dropdown-dropdown p {
-        font-size: 14px;
+        font-size: 16px;
     }
     
     .navbar-register-popup-button {
@@ -1037,10 +1018,11 @@
     
     .navbar-register-popup-button button {
         height: 45px;
+        font-size: 16px;
     }
     
     .navbar-register-popup-button::before {
-        right: 15px;
+        right: 13px;
         font-size: 12px;
     }
 }
