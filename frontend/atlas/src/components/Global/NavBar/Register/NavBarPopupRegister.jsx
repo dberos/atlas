@@ -30,6 +30,7 @@ const NavBarPopupRegister = (props) => {
   const [telephoneEntered, setTelephoneEntered] = useState([]);
   const [passwordEntered, setPasswordEntered] = useState([]);
   const [confirmPasswordEntered, setConfirmPasswordEntered] = useState([]);
+  const [passwordError, setPasswordError] = useState([]);
 
   const [companyNameEntered, setCompanyNameEntered] = useState([]);
   const [companyCityEntered, setCompanyCityEntered] = useState([]);
@@ -46,6 +47,7 @@ const NavBarPopupRegister = (props) => {
     setTelephoneEntered([]);
     setPasswordEntered([]);
     setConfirmPasswordEntered([]);
+    setPasswordError('Επιβεβαίωση Κωδικού *');
     setCompanyNameEntered([]);
     setCompanyCityEntered([]);
     setCompanyStreetEntered([]);
@@ -60,6 +62,7 @@ const NavBarPopupRegister = (props) => {
     setTelephoneEntered([]);
     setPasswordEntered([]);
     setConfirmPasswordEntered([]);
+    setPasswordError('Επιβεβαίωση Κωδικού *');
     setCompanyNameEntered([]);
     setCompanyCityEntered([]);
     setCompanyStreetEntered([]);
@@ -74,6 +77,7 @@ const NavBarPopupRegister = (props) => {
     setTelephoneEntered([]);
     setPasswordEntered([]);
     setConfirmPasswordEntered([]);
+    setPasswordError('Επιβεβαίωση Κωδικού *');
     setCompanyNameEntered([]);
     setCompanyCityEntered([]);
     setCompanyStreetEntered([]);
@@ -87,7 +91,8 @@ const NavBarPopupRegister = (props) => {
         emailError === 'Email *' &&
         nameEntered.length !== 0 &&
         passwordEntered.length !== 0 &&
-        confirmPasswordEntered.length !== 0
+        confirmPasswordEntered.length !== 0 &&
+        passwordError === 'Επιβεβαίωση Κωδικού *'
       ) {
         setIsDisabled(false);
       }
@@ -101,6 +106,7 @@ const NavBarPopupRegister = (props) => {
       nameEntered,
       surnameEntered,
       passwordEntered,
+      passwordError,
       confirmPasswordEntered])
 
   useEffect(() => {
@@ -113,7 +119,8 @@ const NavBarPopupRegister = (props) => {
         companyStreetEntered.length !== 0 &&
         companyStreetNumberEntered.length !== 0 &&
         passwordEntered.length !== 0 &&
-        confirmPasswordEntered.length !== 0 
+        confirmPasswordEntered.length !== 0  &&
+        passwordError === 'Επιβεβαίωση Κωδικού *'
       ) {
         setIsDisabled(false);
       }
@@ -129,6 +136,7 @@ const NavBarPopupRegister = (props) => {
       companyStreetEntered,
       companyStreetNumberEntered,
       passwordEntered,
+      passwordError,
       confirmPasswordEntered])
 
   let ref = useCloseModal(() => {
@@ -143,7 +151,8 @@ const NavBarPopupRegister = (props) => {
       nameEntered.length !== 0 &&
       surnameEntered.length !== 0 &&
       passwordEntered.length !== 0 &&
-      confirmPasswordEntered.length !== 0
+      confirmPasswordEntered.length !== 0 &&
+      passwordError === 'Επιβεβαίωση Κωδικού *'
     ) {
       const user = {
         email: emailEntered,
@@ -169,7 +178,8 @@ const NavBarPopupRegister = (props) => {
       companyStreetEntered.length !== 0 &&
       companyStreetNumberEntered.length !== 0 &&
       passwordEntered.length !== 0 &&
-      confirmPasswordEntered.length !== 0
+      confirmPasswordEntered.length !== 0 &&
+      passwordError === 'Επιβεβαίωση Κωδικού *'
       ) {
         const user = {
           email: emailEntered,
@@ -256,6 +266,8 @@ const NavBarPopupRegister = (props) => {
               setPasswordEntered={setPasswordEntered}
               confirmPasswordEntered={confirmPasswordEntered}
               setConfirmPasswordEntered={setConfirmPasswordEntered}
+              passwordError={passwordError}
+              setPasswordError={setPasswordError}
               />
               <div className="navbar-register-popup-button">
                 <button
