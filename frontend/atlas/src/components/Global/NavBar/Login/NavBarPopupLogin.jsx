@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import './navbar.css'
-import useCloseModal from '../../../hooks/useCloseModal';
+import '../navbar.css'
+import useCloseModal from '../../../../hooks/useCloseModal';
+import { loginUser } from '../users';
 
 const NavBarPopupLogin = (props) => {
 
@@ -8,11 +9,13 @@ const NavBarPopupLogin = (props) => {
         openLogin, 
         setOpenLogin,
         menuOpenLogin,
-        setMenuOpenLogin
+        setMenuOpenLogin,
+        setLogged
      } = props;
 
     const [email, setEmail] = useState([]);
     const [password, setPassword] = useState([]);
+    const [error, setError] = useState([]);
 
     let ref = useCloseModal(() => {
         setOpenLogin(false);
@@ -22,16 +25,30 @@ const NavBarPopupLogin = (props) => {
     useEffect(() => {
         setEmail([]);
         setPassword([]);
+        setError([]);
     }, [openLogin])
 
     useEffect(() => {
         setEmail([]);
         setPassword([]);
+        setError([]);
     }, [menuOpenLogin])
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('submitted');
+        const user = {
+            'email': email,
+            'password': password
+        }
+        const data = await loginUser(user);
+        if(data) {
+            localStorage.setItem('email', data.email);
+            localStorage.setItem('type', data.type);
+            setLogged(true);
+        }
+        else {
+            setError('Λάθος email ή κωδικός');
+        }
     }
 
   return (
@@ -66,13 +83,16 @@ const NavBarPopupLogin = (props) => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             />
-                            <p>
-                            Λάθος όνομα χρήστη ή κωδικός
-                            </p>
+                            {
+                                error.length !== 0 &&
+                                    <p>
+                                        {error}
+                                    </p>
+                            }
                         </div>
                         <div className="navbar-login-popup-button">
                             <button>
-                            Σύνδεση
+                                Σύνδεση
                             </button>
                         </div>
                     </form>

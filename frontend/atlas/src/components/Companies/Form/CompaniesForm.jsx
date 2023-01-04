@@ -8,7 +8,7 @@ import CompaniesStardDuration from './CompaniesStardDuration'
 import CompaniesTypeMoney from './CompaniesTypeMoney'
 import CompaniesSalaryDesc from './CompaniesSalaryDesc'
 import CompaniesButton from './CompaniesButton'
-import NavBarPopupLogin from '../../Global/NavBar/NavBarPopupLogin'
+import NavBarPopupLogin from '../../Global/NavBar/Login/NavBarPopupLogin'
 
 const CompaniesForm = () => {
 

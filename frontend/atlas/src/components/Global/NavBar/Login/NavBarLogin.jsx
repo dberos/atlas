@@ -1,5 +1,5 @@
 import React from 'react'
-import './navbar.css'
+import '../navbar.css'
 import NavBarPopupLogin from './NavBarPopupLogin';
 
 const NavBarLogin = (props) => {
@@ -8,7 +8,8 @@ const NavBarLogin = (props) => {
     openLogin, 
     setOpenLogin,
     menuOpenLogin,
-    setMenuOpenLogin
+    setMenuOpenLogin,
+    setLogged
    } = props;
 
   return (
@@ -28,6 +29,7 @@ const NavBarLogin = (props) => {
           setOpenLogin={setOpenLogin}
           menuOpenLogin={menuOpenLogin}
           setMenuOpenLogin={setMenuOpenLogin}
+          setLogged={setLogged}
           />
       }
     </div>

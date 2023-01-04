@@ -9,7 +9,7 @@ import NavBarMenu from './NavBarMenu'
 import NavBarAccount from './NavBarAccount';
 import NavBarContact from './NavBarContact';
 import { Link } from "react-router-dom";
-import NavBarPopupLogin from './NavBarPopupLogin';
+import NavBarPopupLogin from './Login/NavBarPopupLogin';
 import NavBarPopupRegister from './Register/NavBarPopupRegister';
 
 const NavBar = () => {

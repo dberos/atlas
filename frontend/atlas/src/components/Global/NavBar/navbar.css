@@ -626,6 +626,14 @@
     font-size: 18px;
 }
 
+.navbar-register-popup-button p {
+    width: 70%;
+    color: green;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
 .navbar-register-popup-button button:hover {
     background-color: orange;
 }
@@ -1014,6 +1022,12 @@
     
     .navbar-register-popup-button {
         height: 60px;
+    }
+
+    .navbar-register-popup-button p {
+        width: 90%;
+        font-size: 18px;
+        margin-top: 10px;
     }
     
     .navbar-register-popup-button button {

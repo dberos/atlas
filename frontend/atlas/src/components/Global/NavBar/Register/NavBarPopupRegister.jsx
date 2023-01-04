@@ -39,6 +39,8 @@ const NavBarPopupRegister = (props) => {
 
   const [isDisabled, setIsDisabled] = useState(true);
 
+  const [successMessage, setSuccessMessage] = useState([]);
+
   useEffect(() => {
     setEmailEntered([]);
     setEmailError('Email *');
@@ -52,6 +54,7 @@ const NavBarPopupRegister = (props) => {
     setCompanyCityEntered([]);
     setCompanyStreetEntered([]);
     setCompanyStreetNumberEntered([]);
+    setSuccessMessage([]);
   }, [openRegister])
 
   useEffect(() => {
@@ -67,6 +70,7 @@ const NavBarPopupRegister = (props) => {
     setCompanyCityEntered([]);
     setCompanyStreetEntered([]);
     setCompanyStreetNumberEntered([]);
+    setSuccessMessage([]);
   }, [menuOpenRegister])
 
   useEffect(() => {
@@ -82,6 +86,7 @@ const NavBarPopupRegister = (props) => {
     setCompanyCityEntered([]);
     setCompanyStreetEntered([]);
     setCompanyStreetNumberEntered([]);
+    setSuccessMessage([]);
   }, [selectedDropdownOption])
 
   useEffect(() => {
@@ -166,6 +171,7 @@ const NavBarPopupRegister = (props) => {
 
       }
       await registerUser(user);
+      setSuccessMessage('Ο λογαριασμός δημιουργήθηκε με επιτυχία!');
     }
   }
 
@@ -192,6 +198,7 @@ const NavBarPopupRegister = (props) => {
           street_number: parseInt(companyStreetNumberEntered)
         }
         await registerUser(user);
+        setSuccessMessage('Ο λογαριασμός δημιουργήθηκε με επιτυχία!');
       }
   }
 
@@ -270,13 +277,20 @@ const NavBarPopupRegister = (props) => {
               setPasswordError={setPasswordError}
               />
               <div className="navbar-register-popup-button">
-                <button
-                style={{backgroundColor: isDisabled && '#ADABA8',
-                        cursor: isDisabled && 'not-allowed'}}
-                disabled={isDisabled && true}
-                >
-                  Εγγραφή
-                </button>
+                
+                {
+                  successMessage.length !== 0 ?
+                    <p>
+                      {successMessage}
+                    </p> :
+                      <button
+                      style={{backgroundColor: isDisabled && '#ADABA8',
+                              cursor: isDisabled && 'not-allowed'}}
+                      disabled={isDisabled && true}
+                      >
+                        Εγγραφή
+                      </button>
+                }
               </div>
             </form>
           </div>
