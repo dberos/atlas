@@ -10,6 +10,11 @@ const NavBarRegisterStreet = (props) => {
         setCompanyStreetNumberEntered
     } = props;
 
+    const handleStreetNumber = (e) => {
+        const streetNumber = e.target.value;
+        setCompanyStreetNumberEntered(streetNumber.replace(/[^0-9/]/g, ''));
+    }
+
   return (
     <div className="navbar-register-popup-company-input">
         <div className="navbar-register-popup-company-input-street">
@@ -22,7 +27,7 @@ const NavBarRegisterStreet = (props) => {
             {
             companyStreetEntered.length !== 0 &&
                 <label>
-                Οδός *
+                    Οδός *
                 </label>
             }
         </div>
@@ -31,7 +36,7 @@ const NavBarRegisterStreet = (props) => {
             type="text" 
             placeholder='Αριθμός *'
             value={companyStreetNumberEntered}
-            onChange={(e) => setCompanyStreetNumberEntered(e.target.value)}
+            onChange={handleStreetNumber}
             />
             {
                 companyStreetNumberEntered.length !== 0 &&

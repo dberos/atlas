@@ -8,13 +8,18 @@ const NavBarRegisterTelephone = (props) => {
         setTelephoneEntered
     } = props;
 
+    const handleTelephone = (e) => {
+        const telephone = e.target.value;
+        setTelephoneEntered(telephone.replace(/[^0-9/]/g, ''));
+    }
+
   return (
     <div className="navbar-register-popup-input-container">
         <input 
         type="text" 
         placeholder='Τηλέφωνο'
         value={telephoneEntered}
-        onChange={(e) => setTelephoneEntered(e.target.value)}
+        onChange={handleTelephone}
         />
         {
             telephoneEntered.length !== 0 &&
