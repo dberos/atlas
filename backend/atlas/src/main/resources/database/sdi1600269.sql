@@ -34,6 +34,12 @@ CREATE TABLE IF NOT EXISTS `sdi1600269`.`users` (
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB;
 
+INSERT INTO users
+VALUES
+    (1, 'dberos@atlas.com', '1234', null, 'undergraduate'),
+    (2, 'mroussou@eam.com', '1234', null, 'company'),
+    (3, 'pcharalampous@atlas.com', '1234', null, 'undergraduate'),
+    (4, 'akolovou@eam.com', '1234', null, 'company');
 
 -- -----------------------------------------------------
 -- Table `sdi1600269`.`undergraduates`
@@ -55,6 +61,10 @@ CREATE TABLE IF NOT EXISTS `sdi1600269`.`undergraduates` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO undergraduates
+VALUES
+    (1, 'Dimitris', 'Beros', 'ΕΚΠΑ', null),
+    (3, 'Panagiotis', 'Charalampous', 'ΕΚΠΑ', null);
 
 -- -----------------------------------------------------
 -- Table `sdi1600269`.`companies`
@@ -76,6 +86,10 @@ CREATE TABLE IF NOT EXISTS `sdi1600269`.`companies` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+INSERT INTO companies
+VALUES
+    (2, 'Eam1', 'Καισαριανή', 'Εθνικής Αντιστάσεως', 1),
+    (4, 'Eam2', 'Καισαριανή', 'Εθνικής Αντιστάσεως', 2);
 
 -- -----------------------------------------------------
 -- Table `sdi1600269`.`internship`

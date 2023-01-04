@@ -30,6 +30,11 @@ public class UsersService {
         return usersRepository.findAll();
     }
 
+    public Boolean findEmail(String email) {
+        Optional<Users> userOptional = usersRepository.findByEmail(email);
+        return !userOptional.isPresent() ? true : false;
+    }
+
     public Users registerUser(Users user) {
         Optional<Users> userOptional = usersRepository.findByEmail(user.getEmail());
         if (userOptional.isPresent()) {
@@ -82,10 +87,5 @@ public class UsersService {
                                     userOptional.get().getEmail(),
                                     userOptional.get().getType());
         return finalUser;
-    }
-
-    public Boolean findEmail(String email) {
-        Optional<Users> userOptional = usersRepository.findByEmail(email);
-        return !userOptional.isPresent() ? true : false;
     }
 }
