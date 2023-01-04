@@ -45,6 +45,8 @@ const NavBarPopupLogin = (props) => {
             localStorage.setItem('email', data.email);
             localStorage.setItem('type', data.type);
             setLogged(true);
+            setOpenLogin(false);
+            setMenuOpenLogin(false);
         }
         else {
             setError('Λάθος email ή κωδικός');

@@ -25,6 +25,8 @@ const NavBar = () => {
     const [openRegister, setOpenRegister] = useState(false);
     const [menuOpenRegister, setMenuOpenRegister] = useState(false);
 
+    const [logged, setLogged] = useState(false);
+
     useEffect(() => {
       const handleResize = () => {
         setScreenWidth(window.innerWidth);
@@ -71,6 +73,8 @@ const NavBar = () => {
           setOpenRegister={setOpenRegister}
           menuOpenRegister={menuOpenRegister}
           setMenuOpenRegister={setMenuOpenRegister}
+          logged={logged}
+          setLogged={setLogged}
           />
         </div>
         <div className='navbar-menu-icon'>
@@ -88,6 +92,7 @@ const NavBar = () => {
             setMenu={setMenu}
             setMenuOpenLogin={setMenuOpenLogin}
             setMenuOpenRegister={setMenuOpenRegister}
+            setLogged={setLogged}
             />
         }
         {
@@ -97,6 +102,8 @@ const NavBar = () => {
             setOpenLogin={setOpenLogin}
             menuOpenLogin={menuOpenLogin}
             setMenuOpenLogin={setMenuOpenLogin}
+            logged={logged}
+            setLogged={setLogged}
           />
         }
         {

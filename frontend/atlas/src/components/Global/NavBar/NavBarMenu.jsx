@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './navbar.css'
 import useCloseModal from '../../../hooks/useCloseModal';
 import { Link } from "react-router-dom";
@@ -8,22 +8,53 @@ const NavBarMenu = (props) => {
     const {
         setMenu,
         setMenuOpenLogin,
-        setMenuOpenRegister
+        setMenuOpenRegister,
+        setLogged
     } = props;
+
+    const [loginOption, setLoginOption] = useState('Σύνδεση');
+    const [registerOption, setRegisterOption] = useState('Εγγραφή');
 
     let ref = useCloseModal(() => {
         setMenu(false);
     });
 
     const handleLoginClick = () => {
-        setMenu(false);
-        setMenuOpenLogin(true);
+        // setMenu(false);
+        // setMenuOpenLogin(true);
+        const email = localStorage.getItem('email');
+        if(email) {
+            console.log('logged in');
+        }
+        else {
+            setMenu(false);
+            setMenuOpenLogin(true);
+        }
     }
 
     const handleRegisterClick = () => {
-        setMenu(false);
-        setMenuOpenRegister(true);
+        
+        const email = localStorage.getItem('email');
+        if(email) {
+            setMenu(false);
+            setMenuOpenRegister(false);
+            setMenuOpenRegister(false);
+            setLogged(false);
+            localStorage.clear();
+        }
+        else {
+            setMenu(false);
+            setMenuOpenRegister(true);
+        }
     }
+
+    useEffect(() => {
+        const email = localStorage.getItem('email');
+        if(email) {
+            setLoginOption('Προφίλ');
+            setRegisterOption('Αποσύνδεση');
+        }
+    }, [])
 
   return (
     <div className='navbar-menu-container' ref={ref}>
@@ -44,11 +75,11 @@ const NavBarMenu = (props) => {
         style={{cursor: 'pointer'}} 
         onClick={handleLoginClick}
         >
-            Σύνδεση / Προφίλ
+            {loginOption}
         </p>
         <p style={{cursor: 'pointer'}}
         onClick={handleRegisterClick}>
-            Εγγραφή / Αποσύνδεση
+            {registerOption}
         </p>
         </div>
   )
