@@ -9,7 +9,7 @@ import NavBarRegisterUniversity from './NavBarRegisterUniversity';
 import NavBarRegisterStreet from './NavBarRegisterStreet';
 import NavBarRegisterTelephone from './NavBarRegisterTelephone';
 import NavBarRegisterPassword from './NavBarRegisterPassword';
-import { registerUndergraduate, registerCompany } from '../users';
+import { registerUser } from '../users';
 
 const NavBarPopupRegister = (props) => {
 
@@ -24,6 +24,7 @@ const NavBarPopupRegister = (props) => {
   const [selectedUniversityDropdownOption, setSelectedUniversityDropdownOption] = useState('ΕΚΠΑ');
 
   const [emailEntered, setEmailEntered] = useState([]);
+  const [emailError, setEmailError] = useState([]);
   const [nameEntered, setNameEntered] = useState([]);
   const [surnameEntered, setSurnameEntered] = useState([]);
   const [telephoneEntered, setTelephoneEntered] = useState([]);
@@ -39,6 +40,7 @@ const NavBarPopupRegister = (props) => {
 
   useEffect(() => {
     setEmailEntered([]);
+    setEmailError('Email *');
     setNameEntered([]);
     setSurnameEntered([]);
     setTelephoneEntered([]);
@@ -52,6 +54,7 @@ const NavBarPopupRegister = (props) => {
 
   useEffect(() => {
     setEmailEntered([]);
+    setEmailError('Email *');
     setNameEntered([]);
     setSurnameEntered([]);
     setTelephoneEntered([]);
@@ -64,9 +67,24 @@ const NavBarPopupRegister = (props) => {
   }, [menuOpenRegister])
 
   useEffect(() => {
+    setEmailEntered([]);
+    setEmailError('Email *');
+    setNameEntered([]);
+    setSurnameEntered([]);
+    setTelephoneEntered([]);
+    setPasswordEntered([]);
+    setConfirmPasswordEntered([]);
+    setCompanyNameEntered([]);
+    setCompanyCityEntered([]);
+    setCompanyStreetEntered([]);
+    setCompanyStreetNumberEntered([]);
+  }, [selectedDropdownOption])
+
+  useEffect(() => {
     if(selectedDropdownOption === 'Είμαι Φοιτητής') {
       if(
         emailEntered.length !== 0 &&
+        emailError === 'Email *' &&
         nameEntered.length !== 0 &&
         passwordEntered.length !== 0 &&
         confirmPasswordEntered.length !== 0
@@ -79,6 +97,7 @@ const NavBarPopupRegister = (props) => {
     }
   }, [selectedDropdownOption,
       emailEntered,
+      emailError,
       nameEntered,
       surnameEntered,
       passwordEntered,
@@ -88,6 +107,7 @@ const NavBarPopupRegister = (props) => {
     if(selectedDropdownOption === 'Είμαι Εταιρεία') {
       if(
         emailEntered.length !== 0 &&
+        emailError === 'Email *' &&
         companyNameEntered.length !== 0 &&
         companyCityEntered.length !== 0 &&
         companyStreetEntered.length !== 0 &&
@@ -103,25 +123,13 @@ const NavBarPopupRegister = (props) => {
     }
   }, [selectedDropdownOption,
       emailEntered,
+      emailError,
       companyNameEntered,
       companyCityEntered,
       companyStreetEntered,
       companyStreetNumberEntered,
       passwordEntered,
       confirmPasswordEntered])
-
-  useEffect(() => {
-    setEmailEntered([]);
-    setNameEntered([]);
-    setSurnameEntered([]);
-    setTelephoneEntered([]);
-    setPasswordEntered([]);
-    setConfirmPasswordEntered([]);
-    setCompanyNameEntered([]);
-    setCompanyCityEntered([]);
-    setCompanyStreetEntered([]);
-    setCompanyStreetNumberEntered([]);
-  }, [selectedDropdownOption])
 
   let ref = useCloseModal(() => {
     setOpenRegister(false);
@@ -131,6 +139,7 @@ const NavBarPopupRegister = (props) => {
   const validateUndergraduate = async () => {
     if(
       emailEntered.length !== 0 &&
+      emailError === 'Email *' &&
       nameEntered.length !== 0 &&
       surnameEntered.length !== 0 &&
       passwordEntered.length !== 0 &&
@@ -147,12 +156,14 @@ const NavBarPopupRegister = (props) => {
         marks: null
 
       }
-      await registerUndergraduate(user);
+      await registerUser(user);
     }
   }
 
   const validateCompany = async () => {
-    if (emailEntered.length !== 0 &&
+    if (
+      emailEntered.length !== 0 &&
+      emailError.length !== 0 &&
       companyNameEntered.length !==0 &&
       companyCityEntered.length !==0 &&
       companyStreetEntered.length !== 0 &&
@@ -170,7 +181,7 @@ const NavBarPopupRegister = (props) => {
           street: companyStreetEntered,
           street_number: parseInt(companyStreetNumberEntered)
         }
-        await registerCompany(user);
+        await registerUser(user);
       }
   }
 
@@ -205,6 +216,8 @@ const NavBarPopupRegister = (props) => {
               <NavBarRegisterEmail
               emailEntered={emailEntered}
               setEmailEntered={setEmailEntered}
+              emailError={emailError}
+              setEmailError={setEmailError}
               />
               <NavBarRegisterName
               nameEntered={nameEntered}

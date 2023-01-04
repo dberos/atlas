@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping(path = "/users")
 @RestController
@@ -20,6 +21,11 @@ public class UsersController {
     @GetMapping
     public List<Users> getUsers() {
         return usersService.getUsers();
+    }
+
+    @GetMapping("/{email}")
+    public Boolean findEmail(@PathVariable String email) {
+        return usersService.findEmail(email);
     }
 
     @PostMapping("/register")

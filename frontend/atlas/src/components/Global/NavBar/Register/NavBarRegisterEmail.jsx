@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react'
 import '../navbar.css'
 
@@ -5,8 +6,39 @@ const NavBarRegisterEmail = (props) => {
 
     const {
         emailEntered,
-        setEmailEntered
+        setEmailEntered,
+        emailError,
+        setEmailError
     } = props;
+
+    const getEmail = async (email) => {
+        const response = await axios.get(`http://localhost:8080/users/${email}`);
+        return response.data;
+    }
+    
+    const handleChange = async (e) => {
+        const email = e.target.value;
+        setEmailEntered(email);
+        /* eslint-disable no-useless-escape */
+        const emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if(email.length !== 0 ){
+            const notExists = await getEmail(email);
+            if(notExists) {
+                if(email.match(emailFormat)) {
+                    setEmailError('Email *');
+                }
+                else {
+                    setEmailError('example@email.com');
+                }
+            }
+            else {
+                setEmailError('Το email χρησιμοποιείται ήδη');
+            }
+        }
+        else {
+            setEmailError('Email *');
+        }
+    }
 
   return (
     <div className="navbar-register-popup-input-container">
@@ -14,12 +46,13 @@ const NavBarRegisterEmail = (props) => {
         type="text" 
         placeholder='Email *'
         value={emailEntered}
-        onChange={(e) => setEmailEntered(e.target.value)}
+        onChange={handleChange}
+        style={{outline: emailError !== 'Email *' && '2px solid red'}}
         />
         {
             emailEntered.length !== 0 &&
             <label>
-                Email *
+                {emailError}
             </label>
         }
     </div>

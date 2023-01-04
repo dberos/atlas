@@ -83,4 +83,9 @@ public class UsersService {
                                     userOptional.get().getType());
         return finalUser;
     }
+
+    public Boolean findEmail(String email) {
+        Optional<Users> userOptional = usersRepository.findByEmail(email);
+        return !userOptional.isPresent() ? true : false;
+    }
 }
