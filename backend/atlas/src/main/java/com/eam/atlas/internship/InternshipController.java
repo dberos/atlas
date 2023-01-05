@@ -31,4 +31,9 @@ public class InternshipController {
                                     @PathVariable int company_id) {
         return internshipService.addInternship(internship, company_id);
     }
+
+    @PutMapping("/accept")
+    public Internship acceptUndergraduate(@RequestBody Internship internship) {
+        return internshipService.acceptUndergraduate(internship);
+    }
 }

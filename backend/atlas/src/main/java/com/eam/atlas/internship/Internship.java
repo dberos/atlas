@@ -1,8 +1,10 @@
 package com.eam.atlas.internship;
 
 import com.eam.atlas.companies.Companies;
+import com.eam.atlas.undergraduates.Undergraduates;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +19,7 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
 public class Internship {
 
     private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) int id;
@@ -34,6 +37,14 @@ public class Internship {
     @ManyToOne
     @JoinColumn(name = "companies_id", nullable = false)
     private Companies company;
+
+    @OneToOne
+    @JoinColumn(name = "undergraduates_id")
+    private Undergraduates undergraduate;
+
+    // To generate constructor for PUT Mapping
+    @Transient
+    private int undergraduate_id;
 
     public Internship(int id,
                       String title,
@@ -97,5 +108,11 @@ public class Internship {
         this.salary = salary;
         this.description = description;
         this.company = company;
+    }
+
+    public Internship(int id,
+                      int undergraduate_id) {
+        this.id = id;
+        this.undergraduate_id = undergraduate_id;
     }
 }
