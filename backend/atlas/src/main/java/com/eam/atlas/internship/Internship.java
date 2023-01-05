@@ -33,7 +33,6 @@ public class Internship {
     private String description;
     @ManyToOne
     @JoinColumn(name = "companies_id", nullable = false)
-    @JsonIgnore
     private Companies company;
 
     public Internship(int id,

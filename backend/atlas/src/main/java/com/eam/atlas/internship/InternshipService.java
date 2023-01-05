@@ -14,13 +14,11 @@ public class InternshipService {
     private final InternshipRepository internshipRepository;
     private final CompaniesRepository companiesRepository;
 
-    private final CompaniesService companiesService;
-
     @Autowired
-    public InternshipService(InternshipRepository internshipRepository, CompaniesRepository companiesRepository, CompaniesService companiesService) {
+    public InternshipService(InternshipRepository internshipRepository,
+                             CompaniesRepository companiesRepository) {
         this.internshipRepository = internshipRepository;
         this.companiesRepository = companiesRepository;
-        this.companiesService = companiesService;
     }
 
     public List<Internship> getInternships() {
@@ -34,17 +32,7 @@ public class InternshipService {
     public Internship addInternship(Internship internship, int company_id) {
         Optional<Companies> company = companiesRepository.findById(company_id);
         internship.setCompany(company.get());
-        Internship newInternship = new Internship(internship.getTitle(),
-                                                    internship.getField(),
-                                                    internship.getStart_date(),
-                                                    internship.getArea(),
-                                                    internship.getDuration(),
-                                                    internship.getType(),
-                                                    internship.getEspa(),
-                                                    internship.getSalary(),
-                                                    internship.getDescription(),
-                                                    company.get());
-        internshipRepository.save(newInternship);
-        return  newInternship;
+        internshipRepository.save(internship);
+        return internship;
     }
 }
