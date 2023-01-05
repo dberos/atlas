@@ -17,7 +17,9 @@ import java.sql.Blob;
 @JsonInclude(JsonInclude.Include.NON_DEFAULT) // To exclude null and 0 at return
 public class Users {
 
-    private @Id @GeneratedValue(strategy = GenerationType.IDENTITY) int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String email;
     private String password;
     private String telephone;

@@ -21,15 +21,14 @@ public class InternshipController {
         return internshipService.getInternships();
     }
 
-    @GetMapping("/{company_id}")
+    @GetMapping("/company_id={company_id}")
     public List<Internship> getInternshipsByCompanyId(@PathVariable int company_id) {
         return internshipService.getInternshipsByCompanyId(company_id);
     }
 
-    @PostMapping("/{company_id}")
-    public Internship addInternship(@RequestBody Internship internship,
-                                    @PathVariable int company_id) {
-        return internshipService.addInternship(internship, company_id);
+    @PostMapping
+    public Internship addInternship(@RequestBody Internship internship) {
+        return internshipService.addInternship(internship);
     }
 
     @PutMapping("/accept")

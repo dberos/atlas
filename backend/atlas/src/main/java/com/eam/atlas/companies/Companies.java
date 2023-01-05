@@ -18,7 +18,8 @@ import java.util.Set;
 @AllArgsConstructor
 public class Companies {
 
-    private @Id int id;
+    @Id
+    private int id;
     private String name;
     private String town;
     private String street;

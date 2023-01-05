@@ -33,8 +33,8 @@ public class InternshipService {
         return internshipRepository.findInternshipsByCompanyId(company_id);
     }
 
-    public Internship addInternship(Internship internship, int company_id) {
-        Optional<Companies> company = companiesRepository.findById(company_id);
+    public Internship addInternship(Internship internship) {
+        Optional<Companies> company = companiesRepository.findById(internship.getCompany_id());
         internship.setCompany(company.get());
         internshipRepository.save(internship);
         return internship;

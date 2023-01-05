@@ -15,7 +15,8 @@ import java.sql.Blob;
 @AllArgsConstructor
 public class Undergraduates {
 
-    private @Id int id;
+    @Id
+    private int id;
     private String first_name;
     private String last_name;
     private String university;
