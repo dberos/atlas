@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.sql.Blob;
 
 @Entity
 @Table(name="users")
@@ -32,9 +31,9 @@ public class Users {
     @Transient
     private String last_name;
     @Transient
-    private String university;
+    private String field;
     @Transient
-    private @Lob Blob marks;
+    private String university;
 
     // Company User
 
@@ -71,8 +70,8 @@ public class Users {
                  String type,
                  String first_name,
                  String last_name,
-                 String university,
-                 Blob marks) {
+                 String field,
+                 String university) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -80,8 +79,8 @@ public class Users {
         this.type = type;
         this.first_name = first_name;
         this.last_name = last_name;
+        this.field = field;
         this.university = university;
-        this.marks = marks;
     }
 
     // Company User

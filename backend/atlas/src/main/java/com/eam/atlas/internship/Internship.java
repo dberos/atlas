@@ -26,6 +26,7 @@ public class Internship {
     private int id;
     private String title;
     private String field;
+    private String university;
     @JsonFormat(pattern = "dd/MM/yyyy")
     @Temporal(TemporalType.DATE)
     private Date start_date;
@@ -35,6 +36,7 @@ public class Internship {
     private Boolean espa;
     private int salary;
     private String description;
+    private Boolean submitted;
     @ManyToOne
     @JoinColumn(name = "companies_id", nullable = false)
     private Companies company;
@@ -52,47 +54,7 @@ public class Internship {
     public Internship(int id,
                       String title,
                       String field,
-                      Date start_date,
-                      String area,
-                      int duration,
-                      String type,
-                      Boolean espa,
-                      int salary,
-                      String description) {
-        this.id = id;
-        this.title = title;
-        this.field = field;
-        this.start_date = start_date;
-        this.area = area;
-        this.duration = duration;
-        this.type = type;
-        this.espa = espa;
-        this.salary = salary;
-        this.description = description;
-    }
-
-    public Internship(String title,
-                      String field,
-                      Date start_date,
-                      String area,
-                      int duration,
-                      String type,
-                      Boolean espa,
-                      int salary,
-                      String description) {
-        this.title = title;
-        this.field = field;
-        this.start_date = start_date;
-        this.area = area;
-        this.duration = duration;
-        this.type = type;
-        this.espa = espa;
-        this.salary = salary;
-        this.description = description;
-    }
-
-    public Internship(String title,
-                      String field,
+                      String university,
                       Date start_date,
                       String area,
                       int duration,
@@ -100,9 +62,11 @@ public class Internship {
                       Boolean espa,
                       int salary,
                       String description,
-                      Companies company) {
+                      Boolean submitted) {
+        this.id = id;
         this.title = title;
         this.field = field;
+        this.university = university;
         this.start_date = start_date;
         this.area = area;
         this.duration = duration;
@@ -110,11 +74,62 @@ public class Internship {
         this.espa = espa;
         this.salary = salary;
         this.description = description;
+        this.submitted = submitted;
+    }
+
+    public Internship(String title,
+                      String field,
+                      String university,
+                      Date start_date,
+                      String area,
+                      int duration,
+                      String type,
+                      Boolean espa,
+                      int salary,
+                      String description,
+                      Boolean submitted) {
+        this.title = title;
+        this.field = field;
+        this.university = university;
+        this.start_date = start_date;
+        this.area = area;
+        this.duration = duration;
+        this.type = type;
+        this.espa = espa;
+        this.salary = salary;
+        this.description = description;
+        this.submitted = submitted;
+    }
+
+    public Internship(String title,
+                      String field,
+                      String university,
+                      Date start_date,
+                      String area,
+                      int duration,
+                      String type,
+                      Boolean espa,
+                      int salary,
+                      String description,
+                      Boolean submitted,
+                      Companies company) {
+        this.title = title;
+        this.field = field;
+        this.university = university;
+        this.start_date = start_date;
+        this.area = area;
+        this.duration = duration;
+        this.type = type;
+        this.espa = espa;
+        this.salary = salary;
+        this.description = description;
+        this.submitted = submitted;
         this.company = company;
     }
 
     public Internship(String title,
                       String field,
+                      String university,
                       Date start_date,
                       String area,
                       int duration,
@@ -122,9 +137,11 @@ public class Internship {
                       Boolean espa,
                       int salary,
                       String description,
+                      Boolean submitted,
                       int company_id) {
         this.title = title;
         this.field = field;
+        this.university = university;
         this.start_date = start_date;
         this.area = area;
         this.duration = duration;
@@ -132,6 +149,7 @@ public class Internship {
         this.espa = espa;
         this.salary = salary;
         this.description = description;
+        this.submitted = submitted;
         this.company_id = company_id;
     }
 

@@ -35,6 +35,9 @@ public class InternshipService {
 
     public Internship addInternship(Internship internship) {
         Optional<Companies> company = companiesRepository.findById(internship.getCompany_id());
+        if(company.isEmpty()) {
+            throw new IllegalStateException("company not present");
+        }
         internship.setCompany(company.get());
         internshipRepository.save(internship);
         return internship;
@@ -42,7 +45,16 @@ public class InternshipService {
 
     public Internship acceptUndergraduate(Internship internship) {
         Optional<Internship> internshipOptional = internshipRepository.findById(internship.getId());
+        if(internshipOptional.isEmpty()) {
+            throw  new IllegalStateException("internship not present");
+        }
+        else if(internshipOptional.get().getUndergraduate() != null) {
+            throw new IllegalStateException("internship is already taken");
+        }
         Optional<Undergraduates> undergraduate = undergraduatesRepository.findById(internship.getUndergraduate_id());
+        if(undergraduate.isEmpty()) {
+            throw new IllegalStateException("undergraduate not present");
+        }
         internshipOptional.get().setUndergraduate(undergraduate.get());
         internshipRepository.save(internshipOptional.get());
         return internshipOptional.get();

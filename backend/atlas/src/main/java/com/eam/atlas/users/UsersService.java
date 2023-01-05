@@ -52,8 +52,8 @@ public class UsersService {
             Undergraduates undergradUser = new Undergraduates(normalUser.getId(),
                                                                 user.getFirst_name(),
                                                                 user.getLast_name(),
-                                                                user.getUniversity(),
-                                                                user.getMarks());
+                                                                user.getField(),
+                                                                user.getUniversity());
             undergraduatesRepository.save(undergradUser);
         }
         else if (type.equals("company")) {

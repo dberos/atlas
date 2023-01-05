@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.sql.Blob;
 
 @Entity
 @Table(name = "undergraduates")
@@ -19,7 +18,7 @@ public class Undergraduates {
     private int id;
     private String first_name;
     private String last_name;
+    private String field;
     private String university;
-    private @Lob Blob marks;
 
 }
