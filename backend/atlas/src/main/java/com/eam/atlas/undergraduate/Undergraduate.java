@@ -1,4 +1,4 @@
-package com.eam.atlas.undergraduates;
+package com.eam.atlas.undergraduate;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Undergraduates {
+public class Undergraduate {
 
     @Id
     private int id;

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping(path = "/interest")
+@RequestMapping(path = "/interests")
 @RestController
 @CrossOrigin
 public class InterestController {

@@ -1,4 +1,4 @@
-package com.eam.atlas.companies;
+package com.eam.atlas.company;
 
 import com.eam.atlas.internship.Internship;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -16,7 +16,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Companies {
+public class Company {
 
     @Id
     private int id;
@@ -29,7 +29,7 @@ public class Companies {
     @JsonIgnore
     private Set<Internship> internships;
 
-    public Companies(int id, String name, String town, String street, int street_number) {
+    public Company(int id, String name, String town, String street, int street_number) {
         this.id = id;
         this.name = name;
         this.town = town;

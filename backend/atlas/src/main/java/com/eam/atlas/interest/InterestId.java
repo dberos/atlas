@@ -13,7 +13,7 @@ import java.util.Objects;
 @AllArgsConstructor
 public class InterestId implements Serializable {
 
-    private int undergraduates_id;
+    private int undergraduate_id;
     private int internship_id;
 
     @Override
@@ -21,11 +21,11 @@ public class InterestId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InterestId that = (InterestId) o;
-        return undergraduates_id == that.undergraduates_id && internship_id == that.internship_id;
+        return undergraduate_id == that.undergraduate_id && internship_id == that.internship_id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(undergraduates_id, internship_id);
+        return Objects.hash(undergraduate_id, internship_id);
     }
 }

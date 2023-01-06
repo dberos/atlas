@@ -1,7 +1,7 @@
 package com.eam.atlas.internship;
 
-import com.eam.atlas.companies.Companies;
-import com.eam.atlas.undergraduates.Undergraduates;
+import com.eam.atlas.company.Company;
+import com.eam.atlas.undergraduate.Undergraduate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
@@ -13,7 +13,7 @@ import lombok.Setter;
 import java.util.Date;
 
 @Entity
-@Table(name = "internship")
+@Table(name = "internships")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -38,12 +38,12 @@ public class Internship {
     private String description;
     private Boolean submitted;
     @ManyToOne
-    @JoinColumn(name = "companies_id", nullable = false)
-    private Companies company;
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
 
     @OneToOne
-    @JoinColumn(name = "undergraduates_id")
-    private Undergraduates undergraduate;
+    @JoinColumn(name = "undergraduate_id")
+    private Undergraduate undergraduate;
 
     // To generate constructors for POST and PUT Mapping
     @Transient
@@ -112,7 +112,7 @@ public class Internship {
                       int salary,
                       String description,
                       Boolean submitted,
-                      Companies company) {
+                      Company company) {
         this.title = title;
         this.field = field;
         this.university = university;

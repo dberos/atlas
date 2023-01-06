@@ -1,9 +1,9 @@
 package com.eam.atlas.internship;
 
-import com.eam.atlas.companies.Companies;
-import com.eam.atlas.companies.CompaniesRepository;
-import com.eam.atlas.undergraduates.Undergraduates;
-import com.eam.atlas.undergraduates.UndergraduatesRepository;
+import com.eam.atlas.company.Company;
+import com.eam.atlas.company.CompanyRepository;
+import com.eam.atlas.undergraduate.Undergraduate;
+import com.eam.atlas.undergraduate.UndergraduateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -13,16 +13,16 @@ import java.util.Optional;
 public class InternshipService {
 
     private final InternshipRepository internshipRepository;
-    private final CompaniesRepository companiesRepository;
-    private final UndergraduatesRepository undergraduatesRepository;
+    private final CompanyRepository companyRepository;
+    private final UndergraduateRepository undergraduateRepository;
 
     @Autowired
     public InternshipService(InternshipRepository internshipRepository,
-                             CompaniesRepository companiesRepository,
-                             UndergraduatesRepository undergraduatesRepository) {
+                             CompanyRepository companyRepository,
+                             UndergraduateRepository undergraduateRepository) {
         this.internshipRepository = internshipRepository;
-        this.companiesRepository = companiesRepository;
-        this.undergraduatesRepository = undergraduatesRepository;
+        this.companyRepository = companyRepository;
+        this.undergraduateRepository = undergraduateRepository;
     }
 
     public List<Internship> getInternships() {
@@ -34,7 +34,7 @@ public class InternshipService {
     }
 
     public Internship addInternship(Internship internship) {
-        Optional<Companies> company = companiesRepository.findById(internship.getCompany_id());
+        Optional<Company> company = companyRepository.findById(internship.getCompany_id());
         if(company.isEmpty()) {
             throw new IllegalStateException("company not present");
         }
@@ -51,7 +51,7 @@ public class InternshipService {
         else if(internshipOptional.get().getUndergraduate() != null) {
             throw new IllegalStateException("internship is already taken");
         }
-        Optional<Undergraduates> undergraduate = undergraduatesRepository.findById(internship.getUndergraduate_id());
+        Optional<Undergraduate> undergraduate = undergraduateRepository.findById(internship.getUndergraduate_id());
         if(undergraduate.isEmpty()) {
             throw new IllegalStateException("undergraduate not present");
         }

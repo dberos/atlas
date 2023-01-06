@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
-@RequestMapping(path = "/internship")
+@RequestMapping(path = "/internships")
 @RestController
 @CrossOrigin
 public class InternshipController {

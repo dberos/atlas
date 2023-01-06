@@ -1,10 +1,9 @@
 package com.eam.atlas.interest;
 
-import com.eam.atlas.companies.Companies;
-import com.eam.atlas.companies.CompaniesRepository;
+import com.eam.atlas.company.Company;
+import com.eam.atlas.company.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -12,12 +11,12 @@ import java.util.Optional;
 public class InterestService {
 
     private final InterestRepository interestRepository;
-    private final CompaniesRepository companiesRepository;
+    private final CompanyRepository companyRepository;
 
     @Autowired
-    public InterestService(InterestRepository interestRepository, CompaniesRepository companiesRepository) {
+    public InterestService(InterestRepository interestRepository, CompanyRepository companyRepository) {
         this.interestRepository = interestRepository;
-        this.companiesRepository = companiesRepository;
+        this.companyRepository = companyRepository;
     }
 
     public List<Interest> getInterests() {
@@ -33,7 +32,7 @@ public class InterestService {
     }
 
     public Interest addInterest(Interest interest) {
-        Optional<Companies> company = companiesRepository.findById(interest.getCompanies_id());
+        Optional<Company> company = companyRepository.findById(interest.getCompany_id());
         if(company.isEmpty()) {
             throw new IllegalStateException("company not present");
         }

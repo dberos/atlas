@@ -1,9 +1,9 @@
-package com.eam.atlas.users;
+package com.eam.atlas.user;
 
-import com.eam.atlas.companies.Companies;
-import com.eam.atlas.companies.CompaniesRepository;
-import com.eam.atlas.undergraduates.Undergraduates;
-import com.eam.atlas.undergraduates.UndergraduatesRepository;
+import com.eam.atlas.company.Company;
+import com.eam.atlas.company.CompanyRepository;
+import com.eam.atlas.undergraduate.Undergraduate;
+import com.eam.atlas.undergraduate.UndergraduateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,79 +11,79 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsersService {
+public class UserService {
 
-    private final UsersRepository usersRepository;
-    private final UndergraduatesRepository undergraduatesRepository;
-    private final CompaniesRepository companiesRepository;
+    private final UserRepository userRepository;
+    private final UndergraduateRepository undergraduateRepository;
+    private final CompanyRepository companyRepository;
 
     @Autowired
-    public UsersService(UsersRepository usersRepository,
-                        UndergraduatesRepository undergraduatesRepository,
-                        CompaniesRepository companiesRepository) {
-        this.usersRepository = usersRepository;
-        this.undergraduatesRepository = undergraduatesRepository;
-        this.companiesRepository = companiesRepository;
+    public UserService(UserRepository userRepository,
+                       UndergraduateRepository undergraduateRepository,
+                       CompanyRepository companyRepository) {
+        this.userRepository = userRepository;
+        this.undergraduateRepository = undergraduateRepository;
+        this.companyRepository = companyRepository;
     }
 
-    public List<Users> getUsers() {
-        return usersRepository.findAll();
+    public List<User> getUsers() {
+        return userRepository.findAll();
     }
 
     public Boolean findEmail(String email) {
-        Optional<Users> userOptional = usersRepository.findByEmail(email);
+        Optional<User> userOptional = userRepository.findByEmail(email);
         return !userOptional.isPresent() ? true : false;
     }
 
-    public Users registerUser(Users user) {
-        Optional<Users> userOptional = usersRepository.findByEmail(user.getEmail());
+    public User registerUser(User user) {
+        Optional<User> userOptional = userRepository.findByEmail(user.getEmail());
         if (userOptional.isPresent()) {
             throw new IllegalStateException("email taken");
         }
         // Create normal user with Transient undergraduate fields
-        Users normalUser = new Users(user.getEmail(), user.getPassword(),
+        User normalUser = new User(user.getEmail(), user.getPassword(),
                 user.getTelephone(), user.getType());
-        usersRepository.save(normalUser);
+        userRepository.save(normalUser);
 
         // Check whether user is Undergraduate or Company
         String type = user.getType();
         if (type.equals("undergraduate")) {
             // Create Undergraduate
-            Undergraduates undergradUser = new Undergraduates(normalUser.getId(),
+            Undergraduate undergradUser = new Undergraduate(normalUser.getId(),
                                                                 user.getFirst_name(),
                                                                 user.getLast_name(),
                                                                 user.getField(),
                                                                 user.getUniversity());
-            undergraduatesRepository.save(undergradUser);
+            undergraduateRepository.save(undergradUser);
         }
         else if (type.equals("company")) {
             // Create Company
-            Companies companyUser = new Companies(normalUser.getId(),
+            Company companyUser = new Company(normalUser.getId(),
                                                     user.getName(),
                                                     user.getTown(),
                                                     user.getStreet(),
                                                     user.getStreet_number());
-            companiesRepository.save(companyUser);
+            companyRepository.save(companyUser);
         }
         else {
             throw new IllegalStateException("something went wrong");
         }
-        Optional<Users> finalOptionalUser = usersRepository.findByEmail(user.getEmail());
-        Users finalUser = new Users(finalOptionalUser.get().getId(),
+        Optional<User> finalOptionalUser = userRepository.findByEmail(user.getEmail());
+        User finalUser = new User(finalOptionalUser.get().getId(),
                                     finalOptionalUser.get().getEmail(),
                                     finalOptionalUser.get().getType());
         return finalUser;
     }
 
-    public Users loginUser(Users user) {
-        Optional<Users> userOptional = usersRepository.findByEmail(user.getEmail());
+    public User loginUser(User user) {
+        Optional<User> userOptional = userRepository.findByEmail(user.getEmail());
         if (!userOptional.isPresent()) {
             throw new IllegalStateException("wrong credentials");
         }
         if (!userOptional.get().getPassword().equals(user.getPassword())) {
             throw new IllegalStateException("wrong credentials");
         }
-        Users finalUser = new Users(userOptional.get().getId(),
+        User finalUser = new User(userOptional.get().getId(),
                                     userOptional.get().getEmail(),
                                     userOptional.get().getType());
         return finalUser;

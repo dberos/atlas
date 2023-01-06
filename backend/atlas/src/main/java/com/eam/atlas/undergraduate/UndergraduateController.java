@@ -1,4 +1,4 @@
-package com.eam.atlas.undergraduates;
+package com.eam.atlas.undergraduate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -7,17 +7,17 @@ import java.util.List;
 
 @RequestMapping(path = "/undergraduates")
 @RestController
-public class UndergraduatesController {
+public class UndergraduateController {
 
-    private final UndergraduatesService undergraduatesService;
+    private final UndergraduateService undergraduatesService;
 
     @Autowired
-    public UndergraduatesController(UndergraduatesService undergraduatesService) {
+    public UndergraduateController(UndergraduateService undergraduatesService) {
         this.undergraduatesService = undergraduatesService;
     }
 
     @GetMapping
-    public List<Undergraduates> getUndergraduates() {
+    public List<Undergraduate> getUndergraduates() {
         return undergraduatesService.getUndergraduates();
     }
 }

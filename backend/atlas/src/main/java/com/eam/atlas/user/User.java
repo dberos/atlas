@@ -1,4 +1,4 @@
-package com.eam.atlas.users;
+package com.eam.atlas.user;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
@@ -14,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_DEFAULT) // To exclude null and 0 at return
-public class Users {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,7 +46,7 @@ public class Users {
     @Transient
     private int street_number;
 
-    public Users(int id, String email, String password, String telephone, String type) {
+    public User(int id, String email, String password, String telephone, String type) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -54,7 +54,7 @@ public class Users {
         this.type = type;
     }
 
-    public Users(String email, String password, String telephone, String type) {
+    public User(String email, String password, String telephone, String type) {
         this.email = email;
         this.password = password;
         this.telephone = telephone;
@@ -63,15 +63,15 @@ public class Users {
 
 
     // Undergraduate User
-    public Users(int id,
-                 String email,
-                 String password,
-                 String telephone,
-                 String type,
-                 String first_name,
-                 String last_name,
-                 String field,
-                 String university) {
+    public User(int id,
+                String email,
+                String password,
+                String telephone,
+                String type,
+                String first_name,
+                String last_name,
+                String field,
+                String university) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -84,15 +84,15 @@ public class Users {
     }
 
     // Company User
-    public Users(int id,
-                 String email,
-                 String password,
-                 String telephone,
-                 String type,
-                 String name,
-                 String town,
-                 String street,
-                 int street_number) {
+    public User(int id,
+                String email,
+                String password,
+                String telephone,
+                String type,
+                String name,
+                String town,
+                String street,
+                int street_number) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -104,16 +104,16 @@ public class Users {
         this.street_number = street_number;
     }
 
-    public Users(int id,
-                 String email,
-                 String type) {
+    public User(int id,
+                String email,
+                String type) {
         this.id = id;
         this.email = email;
         this.type = type;
     }
 
-    public Users(String email,
-                 String password) {
+    public User(String email,
+                String password) {
         this.email = email;
         this.password = password;
     }
