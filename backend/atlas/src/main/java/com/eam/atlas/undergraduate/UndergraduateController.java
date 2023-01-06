@@ -9,15 +9,15 @@ import java.util.List;
 @RestController
 public class UndergraduateController {
 
-    private final UndergraduateService undergraduatesService;
+    private final UndergraduateService undergraduateService;
 
     @Autowired
-    public UndergraduateController(UndergraduateService undergraduatesService) {
-        this.undergraduatesService = undergraduatesService;
+    public UndergraduateController(UndergraduateService undergraduateService) {
+        this.undergraduateService = undergraduateService;
     }
 
     @GetMapping
     public List<Undergraduate> getUndergraduates() {
-        return undergraduatesService.getUndergraduates();
+        return undergraduateService.getUndergraduates();
     }
 }

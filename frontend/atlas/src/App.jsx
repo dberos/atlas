@@ -1,5 +1,5 @@
 import {useLayoutEffect} from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation} from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import NavBar from './components/Global/NavBar/NavBar';
 import Footer from './components/Global/Footer/Footer';
 import Home from './pages/Home';
@@ -8,6 +8,7 @@ import Companies from './pages/Companies';
 import FAQs from './pages/FAQs';
 import FAQsUndergraduates from './pages/FAQsUndergraduates';
 import FAQsCompanies from './pages/FAQsCompanies';
+import Profile from './pages/Profile';
 
 function App() {
 
@@ -24,6 +25,16 @@ function App() {
     return children;
   } 
 
+  // Protected routes e.g profile
+  const Protected = ({children}) => {
+    const email = localStorage.getItem('email');
+    return (
+      !email ?
+        <Navigate to="/" replace/> :
+          children
+    )
+  }
+
   return (
     <Router>
       <Wrapper>
@@ -35,6 +46,14 @@ function App() {
           <Route path='/faqs' element={<FAQs/>}/>
           <Route path='/faqs/undergraduates' element={<FAQsUndergraduates/>}/>
           <Route path='/faqs/companies' element={<FAQsCompanies/>}/>
+          <Route 
+          path='/profile'
+          element={
+            <Protected>
+              <Profile/>
+            </Protected>
+          }
+          />
           <Route path='*' element={<Navigate to='/'/>}/>
         </Routes>
         <Footer/>

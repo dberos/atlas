@@ -3,6 +3,7 @@ import './navbar.css'
 import useCloseModal from '../../../hooks/useCloseModal';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { Link } from "react-router-dom";
 
 const NavBarMyAtlas = (props) => {
 
@@ -51,9 +52,9 @@ const NavBarMyAtlas = (props) => {
         {
           account &&
             <div className="navbar-dropdown">
-              <p>
+              <Link to={"/profile"} onClick={() => setAccount(false)}>
                 Προφίλ
-              </p>
+              </Link>
               <p
               onClick={handleDisconnect}
               style={{cursor: 'pointer'}}

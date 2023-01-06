@@ -71,12 +71,18 @@ const NavBarMenu = (props) => {
         <p>
             Επικοινωνία
         </p>
-        <p 
-        style={{cursor: 'pointer'}} 
-        onClick={handleLoginClick}
-        >
-            {loginOption}
-        </p>
+        {
+            loginOption === 'Προφίλ' ?
+                <Link to={"/profile"} onClick={() => setMenu(false)}>
+                    {loginOption}
+                </Link> :
+                <p 
+                style={{cursor: 'pointer'}} 
+                onClick={handleLoginClick}
+                >
+                    {loginOption}
+                </p>
+        }
         <p style={{cursor: 'pointer'}}
         onClick={handleRegisterClick}>
             {registerOption}
