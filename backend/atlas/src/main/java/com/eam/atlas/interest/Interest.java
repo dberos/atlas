@@ -1,6 +1,5 @@
 package com.eam.atlas.interest;
 
-import com.eam.atlas.company.Company;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -21,15 +20,25 @@ import java.sql.Blob;
 public class Interest {
 
     @Id
+    private int id;
+    @Id
     private int undergraduate_id;
     @Id
     private int internship_id;
-    @OneToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
-    @Transient
-    private int company_id;
     private String description;
-    private @Lob Blob marks;
+    @Lob
+    private Blob marks;
     private Boolean submitted;
+
+    public Interest(int undergraduate_id,
+                    int internship_id,
+                    String description,
+                    Blob marks,
+                    Boolean submitted) {
+        this.undergraduate_id = undergraduate_id;
+        this.internship_id = internship_id;
+        this.description = description;
+        this.marks = marks;
+        this.submitted = submitted;
+    }
 }

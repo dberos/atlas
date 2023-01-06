@@ -1,5 +1,7 @@
 package com.eam.atlas.interest;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +15,8 @@ import java.util.Objects;
 @AllArgsConstructor
 public class InterestId implements Serializable {
 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private int undergraduate_id;
     private int internship_id;
 
@@ -21,11 +25,11 @@ public class InterestId implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InterestId that = (InterestId) o;
-        return undergraduate_id == that.undergraduate_id && internship_id == that.internship_id;
+        return id == that.id && undergraduate_id == that.undergraduate_id && internship_id == that.internship_id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(undergraduate_id, internship_id);
+        return Objects.hash(id, undergraduate_id, internship_id);
     }
 }

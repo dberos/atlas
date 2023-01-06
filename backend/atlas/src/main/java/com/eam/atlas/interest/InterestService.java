@@ -32,12 +32,10 @@ public class InterestService {
     }
 
     public Interest addInterest(Interest interest) {
-        Optional<Company> company = companyRepository.findById(interest.getCompany_id());
-        if(company.isEmpty()) {
-            throw new IllegalStateException("company not present");
-        }
-        interest.setCompany(company.get());
         interestRepository.save(interest);
-        return interest;
+        // Return with the id
+        Interest createdInterest = interestRepository.findInterest(interest.getUndergraduate_id(),
+                                                                    interest.getInternship_id());
+        return createdInterest;
     }
 }
