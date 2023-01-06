@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './navbar.css'
 import useCloseModal from '../../../hooks/useCloseModal';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBarMenu = (props) => {
 
@@ -14,6 +14,8 @@ const NavBarMenu = (props) => {
 
     const [loginOption, setLoginOption] = useState('Σύνδεση');
     const [registerOption, setRegisterOption] = useState('Εγγραφή');
+
+    let navigate = useNavigate();
 
     let ref = useCloseModal(() => {
         setMenu(false);
@@ -41,6 +43,7 @@ const NavBarMenu = (props) => {
             setMenuOpenRegister(false);
             setLogged(false);
             localStorage.clear();
+            navigate('/');
         }
         else {
             setMenu(false);

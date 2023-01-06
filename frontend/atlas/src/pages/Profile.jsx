@@ -1,5 +1,6 @@
 import React from 'react'
 import CTA from '../components/Global/CTA/CTA';
+import ProfileOptions from '../components/Profile/Options/ProfileOptions';
 
 const Profile = () => {
 
@@ -25,6 +26,7 @@ const Profile = () => {
         subtitle={subtitle} 
         links={links}
         />
+        <ProfileOptions/>
     </div>
   )
 }

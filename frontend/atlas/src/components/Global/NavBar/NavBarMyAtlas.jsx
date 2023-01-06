@@ -3,7 +3,7 @@ import './navbar.css'
 import useCloseModal from '../../../hooks/useCloseModal';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBarMyAtlas = (props) => {
 
@@ -15,6 +15,8 @@ const NavBarMyAtlas = (props) => {
 
   const [account, setAccount] = useState(false);
 
+  let navigate = useNavigate();
+
   let ref = useCloseModal(() => {
     setAccount(false);
   })
@@ -25,6 +27,7 @@ const NavBarMyAtlas = (props) => {
     // Loggin was popping up after disconnect
     setOpenLogin(false);
     setMenuOpenLogin(false);
+    navigate('/');
   }
 
   return (
