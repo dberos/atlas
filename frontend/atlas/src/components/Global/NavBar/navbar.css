@@ -647,6 +647,233 @@
     color: #81AFDD;
 }
 
+.navbar-register-popup-university {
+    margin-top: 10px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    position: relative;
+}
+
+.navbar-register-popup-university-left {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.navbar-register-popup-university-left-dropdown-container {
+    width: 85%;
+    margin-left: 9%;
+    margin-right: 6%;
+    background-color: white;
+    height: 45px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-register-popup-university-left-dropdown-name {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.navbar-register-popup-university-left-dropdown-name p {
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 5%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    padding-top: 1%;
+    color: black;
+}
+
+.navbar-register-popup-university-left-dropdown-name h1 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 5%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    padding-top: 1%;
+    color: black;
+    opacity: 0.4;
+}
+
+.navbar-register-popup-university-left-dropdown-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+}
+
+.navbar-register-popup-university-left-dropdown-button button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: orange;
+}
+
+.navbar-register-popup-university-left-dropdown-dropdown {
+    background-color: white;
+    width: 85%;
+    margin-left: 9%;
+    margin-right: 6%;
+    display: flex;
+    border-radius: 0 0 4px 4px;
+    z-index: 3;
+    flex-direction: column;
+    position: absolute;
+    top: 52px;
+    height: 200px;
+    overflow-y: auto;
+}
+
+.navbar-register-popup-university-left-dropdown-dropdown-dummy {
+    height: 50px;
+}
+
+.navbar-register-popup-university-left-dropdown-dropdown-dummy p {
+    width: 100%;
+    display: flex;
+    padding-left: 3%;
+    padding-right: 3%;
+    height: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0 0 4px 4px;
+    cursor: pointer;
+    padding-top: 0;
+    align-items: center;
+    color: black;
+    display: flex;
+    text-align: start;
+}
+
+.navbar-register-popup-university-left-dropdown-dropdown p:hover {
+    background-color: rgb(217, 226, 236);
+}
+
+.navbar-register-popup-university-right {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.navbar-register-popup-university-right-dropdown-container {
+    width: 88%;
+    margin-left: 0%;
+    margin-right: 12%;
+    background-color: white;
+    height: 45px;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar-register-popup-university-right-dropdown-name {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.navbar-register-popup-university-right-dropdown-name p {
+    font-size: 18px;
+    font-weight: 500;
+    margin-left: 8%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    padding-top: 1%;
+    color: black;
+}
+
+.navbar-register-popup-university-right-dropdown-name h1 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 8%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    padding-top: 1%;
+    color: black;
+    opacity: 0.4;
+}
+
+.navbar-register-popup-university-right-dropdown-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+
+.navbar-register-popup-university-right-dropdown-button button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    color: orange;
+}
+
+.navbar-register-popup-university-right-dropdown-dropdown {
+    background-color: white;
+    width: 88%;
+    margin-left: 0%;
+    margin-right: 12%;
+    display: flex;
+    border-radius: 0 0 4px 4px;
+    z-index: 3;
+    flex-direction: column;
+    position: absolute;
+    top: 52px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.navbar-register-popup-university-right-dropdown-dropdown-dummy {
+    height: 50px;
+}
+
+.navbar-register-popup-university-right-dropdown-dropdown-dummy p {
+    width: 100%;
+    display: flex;
+    padding-left: 3%;
+    padding-right: 3%;
+    height: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 0 0 4px 4px;
+    cursor: pointer;
+    padding-top: 0;
+    align-items: center;
+    color: black;
+    display: flex;
+    text-align: start;
+}
+
+.navbar-register-popup-university-right-dropdown-dropdown p:hover {
+    background-color: rgb(217, 226, 236);
+}
+
+
 @media screen and (max-width: 1500px) {
     .navbar-logo-container {
         width: 7%;
@@ -933,7 +1160,7 @@
 
     .navbar-register-popup {
         width: 300px;
-        height: 680px;
+        height: 730px;
     }
     
     .navbar-register-popup-header {
@@ -963,17 +1190,22 @@
     }
     
     .navbar-register-popup-company-input {
-        height: 50px;
+        height: 110px;
+        flex-wrap: wrap;
     }
     
     .navbar-register-popup-company-input-street {
-        width: 60%;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 10px;
     }
     
     .navbar-register-popup-company-input-street input {
         height: 40px;
         font-size: 16px;
-        margin-left: 9%;
+        margin-left: 5%;
+        margin-right: 5%;
     }
     
     .navbar-register-popup-company-input-street input::placeholder {
@@ -981,17 +1213,21 @@
     }
     
     .navbar-register-popup-company-input-street label {
-        right: 12px;
+        right: 20px;
         font-size: 14px;
     }
     
     .navbar-register-popup-company-input-number {
-        width: 40%;
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
     }
     
     .navbar-register-popup-company-input-number input {
         height: 40px;
-        width: 88%;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
         font-size: 16px;
     }
     
@@ -1000,7 +1236,7 @@
     }
     
     .navbar-register-popup-company-input-number label {
-        right: 12px;
+        right: 20px;
         font-size: 14px;
     }
     
@@ -1017,7 +1253,7 @@
     }
     
     .navbar-register-popup-dropdown-dropdown p {
-        font-size: 16px;
+        font-size: 14px;
     }
     
     .navbar-register-popup-button {
@@ -1038,5 +1274,111 @@
     .navbar-register-popup-button::before {
         right: 13px;
         font-size: 12px;
+    }
+
+
+    .navbar-register-popup-university {
+        margin-top: 10px;
+        height: 110px;
+        flex-wrap: wrap;
+    }
+    
+    .navbar-register-popup-university-left {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 10px;
+    }
+    
+    .navbar-register-popup-university-left-dropdown-container {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        height: 40px;
+    }
+    
+    .navbar-register-popup-university-left-dropdown-name {
+        width: 85%;
+    }
+
+    .navbar-register-popup-university-left-dropdown-name h1 {
+        font-size: 14px;
+        margin-left: 7%;
+    }
+    
+    .navbar-register-popup-university-left-dropdown-name p {
+        font-size: 16px;
+        margin-left: 4%;
+    }
+    
+    .navbar-register-popup-university-left-dropdown-button {
+        width: 10%;
+    }
+    
+    .navbar-register-popup-university-left-dropdown-dropdown {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        top: 45px;
+        height: 160px;
+    }
+
+    .navbar-register-popup-university-left-dropdown-dropdown-dummy {
+        height: 40px;
+    }
+    
+    .navbar-register-popup-university-left-dropdown-dropdown-dummy p {
+        font-size: 14px;
+        height: 40px;
+        display: flex;
+    }
+    
+    .navbar-register-popup-university-right {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 0;
+    }
+    
+    .navbar-register-popup-university-right-dropdown-container {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        height: 40px;
+    }
+    
+    .navbar-register-popup-university-right-dropdown-name {
+        width: 85%;
+    }
+
+    .navbar-register-popup-university-right-dropdown-name h1 {
+        font-size: 14px;
+        margin-left: 7%;
+    }
+    
+    .navbar-register-popup-university-right-dropdown-name p {
+        font-size: 16px;
+        margin-left: 4%;
+    }
+    
+    .navbar-register-popup-university-right-dropdown-button {
+        width: 15%;
+    }
+    
+    .navbar-register-popup-university-right-dropdown-dropdown {
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
+        top: 45px;
+        max-height: 160px;
+    }
+
+    .navbar-register-popup-university-right-dropdown-dropdown-dummy {
+        height: 40px;
+    }
+    
+    .navbar-register-popup-university-right-dropdown-dropdown-dummy p {
+        height: 40px;
+        font-size: 14px;
+        display: flex;
+        height: 40px;
     }
 }

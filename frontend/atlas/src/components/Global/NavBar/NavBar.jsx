@@ -28,6 +28,18 @@ const NavBar = () => {
     const [logged, setLogged] = useState(false);
 
     useEffect(() => {
+      // Prevent page scroll
+      if(openLogin || menuOpenLogin
+          || openRegister || menuOpenRegister) {
+            document.body.style.overflow = 'hidden';
+      }
+      else {
+        document.body.style.overflow = 'unset';
+      }
+    }, [openLogin, menuOpenLogin,
+        openRegister, menuOpenRegister])
+
+    useEffect(() => {
       const handleResize = () => {
         setScreenWidth(window.innerWidth);
       }

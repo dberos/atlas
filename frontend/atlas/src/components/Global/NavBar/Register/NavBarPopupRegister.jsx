@@ -21,7 +21,8 @@ const NavBarPopupRegister = (props) => {
     } = props;
 
   const [selectedDropdownOption, setSelectedDropdownOption] = useState('Είμαι Φοιτητής');
-  const [selectedUniversityDropdownOption, setSelectedUniversityDropdownOption] = useState('ΕΚΠΑ');
+  const [selectedFieldDropdownOption, setSelectedFieldDropdownOption] = useState('Τι σπουδάζεις; *');
+  const [selectedUniversityDropdownOption, setSelectedUniversityDropdownOption] = useState('Που; *');
 
   const [emailEntered, setEmailEntered] = useState([]);
   const [emailError, setEmailError] = useState([]);
@@ -45,6 +46,8 @@ const NavBarPopupRegister = (props) => {
     setEmailEntered([]);
     setEmailError('Email *');
     setNameEntered([]);
+    setSelectedFieldDropdownOption('Τι σπουδάζεις; *');
+    setSelectedUniversityDropdownOption('Που; *');
     setSurnameEntered([]);
     setTelephoneEntered([]);
     setPasswordEntered([]);
@@ -61,6 +64,8 @@ const NavBarPopupRegister = (props) => {
     setEmailEntered([]);
     setEmailError('Email *');
     setNameEntered([]);
+    setSelectedFieldDropdownOption('Τι σπουδάζεις; *');
+    setSelectedUniversityDropdownOption('Που; *');
     setSurnameEntered([]);
     setTelephoneEntered([]);
     setPasswordEntered([]);
@@ -77,6 +82,8 @@ const NavBarPopupRegister = (props) => {
     setEmailEntered([]);
     setEmailError('Email *');
     setNameEntered([]);
+    setSelectedFieldDropdownOption('Τι σπουδάζεις; *');
+    setSelectedUniversityDropdownOption('Που; *');
     setSurnameEntered([]);
     setTelephoneEntered([]);
     setPasswordEntered([]);
@@ -95,6 +102,8 @@ const NavBarPopupRegister = (props) => {
         emailEntered.length !== 0 &&
         emailError === 'Email *' &&
         nameEntered.length !== 0 &&
+        selectedFieldDropdownOption !== 'Τι σπουδάζεις; *' &&
+        selectedUniversityDropdownOption !== 'Που; *' &&
         passwordEntered.length !== 0 &&
         confirmPasswordEntered.length !== 0 &&
         passwordError === 'Επιβεβαίωση Κωδικού *'
@@ -109,6 +118,8 @@ const NavBarPopupRegister = (props) => {
       emailEntered,
       emailError,
       nameEntered,
+      selectedFieldDropdownOption,
+      selectedUniversityDropdownOption,
       surnameEntered,
       passwordEntered,
       passwordError,
@@ -162,12 +173,12 @@ const NavBarPopupRegister = (props) => {
       const user = {
         email: emailEntered,
         password: passwordEntered,
-        telephone: telephoneEntered.length !== 0 ?parseInt(telephoneEntered) : null,
+        telephone: telephoneEntered.length !== 0 ? telephoneEntered : null,
         type: 'undergraduate',
         first_name: nameEntered,
         last_name: surnameEntered,
-        university: selectedUniversityDropdownOption,
-        marks: null
+        field: selectedFieldDropdownOption,
+        university: selectedUniversityDropdownOption
 
       }
       await registerUser(user);
@@ -190,7 +201,7 @@ const NavBarPopupRegister = (props) => {
         const user = {
           email: emailEntered,
           password: passwordEntered,
-          telephone: telephoneEntered.length !== 0 ?parseInt(telephoneEntered) : null,
+          telephone: telephoneEntered.length !== 0 ? telephoneEntered : null,
           type: 'company',
           name: companyNameEntered,
           town: companyCityEntered,
@@ -253,6 +264,8 @@ const NavBarPopupRegister = (props) => {
               {
                 selectedDropdownOption === 'Είμαι Φοιτητής' ?
                   <NavBarRegisterUniversity
+                  selectedFieldDropdownOption={selectedFieldDropdownOption}
+                  setSelectedFieldDropdownOption={setSelectedFieldDropdownOption}
                   selectedUniversityDropdownOption={selectedUniversityDropdownOption}
                   setSelectedUniversityDropdownOption={setSelectedUniversityDropdownOption}
                   /> :
@@ -263,7 +276,6 @@ const NavBarPopupRegister = (props) => {
                 setCompanyStreetNumberEntered={setCompanyStreetNumberEntered}
                 />
               }
-
               <NavBarRegisterTelephone
               telephoneEntered={telephoneEntered}
               setTelephoneEntered={setTelephoneEntered}
