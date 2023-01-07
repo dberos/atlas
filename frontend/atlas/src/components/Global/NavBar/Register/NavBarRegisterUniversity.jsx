@@ -148,47 +148,6 @@ const NavBarRegisterUniversity = (props) => {
             }
         </div>
     </div>
-
-    // <div className="navbar-register-popup-input-container">
-    //     <div className="navbar-register-popup-dropdown-dropdown-container">
-    //         <div className="navbar-register-popup-dropdown-dropdown-name">
-    //         <p>
-    //             {selectedUniversityDropdownOption}
-    //         </p>
-    //         </div>
-    //         <div className="navbar-register-popup-dropdown-icon-container">
-    //         <button
-    //         type='button'
-    //         onClick={() => setOpenUniversityDropdown(!openUniversityDropdown)}
-    //         >
-    //             {
-    //             openUniversityDropdown ?
-    //                 <ArrowRightIcon fontSize='large'/> :
-    //                 <ArrowDropDownIcon fontSize='large'/>
-    //             }
-    //         </button>
-    //         </div>
-    //     </div>
-    //     {
-    //         openUniversityDropdown &&
-    //         <div className="navbar-register-popup-dropdown-dropdown"
-    //         ref={universityDropdownRef}
-    //         >
-    //             {
-    //             universityDropdownOptions.map((value) => {
-    //                 return(
-    //                 <p 
-    //                 key={value.id}
-    //                 onClick={() => handleUniversityDropdownSelect(value.title)}
-    //                 >
-    //                     {value.title}
-    //                 </p>
-    //                 )
-    //             })
-    //             }
-    //         </div>
-    //     }
-    // </div>
   )
 }
 
