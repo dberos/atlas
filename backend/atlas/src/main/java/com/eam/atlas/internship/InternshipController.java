@@ -21,6 +21,16 @@ public class InternshipController {
         return internshipService.getInternships();
     }
 
+    @GetMapping("/espa")
+    public List<Internship> getEspaInternships() {
+        return internshipService.getEspaInternships();
+    }
+
+    @GetMapping("/noespa")
+    public List<Internship> getNoEspaInternships() {
+        return internshipService.getNoEspaInternships();
+    }
+
     @GetMapping("/company_id={company_id}")
     public List<Internship> getInternshipsByCompanyId(@PathVariable int company_id) {
         return internshipService.getInternshipsByCompanyId(company_id);

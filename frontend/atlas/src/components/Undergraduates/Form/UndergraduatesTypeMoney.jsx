@@ -21,11 +21,11 @@ const UndergraduatesTypeMoney = (props) => {
         },
         {
             id: 2,
-            title: 'Μερική Απασχόληση'
+            title: 'Μερικής Απασχόλησης'
         },
         {
             id: 3,
-            title: 'Πλήρης Απασχόληση'
+            title: 'Πλήρης Απασχόλησης'
         }
     ];
 

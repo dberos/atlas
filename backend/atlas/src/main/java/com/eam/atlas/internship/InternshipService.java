@@ -29,6 +29,14 @@ public class InternshipService {
         return internshipRepository.findAll();
     }
 
+    public List<Internship> getEspaInternships() {
+        return internshipRepository.findEspaInternships();
+    }
+
+    public List<Internship> getNoEspaInternships() {
+        return internshipRepository.findNoEspaInternships();
+    }
+
     public List<Internship> getInternshipsByCompanyId(int company_id) {
         return internshipRepository.findInternshipsByCompanyId(company_id);
     }

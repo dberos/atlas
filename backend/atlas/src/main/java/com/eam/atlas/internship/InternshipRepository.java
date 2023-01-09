@@ -9,6 +9,15 @@ import java.util.List;
 
 @Repository
 public interface InternshipRepository extends JpaRepository<Internship, Integer> {
+
+    @Query("select i from Internship i where i.espa = true " +
+            "and i.submitted = true and i.undergraduate = null")
+    List<Internship> findEspaInternships();
+
+    @Query("select i from Internship i where i.espa = false " +
+            "and i.submitted = true and i.undergraduate = null")
+    List<Internship> findNoEspaInternships();
+
     @Query("select i from Internship i where i.company.id = ?1")
     List<Internship> findInternshipsByCompanyId(int company_id);
 
@@ -17,7 +26,7 @@ public interface InternshipRepository extends JpaRepository<Internship, Integer>
     @Query("select i from Internship i where " +
             "ifnull(?1, i.field) = i.field " +
             "and ifnull(?2, i.university) = i.university " +
-            "and Date(ifnull(?3, i.start_date)) < Date(i.start_date) " +
+            "and Date(?3) < Date(i.start_date) " +
             "and ifnull(?4, i.area) = i.area " +
             "and i.duration = if((?5 = -1), i.duration, ?5) " +
             "and ifnull(?6, i.type) = i.type " +
@@ -31,4 +40,5 @@ public interface InternshipRepository extends JpaRepository<Internship, Integer>
                                        int duration,
                                        String type,
                                        Boolean espa);
+
 }

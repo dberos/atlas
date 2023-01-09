@@ -902,11 +902,6 @@
     .navbar-wrapper {
         width: 80%;
     }
-    
-
-    .navbar-dropdown-container {
-        width: 15%;
-    }
 
     .navbar-dropdown-container {
         width: 20%;
@@ -964,7 +959,7 @@
     }
     
     .navbar-wrapper {
-        width: 70%;
+        width: 80%;
     }
     
     .navbar-logo-container img {
@@ -973,6 +968,12 @@
 
     .navbar-dropdown-name {
         width: 100%;
+    }
+
+    .navbar-dropdown-container {
+        width: 18%;
+        margin-right: 2%;
+        margin-left: 2%;
     }
     
     .navbar-dropdown-name p {
@@ -994,7 +995,7 @@
     }
 
     .navbar-login-register-container {
-        width: 17%;
+        width: 20%;
     }
     
     .navbar-login {
