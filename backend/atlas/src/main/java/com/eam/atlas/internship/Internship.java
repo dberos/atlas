@@ -158,4 +158,20 @@ public class Internship {
         this.id = id;
         this.undergraduate_id = undergraduate_id;
     }
+
+    public Internship(String field,
+                      String university,
+                      Date start_date,
+                      String area,
+                      int duration,
+                      String type,
+                      Boolean espa) {
+        this.field = field;
+        this.university = university;
+        this.start_date = start_date;
+        this.area = area;
+        this.duration = duration;
+        this.type = type;
+        this.espa = espa;
+    }
 }

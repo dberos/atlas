@@ -43,6 +43,16 @@ public class InternshipService {
         return internship;
     }
 
+    public List<Internship> searchInternships(Internship internship) {
+        return internshipRepository.searchInternships(internship.getField(),
+                                                        internship.getUniversity(),
+                                                        internship.getStart_date(),
+                                                        internship.getArea(),
+                                                        internship.getDuration(),
+                                                        internship.getType(),
+                                                        internship.getEspa());
+    }
+
     public Internship acceptUndergraduate(Internship internship) {
         Optional<Internship> internshipOptional = internshipRepository.findById(internship.getId());
         if(internshipOptional.isEmpty()) {

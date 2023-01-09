@@ -31,6 +31,11 @@ public class InternshipController {
         return internshipService.addInternship(internship);
     }
 
+    @PostMapping("/search")
+    public List<Internship> searchInternships(@RequestBody Internship internship) {
+        return internshipService.searchInternships(internship);
+    }
+
     @PutMapping("/accept")
     public Internship acceptUndergraduate(@RequestBody Internship internship) {
         return internshipService.acceptUndergraduate(internship);
