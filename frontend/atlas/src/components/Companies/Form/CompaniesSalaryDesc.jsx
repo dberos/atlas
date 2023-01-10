@@ -9,8 +9,14 @@ const CompaniesSalaryDesc = (props) => {
             setSelectedDescription
         } = props;
 
-    const [salary, setSalary] = useState([]);
-    const [description, setDescription] = useState([]);
+    const [salary, setSalary] = useState(
+        localStorage.getItem('selectedSalary') ?
+            localStorage.getItem('selectedSalary') : []
+    );
+    const [description, setDescription] = useState(
+        localStorage.getItem('selectedDescription') ?
+            localStorage.getItem('selectedDescription') : []
+    );
     const [isDisabled, setIsDisabled] = useState(true);
 
     useEffect(() => {
@@ -29,6 +35,12 @@ const CompaniesSalaryDesc = (props) => {
             setIsDisabled(true);
         }
     }, [selectedEspa, setSelectedSalary])
+
+    useEffect(() => {
+        setSalary(salary);
+        setSelectedSalary(salary);
+    }, [salary, setSelectedSalary])
+
 
     const handleSalary = (e) => {
         const sal = e.target.value;

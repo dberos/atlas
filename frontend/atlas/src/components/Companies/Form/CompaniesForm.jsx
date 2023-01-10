@@ -14,27 +14,68 @@ import { addInternship } from './internship'
 
 const CompaniesForm = () => {
 
-    const [internshipTitle, setInternshipTitle] = useState([]);
+    const [internshipTitle, setInternshipTitle] = useState(
+        localStorage.getItem('internshipTitle') ?
+            localStorage.getItem('internshipTitle') : []
+    );
 
-    const [searchBarWord, setSearchBarWord] = useState([]);
+    const [searchBarWord, setSearchBarWord] = useState(
+        localStorage.getItem('searchBarWord') ?
+            localStorage.getItem('searchBarWord') : []
+    );
 
-    const [selectedUniversity, setSelectedUniversity] = useState([]);
-    const [selectedArea, setSelectedArea] = useState([]);
+    const [selectedUniversity, setSelectedUniversity] = useState(
+        localStorage.getItem('selectedUniversity') ?
+            localStorage.getItem('selectedUniversity') : []
+    );
+    const [selectedArea, setSelectedArea] = useState(
+        localStorage.getItem('selectedArea') ?
+            localStorage.getItem('selectedArea') : []
+    );
 
-    const [selectedDate, setSelectedDate] = useState([]);
-    const [selectedDuration, setSelectedDuration] = useState([]);
+    const [selectedDate, setSelectedDate] = useState(
+        localStorage.getItem('selectedDate') ?
+            localStorage.getItem('selectedDate') : []
+    );
+    const [selectedDuration, setSelectedDuration] = useState(
+        localStorage.getItem('selectedDuration') ?
+            localStorage.getItem('selectedDuration') : []
+    );
 
-    const [selectedType, setSelectedType] = useState([]);
-    const [selectedEspa, setSelectedEspa] = useState([]);
+    const [selectedType, setSelectedType] = useState(
+        localStorage.getItem('selectedType') ?
+            localStorage.getItem('selectedType') : []
+    );
+    const [selectedEspa, setSelectedEspa] = useState(
+        localStorage.getItem('selectedEspa') ?
+            localStorage.getItem('selectedEspa') : []
+    );
 
-    const [selectedSalary, setSelectedSalary] = useState([]);
-    const [selectedDescription, setSelectedDescription] = useState([]);
+    const [selectedSalary, setSelectedSalary] = useState(
+        localStorage.getItem('selectedSalary') ?
+            localStorage.getItem('selectedSalary') : []
+    );
+    const [selectedDescription, setSelectedDescription] = useState(
+        localStorage.getItem('selectedDescription') ?
+            localStorage.getItem('selectedDescription') : []
+    );
 
-    const [isPublished, setIsPublished] = useState(false);
+    const [isPublished, setIsPublished] = useState(
+        localStorage.getItem('isPublished') ?
+            localStorage.getItem('isPublished') === 'false' ?
+                false : true : false
+    );
 
-    const [isDisabled, setIsDisabled] = useState(true);
+    const [isDisabled, setIsDisabled] = useState(
+        localStorage.getItem('isDisabled') ?
+            localStorage.getItem('isDisabled') === 'true' ?
+                true : false : true
+    );
 
-    const [error, setError] = useState([]);
+    const [error, setError] = useState(
+        localStorage.getItem('error') ? 
+            localStorage.getItem('error') : []
+    );
 
     var fieldPlaceholder = 'Για τι τομέα θα είναι η θέση;'
 
@@ -119,6 +160,22 @@ const CompaniesForm = () => {
     const [menuOpenLogin, setMenuOpenLogin] = useState(false);
     const [openLogin, setOpenLogin] = useState(false);
     
+    useEffect(() => {
+        localStorage.removeItem('internshipTitle');
+        localStorage.removeItem('searchBarWord');
+        localStorage.removeItem('selectedUniversity');
+        localStorage.removeItem('selectedArea');
+        localStorage.removeItem('selectedDate');
+        localStorage.removeItem('selectedDuration');
+        localStorage.removeItem('selectedType');
+        localStorage.removeItem('selectedEspa');
+        localStorage.removeItem('selectedSalary');
+        localStorage.removeItem('selectedDescription');
+        localStorage.removeItem('isPublished');
+        localStorage.removeItem('isDisabled');
+        localStorage.removeItem('error');
+    }, [])
+    
 
 
     const handleSubmit = async (e) => {
@@ -131,6 +188,19 @@ const CompaniesForm = () => {
         const user = localStorage.getItem('email');
         const type = localStorage.getItem('type');
         if(!user) {
+            localStorage.setItem('internshipTitle', internshipTitle);
+            localStorage.setItem('searchBarWord', searchBarWord);
+            localStorage.setItem('selectedUniversity', selectedUniversity);
+            localStorage.setItem('selectedArea', selectedArea);
+            localStorage.setItem('selectedDate', selectedDate);
+            localStorage.setItem('selectedDuration', selectedDuration);
+            localStorage.setItem('selectedType', selectedType);
+            localStorage.setItem('selectedEspa', selectedEspa);
+            localStorage.setItem('selectedSalary', selectedSalary);
+            localStorage.setItem('selectedDescription', selectedDescription);
+            localStorage.setItem('isPublished', isPublished);
+            localStorage.setItem('isDisabled', isDisabled);
+            localStorage.setItem('error', error);
             setOpenLogin(true);
         }
         else if(type === 'undergraduate') {
@@ -143,7 +213,7 @@ const CompaniesForm = () => {
                 "university": selectedUniversity,
                 "start_date": selectedDate,
                 "area": selectedArea,
-                "duration": parseInt(selectedDuration === '3 Μήνες' ? 3 : 6),
+                "duration": selectedDuration === '3 Μήνες' ? 3 : 6,
                 "type": selectedType,
                 "espa": selectedEspa === 'Χρηματοδότηση ΕΣΠΑ' ? true : false,
                 "salary": parseInt(selectedSalary),
@@ -181,6 +251,7 @@ const CompaniesForm = () => {
                 setSelectedArea={setSelectedArea}
                 />
                 <CompaniesStardDuration
+                selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
                 selectedDuration={selectedDuration}
                 setSelectedDuration={setSelectedDuration}

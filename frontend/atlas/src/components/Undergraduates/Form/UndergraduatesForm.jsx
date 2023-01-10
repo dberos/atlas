@@ -118,6 +118,7 @@ const UndergraduatesForm = () => {
               setSelectedArea={setSelectedArea}
               />
               <UndergraduatesStartDuration
+              selectedDate={selectedDate}
               setSelectedDate={setSelectedDate}
               selectedDuration={selectedDuration}
               setSelectedDuration={setSelectedDuration}

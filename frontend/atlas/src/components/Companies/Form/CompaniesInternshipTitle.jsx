@@ -5,7 +5,10 @@ const CompaniesInternshipTitle = (props) => {
 
     const { setInternshipTitle } = props;
 
-    const [wordEntered, setWordEntered] = useState([]);
+    const [wordEntered, setWordEntered] = useState(
+        localStorage.getItem('internshipTitle') ?
+            localStorage.getItem('internshipTitle') : []
+    );
 
     const handleChange = (e) => {
         const word = e.target.value;

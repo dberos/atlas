@@ -13,9 +13,12 @@ registerLocale('el', el)
 
 const DateSelector = (props) => {
 
-    const { title, setSelectedDate } = props;
+    const { title, selectedDate, setSelectedDate } = props;
 
-    const [startDate, setStartDate] = useState('');
+    const [startDate, setStartDate] = useState(
+      selectedDate.length !== 0 ?
+        Date.parse(moment(selectedDate, 'DD/MM/YYYY')) : ''
+    );
 
     const checkDate = (date) => {
         // GB for DD format 

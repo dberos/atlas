@@ -12,7 +12,10 @@ const FormSearchBar = (props) => {
   const [search, setSearch] = useState(false);
 
   const [filteredData, setFilteredData] = useState([]);
-  const [wordEntered,setWordEntered] = useState([]);
+  const [wordEntered,setWordEntered] = useState(
+    localStorage.getItem('searchBarWord') ?
+            localStorage.getItem('searchBarWord') : []
+  );
 
   const checkWord = (obj) => {
       return obj.title === wordEntered;

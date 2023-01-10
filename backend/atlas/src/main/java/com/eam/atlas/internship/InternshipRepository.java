@@ -26,7 +26,7 @@ public interface InternshipRepository extends JpaRepository<Internship, Integer>
     @Query("select i from Internship i where " +
             "ifnull(?1, i.field) = i.field " +
             "and ifnull(?2, i.university) = i.university " +
-            "and Date(?3) < Date(i.start_date) " +
+            "and Date(?3) <= Date(i.start_date) " +
             "and ifnull(?4, i.area) = i.area " +
             "and i.duration = if((?5 = -1), i.duration, ?5) " +
             "and ifnull(?6, i.type) = i.type " +

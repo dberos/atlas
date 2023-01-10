@@ -7,6 +7,7 @@ import HalfDropdown from '../../Global/Form/HalfDropdown/HalfDropdown'
 const CompaniesStardDuration = (props) => {
 
     const {
+            selectedDate,
             setSelectedDate,
             selectedDuration, 
             setSelectedDuration
@@ -30,6 +31,7 @@ const CompaniesStardDuration = (props) => {
     <div className="undergrad-comp-half-container">
         <DateSelector
         title={title1}
+        selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
         />
         <HalfDropdown
