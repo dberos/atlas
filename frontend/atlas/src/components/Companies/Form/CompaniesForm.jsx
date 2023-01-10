@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import '../../Global/Form/form.css'
 import CompaniesInternshipTitle from './CompaniesInternshipTitle'
 import { search_results } from '../../Home/Main/data'
@@ -9,6 +9,7 @@ import CompaniesTypeMoney from './CompaniesTypeMoney'
 import CompaniesSalaryDesc from './CompaniesSalaryDesc'
 import CompaniesButton from './CompaniesButton'
 import NavBarPopupLogin from '../../Global/NavBar/Login/NavBarPopupLogin'
+import { IsLogged } from '../../Global/NavBar/Login/IsLogged'
 
 const CompaniesForm = () => {
 
@@ -31,6 +32,8 @@ const CompaniesForm = () => {
     const [isPublished, setIsPublished] = useState(false);
 
     const [isDisabled, setIsDisabled] = useState(true);
+
+    const { setLogged } = useContext(IsLogged);
 
     useEffect(() => {
         console.log(internshipTitle);
@@ -172,6 +175,7 @@ const CompaniesForm = () => {
                 setOpenLogin={setOpenLogin}
                 menuOpenLogin={menuOpenLogin}
                 setMenuOpenLogin={setMenuOpenLogin}
+                setLogged={setLogged}
           />
         }
     </div>

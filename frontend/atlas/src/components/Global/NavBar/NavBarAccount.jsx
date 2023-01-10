@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './navbar.css'
 import NavBarMyAtlas from './NavBarMyAtlas'
 import NavBarLogin from './Login/NavBarLogin'
@@ -18,17 +18,6 @@ const NavBarAccount = (props) => {
     logged,
     setLogged
    } = props;
-
-
-  useEffect(() => {
-    const user = localStorage.getItem('email');
-    if(user) {
-      setLogged(true);
-    }
-    else {
-      setLogged(false);
-    }
-   }, [setLogged])
 
   return (
     <div className='navbar-login-register-container'>

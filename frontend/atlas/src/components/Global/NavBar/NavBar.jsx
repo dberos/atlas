@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import './navbar.css'
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
@@ -11,6 +11,7 @@ import NavBarContact from './NavBarContact';
 import { Link } from "react-router-dom";
 import NavBarPopupLogin from './Login/NavBarPopupLogin';
 import NavBarPopupRegister from './Register/NavBarPopupRegister';
+import { IsLogged } from './Login/IsLogged';
 
 const NavBar = () => {
     const [menu, setMenu] = useState(false);
@@ -25,7 +26,8 @@ const NavBar = () => {
     const [openRegister, setOpenRegister] = useState(false);
     const [menuOpenRegister, setMenuOpenRegister] = useState(false);
 
-    const [logged, setLogged] = useState(false);
+    const { logged, setLogged } = useContext(IsLogged);
+
 
     useEffect(() => {
       // Prevent page scroll

@@ -1,4 +1,4 @@
-import {useLayoutEffect} from 'react';
+import {useLayoutEffect, useState, useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import NavBar from './components/Global/NavBar/NavBar';
 import Footer from './components/Global/Footer/Footer';
@@ -9,8 +9,11 @@ import FAQs from './pages/FAQs';
 import FAQsUndergraduates from './pages/FAQsUndergraduates';
 import FAQsCompanies from './pages/FAQsCompanies';
 import Profile from './pages/Profile';
+import { IsLogged } from './components/Global/NavBar/Login/IsLogged'
 
 function App() {
+
+  const [logged, setLogged] = useState(false);
 
   // Scroll to top at every redirect
   const Wrapper = ({children}) => {
@@ -35,28 +38,40 @@ function App() {
     )
   }
 
+  useEffect(() => {
+    const user = localStorage.getItem('email');
+    if(user) {
+      setLogged(true);
+    }
+    else {
+      setLogged(false);
+    }
+   }, [setLogged])
+
   return (
     <Router>
       <Wrapper>
-        <NavBar/>
-        <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/undergraduates' element={<Undergraduates/>}/>
-          <Route path='/companies' element={<Companies/>}/>
-          <Route path='/faqs' element={<FAQs/>}/>
-          <Route path='/faqs/undergraduates' element={<FAQsUndergraduates/>}/>
-          <Route path='/faqs/companies' element={<FAQsCompanies/>}/>
-          <Route 
-          path='/profile'
-          element={
-            <Protected>
-              <Profile/>
-            </Protected>
-          }
-          />
-          <Route path='*' element={<Navigate to='/'/>}/>
-        </Routes>
-        <Footer/>
+        <IsLogged.Provider value={{logged, setLogged}}>
+          <NavBar/>
+          <Routes>
+            <Route path='/' element={<Home/>}/>
+            <Route path='/undergraduates' element={<Undergraduates/>}/>
+            <Route path='/companies' element={<Companies/>}/>
+            <Route path='/faqs' element={<FAQs/>}/>
+            <Route path='/faqs/undergraduates' element={<FAQsUndergraduates/>}/>
+            <Route path='/faqs/companies' element={<FAQsCompanies/>}/>
+            <Route 
+            path='/profile'
+            element={
+              <Protected>
+                <Profile/>
+              </Protected>
+            }
+            />
+            <Route path='*' element={<Navigate to='/'/>}/>
+          </Routes>
+          <Footer/>
+        </IsLogged.Provider>
       </Wrapper>
     </Router>
   );
