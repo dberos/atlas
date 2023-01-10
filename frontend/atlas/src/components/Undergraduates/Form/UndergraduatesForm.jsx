@@ -21,6 +21,8 @@ const UndergraduatesForm = () => {
   const [selectedType, setSelectedType] = useState([]);
   const [selectedEspa, setSelectedEspa] = useState([]);
 
+  var fieldPlaceholder = 'Τι τομέα ψάχνεις;';
+
 
   useEffect(() => {
     console.log('searchBarWord ', searchBarWord);
@@ -107,6 +109,7 @@ const UndergraduatesForm = () => {
             <form onSubmit={handleSubmit}>
               <UndergraduatesSearchBar
               setSearchBarWord={setSearchBarWord}
+              fieldPlaceholder={fieldPlaceholder}
               />
               <UndergraduatesUniArea
               selectedUniversity={selectedUniversity}

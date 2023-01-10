@@ -7,7 +7,7 @@ import useCloseModal from '../../../../hooks/useCloseModal';
 
 const FormSearchBar = (props) => {
 
-  const { title, setSearchBarWord } = props;
+  const { title, setSearchBarWord, fieldPlaceholder } = props;
 
   const [search, setSearch] = useState(false);
 
@@ -74,7 +74,7 @@ const FormSearchBar = (props) => {
         </h1>
       </div>
       <div className="form-search-bar" ref={ref}>
-        <input type="text" placeholder='Τι τομέα ψάχνεις;' onChange={handleFilter} value={wordEntered}/>
+        <input type="text" placeholder={fieldPlaceholder} onChange={handleFilter} value={wordEntered}/>
         <label>
           π.χ Πληροφορική
         </label>

@@ -42,6 +42,7 @@ const NavBarPopupLogin = (props) => {
         }
         const data = await loginUser(user);
         if(data) {
+            localStorage.setItem('id', data.id);
             localStorage.setItem('email', data.email);
             localStorage.setItem('type', data.type);
             setLogged(true);

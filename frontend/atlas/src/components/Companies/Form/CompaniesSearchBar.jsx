@@ -4,7 +4,7 @@ import FormSearchBar from '../../Global/Form/SearchBar/FormSearchBar'
 
 const CompaniesSearchBar = (props) => {
 
-  const { setSearchBarWord } = props;
+  const { setSearchBarWord, fieldPlaceholder } = props;
 
     var title = 'Τομέας *';
 
@@ -13,6 +13,7 @@ const CompaniesSearchBar = (props) => {
         <FormSearchBar
         title={title}
         setSearchBarWord={setSearchBarWord}
+        fieldPlaceholder={fieldPlaceholder}
         />
     </div>
   )

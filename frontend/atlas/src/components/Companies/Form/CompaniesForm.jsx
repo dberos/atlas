@@ -10,6 +10,7 @@ import CompaniesSalaryDesc from './CompaniesSalaryDesc'
 import CompaniesButton from './CompaniesButton'
 import NavBarPopupLogin from '../../Global/NavBar/Login/NavBarPopupLogin'
 import { IsLogged } from '../../Global/NavBar/Login/IsLogged'
+import { addInternship } from './internship'
 
 const CompaniesForm = () => {
 
@@ -32,6 +33,10 @@ const CompaniesForm = () => {
     const [isPublished, setIsPublished] = useState(false);
 
     const [isDisabled, setIsDisabled] = useState(true);
+
+    const [error, setError] = useState([]);
+
+    var fieldPlaceholder = 'Για τι τομέα θα είναι η θέση;'
 
     const { setLogged } = useContext(IsLogged);
 
@@ -116,13 +121,41 @@ const CompaniesForm = () => {
     
 
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Check for localstorage user
         // If not exists open login
         // If exists clear form and navigate to results
-        setOpenLogin(true);
-        console.log('submitted');
+        // setOpenLogin(true);
+        // console.log('submitted');
+        const user = localStorage.getItem('email');
+        const type = localStorage.getItem('type');
+        if(!user) {
+            setOpenLogin(true);
+        }
+        else if(type === 'undergraduate') {
+            setError('Χρειάζεστε λογαριασμό εταιρείας για να συνεχίσετε');
+        }
+        else if(type === 'company') {
+            const internship = {
+                "title": internshipTitle,
+                "field": searchBarWord,
+                "university": selectedUniversity,
+                "start_date": selectedDate,
+                "area": selectedArea,
+                "duration": parseInt(selectedDuration === '3 Μήνες' ? 3 : 6),
+                "type": selectedType,
+                "espa": selectedEspa === 'Χρηματοδότηση ΕΣΠΑ' ? true : false,
+                "salary": parseInt(selectedSalary),
+                "description": selectedDescription,
+                "submitted": isPublished,
+                "company_id": localStorage.getItem('id')
+            }
+            await addInternship(internship);
+            setError(isPublished ? 
+                'Η θέση δημοσιεύτηκε με επιτυχία' :
+                    'Η θέση αποθηκεύτηκε με επιτυχία');
+        }
     }
 
   return (
@@ -139,6 +172,7 @@ const CompaniesForm = () => {
                 />
                 <CompaniesSearchBar
                 setSearchBarWord={setSearchBarWord}
+                fieldPlaceholder={fieldPlaceholder}
                 />
                 <CompaniesUniArea
                 selectedUniversity={selectedUniversity}
@@ -165,6 +199,7 @@ const CompaniesForm = () => {
                 <CompaniesButton
                 setIsPublished={setIsPublished}
                 isDisabled={isDisabled}
+                error={error}
                 />
             </form>
         </div>

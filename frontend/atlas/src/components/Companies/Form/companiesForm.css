@@ -233,6 +233,14 @@
     margin-bottom: 30px;
 }
 
+.companies-form-button-container p {
+    color: red;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+    width: 80%;
+}
+
 .companies-form-button-primary {
     width: 30%;
     height: 100%;
@@ -414,6 +422,10 @@
     .companies-form-desc-input::after {
         font-size: 12px;
     }
+
+    .companies-form-button-container p {
+        font-size: 26px;
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -460,5 +472,9 @@
 
     .companies-form-button-secondary button {
         font-size: 14px;
+    }
+
+    .companies-form-button-container p {
+        font-size: 18px;
     }
 }
