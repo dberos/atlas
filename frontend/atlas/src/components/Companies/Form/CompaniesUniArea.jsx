@@ -11,13 +11,13 @@ const CompaniesUniArea = (props) => {
             setSelectedArea
         } = props;
 
-    var title1 = 'Τμήμα *';
+    var title1 = 'Πανεπιστήμιο *';
     var title2 = 'Περιοχή *';
 
     const universities = [
         {
             id: 1,
-            title: 'Όλα τα τμήματα'
+            title: 'Όλα τα πανεπιστήμια'
         },
         {
             id: 2,

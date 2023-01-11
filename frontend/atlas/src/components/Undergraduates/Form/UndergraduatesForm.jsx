@@ -66,7 +66,7 @@ const UndergraduatesForm = () => {
     const arr = [];
     arr.push(searchBarWord.length !== 0 ? searchBarWord : null);
     arr.push(selectedUniversity.length !== 0 ? 
-      selectedUniversity === 'Όλα τα τμήματα' ? null : 
+      selectedUniversity === 'Όλα τα πανεπιστήμια' ? null : 
         selectedUniversity : null);
     arr.push(selectedDate.length !== 0 ? selectedDate : '00/00/0000');
     arr.push(selectedArea.length !== 0 ? 
