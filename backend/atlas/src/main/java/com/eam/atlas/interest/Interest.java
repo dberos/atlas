@@ -28,17 +28,20 @@ public class Interest {
     private String description;
     @Lob
     private Blob marks;
+    private String status;
     private Boolean submitted;
 
     public Interest(int undergraduate_id,
                     int internship_id,
                     String description,
                     Blob marks,
+                    String status,
                     Boolean submitted) {
         this.undergraduate_id = undergraduate_id;
         this.internship_id = internship_id;
         this.description = description;
         this.marks = marks;
+        this.status = status;
         this.submitted = submitted;
     }
 }
