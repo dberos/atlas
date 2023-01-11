@@ -5,9 +5,7 @@ import UndergraduatesForm from '../components/Undergraduates/Form/Undergraduates
 const Undergraduates = () => {
 
     var title = 'Φοιτητές';
-    var subtitle = 'Ξεκίνα την επαγγελματική '+
-                    'σου σταδιοδρομία με ένα '+
-                    'απλό βήμα!';
+    var subtitle = 'Προσάρμοσε τα αποτελέσματα στα μέτρα σου!'
     const links = [
       {
         id: 1,

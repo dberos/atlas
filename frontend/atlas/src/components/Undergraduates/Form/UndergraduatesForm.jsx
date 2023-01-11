@@ -7,8 +7,11 @@ import UndergraduatesButton from './UndergraduatesButton'
 import UndergraduatesStartDuration from './UndergraduatesStartDuration'
 import UndergraduatesTypeMoney from './UndergraduatesTypeMoney'
 import { findResults } from './results'
+import { useNavigate } from 'react-router-dom'
 
 const UndergraduatesForm = () => {
+
+  let navigate = useNavigate();
 
   const [searchBarWord, setSearchBarWord] = useState([]);
 
@@ -96,6 +99,8 @@ const UndergraduatesForm = () => {
     localStorage.setItem('results', JSON.stringify(data));
     localStorage.removeItem('results');
     console.log('submitted');
+
+    navigate('/undergraduates/results');
   }
 
   return (
@@ -103,7 +108,7 @@ const UndergraduatesForm = () => {
         <div className="undergrad-comp-form-wrapper">
             <div className="undergrad-comp-form-title">
                 <h1>
-                    Αναζήτησε την θέση Πρακτικής που σου ταιριάζει!
+                    Αναζήτησε θέσεις Πρακτικής Άσκησης στον ΑΤΛΑΣ
                 </h1>
             </div>
             <form onSubmit={handleSubmit}>

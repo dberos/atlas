@@ -10,7 +10,9 @@ const Faq = (props) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="faq-container">
+    <div className="faq-container"
+    style={{background: open && 'transparent'}}
+    >
         <div className="faq-wrapper">
             <div className="faq-header">
               <h1>
