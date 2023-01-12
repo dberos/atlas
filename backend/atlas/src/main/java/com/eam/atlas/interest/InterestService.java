@@ -4,6 +4,9 @@ import com.eam.atlas.company.Company;
 import com.eam.atlas.company.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,5 +40,12 @@ public class InterestService {
         Interest createdInterest = interestRepository.findInterest(interest.getUndergraduate_id(),
                                                                     interest.getInternship_id());
         return createdInterest;
+    }
+
+    public Interest addMarks(int id, MultipartFile marks) throws IOException {
+        Interest interest = interestRepository.findInterestById(id);
+        interest.setMarks(marks.getBytes());
+        interestRepository.save(interest);
+        return interest;
     }
 }

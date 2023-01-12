@@ -27,14 +27,14 @@ public class Interest {
     private int internship_id;
     private String description;
     @Lob
-    private Blob marks;
+    private byte[] marks;
     private String status;
     private Boolean submitted;
 
     public Interest(int undergraduate_id,
                     int internship_id,
                     String description,
-                    Blob marks,
+                    byte[] marks,
                     String status,
                     Boolean submitted) {
         this.undergraduate_id = undergraduate_id;
