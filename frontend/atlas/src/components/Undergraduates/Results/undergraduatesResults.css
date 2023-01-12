@@ -286,6 +286,189 @@
     color: #81AFDD;
 }
 
+.undergraduates-results-result-candidate-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    justify-content: center;
+}
+
+.undergraduates-results-result-candidate-wrapper {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-block-start: 5px solid;
+    padding: 10px;
+    border-image-source: linear-gradient(90deg, rgba(19,37,83,1) 0%, rgba(22,41,87,1) 10%, rgba(190,117,15,1) 50%, rgba(22,41,87,1) 90%, rgba(19,37,83,1) 100%);
+    border-image-slice: 1;
+}
+
+.undergraduates-results-result-candidate-header {
+    height: 30px;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.undergraduates-results-result-candidate-header h1 {
+    font-size: 22px;
+    font-weight: 300;
+    color: orange;
+}
+
+.undergraduates-results-result-candidate-pdf {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    height: 50px;
+}
+
+.undergraduates-results-result-candidate-pdf-text {
+    max-width: 250px;
+    margin-right: 5px;
+}
+
+.undergraduates-results-result-candidate-pdf-text p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #81AFDD;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.undergraduates-results-result-candidate-pdf-button-container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5%;
+}
+
+.undergraduates-results-result-candidate-pdf-button-container i {
+    border: none;
+    cursor: pointer;
+    color: #81AFDD;
+}
+
+.undergraduates-results-result-candidate-description {
+    width: 90%;
+    margin-top: 10px;
+    display: flex;
+}
+
+.undergraduates-results-result-candidate-description textarea {
+    background-color: white;
+    height: 100px;
+    width: 100%;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    overflow-y: scroll;
+    word-break: break-word;
+    resize: none;
+    padding-top: 10px;
+}
+
+.undergraduates-results-result-candidate-description textarea::-webkit-scrollbar {
+    width: 12px;
+    border-radius: 4px;
+}
+
+.undergraduates-results-result-candidate-description textarea::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 4px;
+}
+
+.undergraduates-results-result-candidate-description textarea::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    border-radius: 4px;
+}
+
+.undergraduates-results-result-candidate-description textarea:focus {
+    outline: 2px solid orange;
+}
+
+.undergraduates-results-result-candidate-description textarea::placeholder {
+    opacity: 0.6;
+    font-size: 16px;
+}
+
+.undergraduates-results-result-candidate-after {
+    display: none;
+    width: 100%;
+    background-color: inherit;
+}
+
+.undergraduates-results-result-candidate-after::after {
+    display: none;
+    width: 90%;
+}
+
+.undergraduates-results-result-candidate-button {
+    width: 100%;
+    height: 55px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.undergraduates-results-result-candidate-button-primary {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 5%;
+}
+
+.undergraduates-results-result-candidate-button-primary button {
+    width: 80%;
+    height: 100%;
+    background-color: #be750f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.undergraduates-results-result-candidate-button-primary button:hover {
+    background-color: orange;
+}
+
+.undergraduates-results-result-candidate-button-secondary {
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.undergraduates-results-result-candidate-button-secondary button {
+    width: 60%;
+    height: 100%;
+    background-color: #112c5d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.undergraduates-results-result-candidate-button-secondary button:hover {
+    background-color: #234685;
+}
+
 @media screen and (max-width: 1400px) {
     
     .undergraduates-results-result-header h1 {
@@ -331,6 +514,45 @@
     .undergraduates-results-result-description-subheader h1 {
         font-size: 16px;
     }
+    
+    .undergraduates-results-result-candidate-header h1 {
+        font-size: 20px;
+    }
+    
+    .undergraduates-results-result-candidate-pdf-text p {
+        font-size: 16px;
+    }
+    
+    .undergraduates-results-result-candidate-description textarea {
+        font-size: 16px;
+    }
+    
+    .undergraduates-results-result-candidate-description textarea::placeholder {
+        font-size: 14px;
+    }
+
+    .undergraduates-results-result-candidate-button {
+        height: 50px;
+    }
+    
+    .undergraduates-results-result-candidate-button-primary {
+        width: 30%;
+    }
+    
+    .undergraduates-results-result-candidate-button-primary button {
+        width: 90%;
+        font-size: 16px;
+    }
+    
+    .undergraduates-results-result-candidate-button-secondary {
+        width: 35%;
+    }
+    
+    .undergraduates-results-result-candidate-button-secondary button {
+        width: 75%;
+        font-size: 16px;
+    }
+    
 }
 
 @media screen and (max-width: 1250px) {
@@ -357,6 +579,7 @@
     .undergraduates-results-result-expand-subheader {
         width: 95%;
     }
+
 }
 
 @media screen and (max-width: 1000px) {
@@ -416,6 +639,53 @@
     
     .undergraduates-results-result-description-subheader h1 {
         font-size: 14px;
+    }
+
+    .undergraduates-results-result-candidate-header h1 {
+        font-size: 18px;
+    }
+    
+    .undergraduates-results-result-candidate-pdf-text p {
+        font-size: 14px;
+    }
+    
+    .undergraduates-results-result-candidate-description textarea {
+        font-size: 14px;
+    }
+    
+    .undergraduates-results-result-candidate-description textarea::placeholder {
+        font-size: 12px;
+    }
+
+    .undergraduates-results-result-candidate-button {
+        height: 50px;
+        justify-content: center;
+    }
+    
+    .undergraduates-results-result-candidate-button-primary {
+        width: 50%;
+        order: 2;
+        margin-left: 0;
+        margin-right: 0;
+        justify-content: center;
+    }
+    
+    .undergraduates-results-result-candidate-button-primary button {
+        width: 70%;
+        font-size: 16px;
+    }
+    
+    .undergraduates-results-result-candidate-button-secondary {
+        width: 50%;
+        order: 1;
+        justify-content: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    .undergraduates-results-result-candidate-button-secondary button {
+        width: 70%;
+        font-size: 16px;
     }
 }
 
@@ -548,5 +818,90 @@
     
     .undergraduates-results-result-description-subheader h1 {
         font-size: 16px;
+    }
+
+    .undergraduates-results-result-candidate-container {
+        margin-bottom: 0;
+    }
+
+    .undergraduates-results-result-candidate-wrapper {
+        width: 90%;
+        border-image-source: linear-gradient(90deg, rgba(190,117,15,1) 0%, rgba(33,57,103,1) 80%, rgba(19,37,83,1) 100%);
+    }
+
+    .undergraduates-results-result-candidate-header h1 {
+        font-size: 22px;
+    }
+
+    .undergraduates-results-result-candidate-pdf-text {
+        max-width: 200px;
+        margin-right: 10px;
+    }
+    
+    .undergraduates-results-result-candidate-pdf-text p {
+        font-size: 16px;
+    }
+
+    .undergraduates-results-result-candidate-pdf-button-container {
+        margin-right: 0%;
+        height: 30px;
+        width: 30px;
+    }
+
+    .undergraduates-results-result-candidate-pdf-button-container i {
+        transform: scale(0.9);
+    }
+
+    .undergraduates-results-result-candidate-description {
+        width: 100%;
+    }
+    
+    .undergraduates-results-result-candidate-description textarea {
+        font-size: 18px;
+        height: 120px;
+    }
+    
+    .undergraduates-results-result-candidate-description textarea::placeholder {
+        font-size: 14px;
+    }
+
+    .undergraduates-results-result-candidate-after {
+        display: flex;
+        justify-content: center;
+        margin-top: 0px;
+        width: 90%;
+        margin-bottom: 20px;
+        margin-top: 30px;
+    }
+    
+    .undergraduates-results-result-candidate-after::after {
+        content: '';
+        border-block-start: 5px solid;
+        padding: 10px;
+        border-image-source: linear-gradient(270deg, rgba(190,117,15,1) 0%, rgba(33,57,103,1) 80%, rgba(19,37,83,1) 100%);
+        border-image-slice: 1;
+        display: block;
+    }
+
+    .undergraduates-results-result-candidate-button {
+        height: 45px;
+    }
+    
+    .undergraduates-results-result-candidate-button-primary {
+        width: 50%;
+    }
+    
+    .undergraduates-results-result-candidate-button-primary button {
+        width: 80%;
+        font-size: 12px;
+    }
+    
+    .undergraduates-results-result-candidate-button-secondary {
+        width: 50%;
+    }
+    
+    .undergraduates-results-result-candidate-button-secondary button {
+        width: 80%;
+        font-size: 12px;
     }
 }

@@ -8,6 +8,8 @@ import UndergraduatesResultFieldUniType from './UndergraduatesResultFieldUniType
 import UndergraduatesResultStartDuration from './UndergraduatesResultStartDuration';
 import UndergraduatesResultEspaSalary from './UndergraduatesResultEspaSalary';
 import UndergraduatesResultDescription from './UndergraduatesResultDescription';
+import UndergraduatesResultCandidate from './UndergraduatesResultCandidate';
+import { addInterest, addMarks } from './interests';
 
 const UndergraduatesResult = (props) => {
 
@@ -19,6 +21,28 @@ const UndergraduatesResult = (props) => {
     } = props;
 
     const [open, setOpen] = useState(false);
+    const [fileName, setFileName] = useState([]);
+    const [file, setFile] = useState(null);
+    const [description, setDescription] = useState([]);
+    const [isPublished, setIsPublished] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const interest = {
+            "undergraduate_id": 1,
+            "internship_id": 1,
+            "description": description.length !== 0 ? description : null,
+            "status": isPublished ? "await" : null,
+            "submitted": isPublished
+        }
+        const data = await addInterest(interest);
+        if(file) {
+            const marks = new FormData();
+            marks.append('marks', file);
+            await addMarks(data.id, marks);
+        }
+    }
+
 
   return (
     <div className="undergraduates-results-result-container"
@@ -67,6 +91,20 @@ const UndergraduatesResult = (props) => {
                             <UndergraduatesResultStartDuration/>
                             <UndergraduatesResultEspaSalary/>
                             <UndergraduatesResultDescription/>
+                            <form 
+                            style={{width: '100%'}}
+                            onSubmit={handleSubmit}
+                            >
+                                <UndergraduatesResultCandidate
+                                fileName={fileName}
+                                setFileName={setFileName}
+                                setFile={setFile}
+                                description={description}
+                                setDescription={setDescription}
+                                setIsPublished={setIsPublished}
+                                />
+                            </form>
+                            <div className="undergraduates-results-result-candidate-after" />
                         </div>
                 }
             </div>
