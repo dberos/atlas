@@ -3,6 +3,10 @@ package com.eam.atlas.interest;
 import com.eam.atlas.company.Company;
 import com.eam.atlas.company.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,6 +36,16 @@ public class InterestService {
 
     public List<Interest> getInterestsByInternshipId(int internship_id) {
         return interestRepository.findInterestsByInternshipId(internship_id);
+    }
+
+    public ResponseEntity<byte[]> getMarks(int id) {
+        Interest interest = interestRepository.findInterestById(id);
+        byte[] marks = interest.getMarks();
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-type", MediaType.APPLICATION_PDF_VALUE);
+        // To download change inline to attachment
+        headers.set("Content-Disposition","inline; filename=\"marks.pdf\"");
+        return ResponseEntity.status(HttpStatus.OK).headers(headers).body(marks);
     }
 
     public Interest addInterest(Interest interest) {

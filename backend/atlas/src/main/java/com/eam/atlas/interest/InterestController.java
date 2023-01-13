@@ -2,6 +2,7 @@ package com.eam.atlas.interest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,6 +34,11 @@ public class InterestController {
     @GetMapping("/internship_id={internship_id}")
     public List<Interest> getInterestsByInternshipId(@PathVariable int internship_id) {
         return interestService.getInterestsByInternshipId(internship_id);
+    }
+
+    @GetMapping("/marks/{id}")
+    public ResponseEntity<byte[]> getMarks(@PathVariable int id) {
+        return interestService.getMarks(id);
     }
 
     @PostMapping
