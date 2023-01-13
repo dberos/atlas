@@ -40,8 +40,8 @@ const UndergraduatesResult = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const interest = {
-            "undergraduate_id": 1,
-            "internship_id": 1,
+            "undergraduate_id": localStorage.getItem('id'),
+            "internship_id": id,
             "description": selectedDescription.length !== 0 ? selectedDescription : null,
             "status": isPublished ? "await" : null,
             "submitted": isPublished
@@ -125,7 +125,9 @@ const UndergraduatesResult = (props) => {
                                 setFile={setFile}
                                 selectedDescription={selectedDescription}
                                 setSelectedDescription={setSelectedDescription}
+                                isPublished={isPublished}
                                 setIsPublished={setIsPublished}
+                                university={university}
                                 />
                             </form>
                             <div className="undergraduates-results-result-candidate-after" />

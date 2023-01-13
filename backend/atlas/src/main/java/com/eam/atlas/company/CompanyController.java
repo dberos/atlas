@@ -7,6 +7,7 @@ import java.util.List;
 
 @RequestMapping(path = "/companies")
 @RestController
+@CrossOrigin
 public class CompanyController {
 
     private final CompanyService companyService;
