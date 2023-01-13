@@ -4,6 +4,7 @@ import UndergraduatesResult from './UndergraduatesResult'
 import { useParams } from 'react-router-dom'
 import { search_results } from '../../Home/Main/data'
 import axios from 'axios'
+import UndergraduatesResultsEmpty from './UndergraduatesResultsEmpty'
 
 const UndergraduatesResults = () => {
 
@@ -15,7 +16,7 @@ const UndergraduatesResults = () => {
     const results = atob(params.name).split(',');
     console.log(results);
     const field = results[0] === '' ?
-      null : search_results.find((value) => value.id === parseInt(field)).title;
+      null : search_results.find((value) => value.id === parseInt(results[0])).title;
     const university = results[1] === '' ?
       null : results[1] === '1' ? 'ΕΚΠΑ' : 'ΑΠΘ';
     const area = results[2] === '' ?
@@ -48,28 +49,30 @@ const UndergraduatesResults = () => {
     <div className="undergraduates-results-container">
         <div className="undergraduates-results-wrapper">
             {
-              data && data.map((value) => {
-                return(
-                  <UndergraduatesResult
-                  key={value.id}
-                  id={value.id}
-                  area={value.area}
-                  companyName={value.company.name}
-                  town={value.company.town}
-                  street={value.company.street}
-                  streetNumber={value.company.street_number}
-                  description={value.description}
-                  duration={value.duration}
-                  espa={value.espa}
-                  field={value.field}
-                  salary={value.salary}
-                  startDate={value.start_date}
-                  title={value.title}
-                  type={value.type}
-                  university={value.university}
-                  />
-                )
-              })
+              data.length !== 0 ? 
+                data.map((value) => {
+                  return(
+                    <UndergraduatesResult
+                    key={value.id}
+                    id={value.id}
+                    area={value.area}
+                    companyName={value.company.name}
+                    town={value.company.town}
+                    street={value.company.street}
+                    streetNumber={value.company.street_number}
+                    description={value.description}
+                    duration={value.duration}
+                    espa={value.espa}
+                    field={value.field}
+                    salary={value.salary}
+                    startDate={value.start_date}
+                    title={value.title}
+                    type={value.type}
+                    university={value.university}
+                    />
+                  )
+                }) : 
+                    <UndergraduatesResultsEmpty/>
             }
         </div>
     </div>

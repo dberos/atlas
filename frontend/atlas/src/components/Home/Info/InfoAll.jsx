@@ -1,13 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './info.css'
 import { Link } from "react-router-dom";
 
 const InfoAll = () => {
+
+  const [all, setAll] = useState([]);
+
+  useEffect(() => {
+    const results = [
+      null,
+      null,
+      null,
+      '00/00/0000',
+      -1,
+      null,
+      null
+    ];
+    setAll(results);
+  }, [])
+
   return (
     <div className="info-item">
         <div className="info-item-title">
           <span>
-            <Link>
+            <Link to={`/undergraduates/results/${btoa(all)}`}>
                 Όλες οι Πρακτικές Ασκήσεις
             </Link>
           </span>
@@ -18,7 +34,7 @@ const InfoAll = () => {
             </h2>
         </div>
         <div className="info-image-container">
-          <Link>
+          <Link to={`/undergraduates/results/${btoa(all)}`}>
             <img 
               src={require('../../../assets/people-desk.png')} 
               alt="sketch with people sitting in a sofa and chatting" 

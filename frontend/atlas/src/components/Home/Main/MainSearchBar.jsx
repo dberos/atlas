@@ -5,8 +5,11 @@ import useCloseModal from '../../../hooks/useCloseModal';
 import { search_results } from './data'
 import CloseIcon from '@mui/icons-material/Close';
 import MainSearchResults from './MainSearchResults';
+import { useNavigate } from 'react-router-dom';
 
 const MainSearchBar = () => {
+
+    let navigate = useNavigate();
 
     const [filteredData, setFilteredData] = useState([]);
     const [wordEntered,setWordEntered] = useState([]);
@@ -50,6 +53,20 @@ const MainSearchBar = () => {
         console.log(word);
         console.log('selected word: ', wordEntered);
         console.log('submitted');
+
+        if(wordEntered !== word) {
+            const fieldID = search_results.find((value) => value.title === wordEntered).id
+            const results = [
+                fieldID,
+                null,
+                null,
+                '00/00/0000',
+                -1,
+                null,
+                null
+            ];
+            navigate(`/undergraduates/results/${btoa(results)}`);
+        }
     }
 
     return (

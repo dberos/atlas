@@ -35,15 +35,6 @@ const NavBarUndergraduates = () => {
                   <Link to={'/undergraduates'} onClick={() => setUndergrad(false)}>
                     Προσαρμοσμένη Αναζήτηση
                   </Link>
-                  <p>
-                    Θέσεις μέσω ΕΣΠΑ
-                  </p>
-                  <p>
-                    Θέσεις χωρίς ΕΣΠΑ
-                  </p>
-                  <p>
-                    Όλες οι Θέσεις
-                  </p>
                   <Link to={'/faqs/undergraduates'} onClick={() => setUndergrad(false)}>
                     Συχνές Ερωτήσεις
                   </Link>
