@@ -5,11 +5,12 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 const UndergraduatesResultCandidate = (props) => {
 
     const {
+        id,
         fileName,
         setFileName,
         setFile,
-        description,
-        setDescription,
+        selectedDescription,
+        setSelectedDescription,
         setIsPublished
     } = props;
 
@@ -57,8 +58,8 @@ const UndergraduatesResultCandidate = (props) => {
             </div>
             <div className="undergraduates-results-result-candidate-description">
                 <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                value={selectedDescription}
+                onChange={(e) => setSelectedDescription(e.target.value)}
                 placeholder='Πες μας λίγα λόγια για εσένα'
                 />
             </div>

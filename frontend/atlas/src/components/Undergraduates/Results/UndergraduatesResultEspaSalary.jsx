@@ -1,7 +1,13 @@
 import React from 'react'
 import './undergraduatesResults.css'
 
-const UndergraduatesResultEspaSalary = () => {
+const UndergraduatesResultEspaSalary = (props) => {
+
+    const {
+        espa,
+        salary
+    } = props;
+
   return (
     <div className="undergraduates-results-result-espa-salary-container">
         <div className="undergraduates-results-result-espa-salary">
@@ -12,7 +18,11 @@ const UndergraduatesResultEspaSalary = () => {
             </div>
             <div className="undergraduates-results-result-expand-subheader">
                 <h1>
-                    Χωρίς Χρηματοδότηση ΕΣΠΑ
+                    {
+                        espa ?
+                            'Χρηματοδότηση ΕΣΠΑ' :
+                                'Χωρίς Χρηματοδότηση ΕΣΠΑ'
+                    }
                 </h1>
             </div>
         </div>
@@ -24,7 +34,7 @@ const UndergraduatesResultEspaSalary = () => {
             </div>
             <div className="undergraduates-results-result-expand-subheader">
                 <h1>
-                    600 €
+                    {salary} €
                 </h1>
             </div>
         </div>

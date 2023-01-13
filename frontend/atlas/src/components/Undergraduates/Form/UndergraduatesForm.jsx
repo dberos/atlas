@@ -100,7 +100,37 @@ const UndergraduatesForm = () => {
     localStorage.removeItem('results');
     console.log('submitted');
 
-    navigate('/undergraduates/results');
+    const results = [];
+    const field = searchBarWord.length !== 0 ? 
+      search_results.find((value) => value.title === searchBarWord).id : 
+        null;
+    results.push(field);
+    const univ = selectedUniversity.length !== 0 ?
+      selectedUniversity === 'Όλα τα πανεπιστήμια' ? 
+      null : selectedUniversity === 'ΕΚΠΑ' ? 1 : 2 : null;
+    results.push(univ);
+    const area = selectedArea.length !== 0 ? 
+      selectedArea === 'Όλες οι περιοχές' ? null : 
+        selectedArea === 'Αθήνα' ? 1 : 2 : null;
+    results.push(area);
+    const date = selectedDate.length !== 0 ?
+      selectedDate : '00/00/0000';
+    results.push(date);
+    const duration = selectedDuration.length !== 0 ?
+      selectedDuration === 'Όλες οι διάρκειες' ? 
+        -1 : selectedDuration === '3 Μήνες' ? 3 : 6 : -1;
+    results.push(duration);
+    const type = selectedType.length !== 0 ?
+      selectedType === 'Όλοι οι τύποι' ?
+        null : selectedType === 'Μερικής Απασχόλησης' ? 1 : 2 : null;
+    results.push(type);
+  const espa = selectedEspa.length !== 0 ?
+    selectedEspa === 'Όλες οι Χρηματοδοτήσεις' ?
+      null : selectedEspa === 'Χρηματοδότηση ΕΣΠΑ' ? 1 : 2 : null;
+  results.push(espa);
+
+
+    navigate(`/undergraduates/results/${btoa(results)}`);
   }
 
   return (

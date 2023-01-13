@@ -1,7 +1,10 @@
 import React from 'react'
 import './undergraduatesResults.css'
 
-const UndergraduatesResultDescription = () => {
+const UndergraduatesResultDescription = (props) => {
+
+    const { description } = props;
+
   return (
     <div className="undergraduates-results-result-description-container">
         <div className="undergraduates-results-result-description">
@@ -12,9 +15,7 @@ const UndergraduatesResultDescription = () => {
             </div>
             <div className="undergraduates-results-result-description-subheader">
                 <h1>
-                Η εταιρεία μας εξειδικεύεται στην ανάπτυξη λογισμικού 
-                για περισσότερα από 10 χρόνια! Κάθε χρόνο προτιμάται από τουλάχιστον 5 
-                φοιτητές του τμήματος Πληροφορικής.
+                    {description}
                 </h1>
             </div>
         </div>

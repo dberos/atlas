@@ -14,16 +14,27 @@ import { addInterest, addMarks } from './interests';
 const UndergraduatesResult = (props) => {
 
     const {
+        id,
+        area,
+        companyName,
+        town,
         street,
         streetNumber,
-        town,
-        area
+        description,
+        duration,
+        espa,
+        field,
+        salary,
+        startDate,
+        title,
+        type,
+        university,
     } = props;
 
     const [open, setOpen] = useState(false);
     const [fileName, setFileName] = useState([]);
     const [file, setFile] = useState(null);
-    const [description, setDescription] = useState([]);
+    const [selectedDescription, setSelectedDescription] = useState([]);
     const [isPublished, setIsPublished] = useState(false);
 
     const handleSubmit = async (e) => {
@@ -31,7 +42,7 @@ const UndergraduatesResult = (props) => {
         const interest = {
             "undergraduate_id": 1,
             "internship_id": 1,
-            "description": description.length !== 0 ? description : null,
+            "description": selectedDescription.length !== 0 ? selectedDescription : null,
             "status": isPublished ? "await" : null,
             "submitted": isPublished
         }
@@ -55,7 +66,7 @@ const UndergraduatesResult = (props) => {
                     style={{cursor: 'pointer'}}
                     onClick={() => setOpen(!open)}
                     >
-                        Web Developer
+                        {title}
                     </span>
                 </h1>
             </div>
@@ -67,7 +78,7 @@ const UndergraduatesResult = (props) => {
                         </i>
                     </div>
                     <h1>
-                        Επωνυμία Εταιρείας 1 
+                        {companyName} 
                     </h1>
                 </div>
                 <div className="undergraduates-results-result-subheader-area">
@@ -87,20 +98,33 @@ const UndergraduatesResult = (props) => {
                 {
                     open &&
                         <div className="undergraduates-results-result-expand">
-                            <UndergraduatesResultFieldUniType/>
-                            <UndergraduatesResultStartDuration/>
-                            <UndergraduatesResultEspaSalary/>
-                            <UndergraduatesResultDescription/>
+                            <UndergraduatesResultFieldUniType
+                            field={field}
+                            university={university}
+                            type={type}
+                            />
+                            <UndergraduatesResultStartDuration
+                            startDate={startDate}
+                            duration={duration}
+                            />
+                            <UndergraduatesResultEspaSalary
+                            espa={espa}
+                            salary={salary}
+                            />
+                            <UndergraduatesResultDescription
+                            description={description}
+                            />
                             <form 
                             style={{width: '100%'}}
                             onSubmit={handleSubmit}
                             >
                                 <UndergraduatesResultCandidate
+                                id={id}
                                 fileName={fileName}
                                 setFileName={setFileName}
                                 setFile={setFile}
-                                description={description}
-                                setDescription={setDescription}
+                                selectedDescription={selectedDescription}
+                                setSelectedDescription={setSelectedDescription}
                                 setIsPublished={setIsPublished}
                                 />
                             </form>

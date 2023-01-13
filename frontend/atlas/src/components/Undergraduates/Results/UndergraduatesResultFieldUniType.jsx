@@ -1,7 +1,14 @@
 import React from 'react'
 import './undergraduatesResults.css'
 
-const UndergraduatesResultFieldUniType = () => {
+const UndergraduatesResultFieldUniType = (props) => {
+
+    const {
+        field,
+        university,
+        type
+    } = props;
+
   return (
     <div className="undergraduates-results-result-field-uni-type-container">
         <div className="undergraduates-results-result-field-uni-type">
@@ -12,7 +19,7 @@ const UndergraduatesResultFieldUniType = () => {
             </div>
             <div className="undergraduates-results-result-expand-subheader">
                 <h1>
-                    Πληροφορική
+                    {field}
                 </h1>
             </div>
         </div>
@@ -24,7 +31,7 @@ const UndergraduatesResultFieldUniType = () => {
             </div>
             <div className="undergraduates-results-result-expand-subheader">
                 <h1>
-                    Όλα τα πανεπιστήμια
+                    {university}
                 </h1>
             </div>
         </div>
@@ -36,7 +43,7 @@ const UndergraduatesResultFieldUniType = () => {
             </div>
             <div className="undergraduates-results-result-expand-subheader">
                 <h1>
-                    Πλήρης Απασχόλησης
+                    {type}
                 </h1>
             </div>
         </div>

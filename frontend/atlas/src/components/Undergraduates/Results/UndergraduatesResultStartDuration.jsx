@@ -1,7 +1,13 @@
 import React from 'react'
 import './undergraduatesResults.css'
 
-const UndergraduatesResultStartDuration = () => {
+const UndergraduatesResultStartDuration = (props) => {
+
+    const {
+        startDate,
+        duration
+    } = props;
+
   return (
     <div className="undergraduates-results-result-start-duration-container">
         <div className="undergraduates-results-result-start-duration">
@@ -12,7 +18,7 @@ const UndergraduatesResultStartDuration = () => {
             </div>
             <div className="undergraduates-results-result-expand-subheader">
                 <h1>
-                    04/04/2023
+                    {startDate}
                 </h1>
             </div>
         </div>
@@ -24,7 +30,10 @@ const UndergraduatesResultStartDuration = () => {
             </div>
             <div className="undergraduates-results-result-expand-subheader">
                 <h1>
-                    6 Μήνες
+                    {
+                        duration === 3 ?
+                            '3 Μήνες' : '6 Μήνες'
+                    }
                 </h1>
             </div>
         </div>
