@@ -43,6 +43,7 @@ const UndergraduatesResult = (props) => {
             "undergraduate_id": localStorage.getItem('id'),
             "internship_id": id,
             "description": selectedDescription.length !== 0 ? selectedDescription : null,
+            "marks_name": fileName.length !== 0 ? fileName : null,
             "status": isPublished ? "await" : null,
             "submitted": isPublished
         }

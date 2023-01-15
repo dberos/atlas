@@ -36,8 +36,10 @@ public class InterestController {
         return interestService.getInterestsByInternshipId(internship_id);
     }
 
-    @GetMapping("/marks/{id}")
-    public ResponseEntity<byte[]> getMarks(@PathVariable int id) {
+    @GetMapping("/marks/{id}/{name}")
+    public ResponseEntity<byte[]> getMarks(@PathVariable int id,
+                                           @PathVariable(required = false)
+                                           String name) {
         return interestService.getMarks(id);
     }
 

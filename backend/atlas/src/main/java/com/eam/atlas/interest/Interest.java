@@ -26,6 +26,7 @@ public class Interest {
     @Id
     private int internship_id;
     private String description;
+    private String marks_name;
     @Lob
     private byte[] marks;
     private String status;
@@ -34,12 +35,14 @@ public class Interest {
     public Interest(int undergraduate_id,
                     int internship_id,
                     String description,
+                    String marks_name,
                     byte[] marks,
                     String status,
                     Boolean submitted) {
         this.undergraduate_id = undergraduate_id;
         this.internship_id = internship_id;
         this.description = description;
+        this.marks_name = marks_name;
         this.marks = marks;
         this.status = status;
         this.submitted = submitted;
