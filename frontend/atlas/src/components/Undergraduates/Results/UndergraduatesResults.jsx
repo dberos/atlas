@@ -10,7 +10,7 @@ const UndergraduatesResults = () => {
 
   let params = useParams();
 
-  const [data, setData] = useState([]);
+  const [internships, setInternships] = useState([]);
 
   useEffect(() => {
     const results = atob(params.name).split(',');
@@ -40,17 +40,38 @@ const UndergraduatesResults = () => {
       const response = await axios.post('http://localhost:8080/internships/search', obj);
       const data = response.data;
       console.log(data);
-      setData(data);
+      const id = localStorage.getItem('id');
+      const type = localStorage.getItem('type');
+      if(id && type === 'undergraduate') {
+        axios.get(`http://localhost:8080/interests/undergraduate_id=${id}`)
+        .then((response) => {
+          const undergraduateData = response.data;
+          if(undergraduateData.length !== 0) {
+            undergraduateData.forEach((element) => {
+              setTimeout(() => {
+                setInternships((data) => data.filter((curr) => curr.id !== element.internship_id ));
+              }, 3000)
+            })
+          }
+          else {
+            setInternships(data);
+          }
+        })
+        .catch((error) => console.error(error));
+      }
+      else {
+        setInternships(data);
+      }
     }
     getResults();
-  }, [params.name])
+  })
 
   return (
     <div className="undergraduates-results-container">
         <div className="undergraduates-results-wrapper">
             {
-              data.length !== 0 ? 
-                data.map((value) => {
+              internships.length !== 0 ? 
+                internships.map((value) => {
                   return(
                     <UndergraduatesResult
                     key={value.id}
