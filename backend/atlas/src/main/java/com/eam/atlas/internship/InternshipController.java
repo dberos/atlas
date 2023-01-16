@@ -3,6 +3,7 @@ package com.eam.atlas.internship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping(path = "/internships")
 @RestController
@@ -19,6 +20,11 @@ public class InternshipController {
     @GetMapping
     public List<Internship> getInternships() {
         return internshipService.getInternships();
+    }
+
+    @GetMapping("/id={id}")
+    public Optional<Internship> getInternship(@PathVariable int id) {
+        return internshipService.getInternship(id);
     }
 
     @GetMapping("/espa")

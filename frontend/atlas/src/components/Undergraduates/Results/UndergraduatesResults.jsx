@@ -14,7 +14,6 @@ const UndergraduatesResults = () => {
 
   useEffect(() => {
     const results = atob(params.name).split(',');
-    console.log(results);
     const field = results[0] === '' ?
       null : search_results.find((value) => value.id === parseInt(results[0])).title;
     const university = results[1] === '' ?
@@ -39,7 +38,6 @@ const UndergraduatesResults = () => {
     const getResults = async () => {
       const response = await axios.post('http://localhost:8080/internships/search', obj);
       const data = response.data;
-      console.log(data);
       const id = localStorage.getItem('id');
       const type = localStorage.getItem('type');
       if(id && type === 'undergraduate') {

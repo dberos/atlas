@@ -34,6 +34,10 @@ public class InterestService {
         return interestRepository.findInterestsByUndergraduateId(undergraduate_id);
     }
 
+    public List<Interest> getSavedInterestsByUndergraduateId(int undergraduate_id) {
+        return interestRepository.findSavedInterestsByUndergraduateId(undergraduate_id);
+    }
+
     public List<Interest> getInterestsByInternshipId(int internship_id) {
         return interestRepository.findInterestsByInternshipId(internship_id);
     }
@@ -52,7 +56,7 @@ public class InterestService {
         try {
             // Wait for success message to show at user
             // Then remove from active internships
-            Thread.sleep(3000);
+            Thread.sleep(2000);
         } catch (InterruptedException ie) {
             Thread.currentThread().interrupt();
         }
@@ -83,5 +87,18 @@ public class InterestService {
         rejectedInterest.setAnswer(interest.getAnswer());
         interestRepository.save(rejectedInterest);
         return rejectedInterest;
+    }
+
+    public void deleteInterest(int id) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
+        Interest interest = interestRepository.findInterestById(id);
+        InterestId interestId = new InterestId(interest.getId(),
+                                                interest.getUndergraduate_id(),
+                                                interest.getInternship_id());
+        interestRepository.deleteById(interestId);
     }
 }

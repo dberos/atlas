@@ -18,6 +18,9 @@ public interface InterestRepository extends JpaRepository<Interest, InterestId> 
     @Query("select i from Interest i where i.undergraduate_id = ?1")
     List<Interest> findInterestsByUndergraduateId(int undergraduate_id);
 
+    @Query("select i from Interest i where i.undergraduate_id = ?1 and i.submitted = false")
+    List<Interest> findSavedInterestsByUndergraduateId(int undergraduateId);
+
     @Query("select i from Interest i where i.internship_id = ?1")
     List<Interest> findInterestsByInternshipId(int internship_id);
 }

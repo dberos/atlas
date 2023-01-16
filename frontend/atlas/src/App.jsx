@@ -11,6 +11,7 @@ import FAQs from './pages/FAQs';
 import FAQsUndergraduates from './pages/FAQsUndergraduates';
 import FAQsCompanies from './pages/FAQsCompanies';
 import Profile from './pages/Profile';
+import SavedUndergraduates from './pages/SavedUndergraduates';
 
 function App() {
 
@@ -67,6 +68,14 @@ function App() {
             element={
               <Protected>
                 <Profile/>
+              </Protected>
+            }
+            />
+            <Route 
+            path='/profile/undergraduates/saved'
+            element={
+              <Protected>
+                <SavedUndergraduates/>
               </Protected>
             }
             />

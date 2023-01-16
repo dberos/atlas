@@ -1,0 +1,211 @@
+.undergraduates-saved-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.undergraduates-saved-wrapper {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-block-start: 5px solid;
+    padding: 10px;
+    border-image-source: linear-gradient(90deg, rgba(19,37,83,1) 0%, rgba(22,41,87,1) 10%, rgba(190,117,15,1) 50%, rgba(22,41,87,1) 90%, rgba(19,37,83,1) 100%);
+    border-image-slice: 1;
+}
+
+.undergraduates-saved-header {
+    height: 50px;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.undergraduates-saved-header h1 {
+    font-size: 22px;
+    font-weight: 300;
+    color: orange;
+}
+
+.undergraduates-saved-pdf {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.undergraduates-saved-pdf-text {
+    max-width: 250px;
+    margin-right: 5px;
+}
+
+.undergraduates-saved-pdf-text p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #81AFDD;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.undergraduates-saved-pdf-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5%;
+}
+
+.undergraduates-saved-pdf-icon i {
+    border: none;
+    cursor: pointer;
+    color: #81AFDD;
+}
+
+.undergraduates-saved-description {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.undergraduates-saved-description p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #81AFDD;
+}
+
+.undergraduates-saved-delete {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.undergraduates-saved-delete button {
+    width: 40%;
+    height: 100%;
+    background-color: #be750f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.undergraduates-saved-delete button:hover {
+    background-color: orange;
+}
+
+.undergraduates-saved-notification {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.undergraduates-saved-notification p {
+    color: green;
+    font-size: 18px;
+    font-weight: 300;
+    width: 70%;
+}
+
+@media screen and (max-width: 1400px) {
+    .undergraduates-saved-wrapper {
+        width: 80%;
+    }
+
+    .undergraduates-saved-header h1 {
+        font-size: 20px;
+    }
+
+    .undergraduates-saved-pdf-text p {
+        font-size: 16px;
+    }
+
+    .undergraduates-saved-description p {
+        font-size: 16px;
+    }
+
+    .undergraduates-saved-delete button {
+        font-size: 16px;
+    }
+
+    .undergraduates-saved-notification p {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+
+    .undergraduates-saved-header h1 {
+        font-size: 18px;
+    }
+
+    .undergraduates-saved-pdf-text p {
+        font-size: 14px;
+    }
+
+    .undergraduates-saved-description p {
+        font-size: 14px;
+    }
+
+    .undergraduates-saved-delete button {
+        font-size: 14px;
+    }
+
+    .undergraduates-saved-notification p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    .undergraduates-saved-container {
+        margin-bottom: 20px;
+    }
+
+    .undergraduates-saved-wrapper {
+        width: 90%;
+    }
+
+    .undergraduates-saved-header h1 {
+        font-size: 22px;
+    }
+
+    .undergraduates-saved-pdf-text p {
+        font-size: 16px;
+    }
+
+    .undergraduates-saved-description p {
+        font-size: 16px;
+    }
+
+    .undergraduates-saved-delete button {
+        font-size: 16px;
+    }
+
+    .undergraduates-saved-notification p {
+        font-size: 16px;
+    }
+
+    .undergraduates-saved-delete {
+        height: 45px;
+    }
+}

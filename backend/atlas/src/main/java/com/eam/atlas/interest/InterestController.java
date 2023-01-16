@@ -31,6 +31,11 @@ public class InterestController {
         return interestService.getInterestByUndergraduateId(undergraduate_id);
     }
 
+    @GetMapping("/saved/undergraduate_id={undergraduate_id}")
+    public List<Interest> getSavedInterestsByUndergraduateId(@PathVariable int undergraduate_id) {
+        return interestService.getSavedInterestsByUndergraduateId(undergraduate_id);
+    }
+
     @GetMapping("/internship_id={internship_id}")
     public List<Interest> getInterestsByInternshipId(@PathVariable int internship_id) {
         return interestService.getInterestsByInternshipId(internship_id);
@@ -63,5 +68,10 @@ public class InterestController {
     @PutMapping(value = "/reject")
     public Interest rejectInterest(@RequestBody Interest interest) {
         return interestService.rejectInterest(interest);
+    }
+
+    @DeleteMapping("/id={id}")
+    public void deleteInterest(@PathVariable int id) {
+        interestService.deleteInterest(id);
     }
 }
