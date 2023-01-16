@@ -47,11 +47,14 @@ const UndergraduatesResults = () => {
         .then((response) => {
           const undergraduateData = response.data;
           if(undergraduateData.length !== 0) {
-            undergraduateData.forEach((element) => {
-              setTimeout(() => {
-                setInternships((data) => data.filter((curr) => curr.id !== element.internship_id ));
-              }, 3000)
+            var arr = [];
+            data.forEach((element) => {
+              const find = undergraduateData.find((el) => el.internship_id === element.id);
+              if(!find) {
+                arr.push(element);
+              }
             })
+            setInternships(arr);
           }
           else {
             setInternships(data);

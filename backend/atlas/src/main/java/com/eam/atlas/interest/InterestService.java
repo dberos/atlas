@@ -49,6 +49,13 @@ public class InterestService {
     }
 
     public Interest addInterest(Interest interest) {
+        try {
+            // Wait for success message to show at user
+            // Then remove from active internships
+            Thread.sleep(3000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
         interestRepository.save(interest);
         // Return with the id
         Interest createdInterest = interestRepository.findInterest(interest.getUndergraduate_id(),
