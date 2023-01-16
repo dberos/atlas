@@ -30,6 +30,7 @@ public class Interest {
     @Lob
     private byte[] marks;
     private String status;
+    private String answer;
     private Boolean submitted;
 
     public Interest(int undergraduate_id,
@@ -38,6 +39,7 @@ public class Interest {
                     String marks_name,
                     byte[] marks,
                     String status,
+                    String answer,
                     Boolean submitted) {
         this.undergraduate_id = undergraduate_id;
         this.internship_id = internship_id;
@@ -45,6 +47,17 @@ public class Interest {
         this.marks_name = marks_name;
         this.marks = marks;
         this.status = status;
+        this.answer = answer;
         this.submitted = submitted;
+    }
+
+    public Interest(int id,
+                    String answer) {
+        this.id = id;
+        this.answer = answer;
+    }
+
+    public Interest(int id) {
+        this.id = id;
     }
 }

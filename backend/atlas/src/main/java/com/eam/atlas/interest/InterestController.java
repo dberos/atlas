@@ -54,4 +54,14 @@ public class InterestController {
                              MultipartFile marks) throws IOException {
         return interestService.addMarks(id, marks);
     }
+
+    @PutMapping(value = "/accept")
+    public Interest acceptInterest(@RequestBody Interest interest) {
+        return interestService.acceptInterest(interest);
+    }
+
+    @PutMapping(value = "/reject")
+    public Interest rejectInterest(@RequestBody Interest interest) {
+        return interestService.rejectInterest(interest);
+    }
 }

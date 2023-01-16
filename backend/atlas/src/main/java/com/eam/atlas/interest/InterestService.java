@@ -62,4 +62,19 @@ public class InterestService {
         interestRepository.save(interest);
         return interest;
     }
+
+    public Interest acceptInterest(Interest interest) {
+        Interest acceptedInterest = interestRepository.findInterestById(interest.getId());
+        acceptedInterest.setStatus("accepted");
+        interestRepository.save(acceptedInterest);
+        return acceptedInterest;
+    }
+
+    public Interest rejectInterest(Interest interest) {
+        Interest rejectedInterest = interestRepository.findInterestById(interest.getId());
+        rejectedInterest.setStatus("rejected");
+        rejectedInterest.setAnswer(interest.getAnswer());
+        interestRepository.save(rejectedInterest);
+        return rejectedInterest;
+    }
 }
