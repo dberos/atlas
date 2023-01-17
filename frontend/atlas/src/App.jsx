@@ -12,6 +12,7 @@ import FAQsUndergraduates from './pages/FAQsUndergraduates';
 import FAQsCompanies from './pages/FAQsCompanies';
 import Profile from './pages/Profile';
 import SavedUndergraduates from './pages/SavedUndergraduates';
+import SubmittedUndergraduates from './pages/SubmittedUndergraduates';
 
 function App() {
 
@@ -76,6 +77,14 @@ function App() {
             element={
               <Protected>
                 <SavedUndergraduates/>
+              </Protected>
+            }
+            />
+            <Route 
+            path='/profile/undergraduates/submitted'
+            element={
+              <Protected>
+                <SubmittedUndergraduates/>
               </Protected>
             }
             />

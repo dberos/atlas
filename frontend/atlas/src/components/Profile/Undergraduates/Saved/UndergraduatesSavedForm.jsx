@@ -1,5 +1,4 @@
 import React from 'react'
-import './undergraduatesSaved.css'
 import '../../../Undergraduates/Results/undergraduatesResults.css'
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 

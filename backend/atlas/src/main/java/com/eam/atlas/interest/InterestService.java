@@ -38,6 +38,10 @@ public class InterestService {
         return interestRepository.findSavedInterestsByUndergraduateId(undergraduate_id);
     }
 
+    public List<Interest> getSubmittedInterestsByUndergraduateId(int undergraduate_id) {
+        return interestRepository.findSubmittedInterestsByUndergraduateId(undergraduate_id);
+    }
+
     public List<Interest> getInterestsByInternshipId(int internship_id) {
         return interestRepository.findInterestsByInternshipId(internship_id);
     }

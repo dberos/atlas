@@ -1,4 +1,4 @@
-.undergraduates-saved-container {
+.profile-undergraduates-container {
     width: 100%;
     display: flex;
     align-items: center;
@@ -7,8 +7,8 @@
     flex-direction: column;
 }
 
-.undergraduates-saved-wrapper {
-    width: 70%;
+.profile-undergraduates-wrapper {
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@
     border-image-slice: 1;
 }
 
-.undergraduates-saved-header {
+.profile-undergraduates-header {
     height: 50px;
     width: 100%;
     display: inline-block;
@@ -27,13 +27,13 @@
     margin-bottom: 20px;
 }
 
-.undergraduates-saved-header h1 {
+.profile-undergraduates-header h1 {
     font-size: 22px;
     font-weight: 300;
     color: orange;
 }
 
-.undergraduates-saved-pdf {
+.profile-undergraduates-pdf {
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -43,12 +43,12 @@
     margin-bottom: 20px;
 }
 
-.undergraduates-saved-pdf-text {
+.profile-undergraduates-pdf-text {
     max-width: 250px;
     margin-right: 5px;
 }
 
-.undergraduates-saved-pdf-text p {
+.profile-undergraduates-pdf-text p {
     font-size: 18px;
     font-weight: 300;
     color: #81AFDD;
@@ -58,7 +58,7 @@
     white-space: nowrap;
 }
 
-.undergraduates-saved-pdf-icon {
+.profile-undergraduates-pdf-icon {
     width: 50px;
     height: 50px;
     display: flex;
@@ -67,26 +67,26 @@
     margin-right: 5%;
 }
 
-.undergraduates-saved-pdf-icon i {
+.profile-undergraduates-pdf-icon i {
     border: none;
     cursor: pointer;
     color: #81AFDD;
 }
 
-.undergraduates-saved-description {
+.profile-undergraduates-description {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.undergraduates-saved-description p {
+.profile-undergraduates-description p {
     font-size: 18px;
     font-weight: 300;
     color: #81AFDD;
 }
 
-.undergraduates-saved-delete {
+.profile-undergraduates-delete {
     width: 100%;
     height: 50px;
     display: flex;
@@ -95,7 +95,7 @@
     margin-top: 30px;
 }
 
-.undergraduates-saved-delete button {
+.profile-undergraduates-delete button {
     width: 40%;
     height: 100%;
     background-color: #be750f;
@@ -106,11 +106,11 @@
     font-size: 18px;
 }
 
-.undergraduates-saved-delete button:hover {
+.profile-undergraduates-delete button:hover {
     background-color: orange;
 }
 
-.undergraduates-saved-notification {
+.profile-undergraduates-notification {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -119,93 +119,94 @@
     margin-top: 30px;
 }
 
-.undergraduates-saved-notification p {
+.profile-undergraduates-notification p {
     color: green;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 300;
     width: 70%;
+    text-decoration: underline;
 }
 
 @media screen and (max-width: 1400px) {
-    .undergraduates-saved-wrapper {
-        width: 80%;
+    .profile-undergraduates-wrapper {
+        width: 90%;
     }
 
-    .undergraduates-saved-header h1 {
+    .profile-undergraduates-header h1 {
         font-size: 20px;
     }
 
-    .undergraduates-saved-pdf-text p {
+    .profile-undergraduates-pdf-text p {
         font-size: 16px;
     }
 
-    .undergraduates-saved-description p {
+    .profile-undergraduates-description p {
         font-size: 16px;
     }
 
-    .undergraduates-saved-delete button {
+    .profile-undergraduates-delete button {
         font-size: 16px;
     }
 
-    .undergraduates-saved-notification p {
-        font-size: 16px;
+    .profile-undergraduates-notification p {
+        font-size: 20px;
     }
 }
 
 @media screen and (max-width: 850px) {
 
-    .undergraduates-saved-header h1 {
+    .profile-undergraduates-header h1 {
         font-size: 18px;
     }
 
-    .undergraduates-saved-pdf-text p {
+    .profile-undergraduates-pdf-text p {
         font-size: 14px;
     }
 
-    .undergraduates-saved-description p {
+    .profile-undergraduates-description p {
         font-size: 14px;
     }
 
-    .undergraduates-saved-delete button {
+    .profile-undergraduates-delete button {
         font-size: 14px;
     }
 
-    .undergraduates-saved-notification p {
-        font-size: 14px;
+    .profile-undergraduates-notification p {
+        font-size: 18px;
     }
 }
 
 @media screen and (max-width: 650px) {
 
-    .undergraduates-saved-container {
+    .profile-undergraduates-container {
         margin-bottom: 20px;
     }
 
-    .undergraduates-saved-wrapper {
+    .profile-undergraduates-wrapper {
         width: 90%;
     }
 
-    .undergraduates-saved-header h1 {
+    .profile-undergraduates-header h1 {
         font-size: 22px;
     }
 
-    .undergraduates-saved-pdf-text p {
+    .profile-undergraduates-pdf-text p {
         font-size: 16px;
     }
 
-    .undergraduates-saved-description p {
+    .profile-undergraduates-description p {
         font-size: 16px;
     }
 
-    .undergraduates-saved-delete button {
+    .profile-undergraduates-delete button {
         font-size: 16px;
     }
 
-    .undergraduates-saved-notification p {
-        font-size: 16px;
+    .profile-undergraduates-notification p {
+        font-size: 20px;
     }
 
-    .undergraduates-saved-delete {
+    .profile-undergraduates-delete {
         height: 45px;
     }
 }

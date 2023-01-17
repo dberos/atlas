@@ -36,6 +36,11 @@ public class InterestController {
         return interestService.getSavedInterestsByUndergraduateId(undergraduate_id);
     }
 
+    @GetMapping("/submitted/undergraduate_id={undergraduate_id}")
+    public List<Interest> getSubmittedInterestsByUndergraduateId(@PathVariable int undergraduate_id) {
+        return interestService.getSubmittedInterestsByUndergraduateId(undergraduate_id);
+    }
+
     @GetMapping("/internship_id={internship_id}")
     public List<Interest> getInterestsByInternshipId(@PathVariable int internship_id) {
         return interestService.getInterestsByInternshipId(internship_id);
