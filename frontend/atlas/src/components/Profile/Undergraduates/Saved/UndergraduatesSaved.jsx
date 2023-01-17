@@ -43,6 +43,7 @@ const UndergraduatesSaved = () => {
                             <UndergraduatesSavedInterest
                             key={value.interest_id}
                             interest_id={value.interest_id}
+                            internship_id={value.internship_id}
                             area={value.area}
                             companyName={value.company.name}
                             town={value.company.town}
@@ -59,6 +60,7 @@ const UndergraduatesSaved = () => {
                             university={value.university}
                             interest_description={value.interest_description}
                             marks_name={value.marks_name}
+                            marks={value.marks}
                             internships={internships}
                             setInternships={setInternships}
                             />

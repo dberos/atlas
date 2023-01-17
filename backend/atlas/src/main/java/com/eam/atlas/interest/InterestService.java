@@ -67,6 +67,21 @@ public class InterestService {
         return createdInterest;
     }
 
+    public Interest editInterest(Interest interest) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
+        Interest oldInterest = interestRepository.findInterestById(interest.getId());
+        oldInterest.setMarks_name(interest.getMarks_name());
+        oldInterest.setDescription(interest.getDescription());
+        oldInterest.setStatus("await");
+        oldInterest.setSubmitted(true);
+        interestRepository.save(oldInterest);
+        return oldInterest;
+    }
+
     public Interest addMarks(int id, MultipartFile marks) throws IOException {
         Interest interest = interestRepository.findInterestById(id);
         interest.setMarks(marks.getBytes());

@@ -53,6 +53,11 @@ public class InterestController {
         return interestService.addInterest(interest);
     }
 
+    @PutMapping
+    public Interest editInterest(@RequestBody Interest interest) {
+        return interestService.editInterest(interest);
+    }
+
     @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public Interest addMarks(@PathVariable int id,
                              @RequestParam("marks")
