@@ -34,7 +34,6 @@ const UndergraduatesSavedInterest = (props) => {
         marks_name,
         marks,
         internships,
-        setInternships
     } = props;
 
     const [open, setOpen] = useState(false);
@@ -71,7 +70,7 @@ const UndergraduatesSavedInterest = (props) => {
                 marks.append('marks', file);
                 await addMarks(interest_id, marks);
             }
-            setInternships((current) => current.filter((curr) => curr.internship_id !== internship_id));
+            // setInternships((current) => current.filter((curr) => curr.internship_id !== internship_id));
         }
         else {
             setError('Η αίτηση διαγράφηκε με επιτυχία!');
@@ -85,7 +84,7 @@ const UndergraduatesSavedInterest = (props) => {
                         const find = data.find((el) => element.id === el.internship_id);
                         if(!find) {
                             // Remove from active internships in profile
-                            setInternships((current) => current.filter((curr) => curr.internship_id !== element.internship_id));
+                            // setInternships((current) => current.filter((curr) => curr.internship_id !== element.internship_id));
                         }
                     })
                 })

@@ -7,12 +7,16 @@ import UndergraduatesSavedInterest from './UndergraduatesSavedInterest';
 const UndergraduatesSaved = () => {
 
     const [internships, setInternships] = useState([]);
+    // eslint-disable-next-line
+    const [interests, setInterests] = useState([]);
 
     useEffect(() => {
         const id = localStorage.getItem('id');
         const getInterests = async () => {
             const response = await axios.get(`http://localhost:8080/interests/saved/undergraduate_id=${id}`);
             const data = response.data;
+            // Force constant rerenders that aren't happening from spread
+            setInterests(data);
             data.forEach((element) => {
                 axios.get(`http://localhost:8080/internships/id=${element.internship_id}`)
                 .then((response) => {
@@ -28,6 +32,18 @@ const UndergraduatesSaved = () => {
                     }
                 })
                 .catch((error) => console.error(error));
+            })
+            // Check here for removals not on submit
+            // To not close other already open internship
+            internships.forEach((element) => {
+                axios.get(`http://localhost:8080/interests/saved/undergraduate_id=${id}`)
+                .then((response) => {
+                    const data = response.data;
+                    const find = data.find((el) => el.internship_id === element.id);
+                    if(!find) {
+                        setInternships((current) => current.filter((curr) => curr.id !== element.id));
+                    }
+                })
             })
         }
         getInterests();
@@ -62,7 +78,6 @@ const UndergraduatesSaved = () => {
                             marks_name={value.marks_name}
                             marks={value.marks}
                             internships={internships}
-                            setInternships={setInternships}
                             />
                         )
                     }) :
