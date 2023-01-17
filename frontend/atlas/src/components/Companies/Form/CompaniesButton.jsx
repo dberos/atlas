@@ -6,7 +6,9 @@ const CompaniesButton = (props) => {
   const {
           setIsPublished, 
           isDisabled,
-          error
+          error,
+          buttonPrimary,
+          buttonSecondary
         } = props;
 
   return (
@@ -30,9 +32,8 @@ const CompaniesButton = (props) => {
               backgroundColor: isDisabled ? '#ADABA8' : '#be750f',
               cursor: isDisabled ? 'not-allowed' : 'pointer'
             }}
-            >
-                Δημοσίευση
-            </button>
+            dangerouslySetInnerHTML={{__html: buttonPrimary}}
+            />
           </div>
           <div className="companies-form-button-secondary">
             <button 
@@ -42,9 +43,9 @@ const CompaniesButton = (props) => {
               backgroundColor: isDisabled ? '#ADABA8' : '#112c5d',
               cursor: isDisabled ? 'not-allowed' : 'pointer'
             }}
-            >
-              Προσωρινή <br/> Αποθήκευση
-            </button>
+            dangerouslySetInnerHTML={{__html: buttonSecondary}}
+            />
+            
           </div>
         </>
       }

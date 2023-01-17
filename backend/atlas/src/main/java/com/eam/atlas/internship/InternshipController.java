@@ -42,6 +42,16 @@ public class InternshipController {
         return internshipService.getInternshipsByCompanyId(company_id);
     }
 
+    @GetMapping("/saved/company_id={company_id}")
+    public List<Internship> getSavedInternshipsByCompanyId(@PathVariable int company_id) {
+        return internshipService.getSavedInternshipsByCompanyId(company_id);
+    }
+
+    @GetMapping("/submitted/company_id={company_id}")
+    public List<Internship> getSubmittedInternshipsByCompanyId(@PathVariable int company_id) {
+        return internshipService.getSubmittedInternshipsByCompanyId(company_id);
+    }
+
     @PostMapping
     public Internship addInternship(@RequestBody Internship internship) {
         return internshipService.addInternship(internship);
@@ -55,5 +65,15 @@ public class InternshipController {
     @PutMapping("/accept")
     public Internship acceptUndergraduate(@RequestBody Internship internship) {
         return internshipService.acceptUndergraduate(internship);
+    }
+
+    @PutMapping
+    public Internship editInternship(@RequestBody Internship internship) {
+        return internshipService.editInternship(internship);
+    }
+
+    @DeleteMapping("/id={id}")
+    public void deleteInternship(@PathVariable int id) {
+        internshipService.deleteInternship(id);
     }
 }

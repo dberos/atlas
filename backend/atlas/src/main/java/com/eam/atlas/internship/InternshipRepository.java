@@ -10,6 +10,9 @@ import java.util.List;
 @Repository
 public interface InternshipRepository extends JpaRepository<Internship, Integer> {
 
+    @Query("select i from Internship i where i.id = ?1")
+    Internship findInternshipById(int id);
+
     @Query("select i from Internship i where i.espa = true " +
             "and i.submitted = true and i.undergraduate = null")
     List<Internship> findEspaInternships();
@@ -20,6 +23,12 @@ public interface InternshipRepository extends JpaRepository<Internship, Integer>
 
     @Query("select i from Internship i where i.company.id = ?1")
     List<Internship> findInternshipsByCompanyId(int company_id);
+
+    @Query("select i from Internship i where i.company.id = ?1 and i.submitted = false")
+    List<Internship> findSavedInternshipsByCompanyId(int companyId);
+
+    @Query("select i from Internship i where i.company.id = ?1 and i.submitted = true")
+    List<Internship> findSubmittedInternshipsByCompanyId(int company_id);
 
     // If date is null post 00/00/0000
     // If duration is null post -1

@@ -72,7 +72,7 @@ const CompaniesSalaryDesc = (props) => {
                 disabled={selectedEspa[1] === 'ω' ? false : true}
                 style={{
                     backgroundColor: isDisabled ? '#ADABA8' : 'white',
-                    cursor: isDisabled ? 'not-allowed' : 'pointer'
+                    cursor: isDisabled ? 'not-allowed' : 'unset'
                 }}
                 />
                 <label>

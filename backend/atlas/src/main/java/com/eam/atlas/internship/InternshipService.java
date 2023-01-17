@@ -45,6 +45,14 @@ public class InternshipService {
         return internshipRepository.findInternshipsByCompanyId(company_id);
     }
 
+    public List<Internship> getSavedInternshipsByCompanyId(int company_id) {
+        return internshipRepository.findSavedInternshipsByCompanyId(company_id);
+    }
+
+    public List<Internship> getSubmittedInternshipsByCompanyId(int company_id) {
+        return internshipRepository.findSubmittedInternshipsByCompanyId(company_id);
+    }
+
     public Internship addInternship(Internship internship) {
         Optional<Company> company = companyRepository.findById(internship.getCompany_id());
         if(company.isEmpty()) {
@@ -80,5 +88,37 @@ public class InternshipService {
         internshipOptional.get().setUndergraduate(undergraduate.get());
         internshipRepository.save(internshipOptional.get());
         return internshipOptional.get();
+    }
+
+    public Internship editInternship(Internship internship) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
+        Internship oldInternship = internshipRepository.findInternshipById(internship.getId());
+        oldInternship.setTitle(internship.getTitle());
+        oldInternship.setField(internship.getField());
+        oldInternship.setUniversity(internship.getUniversity());
+        oldInternship.setArea(internship.getArea());
+        oldInternship.setStart_date(internship.getStart_date());
+        oldInternship.setDuration(internship.getDuration());
+        oldInternship.setType(internship.getType());
+        oldInternship.setEspa(internship.getEspa());
+        oldInternship.setSalary(internship.getSalary());
+        oldInternship.setDescription(internship.getDescription());
+        oldInternship.setSubmitted(true);
+        internshipRepository.save(oldInternship);
+        return oldInternship;
+    }
+
+    public void deleteInternship(int id) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
+        Internship internship = internshipRepository.findInternshipById(id);
+        internshipRepository.delete(internship);
     }
 }

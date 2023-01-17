@@ -77,6 +77,8 @@ const CompaniesForm = () => {
     );
 
     var fieldPlaceholder = 'Για τι τομέα θα είναι η θέση;'
+    var buttonPrimary = 'Δημοσίευση';
+    var buttonSecondary = 'Προσωρινή <br/> Αποθήκευση';
 
     const { setLogged } = useContext(IsLogged);
 
@@ -212,6 +214,8 @@ const CompaniesForm = () => {
                 setIsPublished={setIsPublished}
                 isDisabled={isDisabled}
                 error={error}
+                buttonPrimary={buttonPrimary}
+                buttonSecondary={buttonSecondary}
                 />
             </form>
         </div>
