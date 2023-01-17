@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import '../../Global/Form/form.css'
 import CompaniesInternshipTitle from './CompaniesInternshipTitle'
-import { search_results } from '../../Home/Main/data'
 import CompaniesSearchBar from './CompaniesSearchBar'
 import CompaniesUniArea from './CompaniesUniArea'
 import CompaniesStardDuration from './CompaniesStardDuration'
@@ -82,59 +81,6 @@ const CompaniesForm = () => {
     const { setLogged } = useContext(IsLogged);
 
     useEffect(() => {
-        console.log(internshipTitle);
-    }, [internshipTitle])
-
-    useEffect(() => {
-        console.log('searchBarWord ', searchBarWord);
-        
-        const checkWord = (obj) => {
-          return obj.title === searchBarWord;
-        }
-        
-        // Check if exists for errors
-        console.log(search_results.some(checkWord));
-        console.log(searchBarWord.length);
-    }, [searchBarWord])
-
-    useEffect(() => {
-    console.log(selectedUniversity);
-    }, [selectedUniversity])
-    
-    useEffect(() => {
-    console.log(selectedArea);
-    }, [selectedArea])
-
-    useEffect(() => {
-        console.log(selectedDate);
-    }, [selectedDate])
-    
-      useEffect(() => {
-        console.log(selectedDuration);
-    }, [selectedDuration])
-
-    useEffect(() => {
-        console.log(selectedType);
-    }, [selectedType])
-    
-      useEffect(() => {
-        console.log(selectedEspa);
-    }, [selectedEspa])
-
-    useEffect(() => {
-        console.log(selectedSalary);
-    }, [selectedSalary])
-
-    useEffect(() => {
-        console.log(selectedDescription);
-    }, [selectedDescription])
-
-    useEffect(() => {
-        isPublished ? console.log('Δημοσίευση') :
-            console.log('Προσωρινή Αποθήκευση');
-    }, [isPublished])
-
-    useEffect(() => {
         if(
             internshipTitle.length !== 0 &&
             searchBarWord.length !== 0 &&
@@ -180,11 +126,6 @@ const CompaniesForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Check for localstorage user
-        // If not exists open login
-        // If exists clear form and navigate to results
-        // setOpenLogin(true);
-        // console.log('submitted');
         const user = localStorage.getItem('email');
         const type = localStorage.getItem('type');
         if(!user) {

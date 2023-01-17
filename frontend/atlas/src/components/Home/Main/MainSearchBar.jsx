@@ -49,10 +49,6 @@ const MainSearchBar = () => {
         clearInput();
         // Disable focus after submit
         inputRef.current.blur();
-        // IF NOT WORD SEARCH
-        console.log(word);
-        console.log('selected word: ', wordEntered);
-        console.log('submitted');
 
         if(wordEntered !== word) {
             const fieldID = search_results.find((value) => value.title === wordEntered).id
@@ -60,7 +56,7 @@ const MainSearchBar = () => {
                 fieldID,
                 null,
                 null,
-                '00/00/0000',
+                '-1',
                 -1,
                 null,
                 null
@@ -73,21 +69,21 @@ const MainSearchBar = () => {
         <div className='main-search-container' ref={ref}>
             <form onSubmit={handleSubmit}>
                 <div className='main-search-bar'>
-                <input  type = 'text' placeholder='Τι τομέα ψάχνεις;' onChange={handleFilter} value={wordEntered} ref={inputRef}/>
-                <div className='main-search-bar-icon'>
-                    <button type='button'>
-                    {
-                        wordEntered.length === 0 ?
-                            <SearchIcon fontSize='large' style={{cursor: 'default'}}/> :
-                                <CloseIcon fontSize='large' onClick={() => clearInput()}/>
-                    }
-                    </button>
-                </div>
-                <div className='main-search-bar-search'>
-                    <button onClick={handleSubmit}>
-                        Αναζήτηση
-                    </button>
-                </div>
+                    <input  type = 'text' placeholder='Τι τομέα ψάχνεις;' onChange={handleFilter} value={wordEntered} ref={inputRef}/>
+                    <div className='main-search-bar-icon'>
+                        <button type='button'>
+                        {
+                            wordEntered.length === 0 ?
+                                <SearchIcon fontSize='large' style={{cursor: 'default'}}/> :
+                                    <CloseIcon fontSize='large' onClick={() => clearInput()}/>
+                        }
+                        </button>
+                    </div>
+                    <div className='main-search-bar-search'>
+                        <button onClick={handleSubmit}>
+                            Αναζήτηση
+                        </button>
+                    </div>
                 </div>
             </form>
             <MainSearchResults

@@ -59,7 +59,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/undergraduates' element={<Undergraduates/>}/>
-            <Route path='/undergraduates/results/:name' element={<ResultsUndergraduates/>}/>
+            <Route path='/undergraduates/results/:selections' element={<ResultsUndergraduates/>}/>
             <Route path='/companies' element={<Companies/>}/>
             <Route path='/faqs' element={<FAQs/>}/>
             <Route path='/faqs/undergraduates' element={<FAQsUndergraduates/>}/>

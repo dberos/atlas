@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../../Global/Form/form.css'
 import UndergraduatesSearchBar from './UndergraduatesSearchBar'
 import { search_results } from '../../Home/Main/data'
@@ -25,47 +25,8 @@ const UndergraduatesForm = () => {
 
   var fieldPlaceholder = 'Τι τομέα ψάχνεις;';
 
-
-  useEffect(() => {
-    console.log('searchBarWord ', searchBarWord);
-    
-    const checkWord = (obj) => {
-      return obj.title === searchBarWord;
-    }
-    
-    // Check if exists for errors
-    console.log(search_results.some(checkWord));
-    console.log(searchBarWord.length);
-  }, [searchBarWord])
-
-  useEffect(() => {
-    console.log(selectedUniversity);
-  }, [selectedUniversity])
-
-  useEffect(() => {
-    console.log(selectedArea);
-  }, [selectedArea])
-
-  useEffect(() => {
-    console.log(selectedDate);
-  }, [selectedDate])
-
-  useEffect(() => {
-    console.log(selectedDuration);
-  }, [selectedDuration])
-
-  useEffect(() => {
-    console.log(selectedType);
-  }, [selectedType])
-
-  useEffect(() => {
-    console.log(selectedEspa);
-  }, [selectedEspa])
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('submitted');
 
     const results = [];
     const field = searchBarWord.length !== 0 ? 
@@ -81,7 +42,7 @@ const UndergraduatesForm = () => {
         selectedArea === 'Αθήνα' ? 1 : 2 : null;
     results.push(area);
     const date = selectedDate.length !== 0 ?
-      selectedDate : '00/00/0000';
+      selectedDate : '-1';
     results.push(date);
     const duration = selectedDuration.length !== 0 ?
       selectedDuration === 'Όλες οι διάρκειες' ? 
@@ -91,11 +52,10 @@ const UndergraduatesForm = () => {
       selectedType === 'Όλοι οι τύποι' ?
         null : selectedType === 'Μερικής Απασχόλησης' ? 1 : 2 : null;
     results.push(type);
-  const espa = selectedEspa.length !== 0 ?
-    selectedEspa === 'Όλες οι Χρηματοδοτήσεις' ?
-      null : selectedEspa === 'Χρηματοδότηση ΕΣΠΑ' ? 1 : 2 : null;
-  results.push(espa);
-
+    const espa = selectedEspa.length !== 0 ?
+      selectedEspa === 'Όλες οι Χρηματοδοτήσεις' ?
+        null : selectedEspa === 'Χρηματοδότηση ΕΣΠΑ' ? 1 : 2 : null;
+    results.push(espa);
 
     navigate(`/undergraduates/results/${btoa(results)}`);
   }

@@ -13,14 +13,14 @@ const UndergraduatesResults = () => {
   const [internships, setInternships] = useState([]);
 
   useEffect(() => {
-    const results = atob(params.name).split(',');
+    const results = atob(params.selections).split(',');
     const field = results[0] === '' ?
       null : search_results.find((value) => value.id === parseInt(results[0])).title;
     const university = results[1] === '' ?
       null : results[1] === '1' ? 'ΕΚΠΑ' : 'ΑΠΘ';
     const area = results[2] === '' ?
       null : results[2] === '1' ? 'Αθήνα' : 'Θεσσαλονίκη';
-    const date = results[3];
+    const date = results[3] === '-1' ? '00/00/0000' : results;
     const duration = results[4] === '-1' ? -1 : results[4];
     const type = results[5] === '' ? null :
       results[5] === '1' ? 'Μερικής Απασχόλησης' : 'Πλήρης Απασχόλησης';

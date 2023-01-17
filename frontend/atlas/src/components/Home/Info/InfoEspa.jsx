@@ -11,7 +11,7 @@ const InfoEspa = () => {
       null,
       null,
       null,
-      '00/00/0000',
+      '-1',
       -1,
       null,
       1

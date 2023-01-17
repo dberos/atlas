@@ -87,22 +87,22 @@ const MainSearchResults = (props) => {
             filteredData.length !== 0 && 
                 <div className='main-search-results-container' ref={resultsRef}>
                     {
-                    filteredData.map((value, i) => {
-                        return(
-                            <div className='main-search-results' 
-                                id='results-id'
-                                key={value.id} target="_blank" 
-                                onMouseEnter={() => handleMouseEnter(i, value.title)}
-                                onClick={handleSubmit}
-                                style={{
-                                    cursor: 'pointer',
-                                    backgroundColor: i === state.selectedIndex ? '#052547' : 'inherit',
-                                }}
-                            >
-                            {value.title}
-                        </div>
-                        )
-                    })
+                        filteredData.map((value, i) => {
+                            return(
+                                <div className='main-search-results' 
+                                    id='results-id'
+                                    key={value.id} target="_blank" 
+                                    onMouseEnter={() => handleMouseEnter(i, value.title)}
+                                    onClick={handleSubmit}
+                                    style={{
+                                        cursor: 'pointer',
+                                        backgroundColor: i === state.selectedIndex ? '#052547' : 'inherit',
+                                    }}
+                                >
+                                {value.title}
+                            </div>
+                            )
+                        })
                     }
                 </div>
             }
