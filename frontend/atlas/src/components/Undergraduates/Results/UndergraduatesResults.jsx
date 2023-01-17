@@ -20,7 +20,7 @@ const UndergraduatesResults = () => {
       null : results[1] === '1' ? 'ΕΚΠΑ' : 'ΑΠΘ';
     const area = results[2] === '' ?
       null : results[2] === '1' ? 'Αθήνα' : 'Θεσσαλονίκη';
-    const date = results[3] === '-1' ? '00/00/0000' : results;
+    const date = results[3] === '-1' ? '00/00/0000' : results[3];
     const duration = results[4] === '-1' ? -1 : results[4];
     const type = results[5] === '' ? null :
       results[5] === '1' ? 'Μερικής Απασχόλησης' : 'Πλήρης Απασχόλησης';
