@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import '../../../Undergraduates/Results/undergraduatesResults.css'
-import '../../../Global/Form/form.css'
-import UndergraduatesResultsEmpty from '../../../Undergraduates/Results/UndergraduatesResultsEmpty'
 import axios from 'axios'
-import CompaniesSavedInternship from './CompaniesSavedInternship'
+import '../../../Undergraduates/Results/undergraduatesResults.css'
+import UndergraduatesResultsEmpty from '../../../Undergraduates/Results/UndergraduatesResultsEmpty'
+import CompaniesSubmittedInternship from './CompaniesSubmittedInternship'
 
-const CompaniesSaved = () => {
+const CompaniesSubmitted = () => {
 
     const [internships, setInternships] = useState([]);
 
     useEffect(() => {
         const id = localStorage.getItem('id');
         const getInternships = async () => {
-            const response = await axios.get(`http://localhost:8080/internships/saved/company_id=${id}`);
+            const response = await axios.get(`http://localhost:8080/internships/submitted/company_id=${id}`);
             const data = response.data;
             setInternships(data);
         }
@@ -26,9 +25,8 @@ const CompaniesSaved = () => {
                 internships.length !== 0 ?
                     internships.map((value) => {
                         return(
-                            <CompaniesSavedInternship
+                            <CompaniesSubmittedInternship
                             key={value.id}
-                            id={value.id}
                             title={value.title}
                             companyName={value.company.name}
                             street={value.company.street}
@@ -37,12 +35,13 @@ const CompaniesSaved = () => {
                             area={value.area}
                             field={value.field}
                             university={value.university}
+                            type={value.type}
                             startDate={value.start_date}
                             duration={value.duration}
-                            type={value.type}
                             espa={value.espa}
                             salary={value.salary}
                             description={value.description}
+                            undergraduate_id={value.undergraduate?.id}
                             />
                         )
                     }) :
@@ -53,4 +52,4 @@ const CompaniesSaved = () => {
   )
 }
 
-export default CompaniesSaved
+export default CompaniesSubmitted

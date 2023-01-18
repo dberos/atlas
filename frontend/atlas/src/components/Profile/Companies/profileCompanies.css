@@ -1,0 +1,159 @@
+.profile-companies-notification-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.profile-companies-notification-wrapper {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-block-start: 5px solid;
+    padding: 10px;
+    border-image-source: linear-gradient(90deg, rgba(19,37,83,1) 0%, rgba(22,41,87,1) 10%, rgba(190,117,15,1) 50%, rgba(22,41,87,1) 90%, rgba(19,37,83,1) 100%);
+    border-image-slice: 1;
+}
+
+.profile-companies-notification-header {
+    height: 50px;
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-companies-notification-header h1 {
+    font-size: 22px;
+    font-weight: 300;
+    color: orange;
+}
+
+.profile-companies-notification-notification {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-companies-notification-notification p {
+    font-size: 18px;
+    font-weight: 300;
+    color: #81AFDD;
+}
+
+.profile-companies-notification-button {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.profile-companies-notification-button button {
+    width: 35%;
+    height: 100%;
+    background-color: #be750f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.profile-companies-notification-button button:hover {
+    background-color: orange;
+}
+
+.profile-companies-notification-after {
+    display: none;
+    width: 100%;
+    background-color: inherit;
+}
+
+.profile-companies-notification-after::after {
+    display: none;
+    width: 90%;
+}
+
+@media screen and (max-width: 1400px) {
+    .profile-companies-notification-wrapper {
+        width: 90%;
+    }
+
+    .profile-companies-notification-header h1 {
+        font-size: 20px;
+    }
+
+    .profile-companies-notification-notification p {
+        font-size: 16px;
+    }
+
+    .profile-companies-notification-button button {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .profile-companies-notification-header h1 {
+        font-size: 18px;
+    }
+
+    .profile-companies-notification-notification p {
+        font-size: 14px;
+    }
+
+    .profile-companies-notification-button button {
+        font-size: 14px;
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .profile-companies-notification-container {
+        margin-bottom: 20px;
+    }
+
+    .profile-companies-notification-wrapper {
+        border-image-source: linear-gradient(90deg, rgba(190,117,15,1) 0%, rgba(33,57,103,1) 80%, rgba(19,37,83,1) 100%);
+
+    }
+
+    .profile-companies-notification-header h1 {
+        font-size: 22px;
+    }
+
+    .profile-companies-notification-notification p {
+        font-size: 16px;
+    }
+
+    .profile-companies-notification-button {
+        height: 45px;
+    }
+
+    .profile-companies-notification-button button {
+        font-size: 16px;
+    }
+
+    .profile-companies-notification-after {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .profile-companies-notification-after::after {
+        content: '';
+        border-block-start: 5px solid;
+        padding: 10px;
+        border-image-source: linear-gradient(270deg, rgba(190,117,15,1) 0%, rgba(33,57,103,1) 80%, rgba(19,37,83,1) 100%);
+        border-image-slice: 1;
+        display: block;
+    }
+}

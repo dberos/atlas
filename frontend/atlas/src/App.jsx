@@ -14,6 +14,7 @@ import Profile from './pages/Profile';
 import SavedUndergraduates from './pages/SavedUndergraduates';
 import SubmittedUndergraduates from './pages/SubmittedUndergraduates';
 import SavedCompanies from './pages/SavedCompanies';
+import SubmittedCompanies from './pages/SubmittedCompanies';
 
 function App() {
 
@@ -94,6 +95,14 @@ function App() {
             element={
               <Protected>
                 <SavedCompanies/>
+              </Protected>
+            }
+            />
+            <Route 
+            path='/profile/companies/submitted'
+            element={
+              <Protected>
+                <SubmittedCompanies/>
               </Protected>
             }
             />

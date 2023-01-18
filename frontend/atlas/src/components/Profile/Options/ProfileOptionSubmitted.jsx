@@ -14,13 +14,21 @@ const ProfileOptionSubmitted = () => {
     <div className="profile-options-option-container">
         <div className="profile-options-option-header">
             <div className="profile-options-option-title">
-                <Link to={type === 'undergraduate' && '/profile/undergraduates/submitted'}>
-                    Καταχωρημένες Θέσεις
+                <Link 
+                to={type === 'undergraduate' ? '/profile/undergraduates/submitted' : '/profile/companies/submitted'}
+                >
+                    {
+                        type === 'undergraduate' ?
+                            'Καταχωρημένες Θέσεις' :
+                                'Καταχωρημένες Αγγελίες'
+                    }
                 </Link>
             </div>
         </div>
         <div className="profile-options-option-image-container">
-            <Link to={type === 'undergraduate' && '/profile/undergraduates/submitted'}>
+            <Link 
+            to={type === 'undergraduate' ? '/profile/undergraduates/submitted' : '/profile/companies/submitted'}
+            >
                 <img 
                 src={require("../../../assets/person-work.png")} 
                 alt="sketch with a person working on its laptop" 

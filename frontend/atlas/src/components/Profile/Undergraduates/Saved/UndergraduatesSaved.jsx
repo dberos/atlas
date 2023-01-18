@@ -15,6 +15,14 @@ const UndergraduatesSaved = () => {
         const getInterests = async () => {
             const response = await axios.get(`http://localhost:8080/interests/saved/undergraduate_id=${id}`);
             const data = response.data;
+            // Check here for removals not on submit
+            // To not close other already open internship
+            internships.forEach((element) => {
+                const find = data.find((el) => el.internship_id === element.id);
+                    if(!find) {
+                        setInternships((current) => current.filter((curr) => curr.id !== element.id));
+                    }
+            })
             // Force constant rerenders that aren't happening from spread
             setInterests(data);
             data.forEach((element) => {
@@ -32,18 +40,6 @@ const UndergraduatesSaved = () => {
                     }
                 })
                 .catch((error) => console.error(error));
-            })
-            // Check here for removals not on submit
-            // To not close other already open internship
-            internships.forEach((element) => {
-                axios.get(`http://localhost:8080/interests/saved/undergraduate_id=${id}`)
-                .then((response) => {
-                    const data = response.data;
-                    const find = data.find((el) => el.internship_id === element.id);
-                    if(!find) {
-                        setInternships((current) => current.filter((curr) => curr.id !== element.id));
-                    }
-                })
             })
         }
         getInterests();
@@ -77,7 +73,6 @@ const UndergraduatesSaved = () => {
                             interest_description={value.interest_description}
                             marks_name={value.marks_name}
                             marks={value.marks}
-                            internships={internships}
                             />
                         )
                     }) :
