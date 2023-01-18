@@ -42,8 +42,8 @@ public class InterestService {
         return interestRepository.findSubmittedInterestsByUndergraduateId(undergraduate_id);
     }
 
-    public List<Interest> getInterestsByInternshipId(int internship_id) {
-        return interestRepository.findInterestsByInternshipId(internship_id);
+    public List<Interest> getInterestsByInternshipId(int internship_id, String status) {
+        return interestRepository.findInterestsByInternshipId(internship_id, "await");
     }
 
     public ResponseEntity<byte[]> getMarks(int id) {
@@ -94,6 +94,11 @@ public class InterestService {
     }
 
     public Interest acceptInterest(Interest interest) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
         Interest acceptedInterest = interestRepository.findInterestById(interest.getId());
         acceptedInterest.setStatus("accepted");
         interestRepository.save(acceptedInterest);
@@ -101,11 +106,27 @@ public class InterestService {
     }
 
     public Interest rejectInterest(Interest interest) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
         Interest rejectedInterest = interestRepository.findInterestById(interest.getId());
         rejectedInterest.setStatus("rejected");
         rejectedInterest.setAnswer(interest.getAnswer());
         interestRepository.save(rejectedInterest);
         return rejectedInterest;
+    }
+
+    public void answerAllInterests(int id, String status) {
+        List<Interest> interests = interestRepository.findInterestsByInternshipId(id, "await");
+        for(Interest i : interests) {
+            i.setStatus("rejected");
+            if(i.getAnswer() == null) {
+                i.setAnswer("Η θέση έχει συμπληρωθεί");
+            }
+            interestRepository.save(i);
+        }
     }
 
     public void deleteInterest(int id) {

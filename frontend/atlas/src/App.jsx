@@ -15,6 +15,7 @@ import SavedUndergraduates from './pages/SavedUndergraduates';
 import SubmittedUndergraduates from './pages/SubmittedUndergraduates';
 import SavedCompanies from './pages/SavedCompanies';
 import SubmittedCompanies from './pages/SubmittedCompanies';
+import SubmittedCompaniesInterests from './pages/SubmittedCompaniesInterests';
 
 function App() {
 
@@ -103,6 +104,14 @@ function App() {
             element={
               <Protected>
                 <SubmittedCompanies/>
+              </Protected>
+            }
+            />
+            <Route 
+            path='/profile/companies/submitted/:internshipId'
+            element={
+              <Protected>
+                <SubmittedCompaniesInterests/>
               </Protected>
             }
             />

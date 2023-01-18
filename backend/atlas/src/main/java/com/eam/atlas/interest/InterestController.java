@@ -42,8 +42,8 @@ public class InterestController {
     }
 
     @GetMapping("/internship_id={internship_id}")
-    public List<Interest> getInterestsByInternshipId(@PathVariable int internship_id) {
-        return interestService.getInterestsByInternshipId(internship_id);
+    public List<Interest> getInterestsByInternshipId(@PathVariable int internship_id, String status) {
+        return interestService.getInterestsByInternshipId(internship_id, status);
     }
 
     @GetMapping("/marks/{id}/{name}")
@@ -78,6 +78,11 @@ public class InterestController {
     @PutMapping(value = "/reject")
     public Interest rejectInterest(@RequestBody Interest interest) {
         return interestService.rejectInterest(interest);
+    }
+
+    @PutMapping(value = "/answer/{id}")
+    public void answerAllInterests(@PathVariable int id, String status) {
+        interestService.answerAllInterests(id, status);
     }
 
     @DeleteMapping("/id={id}")

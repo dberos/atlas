@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping(path = "/users")
 @RestController
@@ -20,6 +21,11 @@ public class UserController {
     @GetMapping
     public List<User> getUsers() {
         return userService.getUsers();
+    }
+
+    @GetMapping("id={id}")
+    public Optional<User> getUserById(@PathVariable int id) {
+        return userService.getUserById(id);
     }
 
     @GetMapping("/{email}")

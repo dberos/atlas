@@ -11,9 +11,14 @@ const CompaniesSubmitted = () => {
     useEffect(() => {
         const id = localStorage.getItem('id');
         const getInternships = async () => {
-            const response = await axios.get(`http://localhost:8080/internships/submitted/company_id=${id}`);
-            const data = response.data;
-            setInternships(data);
+            try {
+                const response = await axios.get(`http://localhost:8080/internships/submitted/company_id=${id}`);
+                const data = response.data;
+                setInternships(data);
+            }
+            catch(error) {
+                console.error(error);
+            }
         }
         getInternships();
     })
@@ -27,6 +32,7 @@ const CompaniesSubmitted = () => {
                         return(
                             <CompaniesSubmittedInternship
                             key={value.id}
+                            id={value.id}
                             title={value.title}
                             companyName={value.company.name}
                             street={value.company.street}

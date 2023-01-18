@@ -9,10 +9,13 @@ import UndergraduatesResultFieldUniType from '../../../Undergraduates/Results/Un
 import UndergraduatesResultStartDuration from '../../../Undergraduates/Results/UndergraduatesResultStartDuration';
 import UndergraduatesResultEspaSalary from '../../../Undergraduates/Results/UndergraduatesResultEspaSalary';
 import UndergraduatesResultDescription from '../../../Undergraduates/Results/UndergraduatesResultDescription';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const CompaniesSubmittedInternship = (props) => {
 
     const {
+        id,
         title,
         companyName,
         street,
@@ -36,7 +39,12 @@ const CompaniesSubmittedInternship = (props) => {
 
     useEffect(() => {
         if(undergraduate_id) {
-            setError('Έχετε ήδη επιλέξει Φοιτητή για αυτή τη θέση!');
+            const findAccepted = async () => {
+                const response = await axios.get(`http://localhost:8080/users/id=${undergraduate_id}`);
+                const email = response.data.email;
+            setError('Έχετε επιλέξει το ' + email + ' για αυτή τη θέση!');
+            }
+            findAccepted();
         }
         else {
             setError('Δεν έχετε επιλέξει ακόμα Φοιτητή για αυτή τη θέση!');
@@ -119,11 +127,11 @@ const CompaniesSubmittedInternship = (props) => {
                                     {
                                         error === 'Δεν έχετε επιλέξει ακόμα Φοιτητή για αυτή τη θέση!' &&
                                             <div className="profile-companies-notification-button">
-                                                <button
-                                                type='button'
+                                                <Link
+                                                to={`/profile/companies/submitted/${id}`}
                                                 >
                                                     Προβολή <br/> Υποψηφίων
-                                                </button>
+                                                </Link>
                                             </div>
                                     }
                                 </div>

@@ -30,6 +30,10 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public Optional<User> getUserById(int id) {
+        return userRepository.findById(id);
+    }
+
     public Boolean findEmail(String email) {
         Optional<User> userOptional = userRepository.findByEmail(email);
         return !userOptional.isPresent() ? true : false;
