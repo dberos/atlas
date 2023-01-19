@@ -92,4 +92,17 @@ public class UserService {
                                     userOptional.get().getType());
         return finalUser;
     }
+
+    public Optional<User> editUser(User user) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException ie) {
+            Thread.currentThread().interrupt();
+        }
+        Optional<User> userOptional = userRepository.findById(user.getId());
+        userOptional.get().setTelephone(user.getTelephone());
+        userOptional.get().setPassword(user.getPassword());
+        userRepository.save(userOptional.get());
+        return userRepository.findById(user.getId());
+    }
 }

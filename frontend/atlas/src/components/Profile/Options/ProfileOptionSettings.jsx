@@ -1,18 +1,22 @@
 import React from 'react'
 import './profileOptions.css'
+import { Link } from "react-router-dom";
 
 const ProfileOptionSettings = () => {
   return (
     <div className="profile-options-option-container">
         <div className="profile-options-option-header">
             <div className="profile-options-option-title">
-                <p>
+                <Link
+                to={'/profile/edit'}
+                >
                     Επεξεργασία Στοιχείων
-                </p>
+                </Link>
             </div>
         </div>
         <div className="profile-options-option-image-container">
-            <p
+            <Link
+            to={'/profile/edit'}
             style={{alignItems: 'center'}}
             >
                 <img 
@@ -20,7 +24,7 @@ const ProfileOptionSettings = () => {
                 alt="sketch with a person thinking of its profile card" 
                 style={{height: '80%'}}
                 />
-            </p>
+            </Link>
         </div>
     </div>
   )

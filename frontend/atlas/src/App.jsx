@@ -11,6 +11,7 @@ import FAQs from './pages/FAQs';
 import FAQsUndergraduates from './pages/FAQsUndergraduates';
 import FAQsCompanies from './pages/FAQsCompanies';
 import Profile from './pages/Profile';
+import EditProfile from './pages/EditProfile';
 import SavedUndergraduates from './pages/SavedUndergraduates';
 import SubmittedUndergraduates from './pages/SubmittedUndergraduates';
 import SavedCompanies from './pages/SavedCompanies';
@@ -53,6 +54,7 @@ function App() {
       setLogged(false);
     }
    }, [setLogged])
+   
 
   return (
     <Router>
@@ -72,6 +74,14 @@ function App() {
             element={
               <Protected>
                 <Profile/>
+              </Protected>
+            }
+            />
+            <Route 
+            path='/profile/edit'
+            element={
+              <Protected>
+                <EditProfile/>
               </Protected>
             }
             />

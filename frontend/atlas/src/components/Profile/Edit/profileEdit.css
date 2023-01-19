@@ -1,0 +1,256 @@
+.profile-edit-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.profile-edit-wrapper {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 7px 7px rgba(84, 43, 180, 0.699);
+    border-radius: 4px;
+    /* background: var(--bg);
+    background: var(--bg-moz);
+    background: var(--bg-webkit);
+    background: var(--bg-linear);
+    filter: var(--filter);
+    filter: var(--filter-drop);
+    height: 600px; */
+}
+
+.profile-edit-header {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.profile-edit-name {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+    /* align-items: center; */
+}
+
+.profile-edit-name h1 {
+    color: orange;
+    font-size: 36px;
+    font-weight: 300;
+    width: 80%;
+    margin-left: 5%;
+    margin-right: 15%;
+    word-break: break-all;
+}
+
+
+.profile-edit-email {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    /* align-items: center; */
+}
+
+.profile-edit-email h1 {
+    color: orange;
+    font-size: 36px;
+    font-weight: 300;
+    width: 80%;
+    margin-left: 15%;
+    margin-right: 5%;
+    text-align: end;
+    word-break: break-all;
+}
+
+.profile-edit-value-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%
+}
+
+.profile-edit-value {
+    border-block-start: 10px solid;
+    padding: 10px;
+    border-image-source: linear-gradient(90deg, rgba(19,37,83,1) 0%, rgba(22,41,87,1) 10%, rgba(190,117,15,1) 50%, rgba(22,41,87,1) 90%, rgba(19,37,83,1) 100%);
+    border-image-slice: 1;
+    height: 120px;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-edit-value label {
+    font-size: 22px;
+    font-weight: 300;
+    color: #81AFDD;
+}
+
+.profile-edit-value input {
+    width: 70%;
+    height: 40px;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: 300;
+    border: none;
+    margin-top: 10px;
+}
+
+.profile-edit-value input:focus {
+    outline: 2px solid orange;
+}
+
+.profile-edit-value input::placeholder {
+    font-size: 16px;
+    opacity: 0.4;
+}
+
+.profile-edit-button-container {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-edit-button-container button {
+    border: none;
+    border-radius: 4px;
+    width: 40%;
+    height: 45px;
+    font-size: 20px;
+    color: white;
+    background-color: #be750f;
+    cursor: pointer;
+}
+
+.profile-edit-button-container button:hover {
+    background-color: orange;
+}
+
+.profile-edit-button-container p {
+    color: green;
+    font-size: 20px;
+    font-weight: 300;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+}
+
+@media screen and (max-width: 1400px) {
+    .profile-edit-name h1 {
+        font-size: 28px
+    }
+
+    .profile-edit-email h1 {
+        font-size: 28px
+    }
+}
+
+@media screen and (max-width: 1000px) {
+
+    .profile-edit-wrapper {
+        width: 80%;
+    }
+
+    .profile-edit-name h1 {
+        font-size: 22px
+    }
+
+    .profile-edit-email h1 {
+        font-size: 22px
+    }
+
+    .profile-edit-value {
+        width: 90%;
+    }
+
+    .profile-edit-value label {
+        font-size: 18px;
+    }
+
+    .profile-edit-value input {
+        font-size: 16px;
+        width: 80%;
+    }
+    
+    .profile-edit-value input::placeholder {
+        font-size: 14px;
+    }
+
+    .profile-edit-button-container button {
+        width: 50%;
+        font-size: 16px;
+    }
+
+    .profile-edit-button-container p {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .profile-edit-wrapper {
+        width: 95%;
+    }
+
+    .profile-edit-name h1 {
+        font-size: 20px
+    }
+
+    .profile-edit-email h1 {
+        font-size: 20px
+    }
+
+    .profile-edit-value-container {
+        margin-top: 15px;
+    }
+
+    .profile-edit-value {
+        width: 95%;
+        height: 100px;
+    }
+
+    .profile-edit-value label {
+        font-size: 16px;
+    }
+
+    .profile-edit-value input {
+        font-size: 14px;
+        width: 90%;
+    }
+    
+    .profile-edit-value input::placeholder {
+        font-size: 12px;
+    }
+
+    .profile-edit-button-container {
+        height: 60px;
+    }
+
+    .profile-edit-button-container button {
+        width: 60%;
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .profile-edit-button-container p {
+        font-size: 16px;
+    }
+}
