@@ -7,6 +7,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import axios from 'axios';
 import { acceptInternship, acceptInterest, rejectInterest, answerAllInterests } from './internships';
+import { useNavigate } from 'react-router-dom'
 
 const CompaniesSubmittedInterest = (props) => {
 
@@ -17,6 +18,8 @@ const CompaniesSubmittedInterest = (props) => {
         description,
         marksName
     } = props;
+
+    let navigate = useNavigate();
 
     const [open, setOpen] = useState(false);
     const [userName, setUserName] = useState([]);
@@ -59,6 +62,8 @@ const CompaniesSubmittedInterest = (props) => {
             await acceptInterest(interest);
             // Reject all if not already
             await answerAllInterests(internshipId);
+            // Navigate to submitted and don't allow go back
+            navigate('/profile/companies/submitted', { replace: true });
         }
         else {
             setError('Ο ενδιαφερόμενος θα ειδοποιηθεί για την απόρριψή του');
