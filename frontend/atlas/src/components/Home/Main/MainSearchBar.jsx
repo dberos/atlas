@@ -68,7 +68,10 @@ const MainSearchBar = () => {
     return (
         <div className='main-search-container'>
             <form onSubmit={handleSubmit}>
-                <div className='main-search-bar' ref={ref}>
+                <div className='main-search-bar' 
+                ref={ref}
+                style={{borderRadius: filteredData.length !== 0 && '4px 4px 0 0'}}
+                >
                     <input  type = 'text' placeholder='Τι τομέα ψάχνεις;' onChange={handleFilter} value={wordEntered} ref={inputRef}/>
                     <div className='main-search-bar-icon'>
                         <button type='button'>
@@ -79,7 +82,9 @@ const MainSearchBar = () => {
                         }
                         </button>
                     </div>
-                    <div className='main-search-bar-search'>
+                    <div className='main-search-bar-search'
+                    style={{borderRadius: filteredData.length !== 0 && '4px 4px 0 0'}}
+                    >
                         <button onClick={handleSubmit}>
                             Αναζήτηση
                         </button>
