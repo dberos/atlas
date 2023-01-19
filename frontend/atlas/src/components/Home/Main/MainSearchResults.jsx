@@ -82,7 +82,10 @@ const MainSearchResults = (props) => {
     }
 
   return (
-    <div className='main-dummy-div' ref={ref}>
+    <div className='main-dummy-div' 
+    ref={ref} 
+    onMouseDown={(e) => e.stopPropagation()}
+    >
         {
             filteredData.length !== 0 && 
                 <div className='main-search-results-container' ref={resultsRef}>

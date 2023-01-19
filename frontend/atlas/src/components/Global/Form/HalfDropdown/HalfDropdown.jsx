@@ -31,7 +31,9 @@ const HalfDropdown = (props) => {
                 {title}
             </h1>
         </div>
-        <div className="half-dropdown-dropdown-container">
+        <div className="half-dropdown-dropdown-container"
+        style={{borderRadius: open && '4px 4px 0 0', outline: open && '2px solid orange'}}
+        >
             <div className="half-dropdown-name">
                 <p>
                     {selectedTitle}
@@ -49,7 +51,10 @@ const HalfDropdown = (props) => {
         </div>
         {
             open && 
-                <div className="half-dropdown-dropdown" ref={ref}>
+                <div className="half-dropdown-dropdown" 
+                style={{outline: open && '2px solid orange'}}
+                ref={ref}
+                >
                     {
                         options.map((value) => {
                             return(

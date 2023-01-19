@@ -1,7 +1,5 @@
 package com.eam.atlas.interest;
 
-import com.eam.atlas.company.Company;
-import com.eam.atlas.company.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -12,18 +10,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class InterestService {
 
     private final InterestRepository interestRepository;
-    private final CompanyRepository companyRepository;
 
     @Autowired
-    public InterestService(InterestRepository interestRepository, CompanyRepository companyRepository) {
+    public InterestService(InterestRepository interestRepository) {
         this.interestRepository = interestRepository;
-        this.companyRepository = companyRepository;
     }
 
     public List<Interest> getInterests() {

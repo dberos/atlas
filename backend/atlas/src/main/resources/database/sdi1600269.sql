@@ -108,8 +108,8 @@ CREATE TABLE IF NOT EXISTS `sdi1600269`.`internships` (
   `company_id` INT NOT NULL,
   `undergraduate_id` INT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_internship_companies1_idx` (`company_id` ASC) VISIBLE,
-  INDEX `fk_internship_undergraduates1_idx` (`undergraduate_id` ASC) VISIBLE,
+  INDEX `fk_internship_companies1_idx` (`company_id` ASC),
+  INDEX `fk_internship_undergraduates1_idx` (`undergraduate_id` ASC),
   CONSTRAINT `fk_internship_companies1`
     FOREIGN KEY (`company_id`)
     REFERENCES `sdi1600269`.`companies` (`id`)
@@ -145,8 +145,8 @@ CREATE TABLE IF NOT EXISTS `sdi1600269`.`interests` (
   `status` VARCHAR(45) NULL,
   `answer` MEDIUMTEXT NULL,
   PRIMARY KEY (`id`, `undergraduate_id`, `internship_id`),
-  INDEX `fk_undergraduates_has_internship_internship1_idx` (`internship_id` ASC) VISIBLE,
-  INDEX `fk_undergraduates_has_internship_undergraduates1_idx` (`undergraduate_id` ASC) VISIBLE,
+  INDEX `fk_undergraduates_has_internship_internship1_idx` (`internship_id` ASC),
+  INDEX `fk_undergraduates_has_internship_undergraduates1_idx` (`undergraduate_id` ASC),
   CONSTRAINT `fk_undergraduates_has_internship_undergraduates1`
     FOREIGN KEY (`undergraduate_id`)
     REFERENCES `sdi1600269`.`undergraduates` (`id`)

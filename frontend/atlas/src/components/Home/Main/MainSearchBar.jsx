@@ -50,7 +50,7 @@ const MainSearchBar = () => {
         // Disable focus after submit
         inputRef.current.blur();
 
-        if(wordEntered !== word) {
+        if(wordEntered !== word && wordEntered.length !== 0) {
             const fieldID = search_results.find((value) => value.title === wordEntered).id
             const results = [
                 fieldID,
@@ -66,9 +66,9 @@ const MainSearchBar = () => {
     }
 
     return (
-        <div className='main-search-container' ref={ref}>
+        <div className='main-search-container'>
             <form onSubmit={handleSubmit}>
-                <div className='main-search-bar'>
+                <div className='main-search-bar' ref={ref}>
                     <input  type = 'text' placeholder='Τι τομέα ψάχνεις;' onChange={handleFilter} value={wordEntered} ref={inputRef}/>
                     <div className='main-search-bar-icon'>
                         <button type='button'>

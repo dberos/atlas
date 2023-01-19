@@ -76,7 +76,10 @@ const FormSearchBar = (props) => {
             {title}
         </h1>
       </div>
-      <div className="form-search-bar" ref={ref}>
+      <div className="form-search-bar" 
+      ref={ref}
+      style={{borderRadius: filteredData.length !== 0 && '4px 4px 0 0'}}
+      >
         <input type="text" placeholder={fieldPlaceholder} onChange={handleFilter} value={wordEntered}/>
         <label>
           π.χ Πληροφορική

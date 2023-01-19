@@ -70,13 +70,13 @@ const UndergraduatesSavedForm = (props) => {
                             <button
                             onClick={() => setIsSubmitted(true)}
                             >
-                                Οριστική Υποβολή
+                                Οριστική <br/> Υποβολή
                             </button>
                         </div>
                         <div className="undergraduates-results-result-candidate-button-secondary">
                             <button
                             >
-                                Διαγραφή αίτησης
+                                Διαγραφή <br/> Αίτησης
                             </button>
                         </div>
                     </div> :

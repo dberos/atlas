@@ -98,6 +98,7 @@
     background-color: white;
     z-index: 4;
     position: absolute;
+    outline: 2px solid orange;
 }
 
 .form-search-results {
