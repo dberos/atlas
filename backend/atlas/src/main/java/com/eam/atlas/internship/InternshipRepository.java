@@ -14,11 +14,13 @@ public interface InternshipRepository extends JpaRepository<Internship, Integer>
     Internship findInternshipById(int id);
 
     @Query("select i from Internship i where i.espa = true " +
-            "and i.submitted = true and i.undergraduate = null")
+            "and i.submitted = true and i.undergraduate = null " +
+            "and i.start_date >= CURRENT DATE")
     List<Internship> findEspaInternships();
 
     @Query("select i from Internship i where i.espa = false " +
-            "and i.submitted = true and i.undergraduate = null")
+            "and i.submitted = true and i.undergraduate = null " +
+            "and i.start_date >= CURRENT DATE ")
     List<Internship> findNoEspaInternships();
 
     @Query("select i from Internship i where i.company.id = ?1")
@@ -36,6 +38,7 @@ public interface InternshipRepository extends JpaRepository<Internship, Integer>
             "ifnull(?1, i.field) = i.field " +
             "and ifnull(?2, i.university) = i.university " +
             "and Date(?3) <= Date(i.start_date) " +
+            "and i.start_date >= CURRENT DATE " +
             "and ifnull(?4, i.area) = i.area " +
             "and i.duration = if((?5 = -1), i.duration, ?5) " +
             "and ifnull(?6, i.type) = i.type " +
