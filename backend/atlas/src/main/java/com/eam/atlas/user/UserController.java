@@ -44,8 +44,8 @@ public class UserController {
     }
 
     @PutMapping("/edit")
-    public Optional<User> editUser(@RequestBody User user) {
-        return userService.editUser(user);
+    public void editUser(@RequestBody User user) {
+        userService.editUser(user);
     }
 
 }

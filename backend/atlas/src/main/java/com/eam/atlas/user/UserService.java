@@ -93,7 +93,7 @@ public class UserService {
         return finalUser;
     }
 
-    public Optional<User> editUser(User user) {
+    public void editUser(User user) {
         try {
             Thread.sleep(2000);
         } catch (InterruptedException ie) {
@@ -103,6 +103,5 @@ public class UserService {
         userOptional.get().setTelephone(user.getTelephone());
         userOptional.get().setPassword(user.getPassword());
         userRepository.save(userOptional.get());
-        return userRepository.findById(user.getId());
     }
 }
