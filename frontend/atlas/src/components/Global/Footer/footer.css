@@ -79,6 +79,8 @@
 
 .footer-others-subtitle {
     margin-left: 15%;
+    display: flex;
+    flex-direction: column;
 }
 
 .footer-others-subtitle a,
@@ -219,6 +221,7 @@
     .footer-others-subtitle {
         width: 100%;
         margin-top: 7%;
+        align-items: center;
         
     }
     
@@ -226,8 +229,6 @@
     .footer-others-subtitle h2 {
         font-size: 14px;
         margin-bottom: 7%;
-        width: 70%;
-        margin-left: 15%;
-        margin-right: 15%;
+        width: 80%;
     }
 }
