@@ -81,6 +81,12 @@ const MainSearchResults = (props) => {
         inputRef.current.focus();
     }
 
+    const handleMobile = (i, str) => {
+        dispatch({ type: 'select', payload: i })
+        setWordEntered(str);
+        inputRef.current.focus();
+    }
+
   return (
     <div className='main-dummy-div' 
     ref={ref} 
@@ -97,6 +103,7 @@ const MainSearchResults = (props) => {
                                     key={value.id} target="_blank" 
                                     onMouseEnter={() => handleMouseEnter(i, value.title)}
                                     onClick={handleSubmit}
+                                    onTouchEnd={() => handleMobile(i, value.title)}
                                     style={{
                                         cursor: 'pointer',
                                         backgroundColor: i === state.selectedIndex ? '#052547' : 'inherit',
