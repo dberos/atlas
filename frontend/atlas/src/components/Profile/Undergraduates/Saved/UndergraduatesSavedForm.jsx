@@ -5,6 +5,7 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 const UndergraduatesSavedForm = (props) => {
 
     const {
+        interestID,
         fileName,
         setFileName,
         setFile,
@@ -45,13 +46,13 @@ const UndergraduatesSavedForm = (props) => {
                     hidden 
                     type="file" 
                     accept='.pdf' 
-                    id="hiddenInputID" 
+                    id={"profileHiddenInputId"+interestID} 
                     onChange={handleChange}
                     />
                     <i> 
                         <AddCircleIcon 
                         fontSize='large' 
-                        onClick={() => document.getElementById("hiddenInputID").click()}
+                        onClick={() => document.getElementById("profileHiddenInputId"+interestID).click()}
                         />   
                     </i>
                 </div>

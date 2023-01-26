@@ -149,13 +149,13 @@ const UndergraduatesResultCandidate = (props) => {
                         hidden 
                         type="file" 
                         accept='.pdf' 
-                        id="hiddenInputID" 
+                        id={"resultHiddenInputId"+id} 
                         onChange={handleChange}
                         />
                         <i> 
                             <AddCircleIcon 
                             fontSize='large' 
-                            onClick={() => document.getElementById("hiddenInputID").click()}
+                            onClick={() => document.getElementById("resultHiddenInputId"+id).click()}
                             />   
                         </i>
                     </div>

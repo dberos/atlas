@@ -145,6 +145,7 @@ const UndergraduatesSavedInterest = (props) => {
                             onSubmit={handleSubmit}
                             >
                                 <UndergraduatesSavedForm
+                                interestID={interest_id}
                                 fileName={fileName}
                                 setFileName={setFileName}
                                 setFile={setFile}
