@@ -7,11 +7,11 @@
 ## Εγκατάσταση
 
 ### Βάση
-Για χρήστη `eam` με κωδικό `EAM2022-2023`, ή αλλαγή των `backened/atlas/src/main/resources/application.properties`
+Για χρήστη `eam` με κωδικό `Eam2022-2023`, ή αλλαγή των δύο τελευταίων γραμμών του `backened/atlas/src/main/resources/application.properties`
     
     cd backened/atlas/src/main/resources/database
     mysql -u eam -p
-    EAM2022-2023
+    Eam2022-2023
     source sdi1600269.sql;
 
     ή import το script στο xampp
