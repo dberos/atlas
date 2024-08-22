@@ -25,3 +25,18 @@ export type UndergraduateInfoType = {
     university: string,
     department: string,
 }
+
+export type CityType = {
+    id: number,
+    value: string
+}
+
+export type UniversityType = {
+    id: number,
+    value: string
+}
+
+export type DepartmentType = {
+    id: number,
+    value: string
+}

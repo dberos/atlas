@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select"
 import { UndergraduateInfoType } from "@/types";
 import { RegisterFormInfoUndergraduateSchema } from "@/schemas";
+import { departments, universities } from "@/data";
 
 const RegisterFormInfoUndergraduate = ({
     setUndergraduate,
@@ -30,35 +31,6 @@ const RegisterFormInfoUndergraduate = ({
     setUndergraduate: React.Dispatch<React.SetStateAction<UndergraduateInfoType>>
     setActiveTab: React.Dispatch<React.SetStateAction<string>>
 }) => {
-
-    const universities = [
-        {
-            id: 1,
-            value: 'ΕΚΠΑ'
-        },
-        {
-            id: 2,
-            value: 'ΑΠΘ'
-        },
-        {
-            id: 3,
-            value: 'Πατρών'
-        }
-    ];
-    const departments = [
-        {
-            id: 1,
-            value: 'Πληροφορική'
-        },
-        {
-            id: 2,
-            value: 'Ιατρική'
-        },
-        {
-            id: 3,
-            value: 'Φιλολογία'
-        }
-    ];
 
     const form = useForm<z.infer<typeof RegisterFormInfoUndergraduateSchema>>({
         resolver: zodResolver(RegisterFormInfoUndergraduateSchema),

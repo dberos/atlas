@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/select"
 import { RegisterFormInfoCompanySchema } from "@/schemas";
 import { CompanyInfoType } from "@/types";
+import { cities } from "@/data";
 
 const RegisterFormInfoCompany = ({
     setCompany,
@@ -30,21 +31,6 @@ const RegisterFormInfoCompany = ({
     setCompany: React.Dispatch<React.SetStateAction<CompanyInfoType>>
     setActiveTab: React.Dispatch<React.SetStateAction<string>>
 }) => {
-
-    const cities = [
-        {
-            id: 1,
-            value: 'Αθήνα'
-        },
-        {
-            id: 2,
-            value: 'Θεσσαλονίκη'
-        },
-        {
-            id: 3,
-            value: 'Πάτρα'
-        }
-    ];
 
     const form = useForm<z.infer<typeof RegisterFormInfoCompanySchema>>({
         resolver: zodResolver(RegisterFormInfoCompanySchema),
