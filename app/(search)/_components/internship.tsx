@@ -70,7 +70,72 @@ const Internship = () => {
                     isOpen ? 'rounded-b-md' : 'rounded-md'
                 )}
                 >
-                    <div className="h-[600px]" />
+                    {/* Field */}
+                    <div className="w-full md:w-5/6 lg:w-full xl:w-5/6 md:m-auto h-32 flex flex-col items-center">
+                        <div className="h-2 w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
+                        <h3 className="mt-2 text-base text-center">
+                            Τομέας
+                        </h3>
+                        <p className="mt-6 text-sm text-center">
+                            Πληροφορική
+                        </p>
+                    </div>
+                    {/* Duration and Employment */}
+                    <div className="w-full h-64 lg:h-32 flex flex-row items-center justify-center">
+                        <div className="w-full md:w-5/6 h-full flex flex-col lg:flex-row lg:gap-x-6 xl:gap-x-0">
+                            <div className="w-full lg:w-2/4 h-2/4 lg:h-full flex flex-col items-center">
+                                <div className="h-2 w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
+                                <h3 className="mt-2 text-base text-center">
+                                    Διάρκεια
+                                </h3>
+                                <p className="mt-6 text-sm text-center">
+                                    6 Μήνες
+                                </p>
+                            </div>
+                            <div className="w-full lg:w-2/4 h-2/4 lg:h-full flex flex-col items-center">
+                                <div className="h-2 w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
+                                <h3 className="mt-2 text-base text-center">
+                                    Τύπος Απασχόλησης
+                                </h3>
+                                <p className="mt-6 text-sm text-center">
+                                    Πλήρης Απασχόληση
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Payment and Salary */}
+                    <div className="w-full h-64 lg:h-32 flex flex-row items-center justify-center">
+                        <div className="w-full md:w-5/6 lg:w-4/6 h-full flex flex-col lg:flex-row lg:gap-x-6 xl:gap-x-0">
+                            <div className="w-full lg:w-2/4 h-2/4 lg:h-full flex flex-col items-center">
+                                <div className="h-2 w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
+                                <h3 className="mt-2 text-base text-center">
+                                    Μισθοδοσία
+                                </h3>
+                                <p className="mt-6 text-sm text-center">
+                                    Χωρίς Χρηματοδότηση ΕΣΠΑ
+                                </p>
+                            </div>
+                            <div className="w-full lg:w-2/4 h-2/4 lg:h-full flex flex-col items-center">
+                                <div className="h-2 w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
+                                <h3 className="mt-2 text-base text-center">
+                                    Μισθός
+                                </h3>
+                                <p className="mt-6 text-sm text-center">
+                                    600 &euro;
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Description */}
+                    <div className="w-full md:w-5/6 lg:w-full xl:w-5/6 md:m-auto h-56 flex flex-col items-center">
+                        <div className="h-2 w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
+                        <h3 className="mt-2 text-base text-center">
+                            Περιγραφή Θέσης
+                        </h3>
+                        <p className="mt-6 text-sm text-center max-w-md">
+                            Τομέας Πληροφορικής και δυνατότητες εξέλιξης
+                        </p>
+                    </div>
                 </div>
             <div className="absolute bottom-4 right-4 cursor-pointer z-30" onClick={() => setIsOpen(!isOpen)}>
                 <Maximize2 className="size-6 text-orange-600" />
