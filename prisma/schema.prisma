@@ -1,0 +1,49 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum UserType {
+  UNDERGRADUATE
+  COMPANY
+}
+
+model User {
+  id String @id @default(cuid())
+  email String @unique
+  password String
+  salt String
+  userType UserType
+  // Undergraduate User
+  undergraduate Undergraduate?
+  undergraduateId String?
+  // Company User
+  company Company?
+  companyId String?
+}
+
+model Undergraduate {
+  id String @id @default(cuid())
+  name String
+  surname String
+  university String
+  department String
+  userId String @unique
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Company {
+  id String @id @default(cuid())
+  name String
+  city String
+  street String
+  district String
+  streetNumber String
+  userId String @unique
+  user User @relation(fields: [userId], references: [id])
+}
+        
