@@ -20,20 +20,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-
-type UndergraduateInfoType = {
-    name: string,
-    surname: string,
-    university: string,
-    department: string,
-}
-
-const FormSchema = z.object({
-    name: z.string().min(2, { message: 'Το όνομα πρέπεί να είναι τουλάχιστον 2 χαρακτήρες' }),
-    surname: z.string().min(2, { message: 'Το επώνυμο πρέπει να είναι τουλάχιστον 2 χαρακτήρες' }),
-    university: z.string(),
-    department: z.string()
-})
+import { UndergraduateInfoType } from "@/types";
+import { RegisterFormInfoUndergraduateSchema } from "@/schemas";
 
 const RegisterFormInfoUndergraduate = ({
     setUndergraduate,
@@ -72,8 +60,8 @@ const RegisterFormInfoUndergraduate = ({
         }
     ];
 
-    const form = useForm<z.infer<typeof FormSchema>>({
-        resolver: zodResolver(FormSchema),
+    const form = useForm<z.infer<typeof RegisterFormInfoUndergraduateSchema>>({
+        resolver: zodResolver(RegisterFormInfoUndergraduateSchema),
         defaultValues: {
           name: "",
           surname: "",
@@ -81,7 +69,7 @@ const RegisterFormInfoUndergraduate = ({
           department: ""
         },
     })
-    function onSubmit(values: z.infer<typeof FormSchema>) {
+    function onSubmit(values: z.infer<typeof RegisterFormInfoUndergraduateSchema>) {
         setUndergraduate({
             name: values.name,
             surname: values.surname,
@@ -181,7 +169,7 @@ const RegisterFormInfoUndergraduate = ({
             />
             <Button 
             type="submit"
-            disabled={form.getValues().name === "" || form.getValues().surname === "" || form.getValues().university === "" || form.getValues().department === ""}
+            disabled={form.getValues('name') === "" || form.getValues('surname') === "" || form.getValues('university') === "" || form.getValues('department') === ""}
             >
                 Συνέχεια
             </Button>

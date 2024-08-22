@@ -20,22 +20,8 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-
-type CompanyInfoType = {
-    name: string,
-    city: string,
-    district: string,
-    street: string,
-    streetNumber: string
-}
-
-const FormSchema = z.object({
-    name: z.string().min(2, { message: 'Το όνομα πρέπεί να είναι τουλάχιστον 2 χαρακτήρες' }),
-    city: z.string(),
-    district: z.string().min(2, { message: 'Η περιοχή πρέπει να είναι τουλάχιστον 2 χαρακτήρες' }),
-    street: z.string().min(2, { message: 'Η οδός πρέπει να είναι τουλάχιστον 2 χαρακτήρες' }),
-    streetNumber:z.string().regex(/^\d*$/, { message: 'Ο αριθμός πρέπει να περιέχει μόνο αριθμητικούς χαρακτήρες' })
-})
+import { RegisterFormInfoCompanySchema } from "@/schemas";
+import { CompanyInfoType } from "@/types";
 
 const RegisterFormInfoCompany = ({
     setCompany,
@@ -60,8 +46,8 @@ const RegisterFormInfoCompany = ({
         }
     ];
 
-    const form = useForm<z.infer<typeof FormSchema>>({
-        resolver: zodResolver(FormSchema),
+    const form = useForm<z.infer<typeof RegisterFormInfoCompanySchema>>({
+        resolver: zodResolver(RegisterFormInfoCompanySchema),
         defaultValues: {
           name: "",
           city: "",
@@ -70,7 +56,7 @@ const RegisterFormInfoCompany = ({
           streetNumber: ""
         },
     })
-    function onSubmit(values: z.infer<typeof FormSchema>) {
+    function onSubmit(values: z.infer<typeof RegisterFormInfoCompanySchema>) {
         setCompany({
             name: values.name,
             city: values.city,
@@ -181,7 +167,7 @@ const RegisterFormInfoCompany = ({
             </div>
             <Button 
             type="submit"
-            disabled={form.getValues().name === "" || form.getValues().city === "" || form.getValues().district === "" || form.getValues().street === "" || form.getValues().streetNumber === ""}
+            disabled={form.getValues('name') === "" || form.getValues('city') === "" || form.getValues('district') === "" || form.getValues('street') === "" || form.getValues('streetNumber') === ""}
             >
                 Συνέχεια
             </Button>

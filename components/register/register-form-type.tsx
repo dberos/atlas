@@ -19,10 +19,7 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
-
-const FormSchema = z.object({
-    type: z.string()
-})
+import { RegisterFormTypeSchema } from "@/schemas";
 
 const RegisterFormType = ({
     setSelectedType,
@@ -31,14 +28,14 @@ const RegisterFormType = ({
     setSelectedType: React.Dispatch<React.SetStateAction<string>>,
     setActiveTab: React.Dispatch<React.SetStateAction<string>>
 }) => {
-    const form = useForm<z.infer<typeof FormSchema>>({
-        resolver: zodResolver(FormSchema),
+    const form = useForm<z.infer<typeof RegisterFormTypeSchema>>({
+        resolver: zodResolver(RegisterFormTypeSchema),
         defaultValues: {
           type: "",
         },
       })
 
-    function onSubmit(data: z.infer<typeof FormSchema>) {
+    function onSubmit(data: z.infer<typeof RegisterFormTypeSchema>) {
         setSelectedType(data.type);
         form.reset();
         setActiveTab("info");
@@ -68,7 +65,7 @@ const RegisterFormType = ({
                 />
                 <Button 
                 type="submit"
-                disabled={form.getValues().type === ""}
+                disabled={form.getValues('type') === ""}
                 >
                     Συνέχεια <ArrowRight className="size-4 ml-2" />
                 </Button>

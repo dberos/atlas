@@ -13,33 +13,11 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { checkEmailExists } from "@/server/find-user";
 import { useToast } from "../ui/use-toast";
 import { deleteCsrfToken, setCsrfToken } from "@/server/token";
 import { registerUndergraduate } from "@/server/insert-user";
-
-type UndergraduateInfoType = {
-    name: string,
-    surname: string,
-    university: string,
-    department: string,
-}
-
-const FormSchema = z.object({
-    name: z.string(),
-    surname: z.string(),
-    university: z.string(),
-    department: z.string(),
-    email: z.string().email({ message: 'Το email δεν είναι έγκυρο' }).
-    refine(async (email) => {
-        const exists = await checkEmailExists(email);
-        return !exists;
-    }, { message: "Το email χρησιμοποιείται ήδη" }),
-    password: z.string().min(6, { message: 'Ο κωδικός πρέπει να είναι τουλάχιστον 6 χαρακτήρες' }),
-    verifyPassword: z.string().min(6, { message: 'Ο κωδικός πρέπει να είναι τουλάχιστον 6 χαρακτήρες' }),
-    userType: z.enum(["UNDERGRADUATE", "COMPANY"]),
-    token: z.string()
-}).refine((data) => data.password === data.verifyPassword, { message: 'Οι κωδικοί πρέπει να ταιριάζουν', path: ["verifyPassword"] })
+import { UndergraduateInfoType } from "@/types";
+import { RegisterFormUndergraduateSchema } from "@/schemas";
 
 const RegisterFormUndergraduate = ({
     setIsOpen,
@@ -53,8 +31,8 @@ const RegisterFormUndergraduate = ({
 }) => {
     const { toast } = useToast();
 
-    const form = useForm<z.infer<typeof FormSchema>>({
-        resolver: zodResolver(FormSchema),
+    const form = useForm<z.infer<typeof RegisterFormUndergraduateSchema>>({
+        resolver: zodResolver(RegisterFormUndergraduateSchema),
         defaultValues: {
           name: undergraduate.name,
           surname: undergraduate.surname,
@@ -137,7 +115,7 @@ const RegisterFormUndergraduate = ({
             />
             <Button 
             type="submit"
-            disabled={form.getValues().email === "" || form.getValues().password === "" || form.getValues().verifyPassword === ""}
+            disabled={form.getValues('email') === "" || form.getValues('password') === "" || form.getValues('verifyPassword') === ""}
             >
                 Εγγραφή
             </Button>

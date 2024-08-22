@@ -17,20 +17,15 @@ import { useAuth } from "@/hooks/use-auth";
 import { deleteCsrfToken, setCsrfToken } from "@/server/token";
 import { loginUser } from "@/server/find-user";
 import { Button } from "../ui/button";
-
-const formSchema = z.object({
-    email: z.string(),
-    password: z.string(),
-    token: z.string()
-})
+import { UserSchema } from "@/schemas";
 
 const LoginForm = ({setIsOpen}: { setIsOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
     const { setIsLoggedIn } = useAuth();
     
     const [formError, setFormError] = useState<string | null>(null);
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof UserSchema>>({
+        resolver: zodResolver(UserSchema),
         defaultValues: {
           email: "",
           password: "",
@@ -92,7 +87,7 @@ const LoginForm = ({setIsOpen}: { setIsOpen: React.Dispatch<React.SetStateAction
             />
             <Button 
             type="submit"
-            disabled={form.getValues().email === "" || form.getValues().password === ""}
+            disabled={form.getValues('email') === "" || form.getValues('password') === ""}
             >
                 Σύνδεση
             </Button>

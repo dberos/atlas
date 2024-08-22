@@ -17,21 +17,7 @@ import RegisterFormInfoUndergraduate from "./register-form-info-undergraduate";
 import { useMode } from "@/hooks/use-mode";
 import RegisterNotAllowed from "./register-not-allowed";
 import { Button } from "../ui/button";
-
-type UndergraduateInfoType = {
-    name: string,
-    surname: string,
-    university: string,
-    department: string,
-}
-
-type CompanyInfoType = {
-    name: string,
-    city: string,
-    district: string,
-    street: string,
-    streetNumber: string
-}
+import { CompanyInfoType, UndergraduateInfoType } from "@/types";
 
 const Register = () => {
     const [activeTab, setActiveTab] = useState("type");
