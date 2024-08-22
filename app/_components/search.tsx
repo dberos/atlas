@@ -65,7 +65,7 @@ const Search = () => {
 
     return ( 
         <Command 
-        className="w-full md:w-5/6 lg:w-4/6 border h-auto z-50"
+        className="w-full md:w-5/6 lg:w-4/6 border h-auto z-40"
         onFocus={handleFocus}
         ref={ref}
         >
