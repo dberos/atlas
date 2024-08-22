@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Search from "./search";
 
 const Hero = () => {
     return ( 
@@ -12,7 +13,7 @@ const Hero = () => {
                 </h3>
                 <div className="-mt-4 h-2 w-full md:w-5/6 xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
                 <div className="overflow-y-visible w-full h-20 flex items-start justify-center">
-                    search
+                    <Search />
                 </div>
             </div>
             <div className="size-full flex items-center 2xl:items-start 2xl:mt-6 justify-center">
