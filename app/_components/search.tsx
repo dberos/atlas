@@ -5,7 +5,7 @@ import {
     Command,
     CommandEmpty,
     CommandGroup,
-    CommandInput,
+    CommandInputRounded,
     CommandItem,
     CommandList,
 } from "@/components/ui/command"  
@@ -69,7 +69,7 @@ const Search = () => {
         onFocus={handleFocus}
         ref={ref}
         >
-            <CommandInput placeholder="Αναζήτηση Θέσης..." 
+            <CommandInputRounded placeholder="Αναζήτηση Θέσης..." 
             value={inputValue}
             onChangeCapture={handleInputChange}
             noBorder={inputValue === ""}
