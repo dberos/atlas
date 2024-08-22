@@ -1,4 +1,4 @@
-import { CityType, DepartmentType, UniversityType } from "@/types";
+import { CityType, DepartmentType, FieldType, UniversityType } from "@/types";
 
 export const cities: CityType[] = [
     {
@@ -42,5 +42,62 @@ export const departments: DepartmentType[] = [
     {
         id: 3,
         value: 'Φιλολογία'
+    }
+];
+
+export const fields: FieldType[] = [
+    { 
+        id: 1, 
+        name: 'Πληροφορική' 
+    },
+    { 
+        id: 2,
+        name: 'Ιατρική' 
+    },
+    { 
+        id: 3, 
+        name: 'Φιλολογία' 
+    },
+];
+
+export const suggestions: FieldType[] = [
+    { 
+        id: 1, 
+        name: 'Όλοι οι Τομείς' 
+    },
+    { 
+        id: 2, 
+        name: 'Πρακτικές μέσω ΕΣΠΑ' 
+    },
+    { 
+        id: 3, 
+        name: 'Πρακτικές χωρίς ΕΣΠΑ' 
+    }
+];
+
+export const fieldsComboBox: FieldType[] = [
+    { 
+        id: 1, 
+        name: 'Όλοι οι Τομείς' 
+    },
+    { 
+        id: 2, 
+        name: 'Πρακτικές μέσω ΕΣΠΑ' 
+    },
+    { 
+        id: 3, 
+        name: 'Πρακτικές χωρίς ΕΣΠΑ' 
+    },
+    { 
+        id: 4, 
+        name: 'Πληροφορική' 
+    },
+    { 
+        id: 5, 
+        name: 'Ιατρική' 
+    },
+    { 
+        id: 6, 
+        name: 'Φιλολογία' 
     }
 ];

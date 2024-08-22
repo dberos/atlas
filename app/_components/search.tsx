@@ -12,11 +12,8 @@ import {
 import useCloseModal from "@/hooks/use-close-modal";
 import { useRouter } from "next/navigation";
 import { setFieldCookie } from "@/server/search";
-
-type Item = {
-    id: number;
-    name: string;
-};
+import { FieldType } from "@/types";
+import { fields, suggestions } from "@/data";
 
 const Search = () => {
     // Search input
@@ -27,7 +24,7 @@ const Search = () => {
 
     const router = useRouter();
     // When clicked or enter click
-    const handleSelect = async (item: Item) => {
+    const handleSelect = async (item: FieldType) => {
         setInputValue(item.name);
         await setFieldCookie(item.name);
         router.push('/internships');
@@ -46,18 +43,6 @@ const Search = () => {
     }
 
     const ref = useCloseModal(handleClickOutside);
-
-    const items: Item[] = [
-        { id: 1, name: 'Πληροφορική' },
-        { id: 2, name: 'Ιατρική' },
-        { id: 3, name: 'Φιλολογία' },
-    ];
-
-    const suggestions: Item[] = [
-        { id: 1, name: 'Όλοι οι Τομείς' },
-        { id: 2, name: 'Πρακτικές μέσω ΕΣΠΑ' },
-        { id: 3, name: 'Πρακτικές χωρίς ΕΣΠΑ' }
-    ];
 
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => setIsMounted(true));
@@ -83,7 +68,7 @@ const Search = () => {
                     <CommandEmpty>Κανένα αποτέλεσμα αναζήτησης.</CommandEmpty>
                     <CommandGroup heading="Τομείς">
                     {
-                        items.map((item) => (
+                        fields.map((item) => (
                             <CommandItem
                             key={item.id}
                             value={item.name}

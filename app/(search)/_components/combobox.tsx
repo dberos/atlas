@@ -19,35 +19,16 @@ import {
 import { useEffect, useState } from "react";
 import { z } from "zod";
 import { UseFormReturn } from "react-hook-form";
-
-type Item = {
-    id: number;
-    name: string;
-};
-
-const FormSchema = z.object({
-    field: z.string(),
-    duration: z.string(),
-    employment: z.string(),
-    payment: z.boolean()
-})
+import { fieldsComboBox } from "@/data";
+import { SearchFormSchema } from "@/schemas";
 
 const ComboBox = ({
     form, 
     field
 }: { 
-    form: UseFormReturn<z.infer<typeof FormSchema>>, 
+    form: UseFormReturn<z.infer<typeof SearchFormSchema>>, 
     field: string 
 }) => {
-
-    const fields: Item[] = [
-        { id: 1, name: 'Όλοι οι Τομείς' },
-        { id: 2, name: 'Πρακτικές μέσω ΕΣΠΑ' },
-        { id: 3, name: 'Πρακτικές χωρίς ΕΣΠΑ' },
-        { id: 4, name: 'Πληροφορική' },
-        { id: 5, name: 'Ιατρική' },
-        { id: 6, name: 'Φιλολογία' }
-    ];
 
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(field);
@@ -66,7 +47,7 @@ const ComboBox = ({
                 className="w-full justify-between"
                 >
                 {value
-                    ? fields.find((field) => field.name === value)?.name
+                    ? fieldsComboBox.find((field) => field.name === value)?.name
                     : "Αναζήτηση τομέα..."}
                 <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
@@ -77,7 +58,7 @@ const ComboBox = ({
                 <CommandList className="h-auto max-h-32 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
                     <CommandEmpty>Κανένα αποτέλεσμα αναζήτησης.</CommandEmpty>
                     <CommandGroup>
-                    {fields.map((field) => (
+                    {fieldsComboBox.map((field) => (
                         <CommandItem
                         className="data-[disabled]:pointer-events-auto cursor-pointer"
                         key={field.id}

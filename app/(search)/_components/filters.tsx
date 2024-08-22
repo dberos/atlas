@@ -29,17 +29,11 @@ import {
 import { useEffect, useState } from "react";
 import ComboBox from "./combobox";
 import { deleteFieldCookie, getFieldCookie } from "@/server/search";
-
-const FormSchema = z.object({
-    field: z.string(),
-    duration: z.string(),
-    employment: z.string(),
-    payment: z.boolean()
-})
+import { SearchFormSchema } from "@/schemas";
 
 const Filters = () => {
-    const form = useForm<z.infer<typeof FormSchema>>({
-        resolver: zodResolver(FormSchema),
+    const form = useForm<z.infer<typeof SearchFormSchema>>({
+        resolver: zodResolver(SearchFormSchema),
         defaultValues: {
           field: "",
           duration: "",
@@ -81,7 +75,7 @@ const Filters = () => {
         form.setValue('employment', '');
     }, [watchField])
      
-      function onSubmit(values: z.infer<typeof FormSchema>) {
+      function onSubmit(values: z.infer<typeof SearchFormSchema>) {
         console.log(values);
       }
 

@@ -75,3 +75,10 @@ export const RegisterFormInfoCompanySchema = z.object({
   street: z.string().min(2, { message: 'Η οδός πρέπει να είναι τουλάχιστον 2 χαρακτήρες' }),
   streetNumber:z.string().regex(/^\d*$/, { message: 'Ο αριθμός πρέπει να περιέχει μόνο αριθμητικούς χαρακτήρες' })
 })
+
+export const SearchFormSchema = z.object({
+  field: z.string(),
+  duration: z.string(),
+  employment: z.string(),
+  payment: z.boolean()
+})

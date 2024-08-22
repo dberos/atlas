@@ -40,3 +40,8 @@ export type DepartmentType = {
     id: number,
     value: string
 }
+
+export type FieldType = {
+    id: number,
+    name: string
+}
