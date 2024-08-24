@@ -2,11 +2,12 @@
 
 import { db } from "@/lib/db";
 import { z } from "zod";
-import { createJWT, decrypt, encrypt, hashPassword, verifyToken } from "@/lib/utils";
+import { hashPassword} from "@/lib/utils";
 import { cookies } from 'next/headers'
 import { UserSchema } from "@/schemas";
 import { getCsrfToken } from "./token";
 import { UserType } from "@/types";
+import { createJWT, decodeToken, verifyToken } from "@/lib/session";
 
 export const checkEmailExists = async (email: string) => {
   const existingUser = await db.user.findUnique({ where: { email } })
@@ -44,12 +45,11 @@ export const loginUser = async (values: z.infer<typeof UserSchema>) => {
     const isPasswordValid = hashedInputPassword === user.password;
 
     if (isPasswordValid) {
-      const token = createJWT(user.id, user.userType, '30m');
-      const encryptedToken = encrypt(token);
-      cookies().set('session', encryptedToken, {
+      const token = await createJWT(user.id, user.userType, '5m');
+      cookies().set('session', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 60 * 30,
+        maxAge: 60 * 60 * 24 * 7,
         path: '/',
       })
       return { 
@@ -66,15 +66,44 @@ export const loginUser = async (values: z.infer<typeof UserSchema>) => {
   }
 };
 
+// For UI purposes
+
 export const findUserBySession = async () => {
   try {
     const token = cookies().get('session')?.value;
     if (!token) return null;
 
-    const decryptedToken = decrypt(token);
-    if (!decryptedToken) return null;
+    const decodedToken = await decodeToken(token);
+    if (!decodedToken) return null;
+
+    const user = await db.user.findUnique({
+      where: {
+        id: decodedToken.id
+      }
+    })
+    if (!user) return null;
     
-    const verifiedToken = verifyToken(decryptedToken);
+    const userObj: UserType = {
+      id: user.id,
+      email: user.email,
+      type: user.userType
+    }
+    return userObj;
+  }
+  catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+// For authentication
+
+export const authenticateUser = async () => {
+  try {
+    const token = cookies().get('session')?.value;
+    if (!token) return null;
+
+    const verifiedToken = await verifyToken(token);
     if (!verifiedToken) return null;
 
     const user = await db.user.findUnique({
