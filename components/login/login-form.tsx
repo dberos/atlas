@@ -25,7 +25,7 @@ const LoginForm = () => {
     
     const [formError, setFormError] = useState<string | null>(null);
 
-    const onClose = useLoginStore((state) => state.setIsOpen);
+    const setIsOpen = useLoginStore((state) => state.setIsOpen);
 
     const form = useForm<z.infer<typeof UserSchema>>({
         resolver: zodResolver(UserSchema),
@@ -52,8 +52,7 @@ const LoginForm = () => {
             setIsLoggedIn(true);
             setFormError(null);
             form.reset();
-            // setIsOpen(false);
-            onClose(false);
+            setIsOpen(false);
         }
     }
     return ( 
