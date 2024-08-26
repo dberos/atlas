@@ -1,7 +1,7 @@
-import { RegisterStore } from "@/types";
+import { RegisterStoreType } from "@/types";
 import { create } from "zustand";
 
-export const useRegisterStore = create<RegisterStore>((set) => ({
+export const useRegisterStore = create<RegisterStoreType>((set) => ({
     isOpen: false,
     setIsOpen: (value: boolean) => set({ isOpen: value }),
     activeTab: "type",

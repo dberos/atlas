@@ -16,27 +16,29 @@ import {
     AccordionTrigger,
 } from "@/components/ui/accordion"  
 import Link from "next/link";
-import { useState } from "react";
 import { useTheme } from "next-themes"
 import { useAuth } from "@/hooks/use-auth";
 import { logoutUser } from "@/server/find-user";
 import { Button } from "../ui/button";
+import { useMobileMenuStore } from "@/hooks/use-mobile-menu-store";
 
 const NavMobile = () => {
-    const [isOpenMenu, setIsOpenMenu] = useState(false);
     const { setTheme } = useTheme();
     const { user, setIsLoggedIn } = useAuth();
+
+    const isOpen = useMobileMenuStore((state) => state.isOpen);
+    const setIsOpen = useMobileMenuStore((state) => state.setIsOpen);
 
     const handleLogout = () => {
         logoutUser();
         window.localStorage.clear();
         setIsLoggedIn(false);
-        setIsOpenMenu(false);
+        setIsOpen(false);
     }
 
     return ( 
         <div className="flex items-center gap-x-8">
-            <Sheet open={isOpenMenu} onOpenChange={setIsOpenMenu}>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger asChild>
                     <Button variant="outline" size="sm">
                         <Menu />
@@ -74,7 +76,7 @@ const NavMobile = () => {
                                 {
                                     user ?
                                     <>
-                                    <Link href="/" onClick={() => setIsOpenMenu(false)}>
+                                    <Link href="/" onClick={() => setIsOpen(false)}>
                                         Προφίλ
                                     </Link>
                                     <p onClick={handleLogout}>
@@ -82,10 +84,10 @@ const NavMobile = () => {
                                     </p>
                                     </> :
                                     <>
-                                    <Link href="/login" onClick={() => setIsOpenMenu(false)}>
+                                    <Link href="/login" onClick={() => setIsOpen(false)}>
                                     Σύνδεση
                                     </Link>
-                                    <Link href="/register" onClick={() => setIsOpenMenu(false)}>
+                                    <Link href="/register" onClick={() => setIsOpen(false)}>
                                         Εγγραφή
                                     </Link>
                                     </>
@@ -99,10 +101,10 @@ const NavMobile = () => {
                                 Φοιτητές
                             </AccordionTrigger>
                             <AccordionContent className="flex flex-col gap-y-4">
-                            <Link href="/" onClick={() => setIsOpenMenu(false)}>
+                            <Link href="/" onClick={() => setIsOpen(false)}>
                                 Αναζήτηση Θέσης
                             </Link>
-                            <Link href="/" onClick={() => setIsOpenMenu(false)}>
+                            <Link href="/" onClick={() => setIsOpen(false)}>
                                 Συχνές Ερωτήσεις
                             </Link>
                             </AccordionContent>
@@ -112,10 +114,10 @@ const NavMobile = () => {
                                 Εταιρείες
                             </AccordionTrigger>
                             <AccordionContent className="flex flex-col gap-y-4">
-                            <Link href="/" onClick={() => setIsOpenMenu(false)}>
+                            <Link href="/" onClick={() => setIsOpen(false)}>
                                 Προσθήκη Θέσης
                             </Link>
-                            <Link href="/" onClick={() => setIsOpenMenu(false)}>
+                            <Link href="/" onClick={() => setIsOpen(false)}>
                                 Συχνές Ερωτήσεις
                             </Link>
                             </AccordionContent>
@@ -125,10 +127,10 @@ const NavMobile = () => {
                                 Πανεπιστήμια
                             </AccordionTrigger>
                             <AccordionContent className="flex flex-col gap-y-4">
-                            <Link href="/" onClick={() => setIsOpenMenu(false)}>
+                            <Link href="/" onClick={() => setIsOpen(false)}>
                                 Διαχείριση
                             </Link>
-                            <Link href="/" onClick={() => setIsOpenMenu(false)}>
+                            <Link href="/" onClick={() => setIsOpen(false)}>
                                 Συχνές Ερωτήσεις
                             </Link>
                             </AccordionContent>

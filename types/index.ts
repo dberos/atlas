@@ -46,16 +46,21 @@ export type FieldType = {
     name: string
 }
 
-export type LoginStore = {
+export type LoginStoreType = {
     isOpen: boolean,
     setIsOpen: (value: boolean) => void
 }
 
-export type RegisterStore = {
+export type RegisterStoreType = {
     isOpen: boolean,
     setIsOpen: (value: boolean) => void,
     activeTab: string,
     setActiveTab: (value: string) => void,
     selectedType: string,
     setSelectedType: (value: string) => void
+}
+
+export type MobileMenuStoreType = {
+    isOpen: boolean,
+    setIsOpen: (value: boolean) => void
 }
