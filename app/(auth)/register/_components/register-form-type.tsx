@@ -20,14 +20,13 @@ import { z } from "zod"
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { RegisterFormTypeSchema } from "@/schemas";
+import { useRegisterStore } from "@/hooks/use-register-store";
 
-const RegisterFormType = ({
-    setSelectedType,
-    setActiveTab
-}: {
-    setSelectedType: React.Dispatch<React.SetStateAction<string>>,
-    setActiveTab: React.Dispatch<React.SetStateAction<string>>
-}) => {
+const RegisterFormType = () => {
+
+    const setSelectedType = useRegisterStore((state) => state.setSelectedType);
+    const setActiveTab = useRegisterStore((state) => state.setActiveTab);
+
     const form = useForm<z.infer<typeof RegisterFormTypeSchema>>({
         resolver: zodResolver(RegisterFormTypeSchema),
         defaultValues: {

@@ -23,14 +23,15 @@ import {
 import { UndergraduateInfoType } from "@/types";
 import { RegisterFormInfoUndergraduateSchema } from "@/schemas";
 import { departments, universities } from "@/data";
+import { useRegisterStore } from "@/hooks/use-register-store";
 
 const RegisterFormInfoUndergraduate = ({
     setUndergraduate,
-    setActiveTab
 }: {
     setUndergraduate: React.Dispatch<React.SetStateAction<UndergraduateInfoType>>
-    setActiveTab: React.Dispatch<React.SetStateAction<string>>
 }) => {
+
+    const setActiveTab = useRegisterStore((state) => state.setActiveTab);
 
     const form = useForm<z.infer<typeof RegisterFormInfoUndergraduateSchema>>({
         resolver: zodResolver(RegisterFormInfoUndergraduateSchema),

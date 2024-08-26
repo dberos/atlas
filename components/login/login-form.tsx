@@ -18,11 +18,14 @@ import { deleteCsrfToken, setCsrfToken } from "@/server/token";
 import { loginUser } from "@/server/find-user";
 import { Button } from "../ui/button";
 import { UserSchema } from "@/schemas";
+import { useLoginStore } from "@/hooks/use-login-store";
 
-const LoginForm = ({setIsOpen}: { setIsOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const LoginForm = () => {
     const { setIsLoggedIn } = useAuth();
     
     const [formError, setFormError] = useState<string | null>(null);
+
+    const onClose = useLoginStore((state) => state.setIsOpen);
 
     const form = useForm<z.infer<typeof UserSchema>>({
         resolver: zodResolver(UserSchema),
@@ -49,7 +52,8 @@ const LoginForm = ({setIsOpen}: { setIsOpen: React.Dispatch<React.SetStateAction
             setIsLoggedIn(true);
             setFormError(null);
             form.reset();
-            setIsOpen(false);
+            // setIsOpen(false);
+            onClose(false);
         }
     }
     return ( 

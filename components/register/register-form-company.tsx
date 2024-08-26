@@ -18,18 +18,17 @@ import { registerCompany } from "@/server/insert-user";
 import { useToast } from "../ui/use-toast";
 import { RegisterFormCompanySchema } from "@/schemas";
 import { CompanyInfoType } from "@/types";
+import { useRegisterStore } from "@/hooks/use-register-store";
 
 const RegisterFormCompany = ({
-    setIsOpen,
     company,
-    setActiveTab
 }: {
-    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
     company: CompanyInfoType,
-    setActiveTab: React.Dispatch<React.SetStateAction<string>>
 }) => {
     const { toast } = useToast();
 
+    const setIsOpen = useRegisterStore((state) => state.setIsOpen);
+    const setActiveTab = useRegisterStore((state) => state.setActiveTab);
 
     const form = useForm<z.infer<typeof RegisterFormCompanySchema>>({
         resolver: zodResolver(RegisterFormCompanySchema),

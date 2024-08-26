@@ -7,15 +7,17 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"  
-import { useState } from "react";
 import { useMode } from "@/hooks/use-mode";
 import { Button } from "../ui/button";
 import LoginForm from "./login-form";
 import LoginNotAllowed from "./login-not-allowed";
+import { useLoginStore } from "@/hooks/use-login-store";
 
 const Login = () => {
-    const [isOpen, setIsOpen] = useState(false);
     const { isAllowed } = useMode();
+
+    const isOpen = useLoginStore((state) => state.isOpen);
+    const setIsOpen = useLoginStore((state) => state.setIsOpen)
     
     return ( 
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -30,7 +32,7 @@ const Login = () => {
                 </DialogHeader>
                 {
                     isAllowed ?
-                    <LoginForm setIsOpen={setIsOpen} /> :
+                    <LoginForm /> :
                     <LoginNotAllowed />
                 }
             </DialogContent>

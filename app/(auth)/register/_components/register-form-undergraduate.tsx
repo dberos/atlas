@@ -19,16 +19,17 @@ import { deleteCsrfToken, setCsrfToken } from "@/server/token";
 import { registerUndergraduate } from "@/server/insert-user";
 import { UndergraduateInfoType } from "@/types";
 import { RegisterFormUndergraduateSchema } from "@/schemas";
+import { useRegisterStore } from "@/hooks/use-register-store";
 
 const RegisterFormUndergraduate = ({
     undergraduate,
-    setActiveTab
 }: { 
     undergraduate: UndergraduateInfoType ,
-    setActiveTab: React.Dispatch<React.SetStateAction<string>>
 }) => {
     const { toast } = useToast();
     const router = useRouter();
+
+    const setActiveTab = useRegisterStore((state) => state.setActiveTab);
 
     const form = useForm<z.infer<typeof RegisterFormUndergraduateSchema>>({
         resolver: zodResolver(RegisterFormUndergraduateSchema),

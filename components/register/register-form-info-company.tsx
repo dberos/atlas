@@ -23,14 +23,15 @@ import {
 import { RegisterFormInfoCompanySchema } from "@/schemas";
 import { CompanyInfoType } from "@/types";
 import { cities } from "@/data";
+import { useRegisterStore } from "@/hooks/use-register-store";
 
 const RegisterFormInfoCompany = ({
     setCompany,
-    setActiveTab
 }: {
     setCompany: React.Dispatch<React.SetStateAction<CompanyInfoType>>
-    setActiveTab: React.Dispatch<React.SetStateAction<string>>
 }) => {
+
+    const setActiveTab = useRegisterStore((state) => state.setActiveTab);
 
     const form = useForm<z.infer<typeof RegisterFormInfoCompanySchema>>({
         resolver: zodResolver(RegisterFormInfoCompanySchema),
