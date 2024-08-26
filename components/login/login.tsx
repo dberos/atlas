@@ -7,14 +7,15 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"  
-import { useMode } from "@/hooks/use-mode";
 import { Button } from "../ui/button";
 import LoginForm from "./login-form";
 import LoginNotAllowed from "./login-not-allowed";
 import { useLoginStore } from "@/hooks/use-login-store";
+import { useModeStore } from "@/hooks/use-mode-store";
 
 const Login = () => {
-    const { isAllowed } = useMode();
+    
+    const isAllowed = useModeStore((state) => state.isAllowed);
 
     const isOpen = useLoginStore((state) => state.isOpen);
     const setIsOpen = useLoginStore((state) => state.setIsOpen)

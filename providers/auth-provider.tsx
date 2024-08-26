@@ -1,7 +1,7 @@
 "use client";
 
 import { useToast } from "@/components/ui/use-toast";
-import { useMode } from "@/hooks/use-mode";
+import { useModeStore } from "@/hooks/use-mode-store";
 import { findUserBySession } from "@/server/find-user";
 import { AuthContextType, UserType } from "@/types";
 import { createContext, useEffect, useState } from "react";
@@ -11,7 +11,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [user, setUser] = useState<UserType | null | undefined>(null);
-  const { isAllowed } = useMode();
+  const isAllowed = useModeStore((state) => state.isAllowed);
   const { toast } = useToast();
 
   useEffect(() => {

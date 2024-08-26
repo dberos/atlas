@@ -15,10 +15,10 @@ import RegisterFormUndergraduate from "./register-form-undergraduate";
 import RegisterFormCompany from "./register-form-company";
 import RegisterFormInfoCompany from "./register-form-info-company";
 import RegisterFormInfoUndergraduate from "./register-form-info-undergraduate";
-import { useMode } from "@/hooks/use-mode";
 import RegisterNotAllowed from "./register-not-allowed";
 import { CompanyInfoType, UndergraduateInfoType } from "@/types";
 import { useRegisterStore } from "@/hooks/use-register-store";
+import { useModeStore } from "@/hooks/use-mode-store";
 
 const Hero = () => {
 
@@ -40,7 +40,7 @@ const Hero = () => {
         department: ''
     });
 
-    const { isAllowed } = useMode();
+    const isAllowed = useModeStore((state) => state.isAllowed);
 
     return ( 
         <div className="mt-20 size-full flex flex-col lg:flex-row">

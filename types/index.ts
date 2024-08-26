@@ -46,6 +46,11 @@ export type FieldType = {
     name: string
 }
 
+export type ModeType = {
+    isAllowed: boolean,
+    setIsAllowed: (value: boolean) => void;
+}
+
 export type LoginStoreType = {
     isOpen: boolean,
     setIsOpen: (value: boolean) => void

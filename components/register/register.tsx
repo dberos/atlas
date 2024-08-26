@@ -14,11 +14,11 @@ import RegisterFormUndergraduate from "./register-form-undergraduate";
 import RegisterFormCompany from "./register-form-company";
 import RegisterFormInfoCompany from "./register-form-info-company";
 import RegisterFormInfoUndergraduate from "./register-form-info-undergraduate";
-import { useMode } from "@/hooks/use-mode";
 import RegisterNotAllowed from "./register-not-allowed";
 import { Button } from "../ui/button";
 import { CompanyInfoType, UndergraduateInfoType } from "@/types";
 import { useRegisterStore } from "@/hooks/use-register-store";
+import { useModeStore } from "@/hooks/use-mode-store";
 
 const Register = () => {
     const isOpen = useRegisterStore((state) => state.isOpen);
@@ -41,7 +41,7 @@ const Register = () => {
         department: ''
     });
 
-    const { isAllowed } = useMode();
+    const isAllowed = useModeStore((state) => state.isAllowed);
 
     return ( 
         <Dialog open={isOpen} onOpenChange={setIsOpen}>

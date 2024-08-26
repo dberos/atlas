@@ -1,6 +1,5 @@
 "use client";
 
-import { useMode } from "@/hooks/use-mode";
 import LoginForm from "./login-form";
 import {
     Breadcrumb,
@@ -11,9 +10,12 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"  
 import LoginNotAllowed from "./login-not-allowed";
+import { useModeStore } from "@/hooks/use-mode-store";
 
 const Hero = () => {
-    const { isAllowed } = useMode();
+
+    const isAllowed = useModeStore((state) => state.isAllowed);
+
     return ( 
         <div className="mt-20 size-full flex flex-col lg:flex-row">
             <div className="h-52 w-full lg:w-3/6 lg:h-96 flex flex-col items-center justify-center gap-y-8">
