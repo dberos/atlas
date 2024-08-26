@@ -1,8 +1,18 @@
-import type { NextRequest } from 'next/server'
+import { NextResponse, type NextRequest } from 'next/server'
 import { refreshSession } from './server/session';
+
+const isProtectedRoute = [
+  '/profile(.*)'
+];
  
 export async function middleware(request: NextRequest) {
-    return await refreshSession(request);
+  const response =  await refreshSession(request);
+  if (!response) {
+    if (isProtectedRoute.some((route) => new RegExp(route).test(request.nextUrl.pathname))) {
+      return NextResponse.redirect(new URL('/', request.url));
+    }
+  }
+  return response || NextResponse.next();
 }
  
 export const config = {

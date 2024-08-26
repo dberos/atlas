@@ -47,7 +47,9 @@ export const verifyToken = async (token: string): Promise<Payload | null> => {
 
     const { exp, ...payloadWithoutExp } = payload as Payload;
     return payloadWithoutExp;
-  } catch (e) {
+  } 
+  catch (error) {
+    console.error('Failed to verify JWT:', error);
     return null;
   }
 };
@@ -58,8 +60,9 @@ export const decodeToken = async (token: string): Promise<Payload | null> => {
 
     const { exp, ...payloadWithoutExp } = decoded as Payload;
     return payloadWithoutExp;
-  } catch (e) {
-    console.error('Failed to decode JWT:', e);
+  } 
+  catch (error) {
+    console.error('Failed to decode JWT:', error);
     return null;
   }
 };

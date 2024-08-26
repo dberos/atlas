@@ -116,3 +116,18 @@ export const heroInternships: HeroType = {
         imageSrc: '/internships-hero.svg',
         imageAlt: 'woman and man working',
 }
+
+export const heroProfile: HeroType = {
+    title: 'Προφίλ',
+    description: 'Ο λογαριασμός μου',
+    breadcrumbs: [
+        {
+            id: 1,
+            link: '/',
+            label: 'Αρχική'
+        }
+    ],
+    breadcrumbPage: 'Προφίλ',
+    imageSrc: '/profile-hero.svg',
+    imageAlt: 'woman with her account',
+}

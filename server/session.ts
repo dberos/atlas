@@ -5,10 +5,10 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const refreshSession = async (request: NextRequest) => {
     const token = request.cookies.get('session')?.value;
-    if (!token) return;
+    if (!token) return null;
 
     const decodedToken = await decodeToken(token);
-    if (!decodedToken) return;
+    if (!decodedToken) return null;
   
     const res = NextResponse.next();
   

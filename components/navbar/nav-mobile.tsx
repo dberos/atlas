@@ -21,19 +21,23 @@ import { useAuth } from "@/hooks/use-auth";
 import { logoutUser } from "@/server/find-user";
 import { Button } from "../ui/button";
 import { useMobileMenuStore } from "@/hooks/use-mobile-menu-store";
+import { useRouter } from "next/navigation";
 
 const NavMobile = () => {
     const { setTheme } = useTheme();
     const { user, setIsLoggedIn } = useAuth();
 
+    const router = useRouter();
+
     const isOpen = useMobileMenuStore((state) => state.isOpen);
     const setIsOpen = useMobileMenuStore((state) => state.setIsOpen);
 
-    const handleLogout = () => {
-        logoutUser();
+    const handleLogout = async () => {
+        await logoutUser();
         window.localStorage.clear();
         setIsLoggedIn(false);
         setIsOpen(false);
+        router.replace('/');
     }
 
     return ( 
@@ -76,7 +80,7 @@ const NavMobile = () => {
                                 {
                                     user ?
                                     <>
-                                    <Link href="/" onClick={() => setIsOpen(false)}>
+                                    <Link href="/profile" onClick={() => setIsOpen(false)}>
                                         Προφίλ
                                     </Link>
                                     <p onClick={handleLogout}>

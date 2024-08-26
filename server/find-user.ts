@@ -126,6 +126,6 @@ export const authenticateUser = async () => {
   }
 }
 
-export const logoutUser = () => {
+export const logoutUser = async () => {
   cookies()?.delete('session');
 }

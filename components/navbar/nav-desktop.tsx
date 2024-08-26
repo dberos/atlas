@@ -15,6 +15,7 @@ import { logoutUser } from "@/server/find-user";
 import { ThemeToggle } from "../theme-toggle";
 import Login from "../login/login";
 import Register from "../register/register";
+import { useRouter } from "next/navigation";
 
 const NavDesktop = () => {
     const [isOpenUndergraduates, setIsOpenUndergraduates] = useState(false);
@@ -22,10 +23,15 @@ const NavDesktop = () => {
     const [isOpenUniversites, setIsOpenUniversities] = useState(false);
     const { user, setIsLoggedIn } = useAuth();
 
-    const handleLogout = () => {
-        logoutUser();
+    const router = useRouter();
+
+    const [isOpenAccount, setIsOpenAccount] = useState(false);
+
+    const handleLogout = async () => {
+        await logoutUser();
         window.localStorage.clear();
         setIsLoggedIn(false);
+        router.replace('/');
     }
     return ( 
         <div className="flex size-full items-center justify-between ml-4">
@@ -94,7 +100,7 @@ const NavDesktop = () => {
                 <ThemeToggle />
                 {
                     user ? 
-                    <DropdownMenu modal={false}>
+                    <DropdownMenu open={isOpenAccount} onOpenChange={setIsOpenAccount} modal={false}>
                         <DropdownMenuTrigger asChild>
                         <Avatar>
                             <AvatarFallback>
@@ -104,9 +110,11 @@ const NavDesktop = () => {
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className="flex flex-col items-center">
                             <DropdownMenuItem>
-                                Προφίλ
+                                <Link href='/profile' onClick={() => setIsOpenAccount(false)}>
+                                    Προφίλ
+                                </Link>
                             </DropdownMenuItem>
-                            <DropdownMenuItem onClick={handleLogout}>
+                            <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
                                 Αποσύνδεση
                             </DropdownMenuItem>
                         </DropdownMenuContent>
