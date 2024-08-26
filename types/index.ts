@@ -69,3 +69,18 @@ export type MobileMenuStoreType = {
     isOpen: boolean,
     setIsOpen: (value: boolean) => void
 }
+
+export type BreadcrumbType = {
+    id: number,
+    link: string,
+    label: string
+}
+
+export type HeroType = {
+    title: string,
+    description: string,
+    breadcrumbs: BreadcrumbType[],
+    breadcrumbPage: string,
+    imageSrc: string,
+    imageAlt: string,
+}

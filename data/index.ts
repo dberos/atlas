@@ -1,4 +1,4 @@
-import { CityType, DepartmentType, FieldType, UniversityType } from "@/types";
+import { CityType, DepartmentType, FieldType, HeroType, UniversityType } from "@/types";
 
 export const cities: CityType[] = [
     {
@@ -101,3 +101,18 @@ export const fieldsComboBox: FieldType[] = [
         name: 'Φιλολογία' 
     }
 ];
+
+export const heroInternships: HeroType = {
+        title: 'Πρακτικές Ασκήσεις',
+        description: 'Αναζήτηση Θέσεων',
+        breadcrumbs: [
+            {
+                id: 1,
+                link: '/',
+                label: 'Αρχική'
+            }
+        ],
+        breadcrumbPage: 'Αναζήτηση',
+        imageSrc: '/internships-hero.svg',
+        imageAlt: 'woman and man working',
+}
