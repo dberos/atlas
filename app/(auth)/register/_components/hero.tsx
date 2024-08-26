@@ -9,14 +9,13 @@ import {
     BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"  
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useState } from "react";
+import { useEffect } from "react";
 import RegisterFormType from "./register-form-type";
 import RegisterFormUndergraduate from "./register-form-undergraduate";
 import RegisterFormCompany from "./register-form-company";
 import RegisterFormInfoCompany from "./register-form-info-company";
 import RegisterFormInfoUndergraduate from "./register-form-info-undergraduate";
 import RegisterNotAllowed from "./register-not-allowed";
-import { CompanyInfoType, UndergraduateInfoType } from "@/types";
 import { useRegisterStore } from "@/hooks/use-register-store";
 import { useModeStore } from "@/hooks/use-mode-store";
 
@@ -25,20 +24,29 @@ const Hero = () => {
     const activeTab = useRegisterStore((state) => state.activeTab);
     const setActiveTab = useRegisterStore((state) => state.setActiveTab);
     const selectedType = useRegisterStore((state) => state.selectedType);
+    const setSelectedType = useRegisterStore((state) => state.setSelectedType);
+    const setUndergraduate = useRegisterStore((state) => state.setUndergraduate);
+    const setCompany = useRegisterStore((state) => state.setCompany);
 
-    const [company, setCompany] = useState<CompanyInfoType>({
-        name: '',
-        city: '',
-        district: '',
-        street: '',
-        streetNumber: ''
-    });
-    const [undergraduate, setUndergraduate] = useState<UndergraduateInfoType>({
-        name: '',
-        surname: '',
-        university: '',
-        department: ''
-    });
+    // Unlike register dialog that opens, here need to refresh the values in case user leaves it uncompleted and returns
+    useEffect(() => {
+        setActiveTab('type');
+        setSelectedType('');
+        setUndergraduate({
+            name: '',
+            surname: '',
+            university: '',
+            department: ''
+        }),
+        setCompany({
+            name: '',
+            city: '',
+            district: '',
+            street: '',
+            streetNumber: ''
+        })
+    }, [])
+
 
     const isAllowed = useModeStore((state) => state.isAllowed);
 
@@ -83,15 +91,15 @@ const Hero = () => {
                         <TabsContent value="info">
                             {
                                 selectedType === "undergraduate" ?
-                                <RegisterFormInfoUndergraduate setUndergraduate={setUndergraduate} /> :
-                                <RegisterFormInfoCompany setCompany={setCompany} />
+                                <RegisterFormInfoUndergraduate /> :
+                                <RegisterFormInfoCompany />
                             }
                         </TabsContent>
                         <TabsContent value="account">
                             {
                                 selectedType === "undergraduate" ?
-                                <RegisterFormUndergraduate undergraduate={undergraduate} /> :
-                                <RegisterFormCompany company={company} />
+                                <RegisterFormUndergraduate /> :
+                                <RegisterFormCompany />
                             }
                         </TabsContent>
                         </Tabs> :

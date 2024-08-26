@@ -20,18 +20,14 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { UndergraduateInfoType } from "@/types";
 import { RegisterFormInfoUndergraduateSchema } from "@/schemas";
 import { departments, universities } from "@/data";
 import { useRegisterStore } from "@/hooks/use-register-store";
 
-const RegisterFormInfoUndergraduate = ({
-    setUndergraduate,
-}: {
-    setUndergraduate: React.Dispatch<React.SetStateAction<UndergraduateInfoType>>
-}) => {
+const RegisterFormInfoUndergraduate = () => {
 
     const setActiveTab = useRegisterStore((state) => state.setActiveTab);
+    const setUndergraduate = useRegisterStore((state) => state.setUndergraduate);
 
     const form = useForm<z.infer<typeof RegisterFormInfoUndergraduateSchema>>({
         resolver: zodResolver(RegisterFormInfoUndergraduateSchema),

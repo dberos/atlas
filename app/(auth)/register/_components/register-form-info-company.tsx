@@ -21,17 +21,13 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { RegisterFormInfoCompanySchema } from "@/schemas";
-import { CompanyInfoType } from "@/types";
 import { cities } from "@/data";
 import { useRegisterStore } from "@/hooks/use-register-store";
 
-const RegisterFormInfoCompany = ({
-    setCompany,
-}: {
-    setCompany: React.Dispatch<React.SetStateAction<CompanyInfoType>>
-}) => {
+const RegisterFormInfoCompany = () => {
 
     const setActiveTab = useRegisterStore((state) => state.setActiveTab);
+    const setCompany = useRegisterStore((state) => state.setCompany);
 
     const form = useForm<z.infer<typeof RegisterFormInfoCompanySchema>>({
         resolver: zodResolver(RegisterFormInfoCompanySchema),

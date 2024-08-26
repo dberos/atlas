@@ -62,7 +62,11 @@ export type RegisterStoreType = {
     activeTab: string,
     setActiveTab: (value: string) => void,
     selectedType: string,
-    setSelectedType: (value: string) => void
+    setSelectedType: (value: string) => void,
+    undergraduate: UndergraduateInfoType,
+    setUndergraduate: (value: UndergraduateInfoType) => void,
+    company: CompanyInfoType,
+    setCompany: (value: CompanyInfoType) => void
 }
 
 export type MobileMenuStoreType = {

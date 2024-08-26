@@ -20,16 +20,12 @@ import { UndergraduateInfoType } from "@/types";
 import { RegisterFormUndergraduateSchema } from "@/schemas";
 import { useRegisterStore } from "@/hooks/use-register-store";
 
-const RegisterFormUndergraduate = ({
-    undergraduate,
-}: {
-    undergraduate: UndergraduateInfoType,
-
-}) => {
+const RegisterFormUndergraduate = () => {
     const { toast } = useToast();
 
     const setIsOpen = useRegisterStore((state) => state.setIsOpen);
     const setActiveTab = useRegisterStore((state) => state.setActiveTab);
+    const undergraduate = useRegisterStore((state) => state.undergraduate);
 
     const form = useForm<z.infer<typeof RegisterFormUndergraduateSchema>>({
         resolver: zodResolver(RegisterFormUndergraduateSchema),

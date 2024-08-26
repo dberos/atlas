@@ -8,7 +8,6 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { useState } from "react";
 import RegisterFormType from "./register-form-type";
 import RegisterFormUndergraduate from "./register-form-undergraduate";
 import RegisterFormCompany from "./register-form-company";
@@ -16,7 +15,6 @@ import RegisterFormInfoCompany from "./register-form-info-company";
 import RegisterFormInfoUndergraduate from "./register-form-info-undergraduate";
 import RegisterNotAllowed from "./register-not-allowed";
 import { Button } from "../ui/button";
-import { CompanyInfoType, UndergraduateInfoType } from "@/types";
 import { useRegisterStore } from "@/hooks/use-register-store";
 import { useModeStore } from "@/hooks/use-mode-store";
 
@@ -26,20 +24,6 @@ const Register = () => {
     const activeTab = useRegisterStore((state) => state.activeTab);
     const setActiveTab = useRegisterStore((state) => state.setActiveTab);
     const selectedType = useRegisterStore((state) => state.selectedType);
-
-    const [company, setCompany] = useState<CompanyInfoType>({
-        name: '',
-        city: '',
-        district: '',
-        street: '',
-        streetNumber: ''
-    });
-    const [undergraduate, setUndergraduate] = useState<UndergraduateInfoType>({
-        name: '',
-        surname: '',
-        university: '',
-        department: ''
-    });
 
     const isAllowed = useModeStore((state) => state.isAllowed);
 
@@ -68,15 +52,15 @@ const Register = () => {
                 <TabsContent value="info">
                     {
                         selectedType === "undergraduate" ?
-                        <RegisterFormInfoUndergraduate setUndergraduate={setUndergraduate} /> :
-                        <RegisterFormInfoCompany setCompany={setCompany} />
+                        <RegisterFormInfoUndergraduate /> :
+                        <RegisterFormInfoCompany />
                     }
                 </TabsContent>
                 <TabsContent value="account">
                     {
                         selectedType === "undergraduate" ?
-                        <RegisterFormUndergraduate undergraduate={undergraduate} /> :
-                        <RegisterFormCompany company={company} />
+                        <RegisterFormUndergraduate /> :
+                        <RegisterFormCompany />
                     }
                 </TabsContent>
                 </Tabs> :

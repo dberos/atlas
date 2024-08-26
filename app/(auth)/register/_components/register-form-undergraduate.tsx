@@ -17,19 +17,15 @@ import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { deleteCsrfToken, setCsrfToken } from "@/server/token";
 import { registerUndergraduate } from "@/server/insert-user";
-import { UndergraduateInfoType } from "@/types";
 import { RegisterFormUndergraduateSchema } from "@/schemas";
 import { useRegisterStore } from "@/hooks/use-register-store";
 
-const RegisterFormUndergraduate = ({
-    undergraduate,
-}: { 
-    undergraduate: UndergraduateInfoType ,
-}) => {
+const RegisterFormUndergraduate = () => {
     const { toast } = useToast();
     const router = useRouter();
 
     const setActiveTab = useRegisterStore((state) => state.setActiveTab);
+    const undergraduate = useRegisterStore((state) => state.undergraduate);
 
     const form = useForm<z.infer<typeof RegisterFormUndergraduateSchema>>({
         resolver: zodResolver(RegisterFormUndergraduateSchema),

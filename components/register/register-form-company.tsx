@@ -20,15 +20,12 @@ import { RegisterFormCompanySchema } from "@/schemas";
 import { CompanyInfoType } from "@/types";
 import { useRegisterStore } from "@/hooks/use-register-store";
 
-const RegisterFormCompany = ({
-    company,
-}: {
-    company: CompanyInfoType,
-}) => {
+const RegisterFormCompany = () => {
     const { toast } = useToast();
 
     const setIsOpen = useRegisterStore((state) => state.setIsOpen);
     const setActiveTab = useRegisterStore((state) => state.setActiveTab);
+    const company = useRegisterStore((state) => state.company);
 
     const form = useForm<z.infer<typeof RegisterFormCompanySchema>>({
         resolver: zodResolver(RegisterFormCompanySchema),

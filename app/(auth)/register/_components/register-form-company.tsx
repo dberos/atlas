@@ -17,19 +17,15 @@ import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { deleteCsrfToken, setCsrfToken } from "@/server/token";
 import { registerCompany } from "@/server/insert-user";
-import { CompanyInfoType } from "@/types";
 import { RegisterFormCompanySchema } from "@/schemas";
 import { useRegisterStore } from "@/hooks/use-register-store";
 
-const RegisterFormCompany = ({
-    company,
-}: { 
-    company: CompanyInfoType ,
-}) => {
+const RegisterFormCompany = () => {
     const { toast } = useToast();
     const router = useRouter();
 
     const setActiveTab = useRegisterStore((state) => state.setActiveTab);
+    const company = useRegisterStore((state) => state.company);
 
     const form = useForm<z.infer<typeof RegisterFormCompanySchema>>({
         resolver: zodResolver(RegisterFormCompanySchema),
