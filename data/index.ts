@@ -1,4 +1,4 @@
-import { CityType, DepartmentType, FieldType, HeroType, UniversityType } from "@/types";
+import { CityType, DepartmentType, FieldType, HeroType, OptionType, UniversityType } from "@/types";
 
 export const cities: CityType[] = [
     {
@@ -115,10 +115,10 @@ export const heroInternships: HeroType = {
         breadcrumbPage: 'Αναζήτηση',
         imageSrc: '/internships-hero.svg',
         imageAlt: 'woman and man working',
-}
+};
 
 export const heroProfile: HeroType = {
-    title: '',
+    title: 'Προφίλ',
     description: 'Ο λογαριασμός μου',
     breadcrumbs: [
         {
@@ -130,4 +130,52 @@ export const heroProfile: HeroType = {
     breadcrumbPage: 'Προφίλ',
     imageSrc: '/profile-hero.svg',
     imageAlt: 'woman with her account',
-}
+};
+
+export const optionsUndergraduate: OptionType[] = [
+    {
+        id: 1,
+        title: 'Οι αιτήσεις μου',
+        imageSrc: '/profile-undergraduates-left.svg',
+        imageAlt: 'woman working on her laptop',
+        link: '/profile'
+    },
+    {
+        id: 2,
+        title: 'Οι θέσεις μου',
+        imageSrc: '/profile-undergraduates-middle.svg',
+        imageAlt: 'man checking approved positions',
+        link: '/profile'
+    },
+    {
+        id: 3,
+        title: 'Τα στοιχεία μου',
+        imageSrc: '/profile-undergraduates-companies-right.svg',
+        imageAlt: 'man checking his profile',
+        link: '/profile'
+    }
+];
+
+export const optionsCompany: OptionType[] = [
+    {
+        id: 1,
+        title: 'Προσθήκη θέσης',
+        imageSrc: '/profile-companies-left.svg',
+        imageAlt: 'man uploading a file',
+        link: '/profile'
+    },
+    {
+        id: 2,
+        title: 'Οι θέσεις μου',
+        imageSrc: '/profile-companies-middle.svg',
+        imageAlt: 'woman sitting on her files',
+        link: '/profile'
+    },
+    {
+        id: 3,
+        title: 'Τα στοιχεία μου',
+        imageSrc: '/profile-undergraduates-companies-right.svg',
+        imageAlt: 'man checking his profile',
+        link: '/profile'
+    }
+];

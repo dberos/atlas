@@ -91,3 +91,11 @@ export type HeroType = {
     imageSrc: string,
     imageAlt: string,
 }
+
+export type OptionType = {
+    id: number,
+    title: string,
+    imageSrc: string,
+    imageAlt: string,
+    link: string
+}

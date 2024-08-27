@@ -21,7 +21,7 @@ const Hero = ({
 
     return ( 
         <div className="mt-20 size-full flex flex-col lg:flex-row">
-            <div className="h-52 w-full lg:w-3/6 lg:h-96 flex flex-col items-center justify-center gap-y-8">
+            <div className="min-h-52 w-full lg:w-3/6 lg:h-96 flex flex-col items-center justify-center gap-y-8">
                 <h1 className="font-medium text-4xl lg:text-6xl font-serif text-center">
                     {title}
                 </h1>
