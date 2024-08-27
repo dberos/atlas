@@ -1,6 +1,10 @@
+import { findUserBySession } from "@/server/find-user";
 import Hero from "./_components/hero";
+import { redirect } from "next/navigation";
 
-export default function RegisterPage() {
+export default async function RegisterPage() {
+    const user = await findUserBySession();
+    if (user) redirect('/');
     return (
         <main className="flex min-h-[90vh] flex-col items-center justify-between p-8 lg:p-24">
             <Hero />
