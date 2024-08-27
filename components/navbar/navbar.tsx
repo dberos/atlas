@@ -1,12 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useMedia, useWindowScroll } from 'react-use';
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import NavMobile from "./nav-mobile";
 import NavDesktop from "./nav-desktop";
+import NavLogo from "./nav-logo";
 
 const NavBar = () => {
     const isMobile = useMedia("(max-width: 1024px)", false);
@@ -22,16 +21,7 @@ const NavBar = () => {
             y > 20 && "shadow-md dark:shadow-slate-900"
         )}>
             <div className="flex items-center justify-center">
-                <Link href='/'>
-                    <Image 
-                    src='/logo.svg'
-                    alt='logo'
-                    priority
-                    height={100}
-                    width={100}
-                    className="size-12 object-contain"
-                    />
-                </Link>
+                <NavLogo />
             </div>
             
             { isMobile ? <NavMobile /> : <NavDesktop /> }

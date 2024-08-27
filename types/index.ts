@@ -1,7 +1,8 @@
 export type UserType = {
     id: string,
     email: string,
-    type: string
+    type: string,
+    name?: string | undefined
 }
 
 export type AuthContextType = {
@@ -12,6 +13,7 @@ export type AuthContextType = {
 }
 
 export type CompanyInfoType = {
+    companyId?: string | undefined
     name: string,
     city: string,
     district: string,
@@ -20,6 +22,7 @@ export type CompanyInfoType = {
 }
 
 export type UndergraduateInfoType = {
+    undergraduateId?: string | undefined
     name: string,
     surname: string,
     university: string,

@@ -101,7 +101,7 @@ const NavDesktop = () => {
                 {
                     user ? 
                     <DropdownMenu open={isOpenAccount} onOpenChange={setIsOpenAccount} modal={false}>
-                        <DropdownMenuTrigger asChild>
+                        <DropdownMenuTrigger asChild className="cursor-pointer">
                         <Avatar>
                             <AvatarFallback>
                                 <User />
@@ -109,8 +109,8 @@ const NavDesktop = () => {
                         </Avatar>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent className="flex flex-col items-center">
-                            <DropdownMenuItem>
-                                <Link href='/profile' onClick={() => setIsOpenAccount(false)}>
+                            <DropdownMenuItem onClick={() => setIsOpenAccount(false)}>
+                                <Link href='/profile'>
                                     Προφίλ
                                 </Link>
                             </DropdownMenuItem>

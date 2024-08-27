@@ -6,7 +6,7 @@ import { hashPassword} from "@/lib/utils";
 import { cookies } from 'next/headers'
 import { UserSchema } from "@/schemas";
 import { getCsrfToken } from "./token";
-import { UserType } from "@/types";
+import { CompanyInfoType, UndergraduateInfoType, UserType } from "@/types";
 import { createJWT, decodeToken, verifyToken } from "@/lib/session";
 
 export const checkEmailExists = async (email: string) => {
@@ -79,18 +79,31 @@ export const findUserBySession = async () => {
     const user = await db.user.findUnique({
       where: {
         id: decodedToken.id
+      },
+      include: {
+        undergraduate: true,
+        company: true
       }
-    })
+    });
+
     if (!user) return null;
-    
+
     const userObj: UserType = {
       id: user.id,
       email: user.email,
-      type: user.userType
+      type: user.userType,
+    };
+
+    if (user.userType === 'UNDERGRADUATE' && user.undergraduate) {
+      userObj.name  = user.undergraduate.name + " " + user.undergraduate.surname
+    } 
+    else if (user.userType === 'COMPANY' && user.company) {
+      userObj.name = user.company.name
     }
+
     return userObj;
-  }
-  catch (error) {
+
+  } catch (error) {
     console.error(error);
     return null;
   }
@@ -119,6 +132,57 @@ export const authenticateUser = async () => {
       type: user.userType
     }
     return userObj;
+  }
+  catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+// After authentication in the backend, find full undergraduate or company
+
+export const findUndergraduate = async (userId: string) => {
+  try {
+    const undergraduate = await db.undergraduate.findUnique({
+      where: {
+        userId
+      }
+    });
+    if (!undergraduate) return null;
+
+    const undergraduateObj: UndergraduateInfoType = {
+      undergraduateId: undergraduate.id,
+      name: undergraduate.name,
+      surname: undergraduate.surname,
+      university: undergraduate.university,
+      department: undergraduate.department
+    }
+    return undergraduateObj;
+  }
+  catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+export const findCompany = async (userId: string) => {
+  try {
+    const company = await db.company.findUnique({
+      where: {
+        userId
+      }
+    });
+    if (!company) return null;
+
+    const companyObj: CompanyInfoType = {
+      companyId: company.id,
+      name: company.name,
+      city: company.city,
+      district: company.district,
+      street: company.street,
+      streetNumber: company.streetNumber
+    }
+    return companyObj;
   }
   catch (error) {
     console.error(error);

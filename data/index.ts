@@ -118,7 +118,7 @@ export const heroInternships: HeroType = {
 }
 
 export const heroProfile: HeroType = {
-    title: 'Προφίλ',
+    title: '',
     description: 'Ο λογαριασμός μου',
     breadcrumbs: [
         {
