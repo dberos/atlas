@@ -19,13 +19,18 @@ import { loginUser } from "@/server/find-user";
 import { Button } from "../ui/button";
 import { UserSchema } from "@/schemas";
 import { useLoginStore } from "@/hooks/use-login-store";
+import useHandleLogin from "@/hooks/use-handle-login";
 
 const LoginForm = () => {
+
     const { setIsLoggedIn } = useAuth();
     
     const [formError, setFormError] = useState<string | null>(null);
 
     const setIsOpen = useLoginStore((state) => state.setIsOpen);
+
+    // Handle possible redirects
+    useHandleLogin();
 
     const form = useForm<z.infer<typeof UserSchema>>({
         resolver: zodResolver(UserSchema),

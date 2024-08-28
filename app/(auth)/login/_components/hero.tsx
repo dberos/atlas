@@ -23,7 +23,7 @@ const Hero = () => {
                     ΑΤΛΑΣ
                 </h1>
                 <h3 className="font-medium text-lg lg:text-2xl max-w-lg text-center">
-                    Συνέχεια με τον λογαριασμό σου!
+                    Συνέχεια με τον λογαριασμό σου
                 </h3>
                 <div className="-mt-4 h-2 w-full md:w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
                 <Breadcrumb className="-mt-4 w-full md:w-5/6 lg:w-full xl:w-4/6 flex justify-center md:justify-start">

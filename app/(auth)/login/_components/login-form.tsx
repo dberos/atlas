@@ -14,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/hooks/use-auth";
 import { deleteCsrfToken, setCsrfToken } from "@/server/token";
 import { loginUser } from "@/server/find-user";
@@ -22,6 +22,7 @@ import { UserSchema } from "@/schemas";
 
 const LoginForm = () => {
     const router = useRouter();
+    const searchParams = useSearchParams();
 
     const { setIsLoggedIn } = useAuth();
 
@@ -51,7 +52,9 @@ const LoginForm = () => {
             setIsLoggedIn(true);
             setFormError(null);
             form.reset();
-            router.push("/");
+            // If user tried to access protected route, redirect back after login
+            const redirect = searchParams.get('redirect') || '/';
+            router.push(redirect);
         }
     }
     return ( 

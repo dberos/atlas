@@ -56,7 +56,9 @@ export type ModeType = {
 
 export type LoginStoreType = {
     isOpen: boolean,
-    setIsOpen: (value: boolean) => void
+    setIsOpen: (value: boolean) => void,
+    redirectUrl: string | null,
+    setRedirectUrl: (value: string | null) => void
 }
 
 export type RegisterStoreType = {
@@ -98,4 +100,12 @@ export type OptionType = {
     imageSrc: string,
     imageAlt: string,
     link: string
+}
+
+export type HandleProtectRouteType = {
+    redirectUrl: string | null;
+    user: UserType | null | undefined,
+    setIsOpen: (value: boolean) => void;
+    setRedirectUrl: (value: string | null) => void;
+    callback: () => void;
 }

@@ -9,7 +9,9 @@ export async function middleware(request: NextRequest) {
   const response =  await refreshSession(request);
   if (!response) {
     if (isProtectedRoute.some((route) => new RegExp(route).test(request.nextUrl.pathname))) {
-      return NextResponse.redirect(new URL('/', request.url));
+      const loginUrl = new URL('/login', request.url);
+      loginUrl.searchParams.set('redirect', request.nextUrl.pathname);
+      return NextResponse.redirect(loginUrl);
     }
   }
   return response || NextResponse.next();

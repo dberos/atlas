@@ -16,16 +16,30 @@ import { ThemeToggle } from "../theme-toggle";
 import Login from "../login/login";
 import Register from "../register/register";
 import { useRouter } from "next/navigation";
+import { useLoginStore } from "@/hooks/use-login-store";
+import handleProtectRoute from "./handle-protect-route";
 
 const NavDesktop = () => {
-    const [isOpenUndergraduates, setIsOpenUndergraduates] = useState(false);
-    const [isOpenCompanies, setIsOpenCompanies] = useState(false);
-    const [isOpenUniversites, setIsOpenUniversities] = useState(false);
-    const { user, setIsLoggedIn } = useAuth();
 
     const router = useRouter();
 
+    const { user, setIsLoggedIn } = useAuth();
+
+    const [isOpenUndergraduates, setIsOpenUndergraduates] = useState(false);
+    const [isOpenCompanies, setIsOpenCompanies] = useState(false);
+    const [isOpenUniversites, setIsOpenUniversities] = useState(false);
     const [isOpenAccount, setIsOpenAccount] = useState(false);
+
+    // Protect the route by opening dialog, and redirect after
+    const setIsOpen = useLoginStore((state) => state.setIsOpen);
+    const setRedirectUrl = useLoginStore((state) => state.setRedirectUrl);
+    // const handleProtectRoute = () => {
+    //     if (!user) {
+    //         setIsOpen(true);
+    //         setRedirectUrl('/profile');
+    //     }
+    //     setIsOpenCompanies(false);
+    // }
 
     const handleLogout = async () => {
         await logoutUser();
@@ -33,6 +47,7 @@ const NavDesktop = () => {
         setIsLoggedIn(false);
         router.replace('/');
     }
+
     return ( 
         <div className="flex size-full items-center justify-between ml-4">
             <div className="flex items-center justify-center ml-10 gap-x-6">
@@ -64,8 +79,18 @@ const NavDesktop = () => {
                     </>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent onCloseAutoFocus={(e) => e.preventDefault()} className="p-2">
-                    <DropdownMenuItem>
-                        <Link href="/">
+                    <DropdownMenuItem 
+                    onClick={() => {
+                        handleProtectRoute({
+                            redirectUrl: '/profile',
+                            user,
+                            setIsOpen,
+                            setRedirectUrl,
+                            callback: () => setIsOpenCompanies(false)
+                        })
+                    }}
+                    className="cursor-pointer">
+                        <Link href="/profile">
                             Προσθήκη Θέσης
                         </Link>
                     </DropdownMenuItem>
