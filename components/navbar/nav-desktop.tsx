@@ -30,16 +30,9 @@ const NavDesktop = () => {
     const [isOpenUniversites, setIsOpenUniversities] = useState(false);
     const [isOpenAccount, setIsOpenAccount] = useState(false);
 
-    // Protect the route by opening dialog, and redirect after
+    // Protect the route by opening dialog, and redirect after, in handleProtectRoute
     const setIsOpen = useLoginStore((state) => state.setIsOpen);
     const setRedirectUrl = useLoginStore((state) => state.setRedirectUrl);
-    // const handleProtectRoute = () => {
-    //     if (!user) {
-    //         setIsOpen(true);
-    //         setRedirectUrl('/profile');
-    //     }
-    //     setIsOpenCompanies(false);
-    // }
 
     const handleLogout = async () => {
         await logoutUser();
