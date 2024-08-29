@@ -3,7 +3,7 @@
 import { db } from "@/lib/db"
 import { AddInternshipFormSchema } from "@/schemas"
 import { z } from "zod"
-import { authenticateUser, findUserBySession } from "./find-user"
+import { authenticateUser } from "./find-user"
 
 export const insertInternship = async (values: z.infer<typeof AddInternshipFormSchema>) => {
     try {
@@ -30,6 +30,7 @@ export const insertInternship = async (values: z.infer<typeof AddInternshipFormS
                 companyId: company.id
             }
         });
+        if (!internship) throw new Error('Failed to create internship.')
 
         return { message: 'Internship created successfully!' };
     }
