@@ -1,6 +1,6 @@
 "use client";
 
-import { AddInternshipSchema } from "@/schemas";
+import { AddInternshipFormSchema } from "@/schemas";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, UseFormReturn } from "react-hook-form"
 import { z } from "zod"
@@ -40,7 +40,7 @@ import { useEffect, useState } from "react";
 import { fieldsAddInternship } from "@/data";
 import { Checkbox } from "@/components/ui/checkbox"
 
-const ComboBox = ({form}: { form: UseFormReturn<z.infer<typeof AddInternshipSchema>> }) => {
+const ComboBox = ({form}: { form: UseFormReturn<z.infer<typeof AddInternshipFormSchema>> }) => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState("");
 
@@ -96,19 +96,19 @@ const ComboBox = ({form}: { form: UseFormReturn<z.infer<typeof AddInternshipSche
 }
 
 const AddInternshipForm = () => {
-    const form = useForm<z.infer<typeof AddInternshipSchema>>({
-        resolver: zodResolver(AddInternshipSchema),
+    const form = useForm<z.infer<typeof AddInternshipFormSchema>>({
+        resolver: zodResolver(AddInternshipFormSchema),
         defaultValues: {
           title: "",
           field: "",
           duration: "",
           employment: "",
-          payment: false,
+          espa: false,
           salary: ""
         },
     })
      
-    function onSubmit(values: z.infer<typeof AddInternshipSchema>) {
+    function onSubmit(values: z.infer<typeof AddInternshipFormSchema>) {
         console.log(values);
     }
 
@@ -116,9 +116,9 @@ const AddInternshipForm = () => {
     const [isDisabledSalary, setIsDisabledSalary] = useState(false);
 
     // Watch for checkbox changes
-    const watchPayment = form.watch('payment');
+    const watchPayment = form.watch('espa');
     useEffect(() => {
-        if (form.getValues('payment') === true) {
+        if (form.getValues('espa') === true) {
             // Default 250
             form.setValue('salary', '250');
             setIsDisabledSalary(true);
@@ -229,7 +229,7 @@ const AddInternshipForm = () => {
                     />
                     <FormField
                     control={form.control}
-                    name="payment"
+                    name="espa"
                     render={({ field }) => (
                         <FormItem className="flex items-center justify-end space-x-2 lg:w-1/2 lg:mt-8">
                         <FormControl>

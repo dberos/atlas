@@ -38,7 +38,7 @@ const Filters = () => {
           field: "",
           duration: "",
           employment: "",
-          payment: false
+          espa: false
         },
     })
 
@@ -47,7 +47,7 @@ const Filters = () => {
         const setValues = async () => {
             const field = await getFieldCookie();
             if (field === "Πρακτικές μέσω ΕΣΠΑ") {
-                form.setValue('payment', true);
+                form.setValue('espa', true);
             }
             form.setValue('field', field ?? "")
             await deleteFieldCookie();
@@ -61,15 +61,15 @@ const Filters = () => {
     useEffect(() => {
         if (form.getValues('field') === 'Πρακτικές χωρίς ΕΣΠΑ') {
             setIsDisabledCheckbox(true);
-            form.setValue('payment', false);
+            form.setValue('espa', false);
         }
         else if (form.getValues('field') === 'Πρακτικές μέσω ΕΣΠΑ') {
             setIsDisabledCheckbox(true);
-            form.setValue('payment', true);
+            form.setValue('espa', true);
         }
         else {
             setIsDisabledCheckbox(false);
-            form.setValue('payment', false);
+            form.setValue('espa', false);
         }
         form.setValue('duration', '');
         form.setValue('employment', '');
@@ -157,7 +157,7 @@ const Filters = () => {
                             />
                             <FormField
                             control={form.control}
-                            name="payment"
+                            name="espa"
                             render={({ field }) => (
                                 <FormItem className="flex items-center justify-end space-x-2 mt-2">
                                 <FormControl>

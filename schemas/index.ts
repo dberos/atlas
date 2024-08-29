@@ -80,14 +80,14 @@ export const SearchFormSchema = z.object({
   field: z.string(),
   duration: z.string(),
   employment: z.string(),
-  payment: z.boolean()
+  espa: z.boolean()
 })
 
-export const AddInternshipSchema = z.object({
+export const AddInternshipFormSchema = z.object({
   title: z.string().min(2, { message: 'Ο τίτλος πρέπει να είναι τουλάχιστον 2 χαρακτήρες' }),
   field: z.string(),
   employment: z.string(),
   duration: z.string(),
-  payment: z.boolean(),
+  espa: z.boolean(),
   salary: z.string()
 })
