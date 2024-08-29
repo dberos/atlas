@@ -61,6 +61,7 @@ model Internship {
   duration String
   espa Boolean
   salary String
+  description String
   // The company that created the internship
   companyId String
   company Company @relation(fields: [companyId], references: [id])

@@ -42,6 +42,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { insertInternship } from "@/server/insert-internship";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import { Textarea } from "@/components/ui/textarea";
 
 const ComboBox = ({form}: { form: UseFormReturn<z.infer<typeof AddInternshipFormSchema>> }) => {
     const [open, setOpen] = useState(false);
@@ -112,7 +113,8 @@ const AddInternshipForm = () => {
           duration: "",
           employment: "",
           espa: false,
-          salary: ""
+          salary: "",
+          description: ""
         },
     })
      
@@ -261,9 +263,26 @@ const AddInternshipForm = () => {
                     )}
                     />
                 </div>
+                <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                    <FormItem>
+                    <FormLabel>Περιγραφή θέσης</FormLabel>
+                    <FormControl>
+                    <Textarea
+                    placeholder="Λίγα λόγια για τη θέση..."
+                    className="resize-none overflow-y-scroll [&::-webkit-scrollbar]:hidden"
+                    {...field}
+                    />
+                    </FormControl>
+                    <FormMessage />
+                    </FormItem>
+                )}
+                />
                 <Button 
                 type="submit"
-                disabled={form.getValues('title') === '' || form.getValues('field') === '' || form.getValues('duration') === '' || form.getValues('employment') === '' || form.getValues('salary') === '' }
+                disabled={form.getValues('title') === '' || form.getValues('field') === '' || form.getValues('duration') === '' || form.getValues('employment') === '' || form.getValues('salary') === '' || form.getValues('description') === '' }
                 >
                     Υποβολή
                 </Button>

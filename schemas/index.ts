@@ -89,5 +89,6 @@ export const AddInternshipFormSchema = z.object({
   employment: z.string(),
   duration: z.string(),
   espa: z.boolean(),
-  salary: z.string()
+  salary: z.string(),
+  description: z.string().min(10, { message: 'Η περιγραφή πρέπει να είναι τουλάχιστον 10 χαρακτήρες' })
 })

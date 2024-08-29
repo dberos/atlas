@@ -27,6 +27,7 @@ export const insertInternship = async (values: z.infer<typeof AddInternshipFormS
                 duration: parsedValues.duration,
                 espa: parsedValues.espa,
                 salary: parsedValues.salary,
+                description: parsedValues.description,
                 companyId: company.id
             }
         });
