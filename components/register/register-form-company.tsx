@@ -17,7 +17,6 @@ import { deleteCsrfToken, setCsrfToken } from "@/server/token";
 import { registerCompany } from "@/server/insert-user";
 import { useToast } from "../ui/use-toast";
 import { RegisterFormCompanySchema } from "@/schemas";
-import { CompanyInfoType } from "@/types";
 import { useRegisterStore } from "@/hooks/use-register-store";
 
 const RegisterFormCompany = () => {

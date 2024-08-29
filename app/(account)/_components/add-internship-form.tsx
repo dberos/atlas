@@ -39,6 +39,9 @@ import {
 import { useEffect, useState } from "react";
 import { fieldsAddInternship } from "@/data";
 import { Checkbox } from "@/components/ui/checkbox"
+import { insertInternship } from "@/server/insert-internship";
+import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 const ComboBox = ({form}: { form: UseFormReturn<z.infer<typeof AddInternshipFormSchema>> }) => {
     const [open, setOpen] = useState(false);
@@ -96,6 +99,11 @@ const ComboBox = ({form}: { form: UseFormReturn<z.infer<typeof AddInternshipForm
 }
 
 const AddInternshipForm = () => {
+
+    const { toast } = useToast();
+
+    const router = useRouter();
+
     const form = useForm<z.infer<typeof AddInternshipFormSchema>>({
         resolver: zodResolver(AddInternshipFormSchema),
         defaultValues: {
@@ -108,8 +116,16 @@ const AddInternshipForm = () => {
         },
     })
      
-    function onSubmit(values: z.infer<typeof AddInternshipFormSchema>) {
-        console.log(values);
+    async function onSubmit(values: z.infer<typeof AddInternshipFormSchema>) {
+        const response = await insertInternship(values);
+        if (response?.error) {
+            toast({ title: 'Προέκυψε σφάλμα' });
+        }
+        else {
+            toast({ title: 'Η Πρακτική Άσκηση δημιουργήθηκε με επιτυχία!' });
+        }
+        form.reset();
+        router.push('/profile');
     }
 
     // Disabled if payment ESPA is true

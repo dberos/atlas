@@ -16,7 +16,6 @@ import { Input } from "@/components/ui/input"
 import { useToast } from "../ui/use-toast";
 import { deleteCsrfToken, setCsrfToken } from "@/server/token";
 import { registerUndergraduate } from "@/server/insert-user";
-import { UndergraduateInfoType } from "@/types";
 import { RegisterFormUndergraduateSchema } from "@/schemas";
 import { useRegisterStore } from "@/hooks/use-register-store";
 
