@@ -52,10 +52,10 @@ const ComboBox = ({
                 <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[200px] lg:w-[370px] p-0">
+            <PopoverContent className="w-[--radix-popover-trigger-width] p-0">
                 <Command>
                 <CommandInput placeholder="Τομείς..." />
-                <CommandList className="h-auto max-h-32 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
+                <CommandList className="h-auto max-h-24 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
                     <CommandEmpty>Κανένα αποτέλεσμα αναζήτησης.</CommandEmpty>
                     <CommandGroup>
                     {fieldsComboBox.map((field) => (

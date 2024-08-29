@@ -2,6 +2,7 @@ import Hero from "@/components/hero";
 import { heroProfileAddInternship } from "@/data";
 import { findUserBySession } from "@/server/find-user"
 import { redirect } from "next/navigation";
+import AddInternship from "../../_components/add-internship";
 
 export default async function AddInternshipPage() {
     
@@ -12,6 +13,7 @@ export default async function AddInternshipPage() {
     return (
         <main className="flex min-h-screen flex-col items-center p-8 md:p-20 lg:p-24">
             <Hero {...heroProfileAddInternship} />
+            <AddInternship />
         </main>
     )
 }

@@ -199,3 +199,18 @@ export const heroProfileAddInternship: HeroType = {
     imageSrc: '/profile-hero.svg',
     imageAlt: 'woman with her account',
 };
+
+export const fieldsAddInternship: FieldType[] = [
+    { 
+        id: 1, 
+        name: 'Πληροφορική' 
+    },
+    { 
+        id: 2, 
+        name: 'Ιατρική' 
+    },
+    { 
+        id: 3, 
+        name: 'Φιλολογία' 
+    }
+];
