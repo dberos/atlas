@@ -34,6 +34,10 @@ model Undergraduate {
   department String
   userId String @unique
   user User @relation(fields: [userId], references: [id])
+  // Undergraduate accepted internships
+  acceptedInternships Internship[]
+  // Undergraduate intersts in internships
+  interests Interest[]
 }
 
 model Company {
@@ -45,5 +49,37 @@ model Company {
   streetNumber String
   userId String @unique
   user User @relation(fields: [userId], references: [id])
+  // Internships from company
+  internships Internship[]
+}
+
+model Internship {
+  id String @id @default(cuid())
+  title String
+  field String
+  employment String
+  duration String
+  espa Boolean
+  salary String
+  // The company that created the internship
+  companyId String
+  company Company @relation(fields: [companyId], references: [id])
+  // Accepted undergraduate
+  undergraduateId String?
+  undergraduate Undergraduate? @relation(fields: [undergraduateId], references: [id])
+  // Interests for the internship
+  interests Interest[]
+}
+
+model Interest {
+  id String @id @default(cuid())
+  // Undergraduate's interest for internship
+  undergraduateId String
+  undergraduate Undergraduate @relation(fields: [undergraduateId], references: [id])
+  // The internship that undergraduate has interest
+  internshipId String
+  internship Internship @relation(fields: [internshipId], references: [id])
+  // Unique pairing of undergraduate and internship
+  @@unique([undergraduateId, internshipId])
 }
         
