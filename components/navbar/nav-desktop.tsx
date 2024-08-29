@@ -75,7 +75,7 @@ const NavDesktop = () => {
                     <DropdownMenuItem 
                     onClick={() => {
                         handleProtectRoute({
-                            redirectUrl: '/profile',
+                            redirectUrl: '/profile/add-internship',
                             user,
                             setIsOpen,
                             setRedirectUrl,
@@ -83,7 +83,7 @@ const NavDesktop = () => {
                         })
                     }}
                     className="cursor-pointer">
-                        <Link href="/profile">
+                        <Link href="/profile/add-internship">
                             Προσθήκη Θέσης
                         </Link>
                     </DropdownMenuItem>

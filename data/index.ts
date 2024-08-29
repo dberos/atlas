@@ -162,7 +162,7 @@ export const optionsCompany: OptionType[] = [
         title: 'Προσθήκη θέσης',
         imageSrc: '/profile-companies-left.svg',
         imageAlt: 'man uploading a file',
-        link: '/profile'
+        link: '/profile/add-internship'
     },
     {
         id: 2,
@@ -179,3 +179,23 @@ export const optionsCompany: OptionType[] = [
         link: '/profile'
     }
 ];
+
+export const heroProfileAddInternship: HeroType = {
+    title: 'Προφίλ',
+    description: 'Προσθήκη Πρακτικής',
+    breadcrumbs: [
+        {
+            id: 1,
+            link: '/',
+            label: 'Αρχική'
+        },
+        {
+            id: 2,
+            link: '/profile',
+            label: 'Προφίλ'
+        }
+    ],
+    breadcrumbPage: 'Νέα Θέση',
+    imageSrc: '/profile-hero.svg',
+    imageAlt: 'woman with her account',
+};

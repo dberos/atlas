@@ -118,7 +118,7 @@ const NavMobile = () => {
                                 Εταιρείες
                             </AccordionTrigger>
                             <AccordionContent className="flex flex-col gap-y-4">
-                            <Link href="/" onClick={() => setIsOpen(false)}>
+                            <Link href="/profile/add-internship" onClick={() => setIsOpen(false)}>
                                 Προσθήκη Θέσης
                             </Link>
                             <Link href="/" onClick={() => setIsOpen(false)}>
