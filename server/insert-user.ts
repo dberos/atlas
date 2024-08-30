@@ -56,7 +56,8 @@ export const registerUndergraduate = async (values: z.infer<typeof Undergraduate
     });
 
     return { message: "Undergraduate registered successfully!" };
-  } catch (error) {
+  } 
+  catch (error) {
     console.error(error);
     if (error instanceof z.ZodError) {
       return { error: error.errors };

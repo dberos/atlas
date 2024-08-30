@@ -34,8 +34,26 @@ import { useInternshipStore } from "@/hooks/use-internship-store";
 
 const Filters = () => {
 
+    const FIELDS = {
+        ALL: 'all',
+        ALL_ESPA: 'all espa',
+        ALL_NO_ESPA: 'all no espa'
+    };
+
+    const mapFieldName = (field: string): string => {
+        switch (field) {
+            case "Πρακτικές μέσω ΕΣΠΑ":
+                return FIELDS.ALL_ESPA;
+            case "Πρακτικές χωρίς ΕΣΠΑ":
+                return FIELDS.ALL_NO_ESPA;
+            case "Όλοι οι Τομείς":
+                return FIELDS.ALL;
+            default:
+                return field;
+        }
+    };
+
     // Internship search values
-    const data = useInternshipStore((state) => state.data);
     const setData = useInternshipStore((state) => state.setData);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -54,59 +72,33 @@ const Filters = () => {
     useEffect(() => {
         const setValues = async () => {
             const field = await getFieldCookie();
-            if (field === "Πρακτικές μέσω ΕΣΠΑ") {
-                form.setValue('espa', true);
-                setData({ field: 'all espa' });
-            }
-            else if (field === 'Πρακτικές χωρίς ΕΣΠΑ') {
-                setData({ field: 'all no espa' });
-            }
-            else if (field === 'Όλοι οι Τομείς') {
-                setData({ field: 'all' });
-            }
-            else {
-                setData({ field: field });
-            }
-            form.setValue('field', field ?? "");
+            const newField = mapFieldName(field ?? '');
+            form.setValue('field', field ?? '');
+            form.setValue('espa', newField === FIELDS.ALL_ESPA);
+            setData({ field: newField });
             await deleteFieldCookie();
-        }
+        };
         setValues();
-    }, [])
+    }, []);
 
+    // Disabled with FIELDS in field
+    const [isDisabled, setIsDisabled] = useState(false);
     // Watch for field changes
-    const [isDisabledCheckBox, setIsDisabledCheckbox] = useState(false);
     const watchField = form.watch('field');
     useEffect(() => {
-        if (form.getValues('field') === 'Πρακτικές χωρίς ΕΣΠΑ') {
-            setIsDisabledCheckbox(true);
-            form.setValue('espa', false);
-        }
-        else if (form.getValues('field') === 'Πρακτικές μέσω ΕΣΠΑ') {
-            setIsDisabledCheckbox(true);
-            form.setValue('espa', true);
-        }
-        else {
-            setIsDisabledCheckbox(false);
-            form.setValue('espa', false);
-        }
+        const newField = mapFieldName(form.getValues('field'));
+        const isFieldDisabled = !newField || newField === FIELDS.ALL || newField.includes('espa');
+
+        setIsDisabled(isFieldDisabled);
+
+        // When field changes, reset all the rest form fields
+        form.setValue('espa', newField === FIELDS.ALL_ESPA);
         form.setValue('duration', '');
         form.setValue('employment', '');
-    }, [watchField])
+    }, [watchField]);
      
-      function onSubmit(values: z.infer<typeof SearchFormSchema>) {
-        let newField = '';
-        if (values.field === 'Πρακτικές χωρίς ΕΣΠΑ') {
-            newField = 'all no espa'
-        }
-        else if (values.field === 'Πρακτικές μέσω ΕΣΠΑ') {
-            newField = 'all espa'
-        }
-        else if (values.field === 'Όλοι οι Τομείς') {
-            newField = 'all'
-        }
-        else {
-            newField = values.field
-        }
+    function onSubmit(values: z.infer<typeof SearchFormSchema>) {
+        const newField = mapFieldName(values.field);
         setData({
             field: newField,
             duration: values.duration,
@@ -114,7 +106,7 @@ const Filters = () => {
             espa: values.espa
         });
         setIsOpen(false);
-      }
+    }
 
     return ( 
         <div className="w-full mt-20 mb-20 lg:mt-10 lg:mb-10 flex items-center max-lg:justify-center">
@@ -156,7 +148,7 @@ const Filters = () => {
                             render={({ field }) => (
                                 <FormItem className="grid grid-cols-3 items-center gap-4">
                                 <FormLabel>Διάρκεια</FormLabel>
-                                <Select onValueChange={field.onChange} value={field.value}>
+                                <Select onValueChange={field.onChange} value={field.value} disabled={isDisabled}>
                                     <FormControl>
                                     <SelectTrigger className="col-span-2 h-8">
                                         <SelectValue />
@@ -177,7 +169,7 @@ const Filters = () => {
                             render={({ field }) => (
                                 <FormItem className="grid grid-cols-3 items-center gap-4">
                                 <FormLabel>Απασχόληση</FormLabel>
-                                <Select onValueChange={field.onChange} value={field.value}>
+                                <Select onValueChange={field.onChange} value={field.value} disabled={isDisabled}>
                                     <FormControl>
                                     <SelectTrigger className="col-span-2 h-8">
                                         <SelectValue />
@@ -201,7 +193,7 @@ const Filters = () => {
                                     <Checkbox
                                     checked={field.value}
                                     onCheckedChange={field.onChange}
-                                    disabled={isDisabledCheckBox}
+                                    disabled={isDisabled}
                                     />
                                 </FormControl>
                                 <div className="space-y-1 leading-none">

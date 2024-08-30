@@ -7,7 +7,7 @@ import InternshipsEmpty from "./internships-empty";
 const Internships = () => {
     const { internships } = useFindInternships();
     return ( 
-        <div className="size-full flex items-center justify-center flex-col gap-y-10">
+        <div className="size-full flex items-center justify-center flex-col gap-y-14 mb-10 lg:mb-20">
             {   internships.length === 0 ? 
                 <InternshipsEmpty /> : 
                 internships.map((internship) => (
