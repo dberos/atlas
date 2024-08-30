@@ -1,3 +1,6 @@
+import { SearchFormSchema } from "@/schemas"
+import { z } from "zod"
+
 export type UserType = {
     id: string,
     email: string,
@@ -108,4 +111,36 @@ export type HandleProtectRouteType = {
     setIsOpen: (value: boolean) => void;
     setRedirectUrl: (value: string | null) => void;
     callback: () => void;
+}
+
+export type SearchFormType = z.infer<typeof SearchFormSchema>;
+
+export type InternshipStoreType = {
+    data: SearchFormType;
+    setData: (data: Partial<SearchFormType>) => void;
+};
+
+export type InternshipCompanyType = {
+    id: string,
+    userId: string,
+    name: string,
+    city: string,
+    district: string,
+    street: string,
+    streetNumber: string
+}
+
+export type InternshipType = {
+    id: string,
+    title: string,
+    field: string,
+    duration: string,
+    employment: string,
+    espa: boolean,
+    salary: string,
+    description: string,
+    companyId: string,
+    company: InternshipCompanyType
+    undergraduateId?: any,
+    undergraduate?: any
 }

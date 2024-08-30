@@ -1,10 +1,22 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { InternshipType } from "@/types";
 import { Building2, MapPin, Maximize2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-const Internship = () => {
+const Internship = ({
+    id,
+    title,
+    field,
+    duration,
+    employment,
+    espa,
+    salary,
+    description,
+    companyId,
+    company
+}: InternshipType) => {
     const [isOpen, setIsOpen] = useState(false);
 
     // Expandable div transitioning
@@ -43,20 +55,20 @@ const Internship = () => {
              >
                 <div className="flex items-center justify-center mt-6">
                     <h2 className="text-lg lg:text-2xl">
-                        Web Developer
+                        {title}
                     </h2>
                 </div>
                 <div className="lg:flex lg:flex-row lg:justify-around">
                     <div className="flex items-center justify-center flex-col mt-14 gap-y-4 text-center">
                         <Building2 className="size-6 text-orange-600"/>
                         <p className="text-base lg:text-lg">
-                            Εταιρεία 1
+                            {company.name}
                         </p>
                     </div>
                     <div className="flex items-center justify-center flex-col mt-14 gap-y-4 text-center">
                         <MapPin className="size-6 text-orange-600" />
                         <p className="text-base lg:text-lg">
-                            Εθνικής Αντιστάσεως 1, <br /> Καισαριανή, Αθήνα
+                            {company.street} {company.streetNumber}, <br /> {company.district}, {company.city}
                         </p>
                     </div>
                 </div>
@@ -77,7 +89,7 @@ const Internship = () => {
                             Τομέας
                         </h3>
                         <p className="mt-6 text-sm text-center">
-                            Πληροφορική
+                            {field}
                         </p>
                     </div>
                     {/* Duration and Employment */}
@@ -89,7 +101,7 @@ const Internship = () => {
                                     Διάρκεια
                                 </h3>
                                 <p className="mt-6 text-sm text-center">
-                                    6 Μήνες
+                                    {duration === 'full' ? '6 Μήνες' : '3 Μήνες'}
                                 </p>
                             </div>
                             <div className="w-full lg:w-2/4 h-2/4 lg:h-full flex flex-col items-center">
@@ -98,7 +110,7 @@ const Internship = () => {
                                     Τύπος Απασχόλησης
                                 </h3>
                                 <p className="mt-6 text-sm text-center">
-                                    Πλήρης Απασχόληση
+                                    {employment === 'full' ? 'Πλήρης Απασχόληση' : 'Περιορισμένη Απασχόληση'}
                                 </p>
                             </div>
                         </div>
@@ -112,7 +124,7 @@ const Internship = () => {
                                     Μισθοδοσία
                                 </h3>
                                 <p className="mt-6 text-sm text-center">
-                                    Χωρίς Χρηματοδότηση ΕΣΠΑ
+                                    {espa ? 'Χρηματοδότηση ΕΣΠΑ' : 'Χωρίς Χρηματοδότηση ΕΣΠΑ'}
                                 </p>
                             </div>
                             <div className="w-full lg:w-2/4 h-2/4 lg:h-full flex flex-col items-center">
@@ -121,7 +133,7 @@ const Internship = () => {
                                     Μισθός
                                 </h3>
                                 <p className="mt-6 text-sm text-center">
-                                    600 &euro;
+                                    {salary} &euro;
                                 </p>
                             </div>
                         </div>
@@ -133,7 +145,7 @@ const Internship = () => {
                             Περιγραφή Θέσης
                         </h3>
                         <p className="mt-6 text-sm text-center max-w-md">
-                            Τομέας Πληροφορικής και δυνατότητες εξέλιξης
+                            {description}
                         </p>
                     </div>
                 </div>

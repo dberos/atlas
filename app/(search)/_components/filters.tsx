@@ -30,8 +30,16 @@ import { useEffect, useState } from "react";
 import ComboBox from "./combobox";
 import { deleteFieldCookie, getFieldCookie } from "@/server/search";
 import { SearchFormSchema } from "@/schemas";
+import { useInternshipStore } from "@/hooks/use-internship-store";
 
 const Filters = () => {
+
+    // Internship search values
+    const data = useInternshipStore((state) => state.data);
+    const setData = useInternshipStore((state) => state.setData);
+
+    const [isOpen, setIsOpen] = useState(false);
+
     const form = useForm<z.infer<typeof SearchFormSchema>>({
         resolver: zodResolver(SearchFormSchema),
         defaultValues: {
@@ -48,8 +56,18 @@ const Filters = () => {
             const field = await getFieldCookie();
             if (field === "Πρακτικές μέσω ΕΣΠΑ") {
                 form.setValue('espa', true);
+                setData({ field: 'all espa' });
             }
-            form.setValue('field', field ?? "")
+            else if (field === 'Πρακτικές χωρίς ΕΣΠΑ') {
+                setData({ field: 'all no espa' });
+            }
+            else if (field === 'Όλοι οι Τομείς') {
+                setData({ field: 'all' });
+            }
+            else {
+                setData({ field: field });
+            }
+            form.setValue('field', field ?? "");
             await deleteFieldCookie();
         }
         setValues();
@@ -76,12 +94,31 @@ const Filters = () => {
     }, [watchField])
      
       function onSubmit(values: z.infer<typeof SearchFormSchema>) {
-        console.log(values);
+        let newField = '';
+        if (values.field === 'Πρακτικές χωρίς ΕΣΠΑ') {
+            newField = 'all no espa'
+        }
+        else if (values.field === 'Πρακτικές μέσω ΕΣΠΑ') {
+            newField = 'all espa'
+        }
+        else if (values.field === 'Όλοι οι Τομείς') {
+            newField = 'all'
+        }
+        else {
+            newField = values.field
+        }
+        setData({
+            field: newField,
+            duration: values.duration,
+            employment: values.employment,
+            espa: values.espa
+        });
+        setIsOpen(false);
       }
 
     return ( 
-        <div className="w-full mt-20 lg:mt-10 flex items-center max-lg:justify-center">
-            <Popover>
+        <div className="w-full mt-20 mb-20 lg:mt-10 lg:mb-10 flex items-center max-lg:justify-center">
+            <Popover open={isOpen} onOpenChange={setIsOpen}>
                 <PopoverTrigger asChild>
                     <Button variant='ghost' size='lg'>
                         Φίλτρα Αναζήτησης <SlidersHorizontal className="size-4 ml-2" />
