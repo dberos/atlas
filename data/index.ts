@@ -1,4 +1,28 @@
-import { CityType, DepartmentType, FieldType, HeroType, OptionType, UniversityType } from "@/types";
+import { CityType, DepartmentType, FieldType, HeroType, OptionType, ServiceType, UniversityType } from "@/types";
+
+export const services: ServiceType[] = [
+    {
+        id: 1,
+        title: "Αναζήτηση Πρακτικής Άσκησης",
+        description: "Η εύρεση της επόμενής σου Πρακτικής Άσκησης είναι πιο εύκολη από ποτέ",
+        imageSrc: "/home-services-left.svg",
+        imageAlt: "a woman searching in a file"
+    },
+    {
+        id: 2,
+        title: "Υποβολή ενδιαφέροντος",
+        description: "Αποθήκευσε τις θέσεις που σε ενδιαφέρουν και συμπλήρωσε την αίτηση στο προφίλ",
+        imageSrc: "/home-services-middle.svg",
+        imageAlt: "a woman searching in a board"
+    },
+    {
+        id: 3,
+        title: "Παρακολούθηση αίτησης",
+        description: "Για κάθε αίτηση, ενημερώνεσαι εύκολα στο προφίλ για την εξέλιξή της",
+        imageSrc: "/home-services-right.svg",
+        imageAlt: "a woman searching in a website"
+    }
+]
 
 export const cities: CityType[] = [
     {

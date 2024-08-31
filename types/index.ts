@@ -1,6 +1,14 @@
 import { SearchFormSchema } from "@/schemas"
 import { z } from "zod"
 
+export type ServiceType = {
+    id: number,
+    title: string,
+    description: string,
+    imageSrc: string,
+    imageAlt: string
+}
+
 export type UserType = {
     id: string,
     email: string,

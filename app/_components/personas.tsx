@@ -3,85 +3,58 @@ import Image from "next/image";
 
 const Personas = () => {
     return ( 
-        <div className="mt-20 w-full h-[150vh] md:h-[120vh] lg:h-[80vh] grid grid-rows-3 grid-cols-1 lg:grid-rows-2 lg:grid-cols-1">
-            {/* Desktop */}
-            <div className="hidden lg:grid lg:grid-rows-1 lg:grid-cols-2">
-                <div className="flex flex-col items-center">
-                    <div className="h-2 w-5/6 xl:w-4/6 bg-gradient-to-r from-orange-300 via-orange-200 to-slate-300 dark:from-orange-500 dark:via-orange-300 dark:to-slate-800" />
-                    <h3 className="mt-4 text-lg 2xl:text-xl font-medium text-center cursor-pointer">
-                        Προσθήκη Πρακτικής Άσκησης
-                    </h3>
-                    <p className="mt-5 max-w-sm text-center text-sm lg:text-base 2xl:text-md">
-                        Στο εταιρικό προφίλ, προσφέρεται η δημοσίευση νέας θέσης
-                    </p>
-                    <div className="w-full h-48 flex items-center justify-center">
+        <div className="mt-20 w-full flex flex-col">
+            <div className="lg:flex lg:gap-x-4">
+                <div className="w-full h-96 lg:w-1/2 flex flex-col items-center justify-center">
+                    <div className="h-2 w-full md:w-5/6 xl:w-4/6 bg-gradient-to-r 
+                    from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800 
+                    lg:from-orange-300 lg:via-orange-200 lg:to-slate-300 lg:dark:from-orange-500 lg:dark:via-orange-300 lg:dark:to-slate-800" />
+                    <div className="flex items-center justify-center w-full h-10">
+                        <h3 className="mt-4 text-lg 2xl:text-xl font-medium text-center cursor-pointer">
+                            Προσθήκη Πρακτικής Άσκησης
+                        </h3>
+                    </div>
+                    <div className="flex items-center justify-center w-full h-20">
+                        <p className="mt-5 max-w-sm text-center text-sm lg:text-base 2xl:text-md">
+                            Στο εταιρικό προφίλ, προσφέρεται η δημοσίευση νέας θέσης
+                        </p>
+                    </div>
+                    <div className="w-full h-48 lg:h-44 xl:h-48 flex items-center justify-center">
                         <Image 
                         src="/home-personas-left.svg"
                         alt="person uploading a file"
                         width={100}
                         height={100}
-                        className="size-4/6 object-contain cursor-pointer hover:scale-105 transition ease-in-out"
+                        className="size-4/6 object-contain xl:cursor-pointer xl:hover:scale-105 xl:transition xl:ease-in-out"
                         />
                     </div>
                 </div>
-                <div className="flex flex-col items-center">
-                    <div className="h-2 w-5/6 xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-orange-300 dark:from-slate-800 dark:via-orange-300 dark:to-orange-500" />
-                    <h3 className="mt-4 text-lg 2xl:text-xl font-medium text-center cursor-pointer">
-                        Αξιολόγηση Ενδιαφέροντος
-                    </h3>
-                    <p className="mt-5 max-w-sm text-center text-sm lg:text-base 2xl:text-md">
-                        Επιπλέον, δίνεται η δυνατότητα γνωριμίας με τους υποψηφίους της θέσης
-                    </p>
-                    <div className="w-full h-48 flex items-center justify-center">
+                <div className="w-full h-96 lg:w-1/2 flex flex-col items-center justify-center">
+                    <div className="h-2 w-full md:w-5/6 xl:w-4/6 bg-gradient-to-r 
+                    from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800
+                    lg:from-slate-300 lg:via-orange-200 lg:to-orange-300 lg:dark:from-slate-800 lg:dark:via-orange-300 lg:dark:to-orange-500" />
+                    <div className="flex items-center justify-center w-full h-10">
+                        <h3 className="mt-4 text-lg 2xl:text-xl font-medium text-center cursor-pointer">
+                            Αξιολόγηση Ενδιαφέροντος
+                        </h3>
+                    </div>
+                    <div className="flex items-center justify-center w-full h-20">
+                        <p className="mt-5 max-w-sm text-center text-sm lg:text-base 2xl:text-md">
+                            Επιπλέον, δίνεται η δυνατότητα γνωριμίας με τους υποψηφίους της θέσης
+                        </p>
+                    </div>
+                    <div className="w-full h-48 lg:h-44 xl:h-48 flex items-center justify-center">
                         <Image 
                         src="/home-personas-right.svg"
                         alt="person searching"
                         width={100}
                         height={100}
-                        className="size-4/6 object-contain cursor-pointer hover:scale-105 transition ease-in-out"
+                        className="size-4/6 object-contain xl:cursor-pointer xl:hover:scale-105 xl:transition xl:ease-in-out"
                         />
                     </div>
                 </div>
             </div>
-            {/* Mobile */}
-            <div className="flex flex-col items-center lg:hidden">
-            <div className="h-2 w-full md:w-5/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
-                    <h3 className="mt-4 text-lg 2xl:text-xl font-medium text-center cursor-pointer">
-                    Προσθήκη Πρακτικής Άσκησης
-                    </h3>
-                    <p className="mt-5 max-w-sm text-center text-sm lg:text-base 2xl:text-md">
-                        Στο εταιρικό προφίλ, προσφέρεται η δημοσίευση νέας θέσης
-                    </p>
-                    <div className="w-full h-48 mt-10 flex items-center justify-center">
-                        <Image 
-                        src="/home-personas-left.svg"
-                        alt="person uploading a file"
-                        width={100}
-                        height={100}
-                        className="size-4/6 object-contain cursor-pointer"
-                        />
-                    </div>
-                </div>
-            <div className="flex flex-col items-center lg:hidden">
-                <div className="h-2 w-full md:w-5/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
-                <h3 className="mt-4 text-lg 2xl:text-xl font-medium text-center cursor-pointer">
-                    Αξιολόγηση Ενδιαφέροντος
-                </h3>
-                <p className="mt-5 max-w-sm text-center text-sm lg:text-base 2xl:text-md">
-                    Επιπλέον, δίνεται η δυνατότητα γνωριμίας με τους υποψηφίους της θέσης
-                </p>
-                <div className="w-full h-48 mt-10 flex items-center justify-center">
-                    <Image 
-                    src="/home-personas-right.svg"
-                    alt="person searching"
-                    width={100}
-                    height={100}
-                    className="size-4/6 object-contain cursor-pointer"
-                    />
-                </div>
-            </div>
-            {/* Mobile and Desktop */}
-            <div className="flex flex-col items-center size-full">
+            <div className="flex flex-col items-center w-full h-80">
                 <div className="h-2 w-full md:w-5/6 lg:w-3/6 xl:w-2/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
                 <h3 className="mt-4 text-lg 2xl:text-xl font-medium text-center">
                     Γραφείο Πρακτικής Πανεπιστημίου
@@ -94,7 +67,7 @@ const Personas = () => {
                 </Button>
             </div>
         </div>
-     );
+    );
 }
  
 export default Personas;
