@@ -5,19 +5,21 @@ import { useInternshipStore } from "./use-internship-store";
 import { InternshipType } from "@/types";
 import { findInternships } from "@/server/find-internship";
 
-const useFindInternships = () => {
+const useFindInternships = (page: string) => {
     const data = useInternshipStore((state) => state.data);
     const [internships, setInternships] = useState<InternshipType[] | []>([]);
+    const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
         const getInternships = async () => {
-            const fetchedInternships = await findInternships(data);
-            setInternships(fetchedInternships);
+            const fetchedInternships = await findInternships(data, page);
+            setInternships(fetchedInternships.internships);
+            setTotalPages(fetchedInternships.totalPages);
         }
         getInternships();
-    }, [data])
+    }, [data, page])
 
-    return { internships };
+    return { internships, totalPages };
 }
  
 export default useFindInternships;

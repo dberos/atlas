@@ -31,8 +31,11 @@ import ComboBox from "./combobox";
 import { deleteFieldCookie, getFieldCookie } from "@/server/search";
 import { SearchFormSchema } from "@/schemas";
 import { useInternshipStore } from "@/hooks/use-internship-store";
+import { useRouter } from "next/navigation";
 
 const Filters = () => {
+
+    const router = useRouter();
 
     const FIELDS = {
         ALL: 'all',
@@ -106,6 +109,7 @@ const Filters = () => {
             espa: values.espa
         });
         setIsOpen(false);
+        router.push('/internships?page=1')
     }
 
     return ( 

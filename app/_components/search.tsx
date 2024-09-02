@@ -27,7 +27,7 @@ const Search = () => {
     const handleSelect = async (item: FieldType) => {
         setInputValue(item.name);
         await setFieldCookie(item.name);
-        router.push('/internships');
+        router.push('/internships?page=1');
     }
 
     // Show suggestions on focused without anything typed

@@ -4,17 +4,28 @@ import { db } from "@/lib/db";
 import { SearchFormSchema } from "@/schemas";
 import { z } from "zod";
 
-export const findInternships = async (values: z.infer<typeof SearchFormSchema> | []) => {
+export const findInternships = async (
+    values: z.infer<typeof SearchFormSchema> | [],
+    page: string
+) => {
     try {
         // Check for result in case an empty array is passed
         const { success, data } = SearchFormSchema.safeParse(values);
 
         // Or field is an empty string
         if (!success || !data.field) {
-            return [];
+            return { internships: [], totalPages: 0 };
         }
 
         const { field, duration, employment, espa } = data;
+
+        // Number of internships per page
+        const pageSize = 5;
+        // Current page number
+        const pageNumber = parseInt(page, 10) || 1;
+        // Starting position of the query
+        const offset = (pageNumber - 1) * pageSize;
+
 
         // If all, return all internships,
         // If all espa, return all with espa true
@@ -43,13 +54,22 @@ export const findInternships = async (values: z.infer<typeof SearchFormSchema> |
             where: query,
             include: {
                 company: true
-            }
+            },
+            skip: offset,
+            take: pageSize
         });
 
-        return internships;
+        // Get the count of internships
+        const totalInternships = await db.internship.count({
+            where: query
+        });
+        // Get the total pages count
+        const totalPages = Math.ceil(totalInternships / pageSize);
+
+        return { internships, totalPages };
     } 
     catch (error) {
         console.error("Error finding internships:", error);
-        return [];
+        return { internships: [], totalPages: 0 };
     }
 };

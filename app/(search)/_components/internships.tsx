@@ -3,9 +3,21 @@
 import useFindInternships from "@/hooks/use-find-internships";
 import Internship from "./internship";
 import InternshipsEmpty from "./internships-empty";
+import {
+    Pagination,
+    PaginationContent,
+    PaginationItem,
+    PaginationLink,
+    PaginationNext,
+    PaginationPrevious,
+} from "@/components/ui/pagination"
 
-const Internships = () => {
-    const { internships } = useFindInternships();
+const Internships = ({page}: { page: string }) => {
+
+    // Get internships results based on page number, and total number of pages
+    const { internships, totalPages } = useFindInternships(page);
+    const currentPage = parseInt(page, 10) || 1;
+
     return ( 
         <div className="size-full flex items-center justify-center flex-col gap-y-14 mb-10 lg:mb-20">
             {   internships.length === 0 ? 
@@ -17,6 +29,35 @@ const Internships = () => {
                     />
                 ))
             }
+            {   totalPages > 1 && (
+                <Pagination>
+                    <PaginationContent>
+                    {currentPage > 1 && (
+                        <PaginationItem>
+                            <PaginationPrevious href={`/internships?page=${currentPage - 1}`} />
+                        </PaginationItem>
+                    )}
+                    {[...Array(totalPages)].map((_, index) => {
+                        const pageNumber = index + 1;
+                        return (
+                        <PaginationItem key={pageNumber}>
+                            <PaginationLink
+                            href={`/internships?page=${pageNumber}`}
+                            isActive={pageNumber === currentPage}
+                            >
+                                {pageNumber}
+                            </PaginationLink>
+                        </PaginationItem>
+                        );
+                    })}
+                    {currentPage < totalPages && (
+                        <PaginationItem>
+                            <PaginationNext href={`/internships?page=${currentPage + 1}`} />
+                        </PaginationItem>
+                    )}
+                    </PaginationContent>
+                </Pagination>
+            )}
         </div>
     ); 
 }
