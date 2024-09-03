@@ -152,3 +152,10 @@ export type InternshipType = {
     undergraduateId?: any,
     undergraduate?: any
 }
+
+export type SearchCookieType = {
+    field: string,
+    duration: string,
+    employment: string
+    espa?: boolean | undefined 
+}

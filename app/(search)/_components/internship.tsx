@@ -5,6 +5,9 @@ import { cn } from "@/lib/utils";
 import { InternshipType } from "@/types";
 import { Building2, MapPin, Maximize2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useMedia } from "react-use";
+import CtaDesktop from "./cta-desktop";
+import CtaMobile from "./cta-mobile";
 
 const Internship = ({
     id,
@@ -16,9 +19,11 @@ const Internship = ({
     salary,
     description,
     companyId,
-    company
+    company,
 }: InternshipType) => {
     const [isOpen, setIsOpen] = useState(false);
+
+    const isMobile = useMedia("(max-width: 1024px)", false);
 
     // Expandable div transitioning
     const [maxHeight, setMaxHeight] = useState("0px");
@@ -149,15 +154,16 @@ const Internship = ({
                             </div>
                         </div>
                         {/* Description */}
-                        <div className="w-full md:w-5/6 lg:w-full xl:w-5/6 md:m-auto h-56 flex flex-col items-center">
+                        <div className="w-full md:w-5/6 lg:w-full xl:w-5/6 md:m-auto max-h-40 flex flex-col items-center">
                             <div className="h-2 w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
                             <h3 className="mt-2 text-base text-center">
                                 Περιγραφή Θέσης
                             </h3>
-                            <p className="mt-6 text-sm text-center max-w-md">
+                            <p className="mt-6 text-sm text-center max-w-xs lg:max-w-md size-full overflow-y-scroll [&::-webkit-scrollbar]:hidden">
                                 {description}
                             </p>
                         </div>
+                        { isMobile ? <CtaMobile id={id} /> : <CtaDesktop id={id} /> }
                     </div>
                 <div className="absolute bottom-4 right-4 cursor-pointer z-30" onClick={() => setIsOpen(!isOpen)}>
                     <Maximize2 className="size-6 text-orange-600" />

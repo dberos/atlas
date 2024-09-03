@@ -12,6 +12,13 @@ enum UserType {
   COMPANY
 }
 
+enum InterestStatus {
+  SAVED
+  PENDING
+  ACCEPTED
+  REJECTED
+}
+
 model User {
   id String @id @default(cuid())
   email String @unique
@@ -74,6 +81,8 @@ model Internship {
 
 model Interest {
   id String @id @default(cuid())
+  // Status of the interest
+  status InterestStatus
   // Undergraduate's interest for internship
   undergraduateId String
   undergraduate Undergraduate @relation(fields: [undergraduateId], references: [id])

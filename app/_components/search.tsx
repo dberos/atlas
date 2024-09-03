@@ -12,7 +12,7 @@ import {
 import useCloseModal from "@/hooks/use-close-modal";
 import { useRouter } from "next/navigation";
 import { setFieldCookie } from "@/server/search";
-import { FieldType } from "@/types";
+import { FieldType, SearchCookieType } from "@/types";
 import { fields, suggestions } from "@/data";
 
 const Search = () => {
@@ -26,7 +26,12 @@ const Search = () => {
     // When clicked or enter click
     const handleSelect = async (item: FieldType) => {
         setInputValue(item.name);
-        await setFieldCookie(item.name);
+        const data: SearchCookieType = {
+            field: item.name,
+            duration: "",
+            employment: ""
+        }
+        await setFieldCookie(JSON.stringify(data));
         router.push('/internships?page=1');
     }
 

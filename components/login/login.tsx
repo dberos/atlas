@@ -27,7 +27,7 @@ const Login = () => {
                     Σύνδεση
                 </Button>
             </DialogTrigger>
-            <DialogContent aria-describedby={undefined} className="size-96">
+            <DialogContent aria-describedby={undefined} className="size-96" onMouseDown={(e) => e.stopPropagation()}>
                 <DialogHeader>
                 <DialogTitle className="text-center">Σύνδεση</DialogTitle>
                 </DialogHeader>

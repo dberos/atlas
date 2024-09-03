@@ -32,6 +32,7 @@ import { deleteFieldCookie, getFieldCookie } from "@/server/search";
 import { SearchFormSchema } from "@/schemas";
 import { useInternshipStore } from "@/hooks/use-internship-store";
 import { useRouter } from "next/navigation";
+import { SearchCookieType } from "@/types";
 
 const Filters = () => {
 
@@ -71,14 +72,28 @@ const Filters = () => {
         },
     })
 
-    // Initial state from search input
+    // Initial state from search input, or mobile redirect from login
     useEffect(() => {
         const setValues = async () => {
-            const field = await getFieldCookie();
-            const newField = mapFieldName(field ?? '');
-            form.setValue('field', field ?? '');
-            form.setValue('espa', newField === FIELDS.ALL_ESPA);
-            setData({ field: newField });
+            const jsonObject = await getFieldCookie();
+            if (!jsonObject) return;
+            const fields: SearchCookieType = JSON.parse(jsonObject);
+            const newField = mapFieldName(fields.field ?? '');
+            form.setValue('field', fields.field ?? '');
+            form.setValue('duration', fields.duration ?? ""),
+            form.setValue('employment', fields.employment ?? "");
+            if (fields.espa !== undefined) {
+                form.setValue('espa', fields.espa);
+            }
+            else {
+                form.setValue('espa', newField === FIELDS.ALL_ESPA);
+            }
+            setData({ 
+                field: newField, 
+                duration: fields.duration, 
+                employment: fields.employment, 
+                espa: fields.espa !== undefined ? fields.espa : newField === FIELDS.ALL_ESPA 
+            });
             await deleteFieldCookie();
         };
         setValues();

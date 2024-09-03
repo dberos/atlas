@@ -1,6 +1,6 @@
 "use client";
 
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useLoginStore } from "./use-login-store";
 import { useEffect } from "react";
 import { useAuth } from "./use-auth";
@@ -10,6 +10,7 @@ const useHandleLogin = () => {
 
     const router = useRouter();
     const pathname = usePathname();
+    const searchParams = useSearchParams();
 
     const { isLoggedIn } = useAuth();
 
@@ -24,7 +25,9 @@ const useHandleLogin = () => {
             // If it opened to protect a route
             // Deny middleware redirect to /login 
             // Since its desktop and want to open dialog
-            router.push(pathname);
+            const search = searchParams.toString();
+            const fullPath = search ? `${pathname}?${search}` : pathname;
+            router.push(fullPath);
         }
         else {
             if (redirectUrl && isLoggedIn) {
