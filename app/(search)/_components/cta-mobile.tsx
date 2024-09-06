@@ -4,34 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/hooks/use-auth";
-import { useInternshipStore } from "@/hooks/use-internship-store";
 import { useModeStore } from "@/hooks/use-mode-store";
 import { insertInterest } from "@/server/find-interest";
-import { setFieldCookie } from "@/server/search";
-import { SearchCookieType } from "@/types";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const CtaMobile = ({id}: { id: string }) => {
-
-    // Map fields from store to form values
-    const FIELDS = {
-        ALL: 'Όλοι οι Τομείς',
-        ALL_ESPA: 'Πρακτικές μέσω ΕΣΠΑ',
-        ALL_NO_ESPA: 'Πρακτικές χωρίς ΕΣΠΑ'
-    };
-
-    const mapFieldName = (field: string): string => {
-        switch (field) {
-            case "all espa":
-                return FIELDS.ALL_ESPA;
-            case "all no espa":
-                return FIELDS.ALL_NO_ESPA;
-            case "all":
-                return FIELDS.ALL;
-            default:
-                return field;
-        }
-    };
     
     const isAllowed = useModeStore((state) => state.isAllowed);
 
@@ -42,8 +19,6 @@ const CtaMobile = ({id}: { id: string }) => {
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
-
-    const data = useInternshipStore((state) => state.data);
 
     const handleClick = async () => {
         if (user) {
@@ -67,14 +42,6 @@ const CtaMobile = ({id}: { id: string }) => {
             }
         }
         else {
-            const newField = mapFieldName(data.field ?? "");
-            const dataSearch: SearchCookieType = {
-                field: newField,
-                duration: data.duration,
-                employment: data.employment,
-                espa: data.espa
-            }
-            await setFieldCookie(JSON.stringify(dataSearch));
             const search = searchParams.toString();
             const fullPath = search ? `${pathname}?${search}` : pathname;
             router.push(`/login?redirect=${encodeURIComponent(fullPath)}`);

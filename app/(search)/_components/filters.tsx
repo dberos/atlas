@@ -6,7 +6,7 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover"
-import { SlidersHorizontal } from "lucide-react";
+import { ListRestart, Search, SlidersHorizontal } from "lucide-react";
 import {
     Select,
     SelectContent,
@@ -28,7 +28,7 @@ import {
 } from "@/components/ui/form"
 import { useEffect, useState } from "react";
 import ComboBox from "./combobox";
-import { deleteFieldCookie, getFieldCookie } from "@/server/search";
+import { getFieldCookie, setFieldCookie } from "@/server/search";
 import { SearchFormSchema } from "@/schemas";
 import { useInternshipStore } from "@/hooks/use-internship-store";
 import { useRouter } from "next/navigation";
@@ -58,6 +58,7 @@ const Filters = () => {
     };
 
     // Internship search values
+    const data = useInternshipStore((state) => state.data);
     const setData = useInternshipStore((state) => state.setData);
 
     const [isOpen, setIsOpen] = useState(false);
@@ -75,26 +76,26 @@ const Filters = () => {
     // Initial state from search input, or mobile redirect from login
     useEffect(() => {
         const setValues = async () => {
-            const jsonObject = await getFieldCookie();
-            if (!jsonObject) return;
-            const fields: SearchCookieType = JSON.parse(jsonObject);
-            const newField = mapFieldName(fields.field ?? '');
-            form.setValue('field', fields.field ?? '');
-            form.setValue('duration', fields.duration ?? ""),
-            form.setValue('employment', fields.employment ?? "");
-            if (fields.espa !== undefined) {
-                form.setValue('espa', fields.espa);
+            const parsedCookie = await getFieldCookie();
+            if (!parsedCookie) return;
+
+            const newField = mapFieldName(parsedCookie.field);
+            
+            form.setValue('field', parsedCookie.field);
+            form.setValue('duration', parsedCookie.duration),
+            form.setValue('employment', parsedCookie.employment);
+            if (parsedCookie.espa !== undefined) {
+                form.setValue('espa', parsedCookie.espa);
             }
             else {
                 form.setValue('espa', newField === FIELDS.ALL_ESPA);
             }
             setData({ 
                 field: newField, 
-                duration: fields.duration, 
-                employment: fields.employment, 
-                espa: fields.espa !== undefined ? fields.espa : newField === FIELDS.ALL_ESPA 
+                duration: parsedCookie.duration, 
+                employment: parsedCookie.employment, 
+                espa: parsedCookie.espa !== undefined ? parsedCookie.espa : newField === FIELDS.ALL_ESPA 
             });
-            await deleteFieldCookie();
         };
         setValues();
     }, []);
@@ -104,18 +105,24 @@ const Filters = () => {
     // Watch for field changes
     const watchField = form.watch('field');
     useEffect(() => {
-        const newField = mapFieldName(form.getValues('field'));
+        const newField = mapFieldName(watchField);
         const isFieldDisabled = !newField || newField === FIELDS.ALL || newField.includes('espa');
 
         setIsDisabled(isFieldDisabled);
 
         // When field changes, reset all the rest form fields
-        form.setValue('espa', newField === FIELDS.ALL_ESPA);
-        form.setValue('duration', '');
-        form.setValue('employment', '');
+        // Unless the page hasn't reload and user went back, to keep the form values
+        if (data.field === watchField) return;
+        form.reset({
+            field: watchField,
+            duration: '',
+            employment: '',
+            espa: newField === FIELDS.ALL_ESPA
+        })
     }, [watchField]);
      
-    function onSubmit(values: z.infer<typeof SearchFormSchema>) {
+    async function onSubmit() {
+        const values: z.infer<typeof SearchFormSchema> = form.getValues();
         const newField = mapFieldName(values.field);
         setData({
             field: newField,
@@ -123,6 +130,13 @@ const Filters = () => {
             employment: values.employment,
             espa: values.espa
         });
+        const dataSearch: SearchCookieType = {
+            field: values.field,
+            duration: values.duration,
+            employment: values.employment,
+            espa: values.espa
+        }
+        await setFieldCookie(JSON.stringify(dataSearch));
         setIsOpen(false);
         router.push('/internships?page=1')
     }
@@ -223,11 +237,33 @@ const Filters = () => {
                                 </FormItem>
                             )}
                             />
-                            <Button 
-                            type="submit"
-                            >
-                                Αναζήτηση
-                            </Button>
+                            <div className="flex gap-x-4">
+                                <Button 
+                                type="submit"
+                                className="space-x-2"
+                                >
+                                    <Search className="size-4 mr-2" />
+                                    Αναζήτηση
+                                </Button>
+                                <Button
+                                type="button"
+                                size='icon'
+                                variant='secondary'
+                                onClick={() => {
+                                    // Fix flushSync error with 0 timeouts
+                                    // On mobile when clearing form with true espa, when toast is still showing
+                                    setTimeout(() => form.reset({
+                                        field: '',
+                                        duration: '',
+                                        employment: '',
+                                        espa: false
+                                    }), 0);
+                                    setTimeout(() => onSubmit(), 0);
+                                }}
+                                >
+                                    <ListRestart className="size-6" />
+                                </Button>
+                            </div>
                         </form>
                     </Form>
                     </div>

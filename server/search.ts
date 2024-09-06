@@ -1,9 +1,10 @@
 "use server";
 
+import { SearchCookieType } from '@/types';
 import { cookies } from 'next/headers'
 
-export const setFieldCookie = async (field: string) => {
-    cookies().set('field', field, {
+export const setFieldCookie = async (searchValues: string) => {
+    cookies().set('search', searchValues, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
         maxAge: 60 * 30,
@@ -12,9 +13,19 @@ export const setFieldCookie = async (field: string) => {
 }
 
 export const getFieldCookie = async () => {
-    return cookies().get('field')?.value;
+    const cookieValue = cookies().get('search')?.value;
+    if (!cookieValue) return null;
+
+    try {
+        const parsedData: SearchCookieType = JSON.parse(cookieValue);
+        return parsedData;
+    }
+    catch (error) {
+        console.error(error);
+        return null;
+    }
 }
 
 export const deleteFieldCookie = async () => {
-    cookies()?.delete('field');
+    cookies()?.delete('search');
 }
