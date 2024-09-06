@@ -61,7 +61,30 @@ const Filters = () => {
     const data = useInternshipStore((state) => state.data);
     const setData = useInternshipStore((state) => state.setData);
 
+    // Popover open
     const [isOpen, setIsOpen] = useState(false);
+
+    // Handle select click going through checkbox or buttons
+    const [isOpenDutation, setIsOpenDuration] = useState(false);
+    const [isOpenEmployment, setIsOpenEmployment] = useState(false);
+
+    const handleOpenDuration = () => {
+        if (!isOpenDutation) {
+            setIsOpenDuration(true);
+        }
+        else {
+            setTimeout(() => setIsOpenDuration(false), 0);
+        }
+    }
+
+    const handleOpenEmployment = () => {
+        if (!isOpenEmployment) {
+            setIsOpenEmployment(true);
+        }
+        else {
+            setTimeout(() => setIsOpenEmployment(false), 0);
+        }
+    }
 
     const form = useForm<z.infer<typeof SearchFormSchema>>({
         resolver: zodResolver(SearchFormSchema),
@@ -80,7 +103,7 @@ const Filters = () => {
             if (!parsedCookie) return;
 
             const newField = mapFieldName(parsedCookie.field);
-            
+
             form.setValue('field', parsedCookie.field);
             form.setValue('duration', parsedCookie.duration),
             form.setValue('employment', parsedCookie.employment);
@@ -181,9 +204,15 @@ const Filters = () => {
                             render={({ field }) => (
                                 <FormItem className="grid grid-cols-3 items-center gap-4">
                                 <FormLabel>Διάρκεια</FormLabel>
-                                <Select onValueChange={field.onChange} value={field.value} disabled={isDisabled}>
+                                <Select 
+                                onValueChange={field.onChange} 
+                                value={field.value} 
+                                disabled={isDisabled}
+                                open={isOpenDutation}
+                                onOpenChange={handleOpenDuration}
+                                >
                                     <FormControl>
-                                    <SelectTrigger className="col-span-2 h-8">
+                                    <SelectTrigger className="col-span-2 h-8 focus:ring-transparent">
                                         <SelectValue />
                                     </SelectTrigger>
                                     </FormControl>
@@ -202,9 +231,15 @@ const Filters = () => {
                             render={({ field }) => (
                                 <FormItem className="grid grid-cols-3 items-center gap-4">
                                 <FormLabel>Απασχόληση</FormLabel>
-                                <Select onValueChange={field.onChange} value={field.value} disabled={isDisabled}>
+                                <Select 
+                                onValueChange={field.onChange} 
+                                value={field.value} 
+                                disabled={isDisabled}
+                                open={isOpenEmployment}
+                                onOpenChange={handleOpenEmployment}
+                                >
                                     <FormControl>
-                                    <SelectTrigger className="col-span-2 h-8">
+                                    <SelectTrigger className="col-span-2 h-8 focus:ring-transparent">
                                         <SelectValue />
                                     </SelectTrigger>
                                     </FormControl>
@@ -237,7 +272,7 @@ const Filters = () => {
                                 </FormItem>
                             )}
                             />
-                            <div className="flex gap-x-4">
+                            <div className="mt-4 lg:mt-0 flex gap-x-4">
                                 <Button 
                                 type="submit"
                                 className="space-x-2"

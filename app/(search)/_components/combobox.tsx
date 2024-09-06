@@ -44,11 +44,13 @@ const ComboBox = ({
                 variant="outline"
                 role="combobox"
                 aria-expanded={open}
-                className="w-full justify-between"
+                className="max-lg:w-[200px] w-full justify-between truncate"
                 >
-                {value
+                <span className="truncate block overflow-hidden whitespace-nowrap">
+                    {value
                     ? fieldsComboBox.find((field) => field.name === value)?.name
                     : "Αναζήτηση τομέα..."}
+                </span>
                 <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
