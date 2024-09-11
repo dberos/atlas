@@ -2,7 +2,6 @@
 
 import useFindInternships from "@/hooks/use-find-internships";
 import Internship from "./internship";
-import InternshipsEmpty from "./internships-empty";
 import {
     Pagination,
     PaginationContent,
@@ -11,6 +10,7 @@ import {
     PaginationNext,
     PaginationPrevious,
 } from "@/components/ui/pagination"
+import NoResults from "@/components/no-results";
 
 const Internships = ({page}: { page: string }) => {
 
@@ -21,7 +21,7 @@ const Internships = ({page}: { page: string }) => {
     return ( 
         <div className="size-full flex items-center justify-center flex-col gap-y-14 mb-10 lg:mb-20">
             {   internships.length === 0 ? 
-                <InternshipsEmpty /> : 
+                <NoResults text={'Κανένα αποτέλεσμα αναζήτησης'} /> : 
                 internships.map((internship) => (
                     <Internship 
                     key={internship.id}

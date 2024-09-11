@@ -162,7 +162,7 @@ export const optionsUndergraduate: OptionType[] = [
         title: 'Οι αιτήσεις μου',
         imageSrc: '/profile-undergraduates-left.svg',
         imageAlt: 'woman working on her laptop',
-        link: '/profile'
+        link: '/profile/add-interest'
     },
     {
         id: 2,
@@ -238,3 +238,23 @@ export const fieldsAddInternship: FieldType[] = [
         name: 'Φιλολογία' 
     }
 ];
+
+export const heroProfileAddInterest: HeroType = {
+    title: 'Προφίλ',
+    description: 'Προσθήκη Ενδιαφέροντος',
+    breadcrumbs: [
+        {
+            id: 1,
+            link: '/',
+            label: 'Αρχική'
+        },
+        {
+            id: 2,
+            link: '/profile',
+            label: 'Προφίλ'
+        }
+    ],
+    breadcrumbPage: 'Αποθηκευμένες Θέσεις',
+    imageSrc: '/profile-hero.svg',
+    imageAlt: 'woman with her account',
+};

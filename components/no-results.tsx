@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-const InternshipsEmpty = () => {
+const NoResults = ({text}: { text: string }) => {
     return ( 
         <>
         <div className="lg:hidden w-full flex flex-col">
             <div className="flex items-center justify-center h-20">
                 <h3 className="text-lg font-medium text-center">
-                    Κανένα Αποτέλεσμα Αναζήτησης...
+                    {text}...
                 </h3>
             </div>
             <div className="flex items-center justify-center h-80">
@@ -33,7 +33,7 @@ const InternshipsEmpty = () => {
         </div>
         <div className="flex items-center justify-center">
             <h3 className="text-lg xl:text-2xl font-medium text-center">
-                ...Κανένα Αποτέλεσμα Αναζήτησης
+                ...{text}
             </h3>
         </div>
         
@@ -42,4 +42,4 @@ const InternshipsEmpty = () => {
     );
 }
  
-export default InternshipsEmpty;
+export default NoResults;

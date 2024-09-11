@@ -5,7 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/components/ui/use-toast";
 import { useAuth } from "@/hooks/use-auth";
 import { useModeStore } from "@/hooks/use-mode-store";
-import { insertInterest } from "@/server/find-interest";
+import { insertInterest } from "@/server/insert-interest";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const CtaMobile = ({id}: { id: string }) => {

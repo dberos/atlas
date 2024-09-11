@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useAuth } from "@/hooks/use-auth";
 import { useModeStore } from "@/hooks/use-mode-store";
-import { insertInterest } from "@/server/find-interest";
+import { insertInterest } from "@/server/insert-interest";
 import { useLoginStore } from "@/hooks/use-login-store";
 import useHandleLogin from "@/hooks/use-handle-login";
 import { useToast } from "@/components/ui/use-toast";

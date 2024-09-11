@@ -83,6 +83,10 @@ model Interest {
   id String @id @default(cuid())
   // Status of the interest
   status InterestStatus
+  // Undergraduate's interest update from profile
+  cvName String?
+  cv Bytes?
+  description String?
   // Undergraduate's interest for internship
   undergraduateId String
   undergraduate Undergraduate @relation(fields: [undergraduateId], references: [id])

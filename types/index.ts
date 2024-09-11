@@ -159,3 +159,9 @@ export type SearchCookieType = {
     employment: string
     espa?: boolean | undefined 
 }
+
+export type SavedInterestType = {
+    id: string,
+    internshipId: string,
+    undergraduateId: string
+}

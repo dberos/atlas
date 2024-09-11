@@ -73,3 +73,21 @@ export const findInternships = async (
         return { internships: [], totalPages: 0 };
     }
 };
+
+export const findInternship = async (id: string) => {
+    try {
+        const internship = await db.internship.findUnique({
+            where: {
+                id
+            },
+            include: {
+                company: true
+            }
+        });
+        return internship;
+    }
+    catch (error) {
+        console.error(error);
+        return null;
+    }
+}

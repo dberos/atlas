@@ -3,38 +3,24 @@
 import { db } from "@/lib/db";
 import { authenticateUser, findUndergraduate } from "./find-user";
 
-export const insertInterest = async (id: string) => {
+export const findInterests = async () => {
     try {
         const user = await authenticateUser();
-        if (!user) return false;
+        if (!user) return null;
 
         const undergraduate = await findUndergraduate(user.id);
-        if (!undergraduate) return false;
+        if (!undergraduate) return null;
 
-        const interest = await db.interest.findUnique({
+        const interests = await db.interest.findMany({
             where: {
-                undergraduateId_internshipId: {
-                    undergraduateId: undergraduate?.undergraduateId ?? "",
-                    internshipId: id
-                }
+                undergraduateId: undergraduate.undergraduateId,
+                status: 'SAVED'
             }
         });
-
-        if (!interest) {
-            await db.interest.create({
-                data: {
-                    undergraduateId: undergraduate?.undergraduateId ?? "",
-                    internshipId: id,
-                    status: 'SAVED'
-                },
-            });
-            return true
-        }
-
-        return false
+        return interests;
     }
     catch (error) {
         console.error(error);
-        return false
+        return null;
     }
 }
