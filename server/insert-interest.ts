@@ -46,10 +46,10 @@ export const updateInterest = async (values: z.infer<typeof UpdateInterestFormSc
       const parsedValues = UpdateInterestFormSchema.parse(values);
   
       const user = await authenticateUser();
-      if (!user) throw new Error('User not authenticated');
+      if (!user) throw new Error('Error');
   
       const undergraduate = await findUndergraduate(user.id);
-      if (!undergraduate) throw new Error('Undergraduate not found');
+      if (!undergraduate) throw new Error('Error');
   
       const interest = await db.interest.findUnique({
         where: {
@@ -57,7 +57,7 @@ export const updateInterest = async (values: z.infer<typeof UpdateInterestFormSc
         },
       });
   
-      if (!interest) throw new Error('Interest not found');
+      if (!interest) throw new Error('Error');
   
       // Convert base64 to Buffer
       const cvBuffer = parsedValues.cv ? Buffer.from(parsedValues.cv, 'base64') : undefined;

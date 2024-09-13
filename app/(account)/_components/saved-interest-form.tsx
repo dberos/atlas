@@ -19,6 +19,7 @@ import { UpdateInterestFormSchema } from "@/schemas";
 import { updateInterest } from "@/server/insert-interest";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import { Upload } from "lucide-react";
 
 const SavedInterestForm = ({
     interestId,
@@ -122,7 +123,7 @@ const SavedInterestForm = ({
                         type="button"
                         onClick={() => document.getElementById(`hiddenInput${interestId}${internshipId}`)?.click()}
                         >
-                            Επιλογή
+                            Επιλογή <Upload className="size-4 ml-2" />
                         </Button>
                         <p className="text-sm ml-4 w-60 lg:w-80 text-start overflow-hidden whitespace-nowrap text-ellipsis">
                             {fileName}
