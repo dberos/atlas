@@ -26,7 +26,6 @@ export const findInternships = async (
         // Starting position of the query
         const offset = (pageNumber - 1) * pageSize;
 
-
         // If all, return all internships,
         // If all espa, return all with espa true
         // If all no espa, return all with espa false
@@ -51,7 +50,10 @@ export const findInternships = async (
 
         // Get internships based on the query
         const internships = await db.internship.findMany({
-            where: query,
+            where: {
+                ...query, 
+                undergraduateId: null
+            },
             include: {
                 company: true
             },
@@ -61,7 +63,10 @@ export const findInternships = async (
 
         // Get the count of internships
         const totalInternships = await db.internship.count({
-            where: query
+            where: {
+                ...query,
+                undergraduateId: null
+            }
         });
         // Get the total pages count
         const totalPages = Math.ceil(totalInternships / pageSize);
