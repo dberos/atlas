@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import SavedInterests from "../../_components/saved-interests";
 
 export default async function AddInterestPage() {
+    
     const user = await findUserBySession();
     if (user?.type === 'COMPANY') redirect('/profile');
 

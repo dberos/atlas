@@ -9,7 +9,7 @@ interface Payload extends JWTPayload {
 
 // Creating JWTs
 
-export const createJWT = async (id: string, type: string, expiresIn: string = '1h'): Promise<string> => {
+export const createJWT = async (id: string, type: string, expiresIn: string = '1h') => {
   const expirationSeconds = parseExpiration(expiresIn);
   const exp = Math.floor(Date.now() / 1000) + expirationSeconds;
 
@@ -23,7 +23,7 @@ export const createJWT = async (id: string, type: string, expiresIn: string = '1
   return jwt;
 };
 
-const parseExpiration = (expiresIn: string): number => {
+const parseExpiration = (expiresIn: string) => {
   const match = expiresIn.match(/^(\d+)([hmsd])$/);
   if (!match) throw new Error('Invalid expiration format');
   
@@ -39,7 +39,7 @@ const parseExpiration = (expiresIn: string): number => {
   }
 };
 
-export const verifyToken = async (token: string): Promise<Payload | null> => {
+export const verifyToken = async (token: string) => {
   try {
     const { payload } = await jwtVerify(token, JWT_SECRET, {
       algorithms: ['HS256'],
@@ -54,7 +54,7 @@ export const verifyToken = async (token: string): Promise<Payload | null> => {
   }
 };
 
-export const decodeToken = async (token: string): Promise<Payload | null> => {
+export const decodeToken = async (token: string) => {
   try {
     const decoded = await decodeJwt(token) as Payload;
 

@@ -45,11 +45,12 @@ export const loginUser = async (values: z.infer<typeof UserSchema>) => {
     const isPasswordValid = hashedInputPassword === user.password;
 
     if (isPasswordValid) {
-      const token = await createJWT(user.id, user.userType, '5m');
+      // Create jwt that lasts 1 minute and cookie 90 days
+      const token = await createJWT(user.id, user.userType, '1m');
       cookies().set('session', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        maxAge: 60 * 60 * 24 * 7,
+        maxAge: 60 * 60 * 24 * 90,
         path: '/',
       })
       return { 

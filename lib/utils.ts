@@ -8,11 +8,11 @@ export function cn(...inputs: ClassValue[]) {
 
 // Hashing the passwords
 
-export const generateSalt = (): string => {
+export const generateSalt = () => {
   return crypto.randomBytes(16).toString('hex');
 };
 
-export const hashPassword = (password: string, salt: string): Promise<string> => {
+export const hashPassword = (password: string, salt: string) => {
   const iterations = 10000;
   const keyLength = 64;     
   const digest = 'sha512';
