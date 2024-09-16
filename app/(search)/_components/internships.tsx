@@ -42,7 +42,7 @@ const Internships = ({page}: { page: string }) => {
     }, [openInternshipId]);
 
     return ( 
-        <div className="size-full flex items-center justify-center flex-col gap-y-14 mb-10 lg:mb-20">
+        <div className="size-full flex items-center justify-center flex-col gap-y-14 mb-10 lg:mb-20 2xl:px-20">
             {   internships.length === 0 ? 
                 <NoResults text={'Κανένα αποτέλεσμα αναζήτησης'} /> : 
                 internships.map((internship) => (

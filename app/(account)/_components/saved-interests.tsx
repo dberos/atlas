@@ -40,7 +40,7 @@ const SavedInterests = () => {
     }, [openInterestId]);
 
     return ( 
-        <div className="mt-10 size-full flex items-center justify-center flex-col gap-y-14 mb-10 lg:mb-20">
+        <div className="mt-10 size-full flex items-center justify-center flex-col gap-y-14 mb-10 lg:mb-20 2xl:px-20">
             {
                 (interests && interests.length !== 0) ?
                 interests.map((interest) => (
