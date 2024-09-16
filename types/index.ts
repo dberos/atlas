@@ -165,3 +165,9 @@ export type SavedInterestType = {
     internshipId: string,
     undergraduateId: string
 }
+
+export type FaqType = {
+    id: number,
+    title: string,
+    description: string
+}

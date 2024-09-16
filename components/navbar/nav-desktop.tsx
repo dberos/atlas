@@ -18,12 +18,15 @@ import Register from "../register/register";
 import { useRouter } from "next/navigation";
 import { useLoginStore } from "@/hooks/use-login-store";
 import handleProtectRoute from "./handle-protect-route";
+import { useToast } from "../ui/use-toast";
 
 const NavDesktop = () => {
 
     const router = useRouter();
 
     const { user, setIsLoggedIn } = useAuth();
+
+    const { toast } = useToast();
 
     const [isOpenUndergraduates, setIsOpenUndergraduates] = useState(false);
     const [isOpenCompanies, setIsOpenCompanies] = useState(false);
@@ -35,10 +38,17 @@ const NavDesktop = () => {
     const setRedirectUrl = useLoginStore((state) => state.setRedirectUrl);
 
     const handleLogout = async () => {
-        await logoutUser();
-        window.localStorage.clear();
-        setIsLoggedIn(false);
-        router.replace('/');
+        try {
+            await logoutUser();
+            window.localStorage.clear();
+            setIsLoggedIn(false);
+            router.replace('/');
+        }
+        catch (error) {
+            toast({
+                title: "Προέκυψε σφάλμα"
+            })
+        }
     }
 
     return ( 
@@ -58,7 +68,7 @@ const NavDesktop = () => {
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                        <Link href="/">
+                        <Link href="/faq/undergraduates" onClick={() => setIsOpenUndergraduates(false)}>
                             Συχνές Ερωτήσεις
                         </Link>
                     </DropdownMenuItem>
@@ -83,12 +93,12 @@ const NavDesktop = () => {
                         })
                     }}
                     className="cursor-pointer">
-                        <Link href="/profile/add-internship">
+                        <Link href="/profile/add-internship" onClick={() => setIsOpenCompanies(false)}>
                             Προσθήκη Θέσης
                         </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                        <Link href="/">
+                        <Link href="/faq/companies" onClick={() => setIsOpenCompanies(false)}>
                             Συχνές Ερωτήσεις
                         </Link>
                     </DropdownMenuItem>
@@ -106,7 +116,9 @@ const NavDesktop = () => {
                         Διαχείριση
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                        Συχνές Ερωτήσεις
+                        <Link href="/faq" onClick={() => setIsOpenUniversities(false)}>
+                            Συχνές Ερωτήσεις
+                        </Link>
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>

@@ -22,6 +22,7 @@ import { logoutUser } from "@/server/find-user";
 import { Button } from "../ui/button";
 import { useMobileMenuStore } from "@/hooks/use-mobile-menu-store";
 import { useRouter } from "next/navigation";
+import { useToast } from "../ui/use-toast";
 
 const NavMobile = () => {
     const { setTheme } = useTheme();
@@ -29,15 +30,24 @@ const NavMobile = () => {
 
     const router = useRouter();
 
+    const { toast } = useToast();
+
     const isOpen = useMobileMenuStore((state) => state.isOpen);
     const setIsOpen = useMobileMenuStore((state) => state.setIsOpen);
 
     const handleLogout = async () => {
-        await logoutUser();
-        window.localStorage.clear();
-        setIsLoggedIn(false);
-        setIsOpen(false);
-        router.replace('/');
+        try {
+            await logoutUser();
+            window.localStorage.clear();
+            setIsLoggedIn(false);
+            setIsOpen(false);
+            router.replace('/');
+        }
+        catch (error) {
+            toast({
+                title: "Προέκυψε σφάλμα"
+            })
+        }
     }
 
     return ( 
@@ -108,7 +118,7 @@ const NavMobile = () => {
                             <Link href="/" onClick={() => setIsOpen(false)}>
                                 Αναζήτηση Θέσης
                             </Link>
-                            <Link href="/" onClick={() => setIsOpen(false)}>
+                            <Link href="/faq/undergraduates" onClick={() => setIsOpen(false)}>
                                 Συχνές Ερωτήσεις
                             </Link>
                             </AccordionContent>
@@ -121,7 +131,7 @@ const NavMobile = () => {
                             <Link href="/profile/add-internship" onClick={() => setIsOpen(false)}>
                                 Προσθήκη Θέσης
                             </Link>
-                            <Link href="/" onClick={() => setIsOpen(false)}>
+                            <Link href="/faq/companies" onClick={() => setIsOpen(false)}>
                                 Συχνές Ερωτήσεις
                             </Link>
                             </AccordionContent>
@@ -134,7 +144,7 @@ const NavMobile = () => {
                             <Link href="/" onClick={() => setIsOpen(false)}>
                                 Διαχείριση
                             </Link>
-                            <Link href="/" onClick={() => setIsOpen(false)}>
+                            <Link href="/faq" onClick={() => setIsOpen(false)}>
                                 Συχνές Ερωτήσεις
                             </Link>
                             </AccordionContent>
