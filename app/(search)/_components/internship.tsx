@@ -41,7 +41,9 @@ const Internship = ({
             setMaxHeight(`${contentRef.current.scrollHeight}px`);
             timeoutId = setTimeout(() => {
                 // When the animation finishes, scroll into view
-                fragmentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                window.requestAnimationFrame(() => {
+                    fragmentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                });
             }, 500);
         } else {
             setMaxHeight("0px");
@@ -61,7 +63,7 @@ const Internship = ({
     if (!isMounted) return null;
 
     return ( 
-        <div className="relative w-full lg:w-4/5 flex flex-col items-center justify-center"
+        <div className="relative w-full lg:w-4/5 flex flex-col items-center justify-center scroll-mt-24"
         ref={fragmentRef}
         >
             <div className={cn(

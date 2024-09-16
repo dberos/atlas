@@ -39,8 +39,11 @@ const SavedInterest = ({
     
         if (isOpen && contentRef.current) {
             setMaxHeight(`${contentRef.current.scrollHeight}px`);
+            // When the animation finishes, scroll into view
             timeoutId = setTimeout(() => {
-                fragmentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                window.requestAnimationFrame(() => {
+                    fragmentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                });
             }, 500);
         } else {
             setMaxHeight("0px");
@@ -62,7 +65,7 @@ const SavedInterest = ({
 
     return ( 
         internship &&
-        <div className="relative w-full lg:w-4/5 flex flex-col items-center justify-center"
+        <div className="relative w-full lg:w-4/5 flex flex-col items-center justify-center scroll-mt-24"
         ref={fragmentRef}
         >
             <div className={cn(
