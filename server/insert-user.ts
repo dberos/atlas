@@ -26,7 +26,7 @@ export const registerUndergraduate = async (values: z.infer<typeof Undergraduate
 
     // Generate a salt and hash the password
     const salt = generateSalt();
-    const hashedPassword = await hashPassword(parsedValues.password, salt);
+    const hashedPassword = await hashPassword(parsedValues.password, salt) as string;
 
     // Insert user into the database with salt and hashed password
     const newUser = await db.user.create({
@@ -84,7 +84,7 @@ export const registerCompany = async (values: z.infer<typeof CompanyFormSchema>)
 
     // Generate a salt and hash the password
     const salt = generateSalt();
-    const hashedPassword = await hashPassword(parsedValues.password, salt);
+    const hashedPassword = await hashPassword(parsedValues.password, salt) as string;
 
     // Insert user into the database with salt and hashed password
     const newUser = await db.user.create({
