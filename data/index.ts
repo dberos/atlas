@@ -258,3 +258,42 @@ export const heroProfileAddInterest: HeroType = {
     imageSrc: '/profile-hero.svg',
     imageAlt: 'woman with her account',
 };
+
+export const heroFaq: HeroType = {
+    title: 'Συχνές Ερωτήσεις',
+    description: 'Πληροφορίες ιστοχώρου',
+    breadcrumbs: [
+        {
+            id: 1,
+            link: '/',
+            label: 'Αρχική'
+        },
+    ],
+    breadcrumbPage: 'Συχνές Ερωτήσεις',
+    imageSrc: '/faq-hero.svg',
+    imageAlt: 'man and woman with a question mark',
+};
+
+export const optionsFaq: OptionType[] = [
+    {
+        id: 1,
+        title: 'Φοιτητές',
+        imageSrc: '/faq-left.svg',
+        imageAlt: 'student reading',
+        link: '/faq/undergraduate'
+    },
+    {
+        id: 2,
+        title: 'Εταιρείες',
+        imageSrc: '/faq-middle.svg',
+        imageAlt: 'company viewing products',
+        link: '/faq/company'
+    },
+    {
+        id: 3,
+        title: 'Πανεπιστήμια',
+        imageSrc: '/faq-right.svg',
+        imageAlt: 'professor teaching',
+        link: '/faq'
+    }
+];
