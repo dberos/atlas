@@ -109,7 +109,7 @@ const SavedInterest = ({
                 )}
                 >
                     {/* Field */}
-                    <div className="w-full md:w-5/6 lg:w-full xl:w-5/6 md:m-auto h-32 flex flex-col items-center">
+                    <div className="w-full md:w-5/6 md:m-auto h-32 flex flex-col items-center">
                         <div className="h-2 w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
                         <h3 className="mt-2 text-base text-center">
                             Τομέας
@@ -165,7 +165,7 @@ const SavedInterest = ({
                         </div>
                     </div>
                     {/* Description */}
-                    <div className="w-full md:w-5/6 lg:w-full xl:w-5/6 md:m-auto max-h-40 flex flex-col items-center">
+                    <div className="w-full md:w-5/6 md:m-auto max-h-40 flex flex-col items-center">
                         <div className="h-2 w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
                         <h3 className="mt-2 text-base text-center">
                             Περιγραφή Θέσης

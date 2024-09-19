@@ -83,7 +83,7 @@ const SavedInterestForm = ({
         router.push('/profile');
     }
     return ( 
-        <div className="pt-10 pb-10 w-full md:w-5/6 lg:w-full xl:w-5/6 md:m-auto flex flex-col items-center">
+        <div className="pt-10 pb-10 w-full md:w-5/6 md:m-auto flex flex-col items-center">
             <div className="h-2 w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />
             <h3 className="mt-2 text-base text-center">
                 Ενδιαφέρον
