@@ -171,3 +171,18 @@ export type FaqType = {
     title: string,
     description: string
 }
+
+export enum ProfileCtaEnum {
+    SAVED_INTEREST_FORM,
+    VIEW_SUBMITTED_INTEREST
+}
+
+export type SubmitteddInterestType = {
+    id: string,
+    internshipId: string,
+    undergraduateId: string,
+    status: string,
+    cvName: string | null,
+    cv: string | null,
+    description: string | null
+}

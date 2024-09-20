@@ -96,8 +96,8 @@ export const AddInternshipFormSchema = z.object({
 export const UpdateInterestFormSchema = z.object({
   interestId: z.string(),
   internshipId: z.string(),
-  cvName: z.optional(z.string()),
-  cv: z.optional(z.string()).refine((base64String) => {
+  cvName: z.string(),
+  cv: z.string().refine((base64String) => {
     if (!base64String) return true;
 
     // Calculate the size of the original binary data
@@ -106,5 +106,5 @@ export const UpdateInterestFormSchema = z.object({
   }, {
     message: "Το αρχείο πρέπει να είναι μέχρι 1 MB.",
   }),
-  description: z.optional(z.string())
+  description: z.string()
 });

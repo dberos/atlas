@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UpdateInterestFormSchema } from "@/schemas";
 import { updateInterest } from "@/server/insert-interest";
 import { useToast } from "@/components/ui/use-toast";
@@ -23,10 +23,12 @@ import { Upload } from "lucide-react";
 
 const SavedInterestForm = ({
     interestId,
-    internshipId
+    internshipId,
+    isOpen
 }: {
     interestId: string,
-    internshipId: string
+    internshipId: string,
+    isOpen: boolean
 }) => {
 
     const [fileName, setFileName] = useState('');
@@ -54,9 +56,9 @@ const SavedInterestForm = ({
     const form = useForm<z.infer<typeof UpdateInterestFormSchema>>({
         resolver: zodResolver(UpdateInterestFormSchema),
         defaultValues: {
-          cvName: undefined,
-          cv: undefined,
-          description: undefined,
+          cvName: '',
+          cv: '',
+          description: '',
           interestId: interestId,
           internshipId: internshipId
         },
@@ -73,15 +75,18 @@ const SavedInterestForm = ({
             toast({
                 title: "Υποβλήθηκε με επιτυχία το ενδιαφέρον για την Πρακτική Άσκηση"
             })
-            if (response.cvBase64) {
-                const cvBlob = new Blob([Uint8Array.from(atob(response.cvBase64), c => c.charCodeAt(0))], { type: 'application/pdf' });
-                const url = URL.createObjectURL(cvBlob);
-                window.open(url, '_blank');
-            }
         }
         form.reset();
+        setFileName('');
         router.push('/profile');
     }
+
+    // In case it opens again after not submitting
+    useEffect(() => {
+        form.reset();
+        setFileName('');
+    }, [isOpen])
+
     return ( 
         <div className="pt-10 pb-10 w-full md:w-5/6 md:m-auto flex flex-col items-center">
             <div className="h-2 w-5/6 lg:w-full xl:w-4/6 bg-gradient-to-r from-slate-300 via-orange-200 to-slate-300 dark:from-slate-800 dark:via-orange-500 dark:to-slate-800" />

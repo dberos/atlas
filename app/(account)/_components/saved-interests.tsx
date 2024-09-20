@@ -1,17 +1,17 @@
 "use client";
 
-import { findInterests } from "@/server/find-interest";
-import { SavedInterestType } from "@/types";
+import { findSavedInterests } from "@/server/find-interest";
+import { ProfileCtaEnum, SavedInterestType } from "@/types";
 import { useEffect, useState } from "react";
-import SavedInterest from "./saved-interest";
 import NoResults from "@/components/no-results";
+import Internship from "./internship";
 
 const SavedInterests = () => {
     const [interests, setInterests] = useState<SavedInterestType[] | null>(null);
 
     useEffect(() => {
         const getInterests = async () => {
-            const fetchedInterests = await findInterests();
+            const fetchedInterests = await findSavedInterests();
             if (fetchedInterests !== null) setInterests(fetchedInterests);
         }
         getInterests();
@@ -44,12 +44,13 @@ const SavedInterests = () => {
             {
                 (interests && interests.length !== 0) ?
                 interests.map((interest) => (
-                    <SavedInterest 
+                    <Internship 
                     key={interest.id}
-                    id={interest.id}
                     internshipId={interest.internshipId}
+                    interestId={interest.id}
                     isOpen={interest.id === openInterestId}
                     onToggle={() => handleOpenChange(interest.id)}
+                    ctaType={ProfileCtaEnum.SAVED_INTEREST_FORM}
                     />
                 )) :
                 <NoResults text={'Καμία Αποθηκευμένη Θέση'} />

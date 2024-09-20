@@ -74,11 +74,8 @@ export const updateInterest = async (values: z.infer<typeof UpdateInterestFormSc
           ...(parsedValues.description && { description: parsedValues.description }),
         },
       });
-
-      // Convert buffer to base64 to send it back to frontend to view it
-      const cvBase64 = cvBuffer ? cvBuffer.toString('base64') : undefined;
   
-      return { message: 'Interest updated successfully', cvBase64 };
+      return { message: 'Interest updated successfully' };
     } 
     catch (error) {
       console.error(error);

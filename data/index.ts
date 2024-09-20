@@ -169,7 +169,7 @@ export const optionsUndergraduate: OptionType[] = [
         title: 'Οι θέσεις μου',
         imageSrc: '/profile-undergraduates-middle.svg',
         imageAlt: 'man checking approved positions',
-        link: '/profile'
+        link: '/profile/view-interests'
     },
     {
         id: 3,
@@ -420,3 +420,23 @@ export const faqCompanies: FaqType[] = [
         'συμπληρώνεις τα στοιχεία σου.'
     },
 ];
+
+export const heroProfileViewInterests: HeroType = {
+    title: 'Προφίλ',
+    description: 'Παρακολούθηση Αιτήσεων',
+    breadcrumbs: [
+        {
+            id: 1,
+            link: '/',
+            label: 'Αρχική'
+        },
+        {
+            id: 2,
+            link: '/profile',
+            label: 'Προφίλ'
+        }
+    ],
+    breadcrumbPage: 'Καταχωρημένες Θέσεις',
+    imageSrc: '/profile-hero.svg',
+    imageAlt: 'woman with her account',
+};

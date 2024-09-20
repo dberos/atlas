@@ -3,22 +3,27 @@
 import useCloseModal from "@/hooks/use-close-modal";
 import { cn } from "@/lib/utils";
 import { findInternship } from "@/server/find-internship";
-import { InternshipType } from "@/types";
+import { InternshipType, ProfileCtaEnum } from "@/types";
 import { Building2, MapPin, Maximize2 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import SavedInterestForm from "./saved-interest-form";
 import { Button } from "@/components/ui/button";
+import ViewSubmittedInterest from "./view-submitted-interest";
 
-const SavedInterest = ({
-    id,
+const Internship = ({
     internshipId,
+    interestId,
     isOpen,
-    onToggle
+    onToggle,
+    ctaType,
+    StatusSection
 }: {
-    id: string,
     internshipId: string,
+    interestId?: string,
     isOpen: boolean,
-    onToggle: () => void
+    onToggle: () => void,
+    ctaType: ProfileCtaEnum,
+    StatusSection?: React.ReactNode
 }) => {
 
     const [internship, setInternship] = useState<InternshipType | null>(null);
@@ -59,6 +64,22 @@ const SavedInterest = ({
         }
     });
 
+    // Render the correct cta coming from parent component
+    const renderCta = () => {
+        switch (ctaType) {
+            case ProfileCtaEnum.SAVED_INTEREST_FORM:
+                return <SavedInterestForm 
+                        interestId={interestId ?? ""} 
+                        internshipId={internshipId}
+                        isOpen={isOpen}
+                        />;
+            case ProfileCtaEnum.VIEW_SUBMITTED_INTEREST:
+                return <ViewSubmittedInterest interestId={interestId ?? ""} />;
+            default:
+                return null;
+        }
+    }
+
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => setIsMounted(true), []);
     if (!isMounted) return null;
@@ -70,10 +91,15 @@ const SavedInterest = ({
         >
             <div className={cn(
                 "w-full h-96 lg:h-72 items-center bg-slate-100 dark:bg-slate-900 z-10",
-                isOpen ? 'rounded-t-md' : 'rounded-md'
+                isOpen ? 'rounded-t-md' : 'rounded-md',
+                // StatusSection ? 'h-[400px] lg:h-[320px]' : 'h-96 lg:h-72'
             )}
-            >
-                <div className="flex items-center justify-center mt-6">
+            >   
+            {StatusSection}
+                <div className={cn(
+                    "flex items-center justify-center",
+                    !StatusSection && 'mt-6'
+                )}>
                     <Button
                     type="button"
                     size='lg'
@@ -174,7 +200,7 @@ const SavedInterest = ({
                             {internship.description}
                         </p>
                     </div>
-                    <SavedInterestForm interestId={id} internshipId={internshipId} />
+                    {renderCta()}
                 </div>
             <Button
             type="button"
@@ -189,4 +215,4 @@ const SavedInterest = ({
     );
 }
  
-export default SavedInterest;
+export default Internship;
