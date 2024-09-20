@@ -92,7 +92,6 @@ const Internship = ({
             <div className={cn(
                 "w-full h-96 lg:h-72 items-center bg-slate-100 dark:bg-slate-900 z-10",
                 isOpen ? 'rounded-t-md' : 'rounded-md',
-                // StatusSection ? 'h-[400px] lg:h-[320px]' : 'h-96 lg:h-72'
             )}
             >   
             {StatusSection}
