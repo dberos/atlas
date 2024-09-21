@@ -20,11 +20,20 @@ const Faq = ({
     const [maxHeight, setMaxHeight] = useState("0px");
     const contentRef = useRef<HTMLDivElement>(null);
 
+    // Give ring when it opens and remove when clicked inside or closes
+    const [isFocused, setIsFocused] = useState(false);
+
+    const handleMouseDown = () => {
+        setIsFocused(false);
+    };
+
     useEffect(() => {
         let timeoutId: ReturnType<typeof setTimeout>;
     
         if (isOpen && contentRef.current) {
             setMaxHeight(`${contentRef.current.scrollHeight}px`);
+            setIsFocused(true);
+            fragmentRef.current?.focus();
             timeoutId = setTimeout(() => {
                 // When the animation finishes, scroll into view
                 window.requestAnimationFrame(() => {
@@ -33,6 +42,8 @@ const Faq = ({
             }, 500);
         } else {
             setMaxHeight("0px");
+            setIsFocused(false);
+            fragmentRef.current?.blur();
         }
     
         return () => clearTimeout(timeoutId);
@@ -48,8 +59,12 @@ const Faq = ({
     useEffect(() => setIsMounted(true), []);
     if (!isMounted) return null;
     return ( 
-        <div className="relative w-full lg:w-4/5 flex flex-col items-center justify-center scroll-mt-24"
+        <div className={cn(
+            "relative rounded-md w-full lg:w-4/5 flex flex-col items-center justify-center scroll-mt-24",
+            isFocused && "ring-2 ring-muted-foreground ring-offset-2 ring-offset-border"
+        )}
         ref={fragmentRef}
+        onMouseDown={handleMouseDown}
         >
             <div className={cn(
                 "w-full h-72 md:h-52 lg:h-36 flex items-center justify-center bg-slate-100 dark:bg-slate-900 z-10",
