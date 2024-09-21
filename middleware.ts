@@ -6,7 +6,9 @@ const isProtectedRoute = [
 ];
  
 export async function middleware(request: NextRequest) {
+  // Refresh the session and set the authorization headers
   const response =  await refreshSession(request);
+  // Check for protected routes
   if (!response) {
     if (isProtectedRoute.some((route) => new RegExp(route).test(request.nextUrl.pathname))) {
       const loginUrl = new URL('/login', request.url);

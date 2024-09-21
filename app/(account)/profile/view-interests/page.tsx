@@ -1,12 +1,12 @@
 import Hero from "@/components/hero";
 import { heroProfileViewInterests } from "@/data";
-import { findUserBySession } from "@/server/find-user"
+import { authenticateUser } from "@/server/find-user"
 import { redirect } from "next/navigation";
 import SubmittedInterests from "../../_components/submitted-interests";
 
 export default async function ViewInterestsPage() {
 
-    const user = await findUserBySession();
+    const user = await authenticateUser();
     if (user?.type === 'COMPANY') redirect('/');
     
     heroProfileViewInterests.title = user?.name ?? heroProfileViewInterests.title

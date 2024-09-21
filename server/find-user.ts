@@ -3,7 +3,7 @@
 import { db } from "@/lib/db";
 import { z } from "zod";
 import { hashPassword} from "@/lib/utils";
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 import { UserSchema } from "@/schemas";
 import { getCsrfToken } from "./token";
 import { CompanyInfoType, UndergraduateInfoType, UserType } from "@/types";
@@ -46,7 +46,7 @@ export const loginUser = async (values: z.infer<typeof UserSchema>) => {
 
     if (isPasswordValid) {
       // Create jwt that lasts 1 minute and cookie 90 days
-      const token = await createJWT(user.id, user.userType, '1m');
+      const token = await createJWT(user.id, user.userType, '10s');
       cookies().set('session', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
@@ -104,7 +104,8 @@ export const findUserBySession = async () => {
 
     return userObj;
 
-  } catch (error) {
+  } 
+  catch (error) {
     console.error(error);
     return null;
   }
@@ -114,31 +115,54 @@ export const findUserBySession = async () => {
 
 export const authenticateUser = async () => {
   try {
-    const token = cookies().get('session')?.value;
+    // Get the token from the headers that was set during the request
+    // Not the cookie
+    const authorizationHeader = headers().get('authorization');
+    let token;
+
+    if (authorizationHeader && authorizationHeader.startsWith('Bearer ')) {
+      token = authorizationHeader.split(' ')[1];
+    }
+
     if (!token) return null;
 
+    // Verify the token
     const verifiedToken = await verifyToken(token);
     if (!verifiedToken) return null;
 
+    // Verify the user exists
     const user = await db.user.findUnique({
       where: {
         id: verifiedToken.id
+      },
+      include: {
+        undergraduate: true,
+        company: true
       }
-    })
+    });
+
     if (!user) return null;
-    
+
     const userObj: UserType = {
       id: user.id,
       email: user.email,
-      type: user.userType
+      type: user.userType,
+    };
+
+    if (user.userType === 'UNDERGRADUATE' && user.undergraduate) {
+      userObj.name  = user.undergraduate.name + " " + user.undergraduate.surname
+    } 
+    else if (user.userType === 'COMPANY' && user.company) {
+      userObj.name = user.company.name
     }
+
     return userObj;
-  }
+  } 
   catch (error) {
     console.error(error);
     return null;
   }
-}
+};
 
 // After authentication in the backend, find full undergraduate or company
 

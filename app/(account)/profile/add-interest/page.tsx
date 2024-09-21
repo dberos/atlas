@@ -1,12 +1,12 @@
 import Hero from "@/components/hero";
 import { heroProfileAddInterest } from "@/data";
-import { findUserBySession } from "@/server/find-user"
+import { authenticateUser } from "@/server/find-user"
 import { redirect } from "next/navigation";
 import SavedInterests from "../../_components/saved-interests";
 
 export default async function AddInterestPage() {
     
-    const user = await findUserBySession();
+    const user = await authenticateUser();
     if (user?.type === 'COMPANY') redirect('/profile');
 
     heroProfileAddInterest.title = user?.name ?? heroProfileAddInterest.title

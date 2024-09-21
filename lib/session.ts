@@ -3,8 +3,9 @@ import { SignJWT, jwtVerify, JWTPayload, decodeJwt } from 'jose';
 const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET!);
 
 interface Payload extends JWTPayload {
-  id: string;
-  type: string;
+  id: string,
+  type: string,
+  exp: number
 }
 
 // Creating JWTs
@@ -45,8 +46,7 @@ export const verifyToken = async (token: string) => {
       algorithms: ['HS256'],
     });
 
-    const { exp, ...payloadWithoutExp } = payload as Payload;
-    return payloadWithoutExp;
+    return payload as Payload;
   } 
   catch (error) {
     console.error('Failed to verify JWT:', error);
@@ -58,8 +58,7 @@ export const decodeToken = async (token: string) => {
   try {
     const decoded = await decodeJwt(token) as Payload;
 
-    const { exp, ...payloadWithoutExp } = decoded as Payload;
-    return payloadWithoutExp;
+    return decoded;
   } 
   catch (error) {
     console.error('Failed to decode JWT:', error);
