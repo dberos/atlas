@@ -12,14 +12,14 @@ export const refreshSession = async (request: NextRequest) => {
   
     const res = NextResponse.next();
 
-    // Create new JWT that lasts 10 seconds (for example)
-    const newToken = await createJWT(decodedToken.id, decodedToken.type, '10s');
+    // Create jwt that lasts 1 minute and cookie 90 days
+    const newToken = await createJWT(decodedToken.id, decodedToken.type, '1m');
 
     // Set the new JWT in cookies
     res.cookies.set('session', newToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      maxAge: 60 * 60 * 24 * 90, // 90 days
+      maxAge: 60 * 60 * 24 * 90,
       path: '/',
     });
 

@@ -46,7 +46,7 @@ export const loginUser = async (values: z.infer<typeof UserSchema>) => {
 
     if (isPasswordValid) {
       // Create jwt that lasts 1 minute and cookie 90 days
-      const token = await createJWT(user.id, user.userType, '10s');
+      const token = await createJWT(user.id, user.userType, '1m');
       cookies().set('session', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
