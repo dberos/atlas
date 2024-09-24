@@ -3,7 +3,9 @@
 import { db } from "@/lib/db";
 import { SearchFormSchema } from "@/schemas";
 import { z } from "zod";
+import { authenticateUser, findCompany } from "./find-user";
 
+// For search
 export const findInternships = async (
     values: z.infer<typeof SearchFormSchema> | [],
     page: string
@@ -94,5 +96,51 @@ export const findInternship = async (id: string) => {
     catch (error) {
         console.error(error);
         return null;
+    }
+}
+
+// For company's internships
+export const findInternshipsByCompany = async () => {
+    try {
+        const user = await authenticateUser();
+        if (!user) return null;
+
+        const company = await findCompany(user.id);
+        if (!company) return null;
+
+        const internships = await db.internship.findMany({
+            where: {
+                companyId: company.companyId
+            },
+            include: {
+                company: true
+            }
+        });
+        if (!internships) return null;
+
+        return internships;
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+
+export const findInternshipByCompany = async (id: string) => {
+    try {
+        const user = await authenticateUser();
+        if (!user) return null;
+
+        const company = await findCompany(user.id);
+        if (!company) return null;
+
+        const internship = await db.internship.findUnique({
+            where: {
+                id
+            }
+        });
+        return internship?.companyId !== company.companyId ? null : internship;
+    }
+    catch (error) {
+        console.error(error);
     }
 }

@@ -149,7 +149,7 @@ export type InternshipType = {
     description: string,
     companyId: string,
     company: InternshipCompanyType
-    undergraduateId?: any,
+    undergraduateId: any,
     undergraduate?: any
 }
 
@@ -174,13 +174,15 @@ export type FaqType = {
 
 export enum ProfileCtaEnum {
     SAVED_INTEREST_FORM,
-    VIEW_SUBMITTED_INTEREST
+    VIEW_SUBMITTED_INTEREST,
+    VIEW_UNDERGRADUATES
 }
 
 export type SubmitteddInterestType = {
     id: string,
     internshipId: string,
     undergraduateId: string,
+    undergraduate: UndergraduateInfoType,
     status: string,
     cvName: string | null,
     cv: string | null,

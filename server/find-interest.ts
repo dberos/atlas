@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { authenticateUser, findUndergraduate } from "./find-user";
+import { authenticateUser, findCompany, findUndergraduate } from "./find-user";
 import { SubmitteddInterestType } from "@/types";
 
 export const findSavedInterests = async () => {
@@ -36,6 +36,9 @@ export const findSubmittedInterests = async () => {
                 status: {
                     not: 'SAVED'
                 }
+            },
+            include: {
+                undergraduate: true
             }
         });
         if (!interests) return null;
@@ -44,6 +47,7 @@ export const findSubmittedInterests = async () => {
             id: interest.id,
             internshipId: interest.internshipId,
             undergraduateId: interest.undergraduateId,
+            undergraduate: interest.undergraduate,
             status: interest.status,
             cvName: interest.cvName ?? null,
             cv: interest.cv ? interest.cv.toString('base64') : null,
@@ -65,6 +69,9 @@ export const findSubmittedInterest = async (id: string) => {
         const interest = await db.interest.findUnique({
             where: {
                 id
+            },
+            include: {
+                undergraduate: true
             }
         });
         if (!interest) return null;
@@ -73,12 +80,48 @@ export const findSubmittedInterest = async (id: string) => {
             id: interest.id,
             internshipId: interest.internshipId,
             undergraduateId: interest.undergraduateId,
+            undergraduate: interest.undergraduate,
             status: interest.status,
             cvName: interest.cvName ?? null,
             cv: interest.cv ? interest.cv.toString('base64') : null,
             description: interest.description ?? null
         };
         return interestsObj;
+    }
+    catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+export const findInterestsByInternshipsId = async (internshipId: string) => {
+    try {
+        const user = await authenticateUser();
+        if (!user) return null;
+
+        const company = await findCompany(user.id);
+        if (!company) return null;
+
+        const interests = await db.interest.findMany({
+            where: {
+                internshipId: internshipId,
+                status: 'PENDING'
+            },
+            include: {
+                undergraduate: true
+            }
+        });
+        const interestsObj: SubmitteddInterestType[] = interests.map((interest) => ({
+            id: interest.id,
+            internshipId: interest.internshipId,
+            undergraduateId: interest.undergraduateId,
+            undergraduate: interest.undergraduate,
+            status: interest.status,
+            cvName: interest.cvName ?? null,
+            cv: interest.cv ? interest.cv.toString('base64') : null,
+            description: interest.description ?? null,
+        }));
+        return interestsObj ?? null;
     }
     catch (error) {
         console.error(error);

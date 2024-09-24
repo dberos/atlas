@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from "react";
 import SavedInterestForm from "./saved-interest-form";
 import { Button } from "@/components/ui/button";
 import ViewSubmittedInterest from "./view-submitted-interest";
+import ViewUndergraduatesCta from "./view-undergraduates-cta";
 
 const Internship = ({
     internshipId,
@@ -87,6 +88,11 @@ const Internship = ({
                         />;
             case ProfileCtaEnum.VIEW_SUBMITTED_INTEREST:
                 return <ViewSubmittedInterest interestId={interestId ?? ""} />;
+            case ProfileCtaEnum.VIEW_UNDERGRADUATES:
+                return <ViewUndergraduatesCta 
+                        undergraduateId={internship?.undergraduateId ?? ""}
+                        internshipId={internshipId}
+                        />
             default:
                 return null;
         }

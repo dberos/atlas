@@ -193,7 +193,7 @@ export const optionsCompany: OptionType[] = [
         title: 'Οι θέσεις μου',
         imageSrc: '/profile-companies-middle.svg',
         imageAlt: 'woman sitting on her files',
-        link: '/profile'
+        link: '/profile/view-internships'
     },
     {
         id: 3,
@@ -437,6 +437,51 @@ export const heroProfileViewInterests: HeroType = {
         }
     ],
     breadcrumbPage: 'Καταχωρημένες Θέσεις',
+    imageSrc: '/profile-hero.svg',
+    imageAlt: 'woman with her account',
+};
+
+export const heroProfileViewInternships: HeroType = {
+    title: 'Προφίλ',
+    description: 'Παρακολούθηση Θέσεων',
+    breadcrumbs: [
+        {
+            id: 1,
+            link: '/',
+            label: 'Αρχική'
+        },
+        {
+            id: 2,
+            link: '/profile',
+            label: 'Προφίλ'
+        }
+    ],
+    breadcrumbPage: 'Καταχωρημένες Θέσεις',
+    imageSrc: '/profile-hero.svg',
+    imageAlt: 'woman with her account',
+};
+
+export const heroProfileViewInternship: HeroType = {
+    title: 'Προφίλ',
+    description: 'Επιλογή υποψηφίου',
+    breadcrumbs: [
+        {
+            id: 1,
+            link: '/',
+            label: 'Αρχική'
+        },
+        {
+            id: 2,
+            link: '/profile',
+            label: 'Προφίλ'
+        },
+        {
+            id: 3,
+            link: '/profile/view-internships',
+            label: 'Καταχωρημένες Θέσεις'
+        }
+    ],
+    breadcrumbPage: 'Πρακτική Άσκηση',
     imageSrc: '/profile-hero.svg',
     imageAlt: 'woman with her account',
 };

@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { authenticateUser, findUndergraduate } from "./find-user";
+import { authenticateUser, findCompany, findUndergraduate } from "./find-user";
 import { z } from "zod";
 import { UpdateInterestFormSchema } from "@/schemas";
 
@@ -81,4 +81,77 @@ export const updateInterest = async (values: z.infer<typeof UpdateInterestFormSc
       console.error(error);
       return { error };
     }
-  };
+};
+
+export const rejectInterest = async (interestId: string) => {
+  try {
+    const user = await authenticateUser();
+    if (!user) return null;
+
+    const company = await findCompany(user.id);
+    if (!company) return null;
+
+    const interest = await db.interest.update({
+      where: {
+        id: interestId
+      },
+      data: {
+        status: "REJECTED"
+      }
+    });
+    return interest ?? null;
+  }
+  catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
+export const acceptInterest = async (interestId: string) => {
+  try {
+    const user = await authenticateUser();
+    if (!user) return null;
+
+    const company = await findCompany(user.id);
+    if (!company) return null;
+
+    const interest = await db.interest.update({
+      where: {
+        id: interestId
+      },
+      data: {
+        status: 'ACCEPTED'
+      }
+    });
+    if (!interest) return null;
+
+    // Reject all the rest interests
+    const rejectedInterests = await db.interest.updateMany({
+      where: {
+        internshipId: interest.internshipId,
+        id: {
+          not: interestId
+        }
+      },
+      data: {
+        status: 'REJECTED'
+      }
+    });
+    if (!rejectedInterests) return null;
+
+    // Update the internships table to exclude from all internships search this accepted internship
+    const internship = await db.internship.update({
+      where: {
+        id: interest.internshipId
+      },
+      data: {
+        undergraduateId: interest.undergraduateId
+      }
+    });
+    return internship ?? null;
+  }
+  catch (error) {
+    console.error(error);
+    return null;
+  }
+}
