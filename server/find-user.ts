@@ -218,3 +218,21 @@ export const findCompany = async (userId: string) => {
 export const logoutUser = async () => {
   cookies()?.delete('session');
 }
+
+// For profile submitted internships
+export const findUndergraduateByUndergraduateId = async (undergraduateId: string) => {
+  try {
+    const user = await authenticateUser();
+    if (!user) return null;
+
+    const undergraduate = await db.undergraduate.findUnique({
+      where: {
+        id: undergraduateId
+      }
+    });
+    return undergraduate ?? null;
+  }
+  catch (error) {
+    console.error(error);
+  }
+}

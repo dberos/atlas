@@ -96,7 +96,7 @@ const SubmittedInterests = () => {
                     StatusSection={StatusSection(interest.status)}
                     />
                 )) :
-                <NoResults text={'Καμία Αποθηκευμένη Θέση'} />
+                <NoResults text={'Καμία Καταχωρημένη Θέση'} />
             }
         </div>
     );

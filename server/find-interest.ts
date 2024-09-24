@@ -94,7 +94,7 @@ export const findSubmittedInterest = async (id: string) => {
     }
 }
 
-export const findInterestsByInternshipsId = async (internshipId: string) => {
+export const findInterestsByInternshipId = async (internshipId: string) => {
     try {
         const user = await authenticateUser();
         if (!user) return null;
