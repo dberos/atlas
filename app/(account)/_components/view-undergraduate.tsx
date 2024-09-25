@@ -119,7 +119,7 @@ const ViewUndergraduate = ({interestId}: { interestId: string }) => {
                         <h3 className="mt-2 text-base">
                             Περιγραφή
                         </h3>
-                        <p className="mt-6 text-sm max-w-xs lg:max-w-md size-full overflow-y-scroll [&::-webkit-scrollbar]:hidden 
+                        <p className="mt-6 text-sm size-full overflow-y-scroll [&::-webkit-scrollbar]:hidden 
                         bg-slate-100 dark:bg-slate-900 rounded-md p-2"
                         >
                             {interest?.description ?? 'Δεν υπάρχει διαθέσιμη περιγραφή'}

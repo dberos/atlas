@@ -61,11 +61,13 @@ const ViewSubmittedInterest = ({interestId}: { interestId: string }) => {
                         </p>
                     </div>
                 </div>
-                <div className="w-full max-h-40 flex flex-col">
+                <div className="w-full h-44 pb-4 flex flex-col">
                     <h3 className="mt-2 text-base">
                         Περιγραφή
                     </h3>
-                    <p className="mt-6 text-sm max-w-xs lg:max-w-md size-full overflow-y-scroll [&::-webkit-scrollbar]:hidden">
+                    <p className="mt-6 text-sm size-full overflow-y-scroll [&::-webkit-scrollbar]:hidden 
+                    bg-slate-200 dark:bg-slate-950 rounded-md p-2"
+                    >
                         {interest?.description ?? 'Δεν υπάρχει διαθέσιμη περιγραφή'}
                     </p>
                 </div>
