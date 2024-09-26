@@ -19,7 +19,18 @@ import { UpdateInterestFormSchema } from "@/schemas";
 import { updateInterest } from "@/server/insert-interest";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
-import { Upload } from "lucide-react";
+import { Loader2, Upload } from "lucide-react";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"  
 
 const SavedInterestForm = ({
     interestId,
@@ -82,9 +93,12 @@ const SavedInterestForm = ({
     }
 
     // In case it opens again after not submitting
+    // And also add if, because with alert dialog it wasnt sending cv and description to backend
     useEffect(() => {
-        form.reset();
-        setFileName('');
+        if (isOpen) {
+            form.reset();
+            setFileName('');
+        }
     }, [isOpen])
 
     return ( 
@@ -159,9 +173,38 @@ const SavedInterestForm = ({
                 />
                 </div>
                 <div className="flex justify-center">
-                    <Button type="submit">
-                        Ενδιαφέρομαι
-                    </Button>
+                    <AlertDialog>
+                    <AlertDialogTrigger asChild>
+                        <Button type="button">
+                            Ενδιαφέρομαι
+                        </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                        <AlertDialogHeader>
+                        <AlertDialogTitle>
+                            Είστε σίγουροι;
+                        </AlertDialogTitle>
+                        <AlertDialogDescription>
+                            Πρόκειται να υποβάλετε επίσημα ενδιαφέρον για την Πρακτική Άσκηση
+                        </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                        <AlertDialogCancel
+                        disabled={form.formState.isSubmitting}
+                        >
+                            Ακύρωση
+                        </AlertDialogCancel>
+                        <AlertDialogAction
+                        type="button"
+                        onClick={form.handleSubmit(onSubmit)}
+                        disabled={form.formState.isSubmitting}
+                        >
+                            {form.formState.isSubmitting && <Loader2 className="size-4 mr-2 animate-spin" />}
+                            Συνέχεια
+                        </AlertDialogAction>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                    </AlertDialog>
                 </div>
             </form>
             </Form>

@@ -76,7 +76,7 @@ export const findSubmittedInterest = async (id: string) => {
         });
         if (!interest) return null;
 
-        const interestsObj: SubmitteddInterestType = {
+        const interestObj: SubmitteddInterestType = {
             id: interest.id,
             internshipId: interest.internshipId,
             undergraduateId: interest.undergraduateId,
@@ -86,7 +86,7 @@ export const findSubmittedInterest = async (id: string) => {
             cv: interest.cv ? interest.cv.toString('base64') : null,
             description: interest.description ?? null
         };
-        return interestsObj;
+        return interestObj;
     }
     catch (error) {
         console.error(error);

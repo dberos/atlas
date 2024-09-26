@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { findSubmittedInterest } from "@/server/find-interest";
 import { SubmitteddInterestType } from "@/types";
-import { FileText } from "lucide-react";
+import { FileText, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
     AlertDialog,
@@ -27,6 +27,11 @@ const ViewUndergraduate = ({interestId}: { interestId: string }) => {
     const { toast } = useToast();
 
     const [interest, setInterest] = useState<SubmitteddInterestType | null>(null);
+
+    // For ui purposes
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isOpenReject, setIsOpenReject] = useState(false);
+    const [isOpenAccept, setIsOpenAccept] = useState(false);
 
     useEffect(() => {
         const getInterest = async () => {
@@ -55,7 +60,22 @@ const ViewUndergraduate = ({interestId}: { interestId: string }) => {
         }
     };
 
+    const handleOpenReject = () => {
+        if (!isOpenReject) {
+            setIsOpenReject(true);
+        }
+    }
+    const handleOpenAccept = () => {
+        if (!isOpenAccept) {
+            setIsOpenAccept(true);
+        }
+    }
+
     const handleReject = async () => {
+        setIsSubmitting(true);
+        // Sleep 1 second for ui
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
         const interest = await rejectInterest(interestId);
         if (interest) {
             toast({
@@ -68,9 +88,15 @@ const ViewUndergraduate = ({interestId}: { interestId: string }) => {
                 title: "Προέκυψε σφάλμα"
             });
         }
+        setIsSubmitting(false);
+        setIsOpenReject(false);
     }
 
     const handleAccept = async () => {
+        setIsSubmitting(true);
+        // Sleep 1 second for ui
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
         const internship = await acceptInterest(interestId);
         if (internship) {
             toast({
@@ -83,6 +109,8 @@ const ViewUndergraduate = ({interestId}: { interestId: string }) => {
                 title: "Προέκυψε σφάλμα"
             });
         }
+        setIsSubmitting(false);
+        setIsOpenAccept(false);
     }
 
     return ( 
@@ -128,7 +156,7 @@ const ViewUndergraduate = ({interestId}: { interestId: string }) => {
                 </div>
             </div>
             <div className="flex items-center justify-center gap-x-4 mt-2">
-                <AlertDialog>
+                <AlertDialog open={isOpenReject} onOpenChange={handleOpenReject}>
                 <AlertDialogTrigger asChild>
                     <Button variant='secondary'>
                         Απόρριψη
@@ -144,18 +172,23 @@ const ViewUndergraduate = ({interestId}: { interestId: string }) => {
                     </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                    <AlertDialogCancel>
+                    <AlertDialogCancel
+                    onClick={() => setIsOpenReject(false)}
+                    >
                         Ακύρωση
                     </AlertDialogCancel>
-                    <AlertDialogAction asChild>
-                        <Button onClick={handleReject}>
-                            Απόρριψη
-                        </Button>
+                    <AlertDialogAction
+                    type="button"
+                    onClick={handleReject}
+                    disabled={isSubmitting}
+                    >
+                        {isSubmitting && <Loader2 className="size-4 mr-2 animate-spin" />}
+                        Απόρριψη
                     </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
                 </AlertDialog>
-                <AlertDialog>
+                <AlertDialog open={isOpenAccept} onOpenChange={handleOpenAccept}>
                 <AlertDialogTrigger asChild>
                     <Button>
                         Αποδοχή
@@ -171,13 +204,19 @@ const ViewUndergraduate = ({interestId}: { interestId: string }) => {
                     </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                    <AlertDialogCancel>
+                    <AlertDialogCancel
+                    onClick={() => setIsOpenAccept(false)}
+                    >
                         Ακύρωση
                     </AlertDialogCancel>
-                    <AlertDialogAction asChild>
-                        <Button onClick={handleAccept}>
-                            Αποδοχή
-                        </Button>
+                    <AlertDialogAction
+                    type="button"
+                    onClick={handleAccept}
+                    disabled={isSubmitting}
+                    
+                    >
+                        {isSubmitting && <Loader2 className="size-4 mr-2 animate-spin" />}
+                        Αποδοχή
                     </AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>

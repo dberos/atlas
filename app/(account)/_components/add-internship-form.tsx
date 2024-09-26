@@ -21,7 +21,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { Check, ChevronsUpDown } from "lucide-react"
+import { Check, ChevronsUpDown, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import {
   Command,
@@ -43,6 +43,17 @@ import { insertInternship } from "@/server/insert-internship";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { Textarea } from "@/components/ui/textarea";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"  
 
 const ComboBox = ({form}: { form: UseFormReturn<z.infer<typeof AddInternshipFormSchema>> }) => {
     const [open, setOpen] = useState(false);
@@ -119,12 +130,15 @@ const AddInternshipForm = () => {
     })
      
     async function onSubmit(values: z.infer<typeof AddInternshipFormSchema>) {
+        // Sleep 1 second for ui
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
         const response = await insertInternship(values);
         if (response?.error) {
             toast({ title: 'Προέκυψε σφάλμα' });
         }
         else {
-            toast({ title: 'Η Πρακτική Άσκηση δημιουργήθηκε με επιτυχία!' });
+            toast({ title: 'Η Πρακτική Άσκηση δημοσιεύθηκε με επιτυχία!' });
         }
         form.reset();
         router.push('/profile');
@@ -280,12 +294,43 @@ const AddInternshipForm = () => {
                     </FormItem>
                 )}
                 />
-                <Button 
-                type="submit"
-                disabled={form.getValues('title') === '' || form.getValues('field') === '' || form.getValues('duration') === '' || form.getValues('employment') === '' || form.getValues('salary') === '' || form.getValues('description') === '' }
-                >
-                    Υποβολή
-                </Button>
+                <AlertDialog>
+                <AlertDialogTrigger asChild>
+                    <Button 
+                    type="button"
+                    disabled={form.getValues('title') === '' || form.getValues('field') === '' || 
+                        form.getValues('duration') === '' || form.getValues('employment') === '' || 
+                        form.getValues('salary') === '' || form.getValues('description') === ''}
+                    >
+                        Υποβολή
+                    </Button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                    <AlertDialogHeader>
+                    <AlertDialogTitle>
+                        Είστε σίγουροι;
+                    </AlertDialogTitle>
+                    <AlertDialogDescription>
+                        Πρόκειται να δημοσιεύσετε επίσημα νέα Πρακτική Άσκηση
+                    </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                    <AlertDialogCancel
+                    disabled={form.formState.isSubmitting}
+                    >
+                        Ακύρωση
+                    </AlertDialogCancel>
+                    <AlertDialogAction
+                    disabled={form.formState.isSubmitting}
+                    type="button"
+                    onClick={form.handleSubmit(onSubmit)}
+                    >
+                        {form.formState.isSubmitting && <Loader2 className="size-4 mr-2 animate-spin" />}
+                        Συνέχεια
+                    </AlertDialogAction>
+                    </AlertDialogFooter>
+                </AlertDialogContent>
+                </AlertDialog>
             </form>
         </Form>
     );

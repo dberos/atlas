@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { authenticateUser, findCompany, findUndergraduate } from "./find-user";
 import { z } from "zod";
 import { UpdateInterestFormSchema } from "@/schemas";
+import { SubmitteddInterestType } from "@/types";
 
 export const insertInterest = async (id: string) => {
     try {
@@ -97,9 +98,22 @@ export const rejectInterest = async (interestId: string) => {
       },
       data: {
         status: "REJECTED"
+      },
+      include: {
+        undergraduate: true
       }
     });
-    return interest ?? null;
+    const interestObj: SubmitteddInterestType = {
+      id: interest.id,
+      internshipId: interest.internshipId,
+      undergraduateId: interest.undergraduateId,
+      undergraduate: interest.undergraduate,
+      status: interest.status,
+      cvName: interest.cvName ?? null,
+      cv: interest.cv ? interest.cv.toString('base64') : null,
+      description: interest.description ?? null
+  };
+    return interestObj ?? null;
   }
   catch (error) {
     console.error(error);
