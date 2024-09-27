@@ -176,7 +176,7 @@ export const optionsUndergraduate: OptionType[] = [
         title: 'Τα στοιχεία μου',
         imageSrc: '/profile-undergraduates-companies-right.svg',
         imageAlt: 'man checking his profile',
-        link: '/profile'
+        link: '/profile/edit'
     }
 ];
 
@@ -200,7 +200,7 @@ export const optionsCompany: OptionType[] = [
         title: 'Τα στοιχεία μου',
         imageSrc: '/profile-undergraduates-companies-right.svg',
         imageAlt: 'man checking his profile',
-        link: '/profile'
+        link: '/profile/edit'
     }
 ];
 
@@ -482,6 +482,26 @@ export const heroProfileViewInternship: HeroType = {
         }
     ],
     breadcrumbPage: 'Πρακτική Άσκηση',
+    imageSrc: '/profile-hero.svg',
+    imageAlt: 'woman with her account',
+};
+
+export const heroProfileEdit: HeroType = {
+    title: 'Προφίλ',
+    description: 'Επεξεργασία Στοιχείων',
+    breadcrumbs: [
+        {
+            id: 1,
+            link: '/',
+            label: 'Αρχική'
+        },
+        {
+            id: 2,
+            link: '/profile',
+            label: 'Προφίλ'
+        },
+    ],
+    breadcrumbPage: 'Στοιχεία',
     imageSrc: '/profile-hero.svg',
     imageAlt: 'woman with her account',
 };

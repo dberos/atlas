@@ -3,8 +3,8 @@
 import { db } from "@/lib/db";
 import { z } from "zod";
 import { hashPassword, generateSalt } from "@/lib/utils";
-import { checkEmailExists } from "./find-user";
-import { CompanyFormSchema, UndergraduateFormSchema } from "@/schemas";
+import { authenticateUser, checkEmailExists } from "./find-user";
+import { CompanyFormSchema, EditFormSchema, UndergraduateFormSchema } from "@/schemas";
 import { getCsrfToken } from "./token";
 
 
@@ -124,3 +124,39 @@ export const registerCompany = async (values: z.infer<typeof CompanyFormSchema>)
     return { error: "Failed to register company." };
   }
 };
+
+export const updateUser = async (values: z.infer<typeof EditFormSchema>) => {
+  try {
+    const user = await authenticateUser();
+    if (!user) return null;
+
+    const parsedValues = await EditFormSchema.parseAsync(values);
+
+    const clientToken = parsedValues.token;
+    const serverToken = await getCsrfToken();
+    if (clientToken !== serverToken) throw new Error('Wrong token');
+
+    const dbUser = await db.user.findUnique({
+      where: {
+        email: user.email,
+      }
+    });
+    if (!dbUser) return null;
+
+    const hashedPassword = await hashPassword(parsedValues.newPassword, dbUser.salt) as string;
+
+    const updatedUser = await db.user.update({
+      where: {
+        email: dbUser.email
+      },
+      data: {
+        password: hashedPassword
+      }
+    })
+    return updatedUser ?? null;
+  }
+  catch (error) {
+    console.error(error);
+    return null;
+  }
+}

@@ -1,4 +1,4 @@
-import { checkEmailExists } from "@/server/find-user"
+import { checkEmailExists, checkIsPasswordValid } from "@/server/find-user"
 import { z } from "zod"
  
 export const UserSchema = z.object({
@@ -108,3 +108,14 @@ export const UpdateInterestFormSchema = z.object({
   }),
   description: z.string()
 });
+
+export const EditFormSchema = z.object({
+  password: z.string().
+  refine(async (password) => {
+    const isValid = await checkIsPasswordValid(password);
+    return isValid;
+  }, { message: "Λάθος κωδικός πρόσβασης" }),
+  newPassword: z.string().min(6, { message: 'Ο κωδικός πρέπει να είναι τουλάχιστον 6 χαρακτήρες' }),
+  verifyPassword: z.string().min(6, { message: 'Ο κωδικός πρέπει να είναι τουλάχιστον 6 χαρακτήρες' }),
+  token: z.string()
+}).refine((data) => data.newPassword === data.verifyPassword, { message: 'Οι κωδικοί πρέπει να ταιριάζουν', path: ["verifyPassword"]})

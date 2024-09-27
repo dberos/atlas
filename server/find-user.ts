@@ -14,6 +14,31 @@ export const checkEmailExists = async (email: string) => {
   return !!existingUser;
 }
 
+export const checkIsPasswordValid = async (password: string) => {
+  try {
+    const user = await authenticateUser();
+    if (!user) return false;
+
+    const dbUser = await db.user.findUnique({
+      where: {
+        email: user.email,
+      }
+    });
+    if (!dbUser) return false;
+
+    const hashedInputPassword = await hashPassword(password, dbUser.salt);
+
+    // Verify the password
+    const isPasswordValid = hashedInputPassword === dbUser.password;
+
+    return isPasswordValid;
+  }
+  catch (error) {
+    console.error(error);
+    return false;
+  }
+}
+
 export const loginUser = async (values: z.infer<typeof UserSchema>) => {
   try {
     const parsedValues = UserSchema.parse(values);
