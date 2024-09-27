@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation";
 import { useLoginStore } from "@/hooks/use-login-store";
 import handleProtectRoute from "./handle-protect-route";
 import { useToast } from "../ui/use-toast";
+import { updateFieldCookie } from "@/server/search";
 
 const NavDesktop = () => {
 
@@ -36,6 +37,10 @@ const NavDesktop = () => {
     // Protect the route by opening dialog, and redirect after, in handleProtectRoute
     const setIsOpen = useLoginStore((state) => state.setIsOpen);
     const setRedirectUrl = useLoginStore((state) => state.setRedirectUrl);
+
+    const handleSearchRedirect = async () => {
+        await updateFieldCookie();
+    }
 
     const handleLogout = async () => {
         try {
@@ -63,7 +68,10 @@ const NavDesktop = () => {
                 </DropdownMenuTrigger>
                 <DropdownMenuContent onCloseAutoFocus={(e) => e.preventDefault()} className="p-2">
                     <DropdownMenuItem>
-                        <Link href="/">
+                        <Link href='/internships?page=1' onClick={async() => {
+                            await handleSearchRedirect();
+                            setIsOpenUndergraduates(false);
+                        }}>
                             Αναζήτηση Θέσης
                         </Link>
                     </DropdownMenuItem>

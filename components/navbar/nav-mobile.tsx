@@ -23,6 +23,7 @@ import { Button } from "../ui/button";
 import { useMobileMenuStore } from "@/hooks/use-mobile-menu-store";
 import { useRouter } from "next/navigation";
 import { useToast } from "../ui/use-toast";
+import { updateFieldCookie } from "@/server/search";
 
 const NavMobile = () => {
     const { setTheme } = useTheme();
@@ -34,6 +35,10 @@ const NavMobile = () => {
 
     const isOpen = useMobileMenuStore((state) => state.isOpen);
     const setIsOpen = useMobileMenuStore((state) => state.setIsOpen);
+
+    const handleSearchRedirect = async () => {
+        await updateFieldCookie();
+    }
 
     const handleLogout = async () => {
         try {
@@ -115,7 +120,10 @@ const NavMobile = () => {
                                 Φοιτητές
                             </AccordionTrigger>
                             <AccordionContent className="flex flex-col gap-y-4">
-                            <Link href="/" onClick={() => setIsOpen(false)}>
+                            <Link href='/internships?page=1' onClick={async() => {
+                                setIsOpen(false);
+                                await handleSearchRedirect();
+                            }}>
                                 Αναζήτηση Θέσης
                             </Link>
                             <Link href="/faq/undergraduates" onClick={() => setIsOpen(false)}>
