@@ -6,6 +6,7 @@ import NavBar from "@/components/navbar/navbar";
 import Footer from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/providers/auth-provider";
+import CookiesConsent from "@/components/cookies-consent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({
           {children}
           <Toaster />
           <Footer />
+          <CookiesConsent />
           </AuthProvider>
         </ThemeProvider>
       </body>
