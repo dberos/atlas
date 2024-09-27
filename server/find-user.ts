@@ -96,10 +96,10 @@ export const loginUser = async (values: z.infer<typeof UserSchema>) => {
 // For UI purposes
 
 export const findUserBySession = async () => {
+  // Cookies outside the try catch block
+  const token = cookies().get('session')?.value;
+  if (!token) return null;
   try {
-    const token = cookies().get('session')?.value;
-    if (!token) return null;
-
     const decodedToken = await decodeToken(token);
     if (!decodedToken) return null;
 
@@ -140,18 +140,17 @@ export const findUserBySession = async () => {
 // For authentication
 
 export const authenticateUser = async () => {
+  // Get the token from the headers that was set during the request
+  // Not the cookie
+  const authorizationHeader = headers().get('authorization');
+  let token;
+
+  if (authorizationHeader && authorizationHeader.startsWith('Bearer ')) {
+    token = authorizationHeader.split(' ')[1];
+  }
+
+  if (!token) return null;
   try {
-    // Get the token from the headers that was set during the request
-    // Not the cookie
-    const authorizationHeader = headers().get('authorization');
-    let token;
-
-    if (authorizationHeader && authorizationHeader.startsWith('Bearer ')) {
-      token = authorizationHeader.split(' ')[1];
-    }
-
-    if (!token) return null;
-
     // Verify the token
     const verifiedToken = await verifyToken(token);
     if (!verifiedToken) return null;

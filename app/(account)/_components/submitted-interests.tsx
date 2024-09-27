@@ -2,7 +2,7 @@
 
 import { findSubmittedInterests } from "@/server/find-interest";
 import { ProfileCtaEnum, SubmitteddInterestType } from "@/types";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NoResults from "@/components/no-results";
 import Internship from "./internship";
 import { CircleCheck, CircleDashed, CircleX } from "lucide-react";
@@ -19,7 +19,7 @@ const SubmittedInterests = () => {
     }, [])
 
     const [openInterestId, setOpenInterestId] = useState<string | null>(null);
-    const [scrollPosition, setScrollPosition] = useState(0);
+    const scrollPositionRef = useRef(0);
 
     const handleOpenChange = (id: string) => {
         window.requestAnimationFrame(() => setOpenInterestId((prev) => prev === id ? null : id));
@@ -30,10 +30,10 @@ const SubmittedInterests = () => {
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             if (!openInterestId) {
-                window.requestAnimationFrame(() => window.scrollTo({ top: scrollPosition, behavior: 'smooth' }));
+                window.requestAnimationFrame(() => window.scrollTo({ top: scrollPositionRef.current, behavior: 'smooth' }));
             } 
             else {
-                setScrollPosition(window.scrollY);
+                scrollPositionRef.current = window.scrollY;
             }
         }, 300);
     

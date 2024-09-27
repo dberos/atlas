@@ -15,7 +15,7 @@ const ViewSubmittedInterest = ({interestId}: { interestId: string }) => {
             if (fetchedInterest !== null) setInterest(fetchedInterest);
         }
         getInterest();
-    }, [])
+    }, [interestId])
 
     const handleClick = () => {
         if (interest && interest.cv) {

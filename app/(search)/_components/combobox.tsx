@@ -35,7 +35,7 @@ const ComboBox = ({
 
     useEffect(() => {
         form.setValue('field', value);
-    }, [value])
+    }, [value, form])
 
     return ( 
         <Popover open={open} onOpenChange={setOpen}>

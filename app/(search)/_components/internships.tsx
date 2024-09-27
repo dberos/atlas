@@ -11,7 +11,7 @@ import {
     PaginationPrevious,
 } from "@/components/ui/pagination"
 import NoResults from "@/components/no-results";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Internships = ({page}: { page: string }) => {
 
@@ -20,7 +20,7 @@ const Internships = ({page}: { page: string }) => {
     const currentPage = parseInt(page, 10) || 1;
 
     const [openInternshipId, setOpenInternshipId] = useState<string | null>(null);
-    const [scrollPosition, setScrollPosition] = useState(0);
+    const scrollPositionRef = useRef(0);
 
     const handleOpenChange = (id: string) => {
         window.requestAnimationFrame(() => setOpenInternshipId((prev) => prev === id ? null : id));
@@ -31,10 +31,10 @@ const Internships = ({page}: { page: string }) => {
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             if (!openInternshipId) {
-                window.requestAnimationFrame(() => window.scrollTo({ top: scrollPosition, behavior: 'smooth' }));
+                window.requestAnimationFrame(() => window.scrollTo({ top: scrollPositionRef.current, behavior: 'smooth' }));
             } 
             else {
-                setScrollPosition(window.scrollY);
+                scrollPositionRef.current = window.scrollY;
             }
         }, 300);
     

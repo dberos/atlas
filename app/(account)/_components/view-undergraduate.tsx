@@ -39,7 +39,7 @@ const ViewUndergraduate = ({interestId}: { interestId: string }) => {
             if (fetchedInterest !== null) setInterest(fetchedInterest);
         }
         getInterest();
-    }, [])
+    }, [interestId])
 
     const handleViewCv = () => {
         if (interest && interest.cv) {

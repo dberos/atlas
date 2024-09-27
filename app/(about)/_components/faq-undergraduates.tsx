@@ -1,12 +1,12 @@
 "use client";
 
 import { faqUndergraguates } from "@/data";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Faq from "./faq";
 
 const FaqUndergraduates = () => {
     const [openFaqId, setopenFaqId] = useState<string | null>(null);
-    const [scrollPosition, setScrollPosition] = useState(0);
+    const scrollPositionRef = useRef(0);
 
     const handleOpenChange = (id: string) => {
         window.requestAnimationFrame(() => setopenFaqId((prev) => prev === id ? null : id));
@@ -17,10 +17,10 @@ const FaqUndergraduates = () => {
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             if (!openFaqId) {
-                window.requestAnimationFrame(() => window.scrollTo({ top: scrollPosition, behavior: 'smooth' }));
+                window.requestAnimationFrame(() => window.scrollTo({ top: scrollPositionRef.current, behavior: 'smooth' }));
             } 
             else {
-                setScrollPosition(window.scrollY);
+                scrollPositionRef.current = window.scrollY;
             }
         }, 300);
     

@@ -99,7 +99,7 @@ const SavedInterestForm = ({
             form.reset();
             setFileName('');
         }
-    }, [isOpen])
+    }, [isOpen, form])
 
     return ( 
         <div className="pt-10 pb-10 w-full md:w-5/6 md:m-auto flex flex-col items-center">

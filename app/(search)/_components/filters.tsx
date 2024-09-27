@@ -26,7 +26,7 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ComboBox from "./combobox";
 import { getFieldCookie, setFieldCookie } from "@/server/search";
 import { SearchFormSchema } from "@/schemas";
@@ -44,7 +44,7 @@ const Filters = () => {
         ALL_NO_ESPA: 'all no espa'
     };
 
-    const mapFieldName = (field: string): string => {
+    const mapFieldName = useCallback((field: string): string => {
         switch (field) {
             case "Πρακτικές μέσω ΕΣΠΑ":
                 return FIELDS.ALL_ESPA;
@@ -55,7 +55,7 @@ const Filters = () => {
             default:
                 return field;
         }
-    };
+    }, [FIELDS.ALL, FIELDS.ALL_ESPA, FIELDS.ALL_NO_ESPA]);
 
     // Internship search values
     const data = useInternshipStore((state) => state.data);
@@ -121,7 +121,7 @@ const Filters = () => {
             });
         };
         setValues();
-    }, []);
+    }, [FIELDS.ALL_ESPA, form, mapFieldName, setData]);
 
     // Disabled with FIELDS in field
     const [isDisabled, setIsDisabled] = useState(false);
@@ -142,7 +142,7 @@ const Filters = () => {
             employment: '',
             espa: newField === FIELDS.ALL_ESPA
         })
-    }, [watchField]);
+    }, [watchField, FIELDS.ALL, FIELDS.ALL_ESPA, data.field, form, mapFieldName ]);
      
     async function onSubmit() {
         const values: z.infer<typeof SearchFormSchema> = form.getValues();

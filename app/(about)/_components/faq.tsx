@@ -27,13 +27,19 @@ const Faq = ({
         setIsFocused(false);
     };
 
+    const fragmentRef = useCloseModal(() => {
+        if (isOpen) {
+            onToggle();
+        }
+    });
+
     useEffect(() => {
         let timeoutId: ReturnType<typeof setTimeout>;
     
-        if (isOpen && contentRef.current) {
+        if (isOpen && contentRef.current && fragmentRef.current) {
             setMaxHeight(`${contentRef.current.scrollHeight}px`);
             setIsFocused(true);
-            fragmentRef.current?.focus();
+            fragmentRef.current.focus();
             timeoutId = setTimeout(() => {
                 // When the animation finishes, scroll into view
                 window.requestAnimationFrame(() => {
@@ -47,13 +53,7 @@ const Faq = ({
         }
     
         return () => clearTimeout(timeoutId);
-    }, [isOpen]);
-
-    const fragmentRef = useCloseModal(() => {
-        if (isOpen) {
-            onToggle();
-        }
-    });
+    }, [isOpen, fragmentRef]);
 
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => setIsMounted(true), []);

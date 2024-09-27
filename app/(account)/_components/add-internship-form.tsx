@@ -61,7 +61,7 @@ const ComboBox = ({form}: { form: UseFormReturn<z.infer<typeof AddInternshipForm
 
     useEffect(() => {
         form.setValue('field', value);
-    }, [value])
+    }, [value, form])
     return ( 
         <Popover open={open} onOpenChange={setOpen}>
             <PopoverTrigger asChild>
@@ -159,14 +159,14 @@ const AddInternshipForm = () => {
             form.setValue('salary', '');
             setIsDisabledSalary(false);
         }
-    }, [watchPayment])
+    }, [watchPayment, form])
 
     // Watch for salary changes
     const watchSalary = form.watch('salary');
     useEffect(() => {
         // Needs update since in payment it is set to empty string after update
         form.setValue('salary', form.getValues('salary'));
-    }, [watchSalary])
+    }, [watchSalary, form])
 
     return ( 
         <Form {...form}>

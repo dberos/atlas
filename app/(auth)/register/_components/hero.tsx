@@ -45,7 +45,7 @@ const Hero = () => {
             street: '',
             streetNumber: ''
         })
-    }, [])
+    }, [setActiveTab, setSelectedType, setUndergraduate, setCompany])
 
 
     const isAllowed = useModeStore((state) => state.isAllowed);

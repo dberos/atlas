@@ -23,7 +23,7 @@ const ViewUndergraduatesCta = ({
             if (fetchedUndergraduate) setUndergraduate(fetchedUndergraduate);
         }
         findUndergraduate();
-    }, [])
+    }, [undergraduateId])
     
     const router = useRouter();
 

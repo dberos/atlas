@@ -34,7 +34,7 @@ const Internship = ({
             if (fetchedInternship !== null) setInternship(fetchedInternship);
         }
         getInternship();
-    }, [])
+    }, [internshipId])
 
     // Expandable div transitioning
     const [maxHeight, setMaxHeight] = useState("0px");
@@ -47,13 +47,20 @@ const Internship = ({
         setIsFocused(false);
     };
 
+    // Closing internship when clicked outside
+    const fragmentRef = useCloseModal(() => {
+        if (isOpen) {
+            onToggle();
+        }
+    });
+
     useEffect(() => {
         let timeoutId: ReturnType<typeof setTimeout>;
     
-        if (isOpen && contentRef.current) {
+        if (isOpen && contentRef.current && fragmentRef.current) {
             setMaxHeight(`${contentRef.current.scrollHeight}px`);
             setIsFocused(true);
-            fragmentRef.current?.focus();
+            fragmentRef.current.focus();
             // When the animation finishes, scroll into view
             timeoutId = setTimeout(() => {
                 window.requestAnimationFrame(() => {
@@ -68,14 +75,7 @@ const Internship = ({
         }
     
         return () => clearTimeout(timeoutId);
-    }, [isOpen]);
-
-    // Closing internship when clicked outside
-    const fragmentRef = useCloseModal(() => {
-        if (isOpen) {
-            onToggle();
-        }
-    });
+    }, [isOpen, fragmentRef]);
 
     // Render the correct cta coming from parent component
     const renderCta = () => {

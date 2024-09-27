@@ -2,7 +2,7 @@
 
 import { findSavedInterests } from "@/server/find-interest";
 import { ProfileCtaEnum, SavedInterestType } from "@/types";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NoResults from "@/components/no-results";
 import Internship from "./internship";
 
@@ -18,7 +18,7 @@ const SavedInterests = () => {
     }, [])
 
     const [openInterestId, setOpenInterestId] = useState<string | null>(null);
-    const [scrollPosition, setScrollPosition] = useState(0);
+    const scrollPositionRef = useRef(0);
 
     const handleOpenChange = (id: string) => {
         window.requestAnimationFrame(() => setOpenInterestId((prev) => prev === id ? null : id));
@@ -29,10 +29,10 @@ const SavedInterests = () => {
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             if (!openInterestId) {
-                window.requestAnimationFrame(() => window.scrollTo({ top: scrollPosition, behavior: 'smooth' }));
+                window.requestAnimationFrame(() => window.scrollTo({ top: scrollPositionRef.current, behavior: 'smooth' }));
             } 
             else {
-                setScrollPosition(window.scrollY);
+                scrollPositionRef.current = window.scrollY;
             }
         }, 300);
     
