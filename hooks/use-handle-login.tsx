@@ -21,6 +21,7 @@ const useHandleLogin = () => {
 
 
     useEffect(() => {
+        let timeoutId: ReturnType<typeof setTimeout>;
         if (isOpen) {
             // If it opened to protect a route
             // Deny middleware redirect to /login 
@@ -31,10 +32,14 @@ const useHandleLogin = () => {
         }
         else {
             if (redirectUrl && isLoggedIn) {
-                window.location.href = redirectUrl;
+                timeoutId = setTimeout(() => {
+                    router.push(redirectUrl);
+                }, 0);
             }
             setRedirectUrl(null);
         }
+
+        return () => clearTimeout(timeoutId);
 
     }, [isOpen, isLoggedIn])
 }
