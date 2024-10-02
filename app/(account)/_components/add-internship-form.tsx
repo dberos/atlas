@@ -37,7 +37,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { useEffect, useState } from "react";
-import { fieldsAddInternship } from "@/data";
+import { fields } from "@/data";
 import { Checkbox } from "@/components/ui/checkbox"
 import { insertInternship } from "@/server/insert-internship";
 import { useToast } from "@/components/ui/use-toast";
@@ -72,7 +72,7 @@ const ComboBox = ({form}: { form: UseFormReturn<z.infer<typeof AddInternshipForm
                 className="w-full justify-between"
                 >
                 {value
-                    ? fieldsAddInternship.find((field) => field.name === value)?.name
+                    ? fields.find((field) => field.name === value)?.name
                     : "Αναζήτηση τομέα..."}
                 <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
@@ -83,7 +83,7 @@ const ComboBox = ({form}: { form: UseFormReturn<z.infer<typeof AddInternshipForm
                 <CommandList className="h-auto max-h-32 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
                     <CommandEmpty>Κανένα αποτέλεσμα αναζήτησης.</CommandEmpty>
                     <CommandGroup>
-                    {fieldsAddInternship.map((field) => (
+                    {fields.map((field) => (
                         <CommandItem
                         className="data-[disabled]:pointer-events-auto cursor-pointer"
                         key={field.id}

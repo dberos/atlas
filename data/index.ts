@@ -61,10 +61,14 @@ export const departments: DepartmentType[] = [
     },
     {
         id: 2,
-        value: 'Ιατρική'
+        value: 'Οικονομικά'
     },
     {
         id: 3,
+        value: 'Ιατρική'
+    },
+    {
+        id: 4,
         value: 'Φιλολογία'
     }
 ];
@@ -74,12 +78,16 @@ export const fields: FieldType[] = [
         id: 1, 
         name: 'Πληροφορική' 
     },
-    { 
+    {
         id: 2,
+        name: 'Οικονομικά'
+    },
+    { 
+        id: 3,
         name: 'Ιατρική' 
     },
     { 
-        id: 3, 
+        id: 4, 
         name: 'Φιλολογία' 
     },
 ];
@@ -116,12 +124,16 @@ export const fieldsComboBox: FieldType[] = [
         id: 4, 
         name: 'Πληροφορική' 
     },
-    { 
-        id: 5, 
-        name: 'Ιατρική' 
+    {
+        id: 5,
+        name: 'Οικονομικά'
     },
     { 
         id: 6, 
+        name: 'Ιατρική' 
+    },
+    { 
+        id: 7, 
         name: 'Φιλολογία' 
     }
 ];
@@ -223,21 +235,6 @@ export const heroProfileAddInternship: HeroType = {
     imageSrc: '/profile-hero.svg',
     imageAlt: 'woman with her account',
 };
-
-export const fieldsAddInternship: FieldType[] = [
-    { 
-        id: 1, 
-        name: 'Πληροφορική' 
-    },
-    { 
-        id: 2, 
-        name: 'Ιατρική' 
-    },
-    { 
-        id: 3, 
-        name: 'Φιλολογία' 
-    }
-];
 
 export const heroProfileAddInterest: HeroType = {
     title: 'Προφίλ',
