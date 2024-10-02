@@ -4,7 +4,6 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useLoginStore } from "./use-login-store";
 import { useEffect } from "react";
 import { useAuth } from "./use-auth";
-import { revalidatePath } from "next/cache";
 
 // Called at login form to possibly protect a route
 const useHandleLogin = () => {
