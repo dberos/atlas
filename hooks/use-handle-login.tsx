@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useLoginStore } from "./use-login-store";
 import { useEffect } from "react";
 import { useAuth } from "./use-auth";
+import { revalidatePath } from "next/cache";
 
 // Called at login form to possibly protect a route
 const useHandleLogin = () => {
@@ -31,7 +32,7 @@ const useHandleLogin = () => {
         }
         else {
             if (redirectUrl && isLoggedIn) {
-                router.push(redirectUrl);
+                window.location.href = redirectUrl;
             }
             setRedirectUrl(null);
         }
