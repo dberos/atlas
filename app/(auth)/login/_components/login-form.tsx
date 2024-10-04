@@ -54,7 +54,7 @@ const LoginForm = () => {
             form.reset();
             // If user tried to access protected route, redirect back after login
             const redirect = searchParams.get('redirect') || '/';
-            router.push(redirect);
+            setTimeout(() => router.push(redirect), 500);
         }
     }
     return ( 
