@@ -139,7 +139,7 @@ const AddInternshipForm = () => {
                 setIsOpenDialog(false);
             }
         }
-    }, [form.formState])
+    }, [form.formState.isSubmitting, form.formState.isValid])
      
     async function onSubmit(values: z.infer<typeof AddInternshipFormSchema>) {
         // Sleep 1 second for ui
