@@ -112,6 +112,8 @@ const ComboBox = ({form}: { form: UseFormReturn<z.infer<typeof AddInternshipForm
 
 const AddInternshipForm = () => {
 
+    const [isOpenDialog, setIsOpenDialog] = useState(false);
+
     const { toast } = useToast();
 
     const router = useRouter();
@@ -128,6 +130,16 @@ const AddInternshipForm = () => {
           description: ""
         },
     })
+
+    // In case description is less than 10 characters
+    // Close the dialog
+    useEffect(() => {
+        if (form.formState.isSubmitting) {
+            if (!form.formState.isValid) {
+                setIsOpenDialog(false);
+            }
+        }
+    }, [form.formState])
      
     async function onSubmit(values: z.infer<typeof AddInternshipFormSchema>) {
         // Sleep 1 second for ui
@@ -294,7 +306,7 @@ const AddInternshipForm = () => {
                     </FormItem>
                 )}
                 />
-                <AlertDialog>
+                <AlertDialog open={isOpenDialog} onOpenChange={setIsOpenDialog}>
                 <AlertDialogTrigger asChild>
                     <Button 
                     type="button"
