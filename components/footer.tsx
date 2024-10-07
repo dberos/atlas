@@ -12,7 +12,7 @@ const Footer = () => {
                     Σύστημα Κεντρικής Υποστήριξης της Πρακτικής Άσκησης Φοιτητών ΑΕΙ
                 </p>
                 <p className="text-xs lg:text-sm text-center">
-                    &copy; 2024 All rights reserved.
+                    &copy; 2024 ΑΤΛΑΣ All rights reserved.
                 </p>
             </div>
             <div className="w-full xl:w-3/4 h-3/4 md:h-2/4 xl:h-full grid grid-rows-3 grid-cols-1 md:grid-rows-1 md:grid-cols-3 order-1">
