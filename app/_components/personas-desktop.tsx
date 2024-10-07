@@ -1,20 +1,22 @@
 "use client";
 
+import handleProtectRoute from "@/components/navbar/handle-protect-route";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/use-auth";
+import { useLoginStore } from "@/hooks/use-login-store";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useMedia } from "react-use";
-import PersonasDesktop from "./personas-desktop";
 
-const Personas = () => {
-    const isMobile = useMedia("(max-width: 1024px)", false);
+const PersonasDesktop = () => {
+    const setIsOpen = useLoginStore((state) => state.setIsOpen);
+    const setRedirectUrl = useLoginStore((state) => state.setRedirectUrl);
+
+    const { user } = useAuth();
 
     const [isMounted, setIsMounted] = useState(false);
     useEffect(() => setIsMounted(true) ,[]);
     if (!isMounted) return null;
-
-    if (!isMobile) return <PersonasDesktop />
 
     return ( 
         <div className="mt-20 w-full flex flex-col">
@@ -27,6 +29,15 @@ const Personas = () => {
                         <Link
                         href='/profile/add-internship'
                         className="mt-4 text-lg 2xl:text-xl font-medium text-center cursor-pointer"
+                        onClick={() => {
+                            handleProtectRoute({
+                                redirectUrl: '/profile/add-internship',
+                                user,
+                                setIsOpen,
+                                setRedirectUrl,
+                                callback: () => {}
+                            })
+                        }}
                         >
                             Προσθήκη Πρακτικής Άσκησης
                         </Link>
@@ -40,6 +51,15 @@ const Personas = () => {
                         <Link
                         href='/profile/add-internship'
                         className="contents"
+                        onClick={() => {
+                            handleProtectRoute({
+                                redirectUrl: '/profile/add-internship',
+                                user,
+                                setIsOpen,
+                                setRedirectUrl,
+                                callback: () => {}
+                            })
+                        }}
                         >
                             <Image 
                             src="/home-personas-left.svg"
@@ -59,6 +79,15 @@ const Personas = () => {
                         <Link
                         href='/profile/view-internships'
                         className="mt-4 text-lg 2xl:text-xl font-medium text-center cursor-pointer"
+                        onClick={() => {
+                            handleProtectRoute({
+                                redirectUrl: '/profile/view-internships',
+                                user,
+                                setIsOpen,
+                                setRedirectUrl,
+                                callback: () => {}
+                            })
+                        }}
                         >
                             Αξιολόγηση Ενδιαφέροντος
                         </Link>
@@ -72,6 +101,15 @@ const Personas = () => {
                         <Link
                         href='/profile/view-internships'
                         className="contents"
+                        onClick={() => {
+                            handleProtectRoute({
+                                redirectUrl: '/profile/view-internships',
+                                user,
+                                setIsOpen,
+                                setRedirectUrl,
+                                callback: () => {}
+                            })
+                        }}
                         >
                             <Image 
                             src="/home-personas-right.svg"
@@ -104,4 +142,4 @@ const Personas = () => {
     );
 }
  
-export default Personas;
+export default PersonasDesktop;
