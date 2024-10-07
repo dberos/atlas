@@ -177,7 +177,8 @@ const Filters = () => {
         }
         await setFieldCookie(JSON.stringify(dataSearch));
         setIsOpen(false);
-        router.push('/internships?page=1')
+        setTimeout(() => router.push('/internships?page=1'), 0);
+        
     }
 
     return ( 
