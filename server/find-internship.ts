@@ -19,7 +19,7 @@ export const findInternships = async (
             return { internships: [], totalPages: 0 };
         }
 
-        const { field, duration, employment, espa } = data;
+        const { field, duration, employment, city, espa } = data;
 
         // Number of internships per page
         const pageSize = 5;
@@ -54,6 +54,7 @@ export const findInternships = async (
         const internships = await db.internship.findMany({
             where: {
                 ...query, 
+                ...(city && { company: { city } }),
                 undergraduateId: null
             },
             include: {

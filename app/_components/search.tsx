@@ -29,7 +29,8 @@ const Search = () => {
         const data: SearchCookieType = {
             field: item.name,
             duration: "",
-            employment: ""
+            employment: "",
+            city: ""
         }
         await setFieldCookie(JSON.stringify(data));
         router.push('/internships?page=1');

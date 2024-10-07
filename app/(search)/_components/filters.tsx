@@ -67,6 +67,7 @@ const Filters = () => {
     // Handle select click going through checkbox or buttons
     const [isOpenDutation, setIsOpenDuration] = useState(false);
     const [isOpenEmployment, setIsOpenEmployment] = useState(false);
+    const [isOpenCity, setIsOpenCity] = useState(false);
 
     const handleOpenDuration = () => {
         if (!isOpenDutation) {
@@ -86,12 +87,22 @@ const Filters = () => {
         }
     }
 
+    const handleOpenCity = () => {
+        if (!isOpenCity) {
+            setIsOpenCity(true);
+        }
+        else {
+            setTimeout(() => setIsOpenCity(false), 0);
+        }
+    }
+
     const form = useForm<z.infer<typeof SearchFormSchema>>({
         resolver: zodResolver(SearchFormSchema),
         defaultValues: {
           field: "",
           duration: "",
           employment: "",
+          city: "",
           espa: false
         },
     })
@@ -107,6 +118,7 @@ const Filters = () => {
             form.setValue('field', parsedCookie.field);
             form.setValue('duration', parsedCookie.duration),
             form.setValue('employment', parsedCookie.employment);
+            form.setValue('city', parsedCookie.city);
             if (parsedCookie.espa !== undefined) {
                 form.setValue('espa', parsedCookie.espa);
             }
@@ -117,6 +129,7 @@ const Filters = () => {
                 field: newField, 
                 duration: parsedCookie.duration, 
                 employment: parsedCookie.employment, 
+                city: parsedCookie.city,
                 espa: parsedCookie.espa !== undefined ? parsedCookie.espa : newField === FIELDS.ALL_ESPA 
             });
         };
@@ -140,6 +153,7 @@ const Filters = () => {
             field: watchField,
             duration: '',
             employment: '',
+            city: '',
             espa: newField === FIELDS.ALL_ESPA
         })
     }, [watchField, FIELDS.ALL, FIELDS.ALL_ESPA, data.field, form, mapFieldName ]);
@@ -151,12 +165,14 @@ const Filters = () => {
             field: newField,
             duration: values.duration,
             employment: values.employment,
+            city: values.city,
             espa: values.espa
         });
         const dataSearch: SearchCookieType = {
             field: values.field,
             duration: values.duration,
             employment: values.employment,
+            city: values.city,
             espa: values.espa
         }
         await setFieldCookie(JSON.stringify(dataSearch));
@@ -254,6 +270,34 @@ const Filters = () => {
                             />
                             <FormField
                             control={form.control}
+                            name="city"
+                            render={({ field }) => (
+                                <FormItem className="grid grid-cols-3 items-center gap-4">
+                                <FormLabel>Πόλη</FormLabel>
+                                <Select 
+                                onValueChange={field.onChange} 
+                                value={field.value} 
+                                disabled={isDisabled}
+                                open={isOpenCity}
+                                onOpenChange={handleOpenCity}
+                                >
+                                    <FormControl>
+                                    <SelectTrigger className="col-span-2 h-8 focus:ring-transparent">
+                                        <SelectValue />
+                                    </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                        <SelectItem value="Αθήνα">Αθήνα</SelectItem>
+                                        <SelectItem value="Θεσσαλονίκη">Θεσσαλονίκη</SelectItem>
+                                        <SelectItem value="Πάτρα">Πάτρα</SelectItem>
+                                    </SelectContent>
+                                </Select>
+                                <FormMessage />
+                                </FormItem>
+                            )}
+                            />
+                            <FormField
+                            control={form.control}
                             name="espa"
                             render={({ field }) => (
                                 <FormItem className="flex items-center justify-end space-x-2 mt-2">
@@ -291,6 +335,7 @@ const Filters = () => {
                                         field: '',
                                         duration: '',
                                         employment: '',
+                                        city: '',
                                         espa: false
                                     }), 0);
                                     setTimeout(() => onSubmit(), 0);

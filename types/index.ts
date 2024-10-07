@@ -156,7 +156,8 @@ export type InternshipType = {
 export type SearchCookieType = {
     field: string,
     duration: string,
-    employment: string
+    employment: string,
+    city: string,
     espa?: boolean | undefined 
 }
 

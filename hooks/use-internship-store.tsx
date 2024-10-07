@@ -6,6 +6,7 @@ export const useInternshipStore = create<InternshipStoreType>((set) => ({
         field: "",
         duration: "",
         employment: "",
+        city: "",
         espa: false,
     },
     setData: (newData: Partial<SearchFormType>) => set((state: InternshipStoreType) => ({

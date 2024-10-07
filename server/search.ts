@@ -29,12 +29,13 @@ export const getFieldCookie = async () => {
 // For going to search from navbar and not searchbar
 export const updateFieldCookie = async () => {
     const fields = await getFieldCookie();
-    if (fields) return;
+    if (fields && fields.field) return;
 
     const data: SearchCookieType = {
         field: "Όλοι οι Τομείς",
         duration: "",
-        employment: ""
+        employment: "",
+        city: ""
     }
     await setFieldCookie(JSON.stringify(data));
 }

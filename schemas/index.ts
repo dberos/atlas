@@ -80,6 +80,7 @@ export const SearchFormSchema = z.object({
   field: z.string(),
   duration: z.string(),
   employment: z.string(),
+  city: z.string(),
   espa: z.boolean()
 })
 
