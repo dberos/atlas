@@ -67,7 +67,7 @@ const Faq = ({
         onMouseDown={handleMouseDown}
         >
             <div className={cn(
-                "w-full h-72 md:h-52 lg:h-36 flex items-center justify-center bg-slate-100 dark:bg-slate-900 z-10",
+                "w-full h-72 md:h-52 lg:h-36 flex items-center justify-center bg-slate-200 dark:bg-slate-900 z-10",
                 isOpen ? 'rounded-t-md' : 'rounded-md'
             )}>
                 <div className="flex items-center justify-center w-full">
@@ -89,7 +89,7 @@ const Faq = ({
                 style={{ maxHeight }}
                 ref={contentRef}
                 className={cn(
-                    "relative w-full overflow-hidden bg-slate-100 dark:bg-slate-900 z-20 transition-all duration-500 ease-in-out",
+                    "relative w-full overflow-hidden bg-slate-200 dark:bg-slate-900 z-20 transition-all duration-500 ease-in-out",
                     isOpen ? 'rounded-b-md' : 'rounded-md'
                 )}
             >   

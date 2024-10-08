@@ -30,7 +30,7 @@ const CookiesConsent = () => {
     return ( 
         isVisible &&
         <div className="fixed inset-0 z-50 bg-black bg-opacity-70">
-            <div className="z-50 fixed bottom-0 h-60 lg:h-40 w-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
+            <div className="z-50 fixed bottom-0 h-60 lg:h-40 w-full bg-slate-200 dark:bg-slate-900 flex items-center justify-center">
             <div className="px-8 lg:px-20 py-10 space-y-2">
                 <p className="text-lg text-center">
                     Ο ιστοχώρος χρησιμοποιεί τα απαραίτητα cookies για την λειτουργία του

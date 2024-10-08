@@ -52,7 +52,7 @@ const RegisterFormCompany = () => {
             form.reset();
             await deleteCsrfToken();
             setActiveTab("type");
-            router.push("/")
+            setTimeout(() => router.push('/'), 0);
             toast({
                 title: "Προέκυψε σφάλμα."
             })
@@ -61,7 +61,7 @@ const RegisterFormCompany = () => {
             form.reset();
             await deleteCsrfToken();
             setActiveTab("type");
-            router.push("/login")
+            setTimeout(() => router.push('/login'), 0);
             toast({
                 title: "Ο λογαριασμός δημιουργήθηκε με επιτυχία!",
             })

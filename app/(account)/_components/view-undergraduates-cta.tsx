@@ -28,7 +28,7 @@ const ViewUndergraduatesCta = ({
     const router = useRouter();
 
     const handleClick = () => {
-        router.push(`/profile/view-internships/${internshipId}`);
+        setTimeout(() => router.push(`/profile/view-internships/${internshipId}`), 0);
     }
 
     return ( 

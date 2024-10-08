@@ -153,7 +153,7 @@ const AddInternshipForm = () => {
             toast({ title: 'Η Πρακτική Άσκηση δημοσιεύθηκε με επιτυχία!' });
         }
         form.reset();
-        router.push('/profile');
+        setTimeout(() => router.push('/profile'), 0);
     }
 
     // Disabled if payment ESPA is true

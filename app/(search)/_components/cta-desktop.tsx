@@ -6,7 +6,6 @@ import { useAuth } from "@/hooks/use-auth";
 import { useModeStore } from "@/hooks/use-mode-store";
 import { insertInterest } from "@/server/insert-interest";
 import { useLoginStore } from "@/hooks/use-login-store";
-import useHandleLogin from "@/hooks/use-handle-login";
 import { useToast } from "@/components/ui/use-toast";
 import { usePathname, useSearchParams } from "next/navigation";
   
@@ -24,8 +23,6 @@ const CtaDesktop = ({id}: { id: string }) => {
 
     const setIsOpen = useLoginStore((state) => state.setIsOpen);
     const setRedirectUrl = useLoginStore((state) => state.setRedirectUrl);
-
-    useHandleLogin();
 
     const handleClick = async () => {
         if (user) {

@@ -83,7 +83,7 @@ const Internship = ({
         onMouseDown={handleMouseDown}
         >
             <div className={cn(
-                "w-full h-96 lg:h-72 items-center bg-slate-100 dark:bg-slate-900 z-10",
+                "w-full h-96 lg:h-72 items-center bg-slate-200 dark:bg-slate-900 z-10",
                 isOpen ? 'rounded-t-md' : 'rounded-md'
             )}
             >
@@ -118,7 +118,7 @@ const Internship = ({
                 style={{ maxHeight }}
                 ref={contentRef}
                 className={cn(
-                    "w-full overflow-hidden bg-slate-100 dark:bg-slate-900 z-20 transition-all duration-500 ease-in-out",
+                    "w-full overflow-hidden bg-slate-200 dark:bg-slate-900 z-20 transition-all duration-500 ease-in-out",
                     isOpen ? 'rounded-b-md' : 'rounded-md'
                 )}
                 >

@@ -44,7 +44,7 @@ const CtaMobile = ({id}: { id: string }) => {
         else {
             const search = searchParams.toString();
             const fullPath = search ? `${pathname}?${search}` : pathname;
-            router.push(`/login?redirect=${encodeURIComponent(fullPath)}`);
+            setTimeout(() => router.push(`/login?redirect=${encodeURIComponent(fullPath)}`), 0);
         }
     }
 

@@ -46,7 +46,7 @@ const NavMobile = () => {
             window.localStorage.clear();
             setIsLoggedIn(false);
             setIsOpen(false);
-            router.replace('/');
+            setTimeout(() => router.replace('/'), 0);
         }
         catch (error) {
             toast({

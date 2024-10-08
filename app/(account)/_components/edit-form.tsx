@@ -49,7 +49,7 @@ const EditForm = () => {
             await logoutUser();
             window.localStorage.clear();
             setIsLoggedIn(false);
-            router.replace('/');
+            setTimeout(() => router.replace('/'), 0);
             toast({
                 title: "Ο κωδικός πρόσβασης άλλαξε με επιτυχία"
             });
@@ -57,7 +57,7 @@ const EditForm = () => {
         else {
             form.reset();
             await deleteCsrfToken();
-            router.replace('/profile');
+            setTimeout(() => router.replace('/profile'), 0);
             toast({
                 title: "Προέκυψε σφάλμα"
             })

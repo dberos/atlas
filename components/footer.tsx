@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 
 const Footer = () => {
     return ( 
-        <footer className="w-full h-[700px] md:h-96 xl:h-64 bg-slate-100 dark:bg-slate-900 flex flex-wrap">
+        <footer className="w-full h-[700px] md:h-96 xl:h-64 bg-slate-200 dark:bg-slate-900 flex flex-wrap">
             <div className="w-full xl:w-1/4 h-1/4 md:h-2/4 xl:h-full order-2 xl:order-1 p-2 flex flex-col items-center justify-center gap-y-4">
                 <p className="font-serif font-medium text-lg lg:text-xl">
                     ΑΤΛΑΣ

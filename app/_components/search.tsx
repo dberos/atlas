@@ -33,7 +33,7 @@ const Search = () => {
             city: ""
         }
         await setFieldCookie(JSON.stringify(data));
-        router.push('/internships?page=1');
+        setTimeout(() => router.push('/internships?page=1'), 0);
     }
 
     // Show suggestions on focused without anything typed

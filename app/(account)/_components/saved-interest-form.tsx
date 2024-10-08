@@ -89,7 +89,7 @@ const SavedInterestForm = ({
         }
         form.reset();
         setFileName('');
-        router.push('/profile');
+        setTimeout(() => router.push('/profile'), 0);
     }
 
     // In case it opens again after not submitting

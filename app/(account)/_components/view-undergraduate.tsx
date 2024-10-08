@@ -81,7 +81,7 @@ const ViewUndergraduate = ({interestId}: { interestId: string }) => {
             toast({
                 title: "Η αίτηση απορρίφθηκε"
             });
-            router.replace('/profile/view-internships');
+            setTimeout(() => router.replace('/profile/view-internships'), 0);
         }
         else {
             toast({
@@ -102,7 +102,7 @@ const ViewUndergraduate = ({interestId}: { interestId: string }) => {
             toast({
                 title: "Η αίτηση εγκρίθηκε"
             });
-            router.replace('/profile/view-internships');
+            setTimeout(() => router.replace('/profile/view-internships'), 0);
         }
         else {
             toast({

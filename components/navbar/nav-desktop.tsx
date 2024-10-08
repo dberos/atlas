@@ -47,7 +47,7 @@ const NavDesktop = () => {
             await logoutUser();
             window.localStorage.clear();
             setIsLoggedIn(false);
-            router.replace('/');
+            setTimeout(() => router.replace('/'), 0);
         }
         catch (error) {
             toast({
