@@ -67,7 +67,7 @@ const Search = () => {
             anotherIcon={inputValue !== ""}
             setInputValue={setInputValue}
             />
-            <CommandList className="h-auto max-h-48 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
+            <CommandList className="w-full max-w-full h-auto max-h-48 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
                 {
                     inputValue && 
                     <>
