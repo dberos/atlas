@@ -56,7 +56,7 @@ const Search = () => {
 
     return ( 
         <Command 
-        className="w-full md:w-5/6 lg:w-4/6 border h-auto z-40"
+        className="w-72 md:w-5/6 lg:w-4/6 border h-auto z-40"
         onFocus={handleFocus}
         ref={ref}
         >
@@ -67,7 +67,7 @@ const Search = () => {
             anotherIcon={inputValue !== ""}
             setInputValue={setInputValue}
             />
-            <CommandList className="w-[--radix-select-trigger-width] h-auto max-h-48 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
+            <CommandList className="h-auto max-h-48 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
                 {
                     inputValue && 
                     <>
