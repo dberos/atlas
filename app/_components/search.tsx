@@ -66,7 +66,6 @@ const Search = () => {
             noBorder={inputValue === ""}
             anotherIcon={inputValue !== ""}
             setInputValue={setInputValue}
-            className="max-md:text-base"
             />
             <CommandList className="h-auto max-h-48 overflow-y-scroll [&::-webkit-scrollbar]:hidden">
                 {
@@ -79,7 +78,7 @@ const Search = () => {
                             <CommandItem
                             key={item.id}
                             value={item.name}
-                            className="data-[disabled]:pointer-events-auto cursor-pointer data-[disabled]:opacity-80 dark:data-[disabled]:opacity-50 max-md:text-base"
+                            className="data-[disabled]:pointer-events-auto cursor-pointer data-[disabled]:opacity-80 dark:data-[disabled]:opacity-50"
                             onSelect={() => handleSelect(item)}
                             >   
                                 {item.name}
@@ -97,7 +96,7 @@ const Search = () => {
                             <CommandItem
                             key={item.id}
                             value={item.name}
-                            className="data-[disabled]:pointer-events-auto cursor-pointer data-[disabled]:opacity-80 dark:data-[disabled]:opacity-50 max-md:text-base"
+                            className="data-[disabled]:pointer-events-auto cursor-pointer data-[disabled]:opacity-80 dark:data-[disabled]:opacity-50"
                             onSelect={() => handleSelect(item)}
                             >   
                                 {item.name}

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -13,6 +13,12 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "ΑΤΛΑΣ",
   description: "Internship Search Website",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  userScalable: true,
 };
 
 export default function RootLayout({
