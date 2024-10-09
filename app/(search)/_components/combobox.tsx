@@ -66,8 +66,8 @@ const ComboBox = ({
                         key={field.id}
                         value={field.name}
                         onSelect={(currentValue) => {
-                            setValue(currentValue === value ? "" : currentValue)
-                            setOpen(false)
+                            setValue(currentValue === value ? "" : currentValue);
+                            setTimeout(() => setOpen(false), 100);
                         }}
                         >
                         <Check

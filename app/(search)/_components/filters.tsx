@@ -74,7 +74,7 @@ const Filters = () => {
             setIsOpenDuration(true);
         }
         else {
-            setTimeout(() => setIsOpenDuration(false), 0);
+            setTimeout(() => setIsOpenDuration(false), 100);
         }
     }
 
@@ -83,7 +83,7 @@ const Filters = () => {
             setIsOpenEmployment(true);
         }
         else {
-            setTimeout(() => setIsOpenEmployment(false), 0);
+            setTimeout(() => setIsOpenEmployment(false), 100);
         }
     }
 
@@ -92,7 +92,7 @@ const Filters = () => {
             setIsOpenCity(true);
         }
         else {
-            setTimeout(() => setIsOpenCity(false), 0);
+            setTimeout(() => setIsOpenCity(false), 100);
         }
     }
 
