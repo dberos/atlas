@@ -1,5 +1,6 @@
 import { CircleHelp, Mail } from "lucide-react";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
 const Footer = () => {
     return ( 
@@ -25,7 +26,12 @@ const Footer = () => {
                             Επικοινωνία <Mail className="size-4 ml-2" />
                         </Button>
                         <Button variant='link' size="sm">
-                            Συχνές Ερωτήσεις <CircleHelp className="size-4 ml-2" />
+                            <Link
+                            href='/faq'
+                            className="flex items-center"
+                            >
+                                Συχνές Ερωτήσεις <CircleHelp className="size-4 ml-2" />
+                            </Link>
                         </Button>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ const Hero = () => {
                     <Search />
                 </div>
             </div>
-            <div className="size-full flex items-center 2xl:items-start 2xl:mt-6 justify-center">
+            <div className="size-full 2k:size-4/5 2k:m-auto flex items-center 2xl:items-start 2xl:mt-6 justify-center">
                 <Image 
                 src="/home-hero.svg"
                 alt="woman reading"

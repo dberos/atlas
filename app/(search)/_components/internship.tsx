@@ -76,7 +76,7 @@ const Internship = ({
 
     return ( 
         <div className={cn(
-            "relative rounded-md w-full lg:w-4/5 flex flex-col items-center justify-center scroll-mt-24",
+            "relative rounded-md w-full lg:w-4/5 2k:w-4/6 flex flex-col items-center justify-center scroll-mt-24",
             isFocused && "ring-2 ring-muted-foreground ring-offset-2 ring-offset-border"
         )}
         ref={fragmentRef}
