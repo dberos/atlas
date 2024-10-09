@@ -39,7 +39,7 @@ const ComboBox = ({
 
     return ( 
         <Popover open={open} onOpenChange={setOpen}>
-            <PopoverTrigger asChild className="col-span-2 h-8">
+            <PopoverTrigger asChild className="col-span-2 h-10 lg:h-8">
                 <Button
                 variant="outline"
                 role="combobox"

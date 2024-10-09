@@ -229,7 +229,7 @@ const Filters = () => {
                                 onOpenChange={handleOpenDuration}
                                 >
                                     <FormControl>
-                                    <SelectTrigger className="col-span-2 h-8 focus:ring-transparent">
+                                    <SelectTrigger className="col-span-2 h-10 lg:h-8 focus:ring-transparent">
                                         <SelectValue />
                                     </SelectTrigger>
                                     </FormControl>
@@ -256,7 +256,7 @@ const Filters = () => {
                                 onOpenChange={handleOpenEmployment}
                                 >
                                     <FormControl>
-                                    <SelectTrigger className="col-span-2 h-8 focus:ring-transparent">
+                                    <SelectTrigger className="col-span-2 h-10 lg:h-8 focus:ring-transparent">
                                         <SelectValue />
                                     </SelectTrigger>
                                     </FormControl>
@@ -283,7 +283,7 @@ const Filters = () => {
                                 onOpenChange={handleOpenCity}
                                 >
                                     <FormControl>
-                                    <SelectTrigger className="col-span-2 h-8 focus:ring-transparent">
+                                    <SelectTrigger className="col-span-2 h-10 lg:h-8 focus:ring-transparent">
                                         <SelectValue />
                                     </SelectTrigger>
                                     </FormControl>
