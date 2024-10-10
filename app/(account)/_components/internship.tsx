@@ -217,7 +217,7 @@ const Internship = ({
                         <h3 className="mt-2 text-base text-center">
                             Περιγραφή Θέσης
                         </h3>
-                        <p className="mt-6 text-sm text-center max-w-xs lg:max-w-md size-full overflow-y-scroll [&::-webkit-scrollbar]:hidden">
+                        <p className="mt-6 text-sm text-center max-w-72 lg:max-w-md size-full overflow-y-scroll [&::-webkit-scrollbar]:hidden">
                             {internship.description}
                         </p>
                     </div>

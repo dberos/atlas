@@ -65,7 +65,7 @@ const NavMobile = () => {
                 </SheetTrigger>
                 <SheetContent className="size-full">
                     <SheetHeader>
-                    <SheetTitle>internship-search</SheetTitle>
+                    <SheetTitle>ΑΤΛΑΣ</SheetTitle>
                     <SheetDescription>
                         Menu
                     </SheetDescription>
