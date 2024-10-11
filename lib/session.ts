@@ -1,4 +1,4 @@
-import { SignJWT, jwtVerify, JWTPayload, decodeJwt } from 'jose';
+import { SignJWT, jwtVerify, JWTPayload, decodeJwt, compactVerify } from 'jose';
 
 const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET!);
 
@@ -56,6 +56,10 @@ export const verifyToken = async (token: string) => {
 
 export const decodeToken = async (token: string) => {
   try {
+    // Verify the signature without the claims
+    // If it fails it throws an error
+    await compactVerify(token, JWT_SECRET);
+
     const decoded = await decodeJwt(token) as Payload;
 
     return decoded;
